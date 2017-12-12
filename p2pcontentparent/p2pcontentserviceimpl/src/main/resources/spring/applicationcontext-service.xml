@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <context:component-scan base-package="com.qianfeng.p2p.*.serviceimpl"/>
+
+    
+
+    <!--引用服务  -->
+    <dubbo:application name="contentservice"/>
+    
+    <!--找到注册中心  -->
+ 	<dubbo:registry address="47.95.244.39" port="2181" protocol="zookeeper"></dubbo:registry>
+ 	<!-- <dubbo:registry address="10.0.135.131" port="2181" protocol="zookeeper"></dubbo:registry> -->
+    <dubbo:protocol port="33334" name="dubbo"></dubbo:protocol>
+    <!-- 找个什么服务 -->
+    <dubbo:service interface="com.qianfeng.p2p.content.service.BorrowMoneyService" ref="borrowMoneyServiceImpl"></dubbo:service>
+</beans>

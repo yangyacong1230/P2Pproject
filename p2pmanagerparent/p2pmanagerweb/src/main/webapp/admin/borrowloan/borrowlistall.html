@@ -1,0 +1,145 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	借款明细 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">借款明细</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td class="g-fcenter" colspan="2">
+                            <select id="borrowType" name="borrowType">
+	<option value="">全部类型</option>
+	<option value="2">抵押标</option>
+	<option value="1">信用标</option>
+	<option value="3">净值标</option>
+	<option value="4">娱乐标</option>
+</select>
+                            <input type="hidden" name="bidStartAt" value="" />
+                            <input type="hidden" name="bidEndAt" value="" />                            
+                            <select id="borrowStatus" name="borrowStatus">
+	<option value="">全部借款</option>
+	<option value="0">发布待审核</option>
+	<option value="20">预约投标中</option>
+	<option value="40">投标中</option>
+	<option value="50">未开标</option>
+	<option value="60">满标待审核</option>
+	<option value="200">还款中</option>
+	<option value="201">还款完成</option>
+	<option value="-40">已流标</option>
+	<option value="-30">已撤标</option>
+	<option value="-20">满标审核未通过</option>
+	<option value="-10">发布审核未通过</option>
+</select>
+                            <select id="type" name="type">
+	<option value="业务编号">业务编号</option>
+	<option value="借款名称">借款名称</option>
+	<option value="借款人">借款人</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>添加时间：</th>
+                        <td><input type="text" name="startAt" id="startAt" value="" class="ui-date w150" data-maxdate="#endAt" /> 至 <input type="text" name="endAt" id="endAt" value="" class="ui-date w150" data-mindate="#startAt" /></td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th></th>
+                        <td><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件"  /></td>
+                    </tr>
+                </table>  
+                <a href="javascript:void(0);" id="btnSwithMoreFilter" class="iconfont"><span>&#xe661; 显示更多筛选条件</span></a>                
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    
+                        <input type="button" class="oper-clear btn-smaller c-obvious excel iconfont" data-function="借款明细" data-operate="导出EXCEL" data-freemes="本功能仅供正式版使用。" value="&#xe61f; 导出EXCEL" />
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="4%">编号</th>
+                        <th width="4%">业务编号</th>
+                        <th width="5%">借款人</th>
+                        <th width="10%">借款种类</th>
+                        <th width="25%" class="g-fleft">借款名称</th>
+                        <th width="10%">借款金额</th>
+                        <th width="10%">年利率</th>
+                        <th width="5%">借款周期</th>
+                        <th width="10%">添加时间</th>
+                        <th width="10%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        function cacel(id) {
+            $.jConfirm('确认撤标？', function () {
+                $.ajax({
+                    url: 'borrowdetail.html?action=cancel',
+                    data: { 'id': id },
+                    dataType: 'json',
+                    cache: false,
+                    success: function (res) {
+                        if (res.Success) {
+                            //刷新列表
+                            var pages = $('table.m-list .pages');
+                            if (pages.length) {
+                                var a = pages.next();
+                                pages.append(a);    //将a放入pages内，以响应点击事件
+                                a.trigger('click');
+                            } else {
+                                $('form.m-search').trigger('submit');
+                            }
+                        }
+                        else
+                            $.jError(res.Message);
+                    }
+                });
+            });
+        }
+
+        function homeshow(id) {
+            $.ajax({
+                url: 'borrowdetail.html?action=homeshow',
+                data: { 'id': id },
+                dataType: 'json',
+                cache: false,
+                success: function (res) {
+                    if (res.Success) {
+                        //刷新列表
+                        var pages = $('table.m-list .pages');
+                        if (pages.length) {
+                            var a = pages.next();
+                            pages.append(a);    //将a放入pages内，以响应点击事件
+                            a.trigger('click');
+                        } else {
+                            $('form.m-search').trigger('submit');
+                        }
+                    }
+                    else
+                        $.jError(res.Message);
+                }
+            });
+        }
+    </script>
+
+
+</body>
+</html>

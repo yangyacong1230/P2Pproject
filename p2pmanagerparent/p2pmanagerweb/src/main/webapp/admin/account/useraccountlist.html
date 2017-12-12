@@ -1,0 +1,111 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	会员资金账户列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">会员账户列表</a></dt>
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>会员筛选:</th>
+                        <td>
+                            <select id="groupId" name="groupId">
+                                <option value="">全部会员类型</option>
+                                
+                                        <option value="t1" >我要投资</option>
+                                    
+                                        <option value="g3" >&nbsp;&nbsp;&nbsp;&nbsp;|--投资黑名单</option>
+                                    
+                                        <option value="g1" >&nbsp;&nbsp;&nbsp;&nbsp;|--普通投资人</option>
+                                    
+                                        <option value="g5" >&nbsp;&nbsp;&nbsp;&nbsp;|--高级投资人</option>
+                                    
+                                        <option value="g6" >&nbsp;&nbsp;&nbsp;&nbsp;|--顶级投资人</option>
+                                    
+                                        <option value="t2" >我要借款</option>
+                                    
+                                        <option value="g4" >&nbsp;&nbsp;&nbsp;&nbsp;|--借款黑名单</option>
+                                    
+                                        <option value="g2" >&nbsp;&nbsp;&nbsp;&nbsp;|--普通借款人</option>
+                                    
+                                        <option value="g7" >&nbsp;&nbsp;&nbsp;&nbsp;|--高级借款人</option>
+                                    
+                            </select>
+                            <select id="type" name="type">
+	<option value="会员账号">会员账号</option>
+	<option value="会员昵称">会员昵称</option>
+	<option value="注册手机">注册手机</option>
+	<option value="注册邮箱">注册邮箱</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <form action="" method="post" id="js-formEdit">
+                <div class="m-content">
+                    <div class="m-oper">
+                        <span class="iconfont"><i class="fs22 fcred-3">&#xe601;</i>有资金被锁定<i class="fs22 fcjade-1">&#xe618;</i>正常使用中</span>
+                        
+                            <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value="&#xe612; 全选" />
+                            <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value="&#xe644; 反选" />
+                        
+                        
+                            <input type="button" class="oper-clear btn-smaller c-important edit iconfont" id="js-eidt" data-function="会员账户管理" data-operate="批量资金操作" data-freemes="本功能仅供正式版使用。" value="x 批量资金操作" />
+                        
+                        
+                            <input type="button" class="oper-clear btn-smaller c-obvious excel iconfont" data-function="会员账户管理" data-operate="导出EXCEL" data-freemes="本功能仅供正式版使用。" value="&#xe61f; 导出EXCEL" />
+                        
+                    </div>
+                    <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <th width="3%">选取</th>
+                            <th width="4%">编号</th>
+                            <th width="7%">会员类型</th>
+                            <th width="7%">会员组</th>
+                            <th width="16%" class="g-fleft">会员账号</th>
+                            <th width="7%" class="g-fleft">线上账户</th>
+                            <th width="7%" class="g-fleft">线下账户</th>
+                            <th width="7%" class="g-fleft">回款账户</th>
+                            <th width="7%" class="g-fleft">借款账户</th>
+                            <th width="7%" class="g-fleft">奖励账户</th>
+                            <th width="7%" class="g-fleft">可用总额</th>
+                            <th width="7%" class="g-fleft">冻结总额</th>
+                            <th width="7%" class="g-fleft">锁定总额</th>
+                            <th width="3%">状态</th>
+                            <th width="4%">操作</th>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#js-eidt').click(function () {
+                var tip = $(this).attr('data-freemes') || '本功能仅供正式版使用。';
+                var func = $(this).attr('data-function');
+                var operate = $(this).attr('data-operate');
+
+                freeLimit(tip, func, operate);
+            });
+        });
+    </script>
+
+
+</body>
+</html>

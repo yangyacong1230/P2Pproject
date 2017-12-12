@@ -1,0 +1,180 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	会员选择 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>    
+    <dl class="ui-tabs">
+        <dt>
+            <div class="m-editbar">
+                <input type="button" id="submit" class="btn-larger c-priority iconfont" value="&#xe684; 确定" />
+                <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+            </div>
+        </dt>
+        <dd>
+            <form action="?action=search&radio=" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>会员筛选:</th>
+                        <td>
+                            <select id="groupId" name="groupId">
+                                <option value="">全部会员</option>
+                                
+                                        <option value="t1">我要投资</option>
+                                    
+                                        <option value="g3">&nbsp;&nbsp;&nbsp;&nbsp;|--投资黑名单</option>
+                                    
+                                        <option value="g1">&nbsp;&nbsp;&nbsp;&nbsp;|--普通投资人</option>
+                                    
+                                        <option value="g5">&nbsp;&nbsp;&nbsp;&nbsp;|--高级投资人</option>
+                                    
+                                        <option value="g6">&nbsp;&nbsp;&nbsp;&nbsp;|--顶级投资人</option>
+                                    
+                                        <option value="t2">我要借款</option>
+                                    
+                                        <option value="g4">&nbsp;&nbsp;&nbsp;&nbsp;|--借款黑名单</option>
+                                    
+                                        <option value="g2">&nbsp;&nbsp;&nbsp;&nbsp;|--普通借款人</option>
+                                    
+                                        <option value="g7">&nbsp;&nbsp;&nbsp;&nbsp;|--高级借款人</option>
+                                    
+                            </select>
+                            <select id="type" name="type">
+	<option value="会员账号">会员账号</option>
+	<option value="会员昵称">会员昵称</option>
+	<option value="注册手机">注册手机</option>
+	<option value="注册邮箱">注册邮箱</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>                    
+                </table>                
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value="&#xe612; 全选" /><input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value="&#xe644; 反选" />
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="5%">选取</th>
+                        <th width="10%" class="g-fleft">会员名</th>
+                        <th width="15%" class="g-fleft">真实姓名</th>
+                        <th width="10%">风险类型</th>
+                        <th width="15%">手机号码</th>
+                        <th width="30%" class="g-fleft">电子邮箱</th>
+                        <th width="15%">注册时间</th>
+                    </tr>                
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        var resultData = {
+            userTypes: null,  //{ id: '1', name: 'Name' }
+            userGroups: null, //{ id: '1', name: 'Name' }
+            users: []       //{ id: '1', name: 'Name' }
+        };
+
+        $('#submit').click(function() {
+            var fn = '';
+            if (fn && parent[fn]) {
+                var result = parent[fn](resultData);
+                if (result === false)
+                    return;
+                parent.$.jPopupEdit.close();
+            }
+        });
+
+        //变更组
+        var groupChange = function () {
+            var option = $('#groupId :selected'), val = option.val();
+            if (val == '') {
+                resultData.userTypes = null;
+                resultData.userGroups = null;
+            } else {
+                var obj = { id: val.substring(1), name: $.trim(option.text().replace('|--', '')) };
+                if (val.substr(0, 1) == 't') {
+                    resultData.userTypes = obj;
+                    resultData.userGroups = null;
+                } else {
+                    resultData.userTypes = null;
+                    resultData.userGroups = obj;
+                }
+            }
+        };
+        $('#groupId').change(groupChange);
+
+        var toggleChecked = function (dom) {
+            var me = $(dom), obj = { id: me.val(), name: me.closest('td').next().text() };
+            if (false) {
+                resultData.users = [ obj ];
+            } else {
+                var idx = -1;
+                for(var i = 0; i < resultData.users.length; i++) {
+                    if (resultData.users[i].id == obj.id) {
+                        idx = i;
+                        break;
+                    }
+                }
+
+                if (dom.checked) {
+                    if (idx == -1) resultData.users.push(obj);
+                } else {
+                    if (idx != -1) resultData.users.splice(idx, 1);
+                }
+            }
+        };
+
+        //分页加载
+        function loadInitChecked() {
+            $('.m-content .m-list .js-select').each(function(i, n) {
+                var id = $(n).val();
+                var idx = -1;
+                for(var i = 0; i < resultData.users.length; i++) {
+                    if (resultData.users[i].id == id) {
+                        idx = i;
+                        break;
+                    }
+                }
+                if (idx != -1)
+                    n.checked = true;
+            });
+        };
+
+        //点击
+        $('.m-content .m-list').on('click', '.js-select', function () {
+            toggleChecked(this);
+        }).on('dblclick', '.js-select', function() {
+            $('#submit').trigger('click');
+        });
+
+        $('.m-oper .selall').click(function () {
+            setTimeout(function() {
+                $('.m-content .m-list .js-select').each(function(i, n) {
+                    toggleChecked(n);
+                });
+            }, 10);
+        });
+        $('.m-oper .selreverse').click(function () {
+            setTimeout(function() {
+                $('.m-content .m-list .js-select').each(function(i, n) {
+                    toggleChecked(n);
+                });
+            }, 10);            
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿<%@ Master Language="C#" CodeBehind="BaseMaster.master.cs" Inherits="WAP2P.Web.PC.Admin.BaseMaster" %><!DOCTYPE html>
+<html>
+<head runat="server">
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title><% =Title %></title>
+<link href="<% =this.ImportJsCss("res/core/styles/main.css") %>" rel="stylesheet" />
+<asp:ContentPlaceHolder ID="header" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body><asp:ContentPlaceHolder ID="content" runat="server"></asp:ContentPlaceHolder>
+<script src="<% =this.ImportJsCss("res/core/scripts/jquery.js") %>"></script>
+<script src="<% =this.ImportJsCss("res/uploadify/jquery.uploadify.min.js") %>"></script>
+<script src="<% =this.ImportJsCss("res/core/scripts/core.js") %>"></script>
+<script src="<% =this.ImportJsCss("res/core/scripts/main.js") %>"></script>
+<asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
+<asp:ContentPlaceHolder ID="list" runat="server" Visible="false"></asp:ContentPlaceHolder>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@charset 'UTF-8';
+table.m-list, table.m-list td{line-height:32px;}
+%sort{
+        position:relative;
+        margin-left:5px;
+}
+table.m-list{
+    border:1px solid nth($gery,3);
+    border-bottom:2px solid nth($gery,3);
+    th{
+        color:nth($baseColor,1);
+        background:nth($navy,2);
+        line-height:45px;
+        padding:2px 2px 2px 5px;
+        border:1px soild nth($navy,2);
+        border-bottom:2px solid nth($gery,3);
+        white-space:nowrap;
+    }
+    td{
+        padding:0 8px; 
+        text-align:center; 
+        border:1px solid nth($gery,3);
+        line-height:40px;
+        white-space:nowrap;
+        font-family:$baseSongTi;
+        font-size:13px;
+    }
+    .list-alt{
+        background: nth($gery,2);
+    }
+    .list-columnalt{
+        background:lighten(nth($infoColor,2), 3%);
+    }
+    .list-cellalt{
+        background:darken(nth($infoColor,2),3%)!important;
+        font-weight:bold;
+    }
+    .list-titlealt{
+        background:nth($jade,2)!important;
+        color:nth($baseColor,1);
+    }
+    tr{
+        &:hover td{
+            background:lighten(nth($infoColor,2), 3%);
+       }
+    }
+    tr.pager {
+        &:hover td{
+            background:nth($baseColor,1);
+       }
+    }
+    a.oper,a.del{margin:0 5px;}
+
+}
+
+
+div.m-oper{
+    margin:10px 0 10px 10px; 
+    overflow:hidden;
+    span{
+    float:right;
+    margin-top: 6px;
+    i{
+        margin:0 10px 0 20px;
+    }
+    }
+}
+

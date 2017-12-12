@@ -1,0 +1,101 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	投标中的借款 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">投标中的借款</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>借款筛选:</th>
+                        <td>
+                            <select id="borrowType" name="borrowType">
+	<option value="">全部类型</option>
+	<option value="2">抵押标</option>
+	<option value="1">信用标</option>
+	<option value="3">净值标</option>
+	<option value="4">娱乐标</option>
+</select>
+                            <select id="type" name="type">
+	<option value="业务编号">业务编号</option>
+	<option value="借款名称">借款名称</option>
+	<option value="借款人">借款人</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>添加时间：</th>
+                        <td><input type="text" name="startAt" id="startAt" value="" class="ui-date w150" data-maxdate="#endAt" /> 至 <input type="text" name="endAt" id="endAt" value="" class="ui-date w150" data-mindate="#startAt" /></td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th></th>
+                        <td><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件"  /></td>
+                    </tr>
+                </table>  
+                <a href="javascript:void(0);" id="btnSwithMoreFilter" class="iconfont"><span>&#xe661; 显示更多筛选条件</span></a>            
+            </form>
+            <div class="m-content">
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="5%">编号</th>
+                        <th width="5%">业务编号</th>
+                        <th width="8%">借款人</th>
+                        <th width="8%">借款种类</th>
+                        <th width="16%" class="g-fleft">借款名称</th>                        
+                        <th width="8%">借款金额</th>
+                        <th width="8%">算息开始日</th>
+                        <th width="5%">年利率</th>
+                        <th width="8%">借款周期</th>                        
+                        <th width="8%">投标结束时间</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        function cacel(id) {
+            $.jConfirm('确认撤标？', function () {
+                $.ajax({
+                    url: 'borrowdetail.html?action=cancel',
+                    data: { 'id': id },
+                    dataType: 'json',
+                    cache: false,
+                    success: function (res) {
+                        if (res.Success) {
+                            //刷新列表
+                            var pages = $('table.m-list .pages');
+                            if (pages.length) {
+                                var a = pages.next();
+                                pages.append(a);    //将a放入pages内，以响应点击事件
+                                a.trigger('click');
+                            } else {
+                                $('form.m-search').trigger('submit');
+                            }
+                        }
+                        else
+                            $.jError(res.Message);
+                    }
+                });
+            });
+        }
+    </script>
+
+
+</body>
+</html>

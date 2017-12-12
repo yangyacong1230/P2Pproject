@@ -1,0 +1,120 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowdetailoverdue.html.cs" Inherits="WAP2P.Web.PC.Admin.BorrowLoan.BorrowDetailOverdue" %>
+<%@ Register Src="Controls/BorrowInfo.ascx" TagPrefix="uc1" TagName="BorrowInfo" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form class="auto" method="post" action="<% =Request.RawUrl %>" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">            
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <dl class="ui-tabs">
+                <dt><a href="#handle" class="on">处理</a></dt>
+                <dt><a href="#repayInfo">第<%= Model.Period %>期待付列表</a></dt>
+                <dt><a href="#detail">借款详情</a></dt>
+                <dd id="handle">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th>应还本金</th>
+                                <td><% =Model.ShouldRepayPrincipal.ToMoneyString() %> 元</td>
+                                <th>应还利息</th>
+                                <td><% =Model.ShouldRepayInterest.ToMoneyString() %> 元</td>
+                            </tr>
+                            <tr>
+                                <th>应还费用</th>
+                                <td><%= Model.ShouldRepayFee.ToMoneyString() %> 元</td>
+                                <th>逾期情况</th>
+                                <td>逾期 <%= Model.OverdueDay %> 天，罚息 <%= Model.ShouldRepayOverdue.ToMoneyString() %> 元</td>
+                            </tr>                            
+                            <tr>
+                                <th colspan="4" class="info-listhead">平台保障</th>
+                            </tr>
+                            <tr>
+                                <th>保障方式</th>
+                                <td colspan="3"><%= WAP2P.BorrowLoan.Borrow.LoadOrNew(Model.BorrowId).WebSafeType.GetDescription() %></td>                            
+                            </tr>
+                            <tr>
+                                <th>平台代偿</th>
+                                <td colspan="3">
+                                    代偿方式：<ruson:Select runat="server" ID="websafeType" class="mr15"></ruson:Select>
+                                    <input type="button" value="确定代偿" class="btn-base c-priority" id="js-webpay" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </dd>
+                <dd id="repayInfo" class="g-hide">
+                    <div class="m-content">
+                        <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th width="10%">编号</th>                            
+                                <th width="20%">待还用户</th>
+                                <th width="15%">应还本金</th>
+                                <th width="15%">应还利息</th>
+                                <th width="15%">应还费用</th>
+                                <th width="15%">应还日期</th>
+                                <th width="10%">状态</th>
+                            </tr>
+                            <ruson:Repater runat="server" ID="rptReceiveList" ItemType="WAP2P.BorrowLoan.Receive">
+                                <ItemTemplate>
+                                    <tr id="tr<%# Item.Id %>">
+                                        <td><%# Item.Id %></td>                
+                                        <td><%# Item.UserName %></td>
+                                        <td><%# Item.ShouldRepayPrincipal.ToMoneyString() %> 元</td>
+                                        <td><%# Item.ShouldRepayInterest.ToMoneyString() %> 元</td>
+                                        <td><%# Item.ShouldRepayFee.ToMoneyString() %> 元</td>
+                                        <td><%# Item.ShouldRepayAt.ToDateTimeString() %></td>
+                                        <td><%# Item.Settle ? "<span class=\"fcgreen-2\">已还款</span>" : "<span class=\"fcred-2\">待还款</span>" %></td>
+                                    </tr>
+                                </ItemTemplate>
+                                <EmptyTemplate>
+                                    <tr>
+                                        <td colspan="7" class="g-fleft">暂无数据。</td>
+                                    </tr>
+                                </EmptyTemplate>
+                            </ruson:Repater>
+                        </table>
+                    </div>
+                </dd>
+                <dd id="detail" class="g-hide">
+                    <div class="m-content">
+                        <uc1:BorrowInfo runat="server" ID="borrowInfo" />
+                    </div>
+                </dd>
+            </dl>            
+        </div>        
+    </form>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+
+        $('#js-webpay').click(function () {
+            var me = $(this);
+
+            $.jConfirm('确定代偿？', function () {
+                $.ajax({
+                    type: 'post',
+                    url: '<% =Request.RawUrl.SetUrlParam("action", "webpay") %>',
+                    data: { type: $('#websafeType').val() },
+                    cache: false,
+                    beforeSend: function () {
+                        me.attr('disabled', 'disabled');
+                    },
+                    dataType: 'json',                    
+                    success: function (res) {
+                        if (res.Success) {
+                            parent.$.jPopupEdit.close(true);
+                        } else {
+                            $.jError(res.Message);
+                            me.removeAttr('disabled');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</asp:Content>
+

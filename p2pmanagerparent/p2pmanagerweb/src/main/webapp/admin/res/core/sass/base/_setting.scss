@@ -1,0 +1,52 @@
+﻿@charset "UTF-8";
+//全局变量设置
+//----------------------------------后端全局变量-------------------------------
+// 基本颜色
+// lighten($color, $amount)
+// darken($color, $amount)
+// opacify($color, $amount)
+// mix($color1, $color2[, $amount])
+//-----------------------------------------------------	
+$gery:                  #eff3f3 #f5f5f5 #dadada !default;
+$ash:                   #a4a4a4 #868686 #5a5a5a !default;
+$navy:                  #424954 #323841 #1f2328 !default;
+$jade:                  #09b1b9 #039aa1 #067f85 !default;
+$red:                   #d74d54 #cc3300 #D10101 !default;
+$orange:                #ff8444 #fb6619 #ea5000 !default;
+$yellow:                #f1b600 #F1A900 #E7A200 !default;
+$green:                 #87d380 #51B148 #1f9d14 !default;
+$blue:                  #D5EDF8 #00A3CF #0064cd !default;
+$disabled:              #EBEBE4 #c5c5bd #bdbdbd !default;
+$baseColor:             #fff #000;
+
+// 开关设置
+$lte7:                  true !default; //是否兼容ie6-7
+$filter:                true !default; //是否为ie6-8开启css3滤镜兼容，常用于渐变背景 
+
+//基础内容设置
+$baseFontSize:          14px !default;
+$baseLineHeight:        1.5 !default;
+$baseFontFamily:        'Microsoft YaHei','Open Sans', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', Arial, Verdana, Tahoma, sans-serif !default;
+$baseSongTi:            arial, sans-serif !default;
+$baseYaHei:             "Microsoft Yahei"; //微软雅黑
+$baseHeiTi:             "SimHei"; //黑体
+$baseIconsFont:         'iconfont','Microsoft YaHei', 'Open Sans', 'Hiragino Sans GB',  'WenQuanYi Micro Hei', Arial, Verdana, Tahoma, sans-serif!important;
+$baseFontColor:         nth($navy,2) !default;
+$baseLinkColor:         nth($jade,3) nth($jade,2) !default;
+$placeholder:           false nth($gery,3) !default;
+
+// radius 圆角半径
+$baseRadius:            5px !default;
+$smallRadius:           3px !default;
+
+// 交互配色
+// 警告，错误，成功，提示
+// 分别为：文本色，背景色，边框色
+$warningColor:                 #514721 #FFF6BF #FFD324 !default;
+$errorColor:                   #8A1F11 #FBE3E4 #FBC2C4 !default;
+$successColor:                 #264409 #E6EFC2 #C6D880 !default;
+$infoColor:                    #205791 #D5EDF8 #92CAE4 !default;
+
+
+
+

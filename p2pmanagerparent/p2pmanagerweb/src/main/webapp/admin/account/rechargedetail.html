@@ -1,0 +1,69 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+    <form class="auto" method="post" action="/admin/account/rechargedetail.html"  onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+                        
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">  
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">  
+                <tr>
+                    <th>会员账号</th>
+                    <td>
+                        <input type="button" class="btn-base c-normal iconfont ml10" value="&#xe655; 查看资料" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=0');" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>入账银行(入账银行卡号)</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>支付机构</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>支付账号</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>订单/流水号</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>充值金额</th>
+                    <td>0.00 元</td>
+                </tr>
+                <tr>
+                    <th>充值手续费</th>
+                    <td>0.00 元</td>
+                </tr>
+                <tr>
+                    <th>到账金额</th>
+                    <td>0.00 元</td>
+                </tr>                
+                <tr>
+                    <th>添加时间</th>
+                    <td>2017-09-22 11:49:33</td>
+                </tr>
+                
+            </table>
+        </div>
+    </form>    
+</head>
+<body>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

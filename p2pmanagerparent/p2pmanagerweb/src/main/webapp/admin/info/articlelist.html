@@ -1,0 +1,393 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	文章列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">文章列表</a></dt>
+    <dd style="width: 1498px;">
+        <form action="?action=search" method="get" class="m-search">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>文章筛选:</th>
+                    <td>
+                        <select id="parentId" name="parentId" class="iconfont" data-olddisabled="false">
+                            <option>请选择所属栏目</option>
+                            
+                                    <option value="5">站点公告</option> 
+                                
+                                    <option value="6">公司公告</option> 
+                                
+                                    <option value="7">发标预告</option> 
+                                
+                                    <option value="8">行业信息</option> 
+                                
+                                    <option value="9">公司动态</option> 
+                                
+                                    <option value="10">业绩报告</option> 
+                                
+                                    <option value="11">招贤纳士</option> 
+                                
+                        </select>
+                        <select id="type" name="type" data-olddisabled="false">
+	<option value="文章名称">文章名称</option>
+	<option value="文章简介">文章简介</option>
+</select>
+                        <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr> 
+            </tbody></table>
+        </form>
+        <div class="m-content">
+            <div class="m-oper">
+                <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建文章" onclick="$.jPopupEdit('新建文章内容', 'articledetail.html');">
+                
+                    <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选">
+                    <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选">
+                    <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="内容管理" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value=" 删除选中">
+                
+                
+                    <input type="button" id="btnUpdate" class="oper-clear btn-smaller c-obvious iconfont saveOrder" data-function="内容管理" data-operate="保存排序" data-freemes="本功能仅供正式版使用。" value=" 保存排序">
+                
+                <span class="iconfont"><i class="fs22 fcjade-1"></i>文章开通<i class="fs22 fcred-3"></i>文章已停用</span>
+            </div>
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="3%">选取</th>
+                    <th width="3%">排序</th>
+                    <th width="20%" class="g-fleft">所属栏目</th>
+                    <th width="51%" class="g-fleft">文章名称</th>
+                    <th width="10%">点击次数</th>
+                    <th width="3%">状态</th>
+                    <th width="10%">操作</th>
+                </tr><tr id="tr24">
+                <td><input type="checkbox" class="del" data-id="24"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="24"></td>
+                <td class="g-fleft">业绩报告</td>
+                <td class="g-fleft">《资金托管报告》（2017年5月）</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=24');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=24&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr23" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="23"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="23"></td>
+                <td class="g-fleft">公司动态</td>
+                <td class="g-fleft">股灾面前 P2P能否成为首选低风险固收类产品</td>
+                <td>1</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=23');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=23&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr22">
+                <td><input type="checkbox" class="del" data-id="22"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="22"></td>
+                <td class="g-fleft">公司动态</td>
+                <td class="g-fleft">监管政策渐明 银行托管P2P资金进入实操阶段</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=22');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=22&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr21" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="21"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="21"></td>
+                <td class="g-fleft">公司动态</td>
+                <td class="g-fleft">银行托管资产近3年增速超50% P2P或启联姻潮</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=21');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=21&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr20">
+                <td><input type="checkbox" class="del" data-id="20"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="20"></td>
+                <td class="g-fleft">公司动态</td>
+                <td class="g-fleft">股市暴跌 P2P砸重金趁机狂揽客</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=20');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=20&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr19" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="19"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="19"></td>
+                <td class="g-fleft">公司动态</td>
+                <td class="g-fleft">银行强势布局P2P资金托管 只待监管层定调</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=19');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=19&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr18">
+                <td><input type="checkbox" class="del" data-id="18"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="18"></td>
+                <td class="g-fleft">行业信息</td>
+                <td class="g-fleft">【动画】LendIt峰会：国产P2P全球地位升高</td>
+                <td>2</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=18');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=18&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr17" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="17"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="17"></td>
+                <td class="g-fleft">行业信息</td>
+                <td class="g-fleft">P2P牵手上市公司大盘点 创始人存转让套现机会</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=17');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=17&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr16">
+                <td><input type="checkbox" class="del" data-id="16"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="16"></td>
+                <td class="g-fleft">行业信息</td>
+                <td class="g-fleft">上市公司急寻P2P平台 并购潮或加速到来</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=16');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=16&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr15" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="15"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="15"></td>
+                <td class="g-fleft">行业信息</td>
+                <td class="g-fleft">揭秘网贷还款方式“玄机” 哪种还款最赚钱</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=15');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=15&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr14">
+                <td><input type="checkbox" class="del" data-id="14"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="14"></td>
+                <td class="g-fleft">发标预告</td>
+                <td class="g-fleft">6月6日发标预告</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=14');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=14&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr13" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="13"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="13"></td>
+                <td class="g-fleft">发标预告</td>
+                <td class="g-fleft">5月31日发标预告</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=13');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=13&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr12">
+                <td><input type="checkbox" class="del" data-id="12"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="12"></td>
+                <td class="g-fleft">发标预告</td>
+                <td class="g-fleft">5月30日发标预告</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=12');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=12&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr11" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="11"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="11"></td>
+                <td class="g-fleft">发标预告</td>
+                <td class="g-fleft">5月29日发标预告</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=11');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=11&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr10">
+                <td><input type="checkbox" class="del" data-id="10"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="10"></td>
+                <td class="g-fleft">发标预告</td>
+                <td class="g-fleft">5月28日发标预告</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=10');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=10&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr9" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="9"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="9"></td>
+                <td class="g-fleft">发标预告</td>
+                <td class="g-fleft">5月27日发标预告</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=9');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=9&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr8">
+                <td><input type="checkbox" class="del" data-id="8"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="8"></td>
+                <td class="g-fleft">公司公告</td>
+                <td class="g-fleft">广东将办“互金”行业准则调研公益行活动起步仪式</td>
+                <td>1</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=8');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=8&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr7" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="7"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="7"></td>
+                <td class="g-fleft">公司公告</td>
+                <td class="g-fleft">“互联网金融（华南）国金联盟”成立</td>
+                <td>1</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=7');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=7&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr6">
+                <td><input type="checkbox" class="del" data-id="6"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="6"></td>
+                <td class="g-fleft">公司公告</td>
+                <td class="g-fleft">完美收官！“518互联网金融理财节”突破10亿</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=6');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=6&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr5" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="5"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="5"></td>
+                <td class="g-fleft">公司公告</td>
+                <td class="g-fleft">云征信精英交流沙龙第一期顺利举办</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=5');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=5&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr4">
+                <td><input type="checkbox" class="del" data-id="4"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="4"></td>
+                <td class="g-fleft">行业信息</td>
+                <td class="g-fleft">2015互金高峰论坛：石鹏峰互联网+征信演讲</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=4');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=4&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr3" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="3"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="3"></td>
+                <td class="g-fleft">公司公告</td>
+                <td class="g-fleft">网贷之家《2014中国网络借贷行业蓝皮书》开售</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=3');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=3&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr2">
+                <td><input type="checkbox" class="del" data-id="2"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="2"></td>
+                <td class="g-fleft">站点公告</td>
+                <td class="g-fleft">汇聚贷公测通知</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=2');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=2&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr1" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="1"></td>
+                <td><input type="text" value="0" class="w17 ui-int order" data-id="1"></td>
+                <td class="g-fleft">站点公告</td>
+                <td class="g-fleft">致广大用户的一封信</td>
+                <td>0</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑文章内容', 'articledetail.html?ID=1');"> 编辑</a>
+                    <a class="iconfont del" href="articledetail.html?ID=1&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+    <tr class="pager">
+        <td colspan="7"><div class="pages"><span class="remind">共找到<strong>24</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/info/articlelist.html?action=search&amp;parentId=%E8%AF%B7%E9%80%89%E6%8B%A9%E6%89%80%E5%B1%9E%E6%A0%8F%E7%9B%AE&amp;type=%E6%96%87%E7%AB%A0%E5%90%8D%E7%A7%B0&amp;key=&amp;_=1434949243487" class="g-hide"></a></td>
+    </tr>                
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

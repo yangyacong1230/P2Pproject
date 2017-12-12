@@ -1,0 +1,76 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	系统运行信息 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:void(0);" class="on">系统运行信息</a></dt>     
+    <dd>
+        <div class="m-content">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>系统运行时</th>
+                    <td>ASP.NET 4.0.30319.42000 (<span class="fcash-1">Microsoft Windows NT 10.0.15063.0</span>)</td>
+                </tr>
+                <tr>
+                    <th>CPU内核数</th>
+                    <td>4</td>
+                </tr>                
+                <tr>
+                    <th>运行模式</th>
+                    <td><span class="fcred-3">调试模式</span> (注意在正式对外公开时，请不要使用此模式)</td>
+                </tr>
+                <tr>
+                    <th>占用内存</th>
+                    <td>409.44Mb</td>
+                </tr>
+                <tr>
+                    <th>系统运行时间</th>
+                    <td>2时17分29秒</td>
+                </tr>
+                <tr>
+                    <th>短信发送队列</th>
+                    <td>处理线程：10，待发送数量：0</td>
+                </tr>
+                <tr>
+                    <th>邮件发送队列</th>
+                    <td>处理线程：10，待发送数量：0</td>
+                </tr>
+            </tbody></table>
+            <div class="g-fright pt10 pr5"><input type="button" class="btn-larger c-priority iconfont" id="btnRestart" value=" 重启系统"></div>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        $("#btnRestart").click(function () {
+            var me = $(this);
+
+            $.ajax({
+                url: "?action=restart",
+                beforeSend: function () {
+                    me.attr('disabled', 'disabled');
+                },
+                dataType: "json",
+                success: function (res) {
+                    if (res.Success)
+                        $.jSuccess('重启成功。');
+                    else
+                        $.jError(res.Message);
+                },
+                complete: function () {
+                    me.removeAttr('disabled');
+                }
+            });
+        })
+    </script>
+
+
+
+</body></html>

@@ -1,0 +1,26 @@
+﻿@charset 'utf-8';
+table.m-permission{
+    background-color:nth($gery,2);
+    .split{
+        height:10px;
+        background:nth($baseColor,1);
+        td{
+            background:nth($baseColor,1);
+        }
+    }
+    td{
+        background-color:nth($gery,2);
+        vertical-align:top;
+        border:0 none;        
+    }
+    dl{
+        dt{
+            padding-left:2em;
+            height: 30px;
+        }
+        dd{
+            padding-left:4em;
+            height: 35px;
+        }
+    }
+}

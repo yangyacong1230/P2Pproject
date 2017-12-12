@@ -1,0 +1,216 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+<style type="text/css">
+    .borrowSel{overflow:hidden;}
+    .borrowSel li{float:left; margin:6px;}
+    .borrowSel img{float:left;}
+    .borrowSel a{display:block; border:1px solid #ddd; width:350px; height:96px; background-color:#eff3f3; overflow:hidden; padding:6px;}
+    .borrowSel a:hover{border-color:#aaa;}
+    .borrowSel h6{font-size:20px; line-height:36px; padding-left:106px;}
+    .borrowSel p{font-size:12px; padding-left:106px;}
+</style>
+</head>
+<body>
+    
+        <dl class="ui-tabs">
+            <dt><a href="javascript:" class="on">选择借款类型</a></dt>
+            <dd>
+                <div class="m-content">
+                    <ul class="borrowSel">
+                        
+                                <li><a href="javascript:void(0);" onclick="$.jPopupEdit('发布抵押标', 'borrowdetail.html?typeId=2');"><img src="/Upload/201506/76537431-ff55-4770-9e93-45500a096a63.png" height="96" width="96" alt="" /><h6>抵押标</h6><p>风控严格控制抵押物，随时随地，任意时间段发标。</p></a></li>
+                            
+                                <li><a href="javascript:void(0);" onclick="$.jPopupEdit('发布信用标', 'borrowdetail.html?typeId=1');"><img src="/Upload/201506/994a01b4-0fc7-4ddc-8def-4008fe5963a2.png" height="96" width="96" alt="" /><h6>信用标</h6><p>每天固定上午10点、下午3点对借款类型进行审核发布。</p></a></li>
+                            
+                                <li><a href="javascript:void(0);" onclick="$.jPopupEdit('发布净值标', 'borrowdetail.html?typeId=3');"><img src="/Upload/201506/8b297c9d-8e2f-4eb7-80e3-5df6d4859850.png" height="96" width="96" alt="" /><h6>净值标</h6><p>在不转让债权的情况下，快速获得周转资金，每天9：00~20:00点随机审核。</p></a></li>
+                            
+                                <li><a href="javascript:void(0);" onclick="$.jPopupEdit('发布娱乐标', 'borrowdetail.html?typeId=4');"><img src="/Upload/201506/87d8c8eb-9a62-4cb4-9296-690e219c0e87.png" height="96" width="96" alt="" /><h6>娱乐标</h6><p>平台福利，奖励有效</p></a></li>
+                            
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+     
+                   
+    
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/ueditor/ueditor.config.js"></script>
+    <script src="/admin/res/ueditor/ueditor.all.min.js"></script>
+    <script>
+        function selectUser(obj) {
+            if (obj && obj.users && obj.users.length) {
+                $.ajax({
+                    url: '?action=checkUserBorrow',
+                    data: { typeId: '', userId: obj.users[0].id },
+                    dataType: "json",
+                    success: function (res) {
+                        $.jPopupEdit.close();
+                        if (res.Success) {
+                            var url = utils.urlParam(location.href, 'userId', obj.users[0].id);
+                            url = utils.urlParam(url, 'quota', res.Message);
+                            location.href = url;
+                        } else {
+                            $.jError(res.Message);
+                        }
+                    }
+                });
+
+                return false;
+            }
+        };
+        var btnSelectUser = $('#btnSelectUser');
+        if (btnSelectUser.length) {
+            btnSelectUser.trigger('click');
+        };
+
+        //借款期限
+        var loanTimeTypeChange = function() {
+            var chk = $('#loanTimeType :checked'), txt = chk.parent().text();
+            $('#js-minLoanTime').html(chk.attr('data-min') + txt);
+            $('#js-maxLoanTime').html(chk.attr('data-max') + txt);
+        };
+        $('#loanTimeType').change(loanTimeTypeChange);
+        loanTimeTypeChange();
+
+        //还款方式
+        var repaymentChange = function () {
+            var op = $('#repayment :selected');
+            $('.js-mininterest').val(op.attr('data-minInterest')).text(op.attr('data-minInterest'));
+            $('.js-maxinterest').val(op.attr('data-maxInterest')).text(op.attr('data-maxInterest'));
+        };
+        repaymentChange();
+        $('#repayment').change(repaymentChange);
+
+        //利率
+        var intersetReset = function(dom) {            
+            dom = $(dom);
+            var val = parseFloat(dom.val()), ctr = dom.closest('span').next();            
+            ctr.find('.js-ratem').html(finance.yearRateTo(val, 'm'));
+            ctr.find('.js-rated').html(finance.yearRateTo(val, 'd'));
+        };
+        $('#interestArea .ui-interest').each(function(i, n) {
+            intersetReset(n);
+        }).keyup(function() {
+            intersetReset(this);
+        });
+        
+        var interestAddbtn = $('#js-btnInterestArea');
+        var interestBtnToggle = function() {
+            if ($('#js-interestUl li').length >= parseInt($('#interestPeriod').val()))
+                interestAddbtn.hide();                
+            else
+                interestAddbtn.show();
+        };
+        $('#interestArea').on('click', '.js-areaOper', function() {
+            var parent = $(this).parent();
+            if (parent.is('li'))
+                parent.remove();
+
+            interestBtnToggle();
+        });
+        interestBtnToggle();
+
+        function initInterestInput() {
+            var obj = [];
+            var interests = $('#interestArea .ui-interest'), amounts = $('#interestArea .ui-float');            
+            interests.each(function(i, n) {                
+                obj.push({
+                    Amount: i == 0 ? 0 : parseFloat($(amounts.eq(i-1)).val().replace(/,/g, '')),  //第一个为默认
+                    DayRate : parseFloat($(n).val())  //注意这里是年化率，需在服务端重新算
+                });
+            });
+            $('#loanInterestJson').val(utils.toJsonString(obj));
+        }
+
+        //颜色
+        var colorChange = function() {
+            var option = $('#color :selected');
+            $('#color').css({
+                background: option.css('background-color'),
+                color: option.css('color')
+            });
+        };
+        colorChange();
+        $('#color').change(colorChange);
+
+        //抵押
+        var mortgageId = $('#mortgageId');
+        var mortgageChange = function () {
+            var sel = mortgageId.find(':selected');
+            var max = $('#js-maxAmount');
+            mortgageId.next().find('span:first').text(finance.toMoneyString(sel.attr('data-quota')));
+            mortgageId.next().find('span:last').text(finance.toMoneyString(sel.attr('data-expires')));
+
+            max.text(finance.roundx(sel.attr('data-quota'),2) > finance.roundx(max.attr('data-maxamount'),2) ?  
+                finance.toMoneyString(max.attr('data-maxamount')) :  finance.toMoneyString(sel.attr('data-quota')) );
+        };
+        if (mortgageId.length) {
+            mortgageId.change(mortgageChange);
+            mortgageChange();
+        }
+
+        //封面图片
+        setTimeout(function() {
+            $('#coverFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=222776',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=330&height=220',
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传封面图',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : '7e89LC4ujiqOn6UcryX!9kDcPkLCtu-glbhZgbZ27M0='
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#cover').val(d.Message).trigger('blur');                    
+                        $('#coverResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+
+        //开关切换
+        function toggleRadioNext(td) {
+            $(td).find(':radio').each(function(i, n) {
+                var next = $(n).parent().next();
+                if (next.length && next[0].tagName == 'SPAN') {
+                    if (n.checked) {
+                        next.show();
+                        next.find(':input').attr('data-vmust', 'true');
+                    }
+                    else {
+                        next.hide();
+                        next.find(':input').attr('data-vmust', 'false');
+                    }
+                }
+            });            
+        };
+
+        toggleRadioNext('#bidReward');
+        $('#bidReward :radio').click(function() { toggleRadioNext('#bidReward') });
+
+        toggleRadioNext('#vouchReward');
+        $('#vouchReward :radio').click(function() { toggleRadioNext('#vouchReward') });
+    </script>    
+
+
+</body>
+</html>

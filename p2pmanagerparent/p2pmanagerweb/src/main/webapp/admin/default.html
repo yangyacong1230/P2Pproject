@@ -1,0 +1,343 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	后台管理 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <link href="/admin/res/core/styles/default.css" rel="stylesheet" />
+    <div id="header">
+        <h1><a href="http://www.qfedu.com/" target="_blank"><img src="res/core/images/logo.png" alt="" /></a></h1>
+        <ul id="nav">
+            <li><a href="#home" class="on"><i class="iconfont fs22 mr5">&#xe60b;</i><span>管理首页</span></a></li>
+            <li><a href="#user"><i class="iconfont fs22 mr5">&#xe609;</i><span>会员管理</span></a></li>
+            <li><a href="#borrow"><i class="iconfont fs22 mr5">&#xe692;</i><span>借贷管理</span></a></li>
+            <li><a href="#money"><i class="iconfont fs22 mr5">&#xe615;</i><span>资金管理</span></a></li>
+            <li><a href="#info"><i class="iconfont fs22 mr5">&#xe607;</i><span>资讯推广</span></a></li>
+            <li><a href="#setting"><i class="iconfont fs22 mr5">&#xe625;</i><span>系统设置</span></a></li>
+        </ul>
+        <div id="my">
+            <p>
+                <img height="30" src="res/core/images/noface.png" />
+                <span id="welcome"></span>
+                admin
+            </p>
+            <div class="oper">
+                <p><i class="iconfont fs22 ml15">&#xe621;</i></p>
+                <div class="box">
+                    <dl>
+                        
+                        <dd>
+                            <ul>
+                                <li><a class="myred js-serviceQQ" target="_blank">技术支持</a></li>
+                                <li><a href="javascript:void(0);" onclick="utils.copy('http://10.0.31.155/User/Register.htm?r=a1');">复制推荐链接</a></li>
+                                <li><a href="javascript:void(0);" id="btnLeftToggle"></a></li>
+                                <li><a href="http://help.hjwis.com/" target="_blank">问题反馈</a></li>
+                                <li><a href="javascript:void(0);" id="btnModifyPassword">修改密码</a></li>
+                                <li><a href="logout.html" class="myred">安全登出</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div id="notice" class="g-fright">
+            <a href="http://www.qfedu.com" target="_blank" style="color:#fff;">技术支持服务</a>
+        </div>        
+    </div>
+    <div id="middle">
+        <div id="left">
+            <dl id="home"></dl>
+            <dl id="user">
+                <dt><i class="iconfont fs16 mr10">&#xe694;</i>会员信息管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="member/userlist.html" target="main">会员账号管理</a></li>
+                        
+                        
+                            <li><a href="member/uservalidlist.html" target="main">会员认证管理</a></li>
+                        
+                        
+                            <li><a href="member/userinfolist.html" target="main">会员基本资料管理</a></li>
+                        
+                        
+                            <li><a href="member/borrowinfolist.html" target="main">会员借款资料管理</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe693;</i>会员授信管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="member/usercreditlist.html" target="main">会员信用管理</a></li>
+                        
+                        
+                            <li><a href="member/userquotalist.html" target="main">会员额度管理</a></li>
+                        
+                        
+                            <li><a href="member/exposelist.html" target="main">举报信息管理</a></li>
+                        
+                    </ul>
+                </dd>                
+            </dl>
+            <dl id="borrow">
+                <dt><i class="iconfont fs16 mr10">&#xe662;</i>申请管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="borrowloan/offlineapplylist.html" target="main">借款申请处理</a></li>
+                        
+                        
+                            <li><a href="borrowloan/reservationinfolist.html" target="main">资金登记情况</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe692;</i>借贷管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="borrowloan/borrowdetail.html" target="main">发布新借款</a></li>
+                        
+                        
+                            <li><a href="borrowloan/borrowlistfirst.html" target="main">等待初审的借款</a></li>
+                        
+                        
+                            <li><a href="borrowloan/borrowlistfull.html" target="main">等待满标审核的借款</a></li>
+                        
+                        
+                            <li><a href="borrowloan/borrowlistrepay.html" target="main">还款中的借款</a></li>
+                        
+                        
+                            <li><a href="/admin/freetips.html?type=0&msg=%e5%85%8d%e8%b4%b9%e7%89%88%e6%97%a0%e6%ad%a4%e5%8a%9f%e8%83%bd%e3%80%82&toText=&toUrl=" target="main">自动还款管理</a></li>
+                        
+                        
+                            <li><a href="borrowloan/borrowlistoverdue.html" target="main">逾期的借款</a></li>
+                        
+                        
+                            <li><a href="borrowloan/borrowlistall.html" target="main">借款明细</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe64b;</i>投标管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="borrowloan/borrowlistreserve.html" target="main">预约中的借款</a></li>
+                        
+                        
+                            <li><a href="borrowloan/borrowlistbid.html" target="main">投标中的借款</a></li>
+                        
+                        
+                            <li><a href="/admin/freetips.html?type=0&msg=%e5%85%8d%e8%b4%b9%e7%89%88%e6%97%a0%e6%ad%a4%e5%8a%9f%e8%83%bd%e3%80%82&toText=&toUrl=" target="main">智能投标管理</a></li>
+                                                
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe64e;</i>债权转让管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="borrowloan/transferlist.html" target="main">债权转让列表</a></li>
+                        
+                    </ul>
+                </dd>                
+            </dl>
+            <dl id="money">
+                <dt><i class="iconfont fs16 mr10">&#xe671;</i>资金管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="account/useraccountlist.html" target="main">会员账户管理</a></li>
+                        
+                        
+                            <li><a href="account/useraccountloglist.html" target="main">会员资金日志</a></li>
+                        
+                        
+                            <li><a href="account/bankcardlist.html" target="main">会员银行列表</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe659;</i>充值管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="account/rechargelist.html?rechargeType=0" target="main">会员线上充值管理</a></li>
+                        
+                        
+                            <li><a href="account/rechargelist.html?rechargeType=1" target="main">会员线下充值管理</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe616;</i>提现管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="account/cashapplylist.html?statusType=apply" target="main">提现申请处理</a></li>
+                        
+                        
+                            <li><a href="account/cashapplylist.html?statusType=processing" target="main">提现放款处理</a></li>
+                        
+                    </ul>
+                </dd>               
+                <dt><i class="iconfont fs16 mr10">&#xe690;</i>担保机构管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="account/vouchcompanylist.html" target="main">担保机构列表</a></li>
+                        
+                    </ul>
+                </dd>
+            </dl>
+            <dl id="info">
+                <dt><i class="iconfont fs16 mr10">&#xe607;</i>文章管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="info/categorylist.html" target="main">栏目管理</a></li>
+                        
+                        
+                            <li><a href="info/articlelist.html" target="main">内容管理</a></li>
+                        
+                        
+                            <li><a href="info/helparticlelist.html" target="main">帮助中心管理</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe60a;</i>咨询管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="info/guestbooklist.html" target="main">客户留言管理</a></li>
+                        
+                    </ul>
+                </dd>                
+                <dt><i class="iconfont fs16 mr10">&#xe68b;</i>广告管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="info/adpositionlist.html" target="main">广告位生成</a></li>
+                        
+                        
+                            <li><a href="info/adcodelist.html" target="main">广告内容管理</a></li>
+                        
+                        
+                            <li><a href="info/linklist.html" target="main">友情链接管理</a></li>
+                        
+                    </ul>
+                </dd>                
+                <dt><i class="iconfont fs16 mr10">&#xe64c;</i>活动管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="/admin/freetips.html?type=0&msg=%e5%85%8d%e8%b4%b9%e7%89%88%e6%97%a0%e6%ad%a4%e5%8a%9f%e8%83%bd%e3%80%82&toText=&toUrl=" target="main">活动列表</a></li>
+                        
+                    </ul>
+                </dd>
+            </dl>
+            <dl id="setting">
+                <dt><i class="iconfont fs16 mr10">&#xe628;</i>系统公告</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="sys/noticelist.html" target="main">系统公告管理</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe63e;</i>全局设置</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="sys/globalsettinginfo.html" target="main">站点全局设置</a></li>
+                        
+                        
+                            <li><a href="sys/businessglobalsetting.html" target="main">业务全局设置</a></li>
+                        
+                        
+                            <li><a href="sys/baseformlist.html" target="main">数据全局设置</a></li>
+                        
+                        
+                            <li><a href="/admin/freetips.html?type=0&msg=%e5%a6%82%e9%9c%80%e8%a6%81%e5%bc%80%e5%8f%91+%5b%e7%a7%bb%e5%8a%a8%e7%ab%af%e8%ae%be%e7%bd%ae%5d%ef%bc%8c%e8%af%b7%e8%81%94%e7%b3%bb%e6%88%91%e5%85%ac%e5%8f%b8%e5%ae%a2%e6%9c%8d%e3%80%82&toText=&toUrl=" target="main">移动端设置</a></li>
+                        
+                        <li><a href="sys/onlinepaymentlist.html" target="main">支付设置</a></li>
+                        
+                            <li><a href="/admin/freetips.html?type=0&msg=%e5%a6%82%e9%9c%80%e8%a6%81%e6%9b%b4%e5%a4%9a%e7%b2%be%e7%be%8e%e7%95%8c%e9%9d%a2%e6%a8%a1%e7%89%88%ef%bc%8c%e8%af%b7%e8%81%94%e7%b3%bb%e6%88%91%e5%85%ac%e5%8f%b8%e5%ae%a2%e6%9c%8d%e3%80%82&toText=&toUrl=" target="main">界面风格设置</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe688;</i>借款设置</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="sys/creditlevellist.html" target="main">信用等级设置</a></li>
+                        
+                        
+                            <li><a href="sys/borrowinfotypelist.html" target="main">借款资料设置</a></li>
+                        
+                        
+                            <li><a href="sys/borrowtypelist.html" target="main">借款类型设置</a></li>
+                        
+                        
+                            <li><a href="/admin/freetips.html?type=0&msg=%e5%a6%82%e9%9c%80%e8%a6%81%e5%bc%80%e5%8f%91+%5b%e6%99%ba%e8%83%bd%e6%8a%95%e6%a0%87%e6%96%b9%e6%a1%88%5d%ef%bc%8c%e8%af%b7%e8%81%94%e7%b3%bb%e6%88%91%e5%85%ac%e5%8f%b8%e5%ae%a2%e6%9c%8d%e3%80%82&toText=&toUrl=" target="main">智能投标方案</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe68d;</i>会员设置</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="sys/usertypelist.html" target="main">会员类型设置</a></li>
+                        
+                        
+                            <li><a href="sys/usertypeinfoformlist.html" target="main">会员基本资料设置</a></li>
+                        
+                        
+                            <li><a href="sys/usergrouplist.html" target="main">会员组设置</a></li>
+                        
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe677;</i>操作员设置</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="sys/admingrouplist.html" target="main">操作组设置</a></li>
+                        
+                        
+                            <li><a href="sys/adminlist.html" target="main">操作员账号设置</a></li>
+                                                
+                    </ul>
+                </dd>
+                <dt><i class="iconfont fs16 mr10">&#xe689;</i>系统管理</dt>
+                <dd>
+                    <ul>
+                        
+                            <li><a href="sys/sysinfo.html" target="main">系统运行信息</a></li>
+                        
+                        
+                            <li><a href="sys/backup.html" target="main">系统备份操作</a></li>
+                        
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <div id="right">
+            <iframe marginwidth="0" marginheight="0" frameborder="0" id="main" name="main" src="home.html"></iframe>
+        </div>
+    </div>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+<script src="/admin/res/core/scripts/default.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.js-serviceQQ').attr('href', config.serviceQQUrl);
+        });
+    </script>
+
+
+</body>
+</html>

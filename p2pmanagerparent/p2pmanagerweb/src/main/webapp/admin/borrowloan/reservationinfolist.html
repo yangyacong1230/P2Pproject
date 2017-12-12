@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	资金登记情况列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">登记资金列表</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>登记筛选:</th>
+                        <td>                            
+                            <select id="type" name="type">
+	<option value="用户名">用户名</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>                    
+                </table>
+            </form>
+            <div class="m-content">
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="15%">用户名</th>
+                        <th width="15%">登记金额</th>
+                        <th width="15%">有效期</th>
+                        <th width="40%" class="g-fleft">备注说明</th>
+                        <th width="15%">最后登记日</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+
+</title>
+    <link href="/admin/res/core/styles/main.css?v=20151023175416" rel="stylesheet">
+
+</head>
+<body marginwidth="0" marginheight="0">
+<form class="auto" method="post" action="/usermanager/updateUserstatus.action" onsuccess="window.parent.$.jpopupedit.close(true);">
+    <div class="m-editbar">
+        <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+        <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="window.parent.$.jpopupedit.close();">
+    </div>
+    <div class="m-content m-editcontent">
+        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+            <tbody><tr>
+                <th>会员账号<input type="hidden" name="username" id="username"></th>
+                
+                <td colspan="2" class="g-fbold"><a href="javascript:void(0);" onclick="$.jpopupedit('查看会员资料', '../common/userinfo.html?id=3');">sdfsdf</a></td>
+            </tr>
+
+
+            <tr>
+                <th>真实姓名</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>身份证号码</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>性别</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>生日</th>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th>手机号码</th>
+                <td>13344444445</td>
+            </tr>
+            <tr>
+                <th>电子邮箱</th>
+                <td>fggd@fsdf.com</td>
+            </tr>
+            <tr><th class="info-listhead" colspan="2">认证状态</th></tr>
+            <tr id="real">
+                <th>实名认证状态</th>
+              <!--   <td>
+                    未认证
+
+                </td> -->
+            </tr>
+            <tr id="phone">
+                <th>手机认证状态</th>
+                <!-- <td>
+
+                    <div class="ui-radio"><label><input type="radio" name="phonstatus" value="1"> 通过</label> <label><input type="radio" name="phonevalid" value="-1"> 拒绝</label></div>
+
+                </td> -->
+            </tr>
+            <tr id="email">
+                <th>邮箱认证状态</th>
+               <!--  <td>
+
+                    <div class="ui-radio"><label><input type="radio" name="emailstatus" value="1"> 通过</label> <label><input type="radio" name="emailvalid" value="-1"> 拒绝</label></div>
+
+                </td> -->
+            </tr>
+            <tr id="live">
+                <th>现场认证状态</th>
+<!--                 <td>
+
+                    <div class="ui-radio"><label><input type="radio" name="livevalid" value="1"> 通过</label> <label><input type="radio" name="onsitevalid" value="-1"> 拒绝</label></div>
+
+                </td> -->
+            </tr>
+
+            </tbody></table>
+    </div>
+</form>
+
+<script src="/admin/res/core/scripts/jquery.js?v=20150624215012"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js?v=20150624215010"></script>
+<script src="/admin/res/core/scripts/core.js?v=20150624215012"></script>
+<script src="/admin/res/core/scripts/main.js?v=20160120154951"></script>
+
+<script>
+    var initupload = function (n) {
+        settimeout(function () {
+            $('#cardphoto' + n + 'file').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removetimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=524763',
+                uploader: '../res/uploadify/swfupload.html?type=image&width=800',
+                buttonclass:'iconfont',
+                buttontext: '&#xe629; 上传' + (n == 1 ? '正' : '反') + '面',
+                filetypeexts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formdata: {
+                    admin : 'geos5e1oyfrgunbsksxjgnpguzmee-wbno6iqyg3vkk='
+                },
+                onuploadsuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.success) {
+                        $('#cardphoto' + n).val(d.message).trigger('blur');
+                        $('#cardphoto' + n + 'result').html('<a href="' + d.message + '" target="_blank"><img width="380" src="' + d.message + '" /></a>');
+                    } else {
+                        $.jerror(d.message);
+                    }
+                }
+            });
+        }, 10);
+    };
+
+
+    $('#cardnumber').change(function() {
+        var val = $.trim($(this).val());
+
+        if (val && val.length == 18) {
+            var isman = parseint(val.substr(16, 1)) % 2 == 1;
+            var birthday = $('#birthday'), sex0 = $('#sex0')[0], sex1 = $('#sex1')[0];
+
+            if (!sex0.checked && !sex1.checked) {
+                if (isman)
+                    sex0.checked = true;
+                else
+                    sex1.checked = true;
+            }
+
+            if (birthday.val() == '') {
+                birthday.val(utils.datetostring(utils.todate(val.substr(6, 8), 'yyyymmdd')));
+            }
+        }
+    });
+
+    $('#js-resetrealname').click(function() {
+        $.jconfirm('确认重置吗?', function() {
+            $.get('?id=3&op=resetrealname&_rnd=' + (new date()).gettime(), function(res) {
+                if (res.success)
+                    location.reload();
+                else
+                    $.jerror(res.message);
+            }, 'json');
+        });
+    });
+    
+    function createStatus(status,name){
+      	var result="";
+        	if (status==0) {
+        		//未提交
+        		result+="<td>未提交</td>";
+        		
+        	}else if (status==1) {
+        		result+='<td><div class="ui-radio"><label><input type="radio" name="'+name+'" value="2"> 通过</label> <label><input type="radio" name="'+name+'" value="3"> 拒绝</label></div></td>';
+        	}else if (status==2) {
+        		result+="<td>已认证</td>"
+        	}else if (status==3) {
+        		result+="<td>已拒绝</td>"
+        	}
+        	return  result;
+        }
+    
+    $(function(){
+    	 var  un =window.parent.document.getElementById("un");
+         if(un){
+         	//将页面上面的用户名设置上
+         	$("#username").val(un.value);
+         //加载用户的认证数据
+         $.ajax({
+        	 	url:"/usermanager/getUserstatusInfoByName.action",
+        	 	data:"username="+un.value,
+        	 	dataType:"json",
+        	 	success:function(data){
+        	 		//显示在页面上
+        	 		//console.info(data)
+        	 		
+        	 		var realstatus =createStatus(data.data.realstatus,'realstatus');
+        	 		$("#real").append(realstatus);
+        	 		var phonestatus =createStatus(data.data.phonestatus,'phonestatus');
+        	 		$("#phone").append(phonestatus);
+        	 		var emailstatus =createStatus(data.data.emailstatus,'emailstatus');
+        	 		$("#email").append(emailstatus);
+        	 		var livestatus =createStatus(data.data.livestatus,'livestatus');
+        	 		$("#live").append(livestatus);
+        	 		
+        	 	}
+        	 
+        	 
+         	})
+         }
+    })
+    
+  
+</script>
+
+
+
+</body></html>

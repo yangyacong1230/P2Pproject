@@ -1,0 +1,104 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <form class="auto" method="post" action="/admin/member/userquotalogdetail.html" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>申请用户名</th>
+                    <td class="g-fbold"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=0');"></a></td>
+                </tr>
+                <tr>
+                    <th>申请借款类型</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>申请额度</th>
+                    <td>0.00 元</td>
+                </tr>
+                <tr>
+                    <th>基本认证情况</th>
+                    <td>实名认证：<span class="fcash-1">等待提交；</span>手机认证：<span class="fcash-1">等待提交；</span>邮箱认证：<span class="fcash-1">等待提交；</span>现场认证：<span class="fcash-1">等待认证；</span></td>
+                </tr>
+                <tr>
+                    <th>基本资料认证情况</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>借款资料认证情况</th>
+                    <td>无借款资料</td>
+                </tr>
+                <tr>
+                    <th>现有额度</th>
+                    <td>0.00 元</td>
+                </tr>
+                <tr>
+                    <th>申请时间</th>
+                    <td>2017-09-22 13:13:00</td>
+                </tr>
+                <tr>
+                    <th>申请备注</th>
+                    <td></td>
+                </tr>
+            </tbody></table>
+            
+                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th class="info-listhead" colspan="2">审核状态</th>
+                    </tr>
+                    <tr id="tr_status">
+                        <th>操作员处理</th>
+                        <td>
+                            <div class="ui-radio">
+                                <label><input name="status" type="radio" value="0">未审核</label>
+                                <label><input name="status" type="radio" value="1">待复审</label>
+                                <label><input name="status" type="radio" value="200" checked="checked">通过</label>
+                                <label><input name="status" type="radio" value="-1">拒绝</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="tr_applyAmount">
+                        <th><i class="iconfont fcred-3"> </i>通过额度</th>
+                        <td><input type="text" name="verifyApplyAmount" class="w150 ui-float" data-vtype="money" value="0.00" data-vmsg="请输入正确的金额">元</td>
+                    </tr>
+                    <tr>
+                        <th>有效期</th>
+                        <td><input type="text" name="expires" value="" placeholder="长期" data-vtype="date" data-vmust="false" data-vmsg="请输入正确的日期" class="ui-date w150"></td>
+                    </tr>
+                    <tr>
+                        <th><i class="iconfont fcred-3"> </i>操作员备注</th>
+                        <td><textarea name="verifyRemark" data-vtype="must" data-vmsg="请输入操作员备注"></textarea></td>
+                    </tr>
+                </tbody></table>
+            
+            
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#tr_status input[name='status']").click(function () {
+                if ($(this).val() != '200') {
+                    $('#tr_applyAmount').hide();
+                } else {
+                    $('#tr_applyAmount').show();
+                }
+            });
+        });
+    </script>
+
+
+
+<div class="ui-calendar" style="box-shadow: rgb(102, 102, 102) 1px 2px 5px; zoom: 1;"><div class="calendar-title"><a href="javascript:" class="calendar-nextmonth">&gt;&gt;</a><a href="javascript:" class="calendar-prevmonth">&lt;&lt;</a><a href="javascript:" class="ui-calendarYear"></a><a href="javascript:" class="ui-calendarMonth"></a></div><div class="calendar-body"><div class="calendar-week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div class="calendar-day"></div><div class="calendar-time">时间 <input type="text" maxlength="2" class="calendar-time-h">:<input type="text" maxlength="2" class="calendar-time-m">:<input type="text" maxlength="2" class="calendar-time-s"></div></div><div class="calendar-foot"><input type="button" class="ui-calendarClear c-important" value="清空"> <input type="button" class="ui-calendarToday c-obvious" value="今天"> <input type="button" class="ui-calendarConfirm c-priority" value="确定"></div></div></body></html>

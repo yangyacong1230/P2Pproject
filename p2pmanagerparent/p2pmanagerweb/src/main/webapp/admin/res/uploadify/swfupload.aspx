@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" CodeBehind="SwfUpload.html.cs" Inherits="WAP2P.Web.PC.Admin.Res.uploadify.SwfUpload" %>

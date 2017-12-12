@@ -1,0 +1,65 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form class="auto" method="post" action="/admin/account/cashapplydeatil.html"  onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">  
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                
+                
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        $("input[name=fee]").keyup(function(){
+            $("#account").html(finance.toMoneyString(0 - $(this).val()));
+        }).trigger('keyup');
+
+        $('.js-dopay').click(function() {
+            var me = $(this).attr('disabled', 'disabled'), msg = me.next().html('');
+
+            var fn = function() {
+                msg.html('请稍候..');
+                $.ajax({
+                    url: 'cashapplylist.html?action=loan&idValues=0',
+                    dataType: "json",                    
+                    success: function (res) {
+                        msg.html(res.Message || '跟进成功。');
+                        if (res.Success) {                            
+                            setTimeout(function() {
+                                parent.$.jPopupEdit.close(true);
+                            }, 2000);
+                        } else {
+                            me.removeAttr('disabled');
+                        }
+                    }
+                });
+            };
+
+            if (me.attr('data-confirm'))
+                $.jConfirm(me.attr('data-confirm'), fn, function() {
+                    me.removeAttr('disabled');
+                });
+            else
+                fn();
+        });
+    </script>
+
+
+</body>
+</html>

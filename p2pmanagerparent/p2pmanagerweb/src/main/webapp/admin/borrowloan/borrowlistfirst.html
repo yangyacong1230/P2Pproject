@@ -1,0 +1,133 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	等待初审的借款 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">等待初审的借款</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>借款筛选:</th>
+                        <td>
+                            <select id="status" name="status">
+	<option value="">等待初审核</option>
+	<option value="初审未通过">初审未通过</option>
+</select>
+                            <select id="type" name="type">
+	<option value="借款名称">借款名称</option>
+	<option value="借款人">借款人</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>                                        
+                </table>                
+            </form>
+            <div class="m-content">
+                <div class="m-oper">                    
+                    
+                        <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value="&#xe612; 全选" />
+                        <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value="&#xe644; 反选" />
+                        <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="等待初审的借款" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value="&#xe611; 删除选中" />
+                    
+                        <span class="js-autoload">
+	                        <span class="ui-checkbox"><label><input type="checkbox" class="js-refresh" data-function="等待初审的借款" data-operate="自动刷新" data-freemes="本功能仅供正式版使用。" /> 自动刷新</label></span>
+                            <span class="ui-checkbox g-hide mr10"><label><input type="checkbox" data-autoload-char="xe60e; 审核" data-autoload-alert="有新的待审核项" /> 有新待审核项弹通知</label></span>                        
+                        </span>
+                                        
+                </div>
+                <table id="resulttable" class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="3%">选取</th>
+                        <th width="4%">编号</th>
+                        <th width="10%">借款种类</th>
+                        <th width="20%" class="g-fleft">借款名称</th>
+                        <th width="10%">借款金额</th>
+                        <th width="10%">年利率</th>
+                        <th width="10%">借款周期</th>
+                        <th width="10%">添加时间</th>
+                        <th width="10%">状态</th>
+                        <th width="13%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+<input type="hidden" id="checkid">
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		getUncheckedBorrow(1,10);
+	})
+	
+	function caozuo(id){
+		//获取当前点击的是谁,然后写入到某个地方
+		
+		$("#checkid").val(id)
+		$.jPopupEdit('贷款审核', 'pifu.html');
+		
+	}
+	
+
+function getUncheckedBorrow(currentPage,pageSize){
+		$.ajax({
+			url:"/borrowmoneymanager/getAllUnchekedBorrow.action",
+			data:"currentPage="+currentPage+"&pageSize="+pageSize,
+			dataType:"json",
+			success:function(data){
+				//console.info(data);
+				if(data.code==1){
+					var result=data.data.data;
+					for(var i =0;i<result.length;i++){
+						/*  <tr>
+	                        <th width="3%">选取</th>
+	                        <th width="4%">编号</th>
+	                        <th width="10%">借款种类</th>
+	                        <th width="20%" class="g-fleft">借款名称</th>
+	                        <th width="10%">借款金额</th>
+	                        <th width="10%">年利率</th>
+	                        <th width="10%">借款周期</th>
+	                        <th width="10%">添加时间</th>
+	                        <th width="10%">状态</th>
+	                        <th width="13%">操作</th>
+	                    </tr> */
+						
+	                    var tr="<tr>";
+	                    tr+='<td width="3%">选取</td>'
+	                    tr+='<td width="3%">'+result[i].id+'</td>'
+	                    tr+='<td width="3%">'+result[i].type+'</td>'
+	                    tr+='<td width="3%">'+result[i].name+'</td>'
+	                    tr+='<td width="3%">'+result[i].money+'</td>'
+	                    tr+='<td width="3%">'+result[i].moneyrate+'</td>'
+	                    tr+='<td width="3%">'+result[i].lifecycle+'月</td>'
+	                    tr+='<td width="3%">'+result[i].commitdate+'</td>'
+	                    tr+='<td width="3%">未审核</td>'
+	                    tr+='<td width="3%" onclick =\'caozuo('+result[i].id+')\'>操作</td>'
+	                    tr+="</tr>"
+	                    $("#resulttable").append(tr);
+					}
+					
+				}
+			}
+			
+		})
+	
+	
+}
+
+</script>
+
+
+</body>
+</html>

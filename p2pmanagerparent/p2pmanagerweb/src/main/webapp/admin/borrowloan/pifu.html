@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+<script type="text/javascript" src="/admin/res/core/scripts/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	var id =window.parent.document.getElementById("checkid");
+	//alert(id.value);
+	if(id){
+		$("#id").val(id.value);
+		
+	}
+	
+})
+	function daasd(obj){
+		if(obj.value==1){
+			$("#moneyrate").removeAttr("disabled");
+			$("#lifecycle").removeAttr("disabled");
+			$("#realmoney").removeAttr("disabled");
+			$("#expirydate").removeAttr("disabled");
+			
+		}else if(obj.value==2){
+		
+			$("#moneyrate").attr("disabled","disabled");
+			$("#lifecycle").attr("disabled","disabled");
+			$("#realmoney").attr("disabled","disabled");
+			$("#expirydate").attr("disabled","disabled");
+		}
+	}
+</script>
+</head>
+<body>
+	<form action="/borrowmoneymanager/updateBorrow.action">
+	
+		 <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        
+        
+        <!-- 年利率,周期,批复金额,批复的人是谁 -->
+        <div style="margin-top: 20px" class="ui-radio"><label><input type="radio" name="status" value="1" onchange="daasd(this)" > 通过</label> <label><input type="radio" name="status" value="2" onchange="daasd(this)"> 拒绝</label></div>
+		<table style="margin-top: 20px">
+			<tr>
+				<td>年利率: <input type="text" name="moneyrate" id="moneyrate"></td>
+			
+			</tr>
+			<tr>
+				<td>周期: <input type="text" name="lifecycle" id="lifecycle"></td>
+			
+			</tr>
+			<tr>
+				<td>批复金额: <input type="text" name="realmoney" id="realmoney"></td>
+				<td><input type="hidden" name="id" id="id"></td>
+			</tr>
+			
+			<tr>
+				<td>截止日期: <input type="text" name="expirydate" id="expirydate"></td>
+			
+			</tr>
+		</table>
+		
+        </div>
+	
+	
+	</form>
+</body>
+</html>

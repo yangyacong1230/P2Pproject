@@ -1,0 +1,73 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	借款额度申请列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <dl class="ui-tabs">
+        
+            <dt><a href="userquotaloglist.html">借款额度申请列表</a></dt>
+        
+         <dt><a href="javascript:" class="on">会员额度列表</a></dt>
+        <dd style="width: 1516px;">
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th>信息筛选:</th>
+                        <td>                            
+                            <select id="type" name="type" data-olddisabled="false">
+	<option value="会员账号">会员账号</option>
+</select>
+                            <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    <span class="iconfont"><i class="fs22 fcred-3"></i>账户锁定<i class="fs22 fcjade-1"></i>账户开启</span>
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th width="5%">编号</th>
+                        <th width="15%">会员账号</th>
+                        <th width="12%">会员类型</th>
+                        <th width="14%" class="">所属会员组</th>
+                        <th width="14%">风险类型</th>
+                        <th width="14%" class="">信用等级</th>                     
+                        <th width="8%">状态</th>    
+                        <th width="15%">操作</th>
+                    </tr><tr id="tr1">
+                <td>1</td>
+                <td class="g-fbold"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=1');">tingting</a></td>
+                <td>我要投资</td>
+                <td class="">普通投资人</td>
+                <td>正常客户</td>
+                <td class="">F</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:void(0);" onclick="$.jPopupEdit('申请额度调整', 'userquotadetail.html?userId=1');"> 申请调整额度</a>
+                    </td>
+            </tr>
+        
+    <tr class="pager">
+        <td colspan="8">
+            <div class="pages"><span class="remind">共找到<strong>1</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div>
+            <a href="/admin/member/userquotalist.html?action=search&amp;type=%E4%BC%9A%E5%91%98%E8%B4%A6%E5%8F%B7&amp;key=&amp;_=1434949964238" class="g-hide"></a>
+        </td>
+    </tr>
+                </tbody></table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

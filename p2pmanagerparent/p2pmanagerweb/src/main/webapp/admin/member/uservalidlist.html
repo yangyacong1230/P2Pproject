@@ -1,0 +1,88 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	会员认证列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">会员认证列表</a></dt>        
+        <dd style="width: 1516px;">
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th>认证筛选:</th>
+                        <td>
+                            <select id="status" name="status" data-olddisabled="false">
+	<option value="">待审核筛选</option>
+	<option value="实名认证待审核">实名认证待审核</option>
+	<option value="手机认证待审核">手机认证待审核</option>
+	<option value="邮箱认证待审核">邮箱认证待审核</option>
+	<option value="现场认证待审核">现场认证待审核</option>
+</select>
+                            <select id="type" name="type" data-olddisabled="false">
+	<option value="会员账号">会员账号</option>
+</select>
+                            <input type="text" size="35" name="key" value="" data-olddisabled="false">
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                        </td>
+                    </tr>                    
+                </tbody></table>                
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    <span class="iconfont"><i class="fs22 fcgery-3"></i>等待提交<i class="fs22 fcyellow-1"></i>等待认证<i class="fs22 fcred-2"></i>认证失败<i class="fs22 fcjade-1"></i>认证成功</span>
+                    
+                        <span class="js-autoload">
+	                        <span class="ui-checkbox"><label><input type="checkbox" class="js-refresh" data-function="会员认证管理" data-operate="自动刷新" data-freemes="本功能仅供正式版使用。"> 自动刷新</label></span>
+                            <span class="ui-checkbox g-hide mr10"><label><input type="checkbox" data-autoload-char="xe60e; 审核" data-autoload-alert="有认证待审核项"> 有待审核项时弹通知</label></span>                        
+                        </span>
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th width="20%" class="g-fleft">会员账号</th>
+                        <th width="15%" class="">实名认证</th>
+                        <th width="15%" class="">手机认证</th>
+                        <th width="15%" class="">邮箱认证</th>
+                        <th width="15%" class="">现场认证</th>
+                        <th width="20%" class="">操作</th>
+                    </tr>
+                    <!-- <tr id="tr1">
+                <td class="g-fbold g-fleft"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=1');">tingting</a></td>
+                <td class="iconfont"><i class="fs22 fcgery-3"></i></td>
+                <td class="iconfont"><i class="fs22 fcjade-1"></i></td>
+                <td class="iconfont"><i class="fs22 fcjade-1"></i></td>
+                <td class="iconfont"><i class="fs22 fcjade-1"></i></td>
+                <td class="">
+                    <a class="iconfont oper" href="javascript:void(0);" onclick="$.jPopupEdit('会员认证资料查看', 'uservaliddetail.html?ID=1&amp;op=view');"> 查看资料</a>
+                    
+                </td>
+            </tr> -->
+        
+    <tr class="pager">
+        <td colspan="6"><div class="pages"><span class="remind">共找到<strong>1</strong>条记录</span><span id="last" class="disabled">&lt; 上一页</span><span id="current" class="current">1</span><span id="next" class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/member/uservalidlist.html?action=search&amp;status=&amp;type=%E4%BC%9A%E5%91%98%E8%B4%A6%E5%8F%B7&amp;key=&amp;_=1434950030787" class="g-hide"></a></td>
+    </tr>
+                </tbody></table>
+            </div>
+        </dd>
+    </dl>
+<input type="hidden" id="un" >
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+<script src="/admin/res/core/scripts/myutils.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		
+		getUserStatus(1,10);
+		
+	})
+
+</script>
+
+
+
+</body></html>

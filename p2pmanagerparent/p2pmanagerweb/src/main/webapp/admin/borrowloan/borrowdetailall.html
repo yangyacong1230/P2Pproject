@@ -1,0 +1,80 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowdetailall.html.cs" Inherits="WAP2P.Web.PC.Admin.BorrowLoan.BorrowDetailAll" %>
+<%@ Register Src="Controls/BorrowInfo.ascx" TagPrefix="uc1" TagName="BorrowInfo" %>
+<%@ Register Src="Controls/BidLog.ascx" TagPrefix="uc1" TagName="BidLog" %>
+<%@ Register Src="Controls/HoldLog.ascx" TagPrefix="uc1" TagName="HoldLog" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form class="auto" method="post" action="<% =Request.RawUrl %>" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">        
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <dl class="ui-tabs">            
+                <dt><a href="#detail" class="on">借款详情</a></dt>
+                <dt><a href="#bid">投标记录</a></dt>
+                <dt><a href="#borrowHold">债权持有</a></dt>
+                <dt><a href="#repay">还款详情</a></dt>
+                <dd id="detail">
+                    <div class="m-content">
+                        <uc1:BorrowInfo runat="server" Eidt="true" ID="borrowInfo" />
+                    </div>
+                </dd>
+                <dd id="bid" class="g-hide">
+                    <div class="m-content">
+                        <uc1:BidLog runat="server" ID="bidLog" />
+                    </div>
+                </dd>
+                <div id="borrowHold" class="g-hide">
+                    <div class="m-content">
+                        <uc1:HoldLog runat="server" ID="holdLog" />
+                    </div>
+                </div>
+                <dd id="repay" class="g-hide">
+                    <div class="m-content">
+                        <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th width="5%">期数</th>
+                                <th width="12%">应还款时间</th>
+                                <th width="12%">实际还款时间</th>
+                                <th width="10%">应还本金</th>                            
+                                <th width="10%">应还利息</th>
+                                <th width="10%">应还费用</th>
+                                <th width="10%">应还罚息</th>
+                                <th width="15%">还款人</th>
+                                <th width="10%">状态</th>
+                            </tr>
+                            <ruson:Repater runat="server" ID="rptRepayList" ItemType="WAP2P.BorrowLoan.Repay">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Item.Period %></td>
+                                        <td><%# Item.ShouldRepayAt.ToDateTimeString() %></td>
+                                        <td><%# Item.ActualRepayAt.ToDateTimeString() %></td>
+                                        <td><%# Item.ShouldRepayPrincipal.ToMoneyString() %> 元</td>                                    
+                                        <td><%# Item.ShouldRepayInterest.ToMoneyString() %> 元</td>
+                                        <td><%# Item.ShouldRepayFee.ToMoneyString() %> 元</td>
+                                        <td><%# Item.ShouldRepayOverdue.ToMoneyString() %> 元</td>
+                                        <td><%# Item.ActuaRepayUserName %></td>
+                                        <td><%# Item.Status.GetDescription() %></td>                                    
+                                    </tr>
+                                </ItemTemplate>
+                                <EmptyTemplate>
+                                    <tr>
+                                        <td colspan="9" class="g-fleft">暂无数据。</td>
+                                    </tr>
+                                </EmptyTemplate>
+                            </ruson:Repater>
+                        </table>
+                    </div>
+                </dd>
+            </dl>      
+        </div>
+    </form>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+    </script>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="list" runat="server">
+</asp:Content>

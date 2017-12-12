@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="robots" content="noarchive,noindex,nofollow">
+<title>管理登录 - 千峰p2p</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+<link href="/admin/res/core/styles/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="m-login">
+        <div class="login-box">
+            <div class="login-left">
+                <img src="res/core/images/backloginlogo.png" />
+            </div>
+            <div class="login-right">
+                <form method="post" action="/admin/login.action" class="auto" onsuccess="location.href = 'default.html';">
+                    <fieldset>
+                        <legend>管理登录</legend>
+                        <label>用户名：<input type="text" name="empLoginName" class="text w250" id="name" tabindex="1" autocomplete="off" value="" data-vtype="must" data-vmsg="请输入用户名。" /></label>
+                        <label>密　码：<input type="password" name="password" tabindex="2" class="text w250" autocomplete="off" value="" id="password" data-vtype="must" data-vmsg="请输入密码。" /></label>
+                        <label>安全码：<input type="password" name="secrCode" tabindex="3" class="text w250" data-vtype="must" data-vmsg="请输入安全码。" /></label>
+                        <label>验证码：<input type="text" name="picCode" tabindex="4" class="text" size="7"  maxlength="4" data-vtype="must" data-vmsg="请输入验证码。"/><a href="javascript:void(0);" onclick="$('img',this).attr('src', '/pic/getPicValidateCode.action?v=' + (new Date()).getTime())"><img align="absmiddle" src="/pic/getPicValidateCode.action" /> <span> 换一张</span></a></label>
+                        <input type="submit"  tabindex="5" value="登&nbsp;&nbsp;&nbsp;&nbsp;录" class="login-submit mt20" />                     
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="login-copyright">本系统由 北京千锋互联科技有限公司 开发。Version:4.0</div>
+    </div>
+    <script src="/admin/res/core/scripts/jquery.js"></script>
+    <script src="/admin/res/core/scripts/core.js"></script>
+    <script>
+        //编辑提交
+        $('form.auto').submit(function () {
+            var me = $(this);
+            //错误提示框体
+            if (window.form.valid(this, function (msg, n) {
+                n = $(n);
+                var em = n.parent().find('b');
+                if (em.length == 0) {
+                    em = $('<b></b>');
+                    n.addClass('myerror').parent().append(em);
+                    }
+                em.html(msg);
+            })) {
+                var loginTips = function (n, type, msg, callback) {
+                    var dom = $('<div class="ui-tips' + type + '">' + msg + '</div>');
+                    n.append(dom);
+                    dom.css('margin-left', '5px');
+                    dom.animate('fast', function () {
+                        setTimeout(function () {
+                            if (callback) callback();
+                            dom.fadeOut();
+                        }, 1800);
+                    });
+                };
+                window.form.ajax(this, 'json', function (r) {
+                 /*   if (r.Success) {
+                        var onsuccess = me.attr('onsuccess');
+                        if (onsuccess)
+                            loginTips(me.find('legend'), 'success', r.Message == '' ? '操作成功' : r.Message, function () { eval(onsuccess); });
+                    }
+                    else
+                        loginTips(me.find('legend'), 'error', r.Message);*/
+                    if (r.code==1) {
+                        location.href = "default.html";
+                    }
+                });
+            }
+            return false;
+        }).on('change', ':input[data-vtype]', function () {
+            var n = $(this);
+            n.removeClass('myerror').parent().find('b').remove();
+        });
+    </script>
+</body>
+</html>

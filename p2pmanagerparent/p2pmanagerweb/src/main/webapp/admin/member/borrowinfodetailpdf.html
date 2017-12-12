@@ -1,0 +1,67 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowinfodetailpdf.html.cs" Inherits="WAP2P.Web.PC.Admin.Member.BorrowInfoDetailPdf" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server"></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <div class="ui-pdf">
+        <h1>已审核借款资料(<% =Model.Id %>)</h1>
+        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">                
+            <tr>
+                <th>会员账户</th>
+                <td><% =(WAP2P.Member.User.Load(Model.UserId) ?? new WAP2P.Member.User { Name = Model.UserName }).Name %></td>
+            </tr>
+            <tr>
+                <th>资料名称</th>
+                <td><% =Model.Name %></td>
+            </tr>              
+            <tr>
+                <th>借款资料类型</th>
+                <td><% =BorrowInfoType.LoadOrNew(Model.BorrowInfoTypeId).Name %></td>
+            </tr>
+            <asp:Repeater runat="server" ID="rptViewFormFields" ItemType="WAP2P.Sys.FormField">
+                <ItemTemplate>
+                    <%# Item.BuildHtml("<tr><th>{%=Name%}</th><td>{%=Value%}</td></tr>", false) %>
+                </ItemTemplate>
+            </asp:Repeater>
+            <tr>
+                <th class="info-listhead" colspan="2">审核/授额 信息</th>
+            </tr>
+            <tr>
+                <th>状态</th>
+                <td><% =Model.Status.GetDescription() %></td>
+            </tr>
+            <% if(Model.ValidAt.HasValue) { %>
+            <tr>
+                <th>市场参考价格</th>
+                <td><% =Model.MarketPrice.ToMoneyString() %> 元</td>
+            </tr>
+            <tr>
+                <th>评估价值</th>
+                <td><% =Model.AssessmentPrice.ToMoneyString() %> 元</td>
+            </tr>
+            <tr>
+                <th>审核备注</th>
+                <td><% =Model.ValidRemark.BrEncode() %></td>
+            </tr>
+            <tr>
+                <th>审核信息</th>
+                <td><% =Model.ValidAt.HasValue ? string.Format("操作员 {0} 于 {1} 执行审核操作！", Model.ValidBy, Model.ValidAt.ToDateTimeString()) : string.Empty %></td>
+            </tr>
+            <tr>
+                <th>资料有效期</th>
+                <td><% =Model.Expires.ToDateString("长期") %></td>
+            </tr>
+            <tr>
+                <th>借款授信额度</th>
+                <td><% =Model.QuotaAt.HasValue ? Model.Quota.ToMoneyString() + " 元" : "待授额" %></td>
+            </tr>
+            <tr>
+                <th>授额信息</th>
+                <td><% =Model.QuotaAt.HasValue ? string.Format("操作员 {0} 于 {1} 执行授额操作！", Model.QuotaBy, Model.QuotaAt.ToDateTimeString()) : "待授额" %></td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="list" runat="server">
+</asp:Content>

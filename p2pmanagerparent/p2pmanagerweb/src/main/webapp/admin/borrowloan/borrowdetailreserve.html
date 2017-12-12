@@ -1,0 +1,84 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowdetailreserve.html.cs" Inherits="WAP2P.Web.PC.Admin.BorrowLoan.BorrowDetailReserve" %>
+<%@ Register Src="Controls/BorrowInfo.ascx" TagPrefix="uc1" TagName="BorrowInfo" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form class="auto" method="post" action="<% =Request.RawUrl %>" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <dl class="ui-tabs">
+                <dt><a href="#edit" class="on">编辑</a></dt>
+                <dt><a href="#reserve">预约记录</a></dt>
+                <dt><a href="#detail">借款详情</a></dt>
+                <dd id="edit">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th>借款名称</th>
+                                <td><% =Model.Name %></td>
+                            </tr>
+                            <tr>
+                                <th>借款金额</th>
+                                <td><% =Model.LoanAmount.ToMoneyString() %> 元</td>
+                            </tr>
+                            <tr>
+                                <th>预约编号</th>
+                                <td><% =Model.ReserveId %></td>
+                            </tr>
+                            <tr>
+                                <th>预约投标结束时间</th>
+                                <td><input type="text" name="reserveBidEndAt" value="<% =Model.ReserveBidEndAt.ToDateTimeString() %>" class="w150 ui-date ui-datetime" data-vtype="date" data-vmsg="请输入结束时间" /></td>
+                            </tr>                            
+                        </table>
+                    </div>
+                </dd>
+                <dd id="reserve" class="g-hide">
+                    <div class="m-content">
+                        <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th width="10%">编号</th>
+                                <th width="25%">预约用户</th>
+                                <th width="25%">预约金额(份)</th>
+                                <th width="15%">预约保证金</th>
+                                <th width="15%">预约时间</th>
+                                <th width="10%">状态</th>
+                            </tr>
+                            <ruson:Repater runat="server" ID="rptList" ItemType="WAP2P.BorrowLoan.ReservationLog">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Item.Id %></td>
+                                        <td class="g-fbold g-fleft"><%# GetUserDisplay(Item.UserId, Item.UserName) %></td>
+                                        <td class="fcred-2"><%# Item.Amount.ToMoneyString() %> 元<%# Item.Copies.HasValue ? string.Format("({0}份)", Item.Copies.Value) : string.Empty %></td>
+                                        <td><%# (Item.OnlineAccount + Item.OfflineAccount + Item.ReceiveAccount + Item.LoanAccount + Item.RewardAccount).ToMoneyString() %> 元</td>
+                                        <td><%# Item.CreateAt.ToDateTimeString() %></td>
+                                        <td><%# Item.Bided ? "已投标" : "已预约" %></td>
+                                    </tr>
+                                </ItemTemplate>
+                                <EmptyTemplate>
+                                    <tr>
+                                        <td colspan="6" class="g-fleft">暂无数据。</td>
+                                    </tr>
+                                </EmptyTemplate>
+                            </ruson:Repater>
+                        </table>           
+                    </div>
+                </dd>
+                <dd id="detail" class="g-hide">
+                    <div class="m-content">
+                        <uc1:BorrowInfo runat="server" ID="borrowInfo" />
+                    </div>
+                </dd>
+            </dl>            
+        </div>
+    </form>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+    </script>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="list" runat="server">
+</asp:Content>

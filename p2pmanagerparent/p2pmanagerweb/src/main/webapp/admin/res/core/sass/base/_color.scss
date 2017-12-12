@@ -1,0 +1,81 @@
+﻿@charset 'utf-8';
+.c-normal{
+    color:nth($baseColor,1);
+    background:nth($navy,2);
+    border:1 solid nth($navy,3);
+    &:hover{
+        color:nth($baseColor,1);
+        background:nth($navy,3);
+        border:1 solid nth($navy,3);
+    }
+    &:active{
+        color:nth($baseColor,1);
+        background:nth($navy,1);
+        border:1 solid nth($navy,3);
+    }
+}
+   
+.c-priority{
+    color:nth($baseColor,1);
+    background:nth($jade,2);
+    border:1 solid nth($jade,3);
+    &:hover{
+        color:nth($baseColor,1);
+        background:nth($jade,3);
+        border:1 solid nth($jade,3);
+    }
+    &:active{
+        color:nth($baseColor,1);
+        background:nth($jade,1);
+        border:1 solid nth($jade,3);
+    }
+}
+
+.c-obvious{
+    color:nth($baseColor,1);
+    background:nth($yellow,2);
+    border:1 solid nth($yellow,3);
+    &:hover{
+        color:nth($baseColor,1);
+        background:nth($yellow,3);
+        border:1 solid nth($yellow,3);
+    }
+    &:active{
+        color:nth($baseColor,1);
+        background:nth($yellow,1);
+        border:1 solid nth($yellow,3);
+    }
+}
+
+
+.c-important{
+    color:nth($baseColor,1);
+    background:nth($red,2);
+    border:1 solid nth($red,3);
+    &:hover{
+        color:nth($baseColor,1);
+        background:nth($red,3);
+        border:1 solid nth($red,3);
+    }
+    &:active{
+        color:nth($baseColor,1);
+        background:nth($red,1);
+        border:1 solid nth($red,3);
+    }
+}
+
+.c-disable{
+    color:nth($baseColor,1);
+    background:nth($disabled,2);
+    border:1 solid nth($disabled,3);
+    &:hover{
+        color:nth($baseColor,1);
+        background:nth($disabled,3);
+        border:1 solid nth($disabled,3);
+    }
+    &:active{
+        color:nth($baseColor,1);
+        background:nth($disabled,3);
+        border:1 solid nth($disabled,3);
+    }
+}

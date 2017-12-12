@@ -1,0 +1,74 @@
+﻿@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,th,td{
+    margin:0;
+    padding:0;
+    font-size:100%;
+}
+body{
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    color:$baseFontColor;
+}
+body,html{height:100%;}
+body, button, input, select, textarea{
+    font-family: $baseFontFamily;
+}
+h1,h2,h3,h4,h5,h6{
+    font-size:100%; 
+    font-weight:normal;
+}
+ol,ul,dl{
+    list-style-type:none;
+    list-style-image: none;
+}
+fieldset,img,a img,iframe{
+    border:0;
+}
+table{
+    border-collapse:collapse; 
+    border-spacing:0;
+}
+select,input,img{vertical-align:middle;}
+a {text-decoration:none;outline: 0;hide-focus:expression(this.hideFocus=true);
+     @if length($baseLinkColor) > 1{
+         color:nth($baseLinkColor,1);
+         &:hover,&:active {
+             color:nth($baseLinkColor,2);
+             outline: 0;
+         }
+     } @else {
+           color:$baseLinkColor;
+           &:hover,&:active {
+               color:darken($baseLinkColor,10%);
+               outline: 0;
+           }
+       }
+}
+:focus{outline:0}
+i,em{font-style:normal;font-weight:normal;}
+input,select,textarea{padding:4px 5px;resize:none;}
+@if nth($placeholder,1) {
+  input:-moz-placeholder,
+  textarea:-moz-placeholder { color: nth($placeholder,2); } 
+  input::-moz-placeholder,
+  textarea::-moz-placeholder{color: nth($placeholder,2); } 
+  input:-ms-input-placeholder,textarea:-ms-input-placeholder{color: nth($placeholder,2); } 
+  input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{ color: nth($placeholder,2); } 
+}
+@font-face {font-family: "iconfont";
+  src: url('admin.eot');
+  src: url('admin.eot?#iefix') format('embedded-opentype'), 
+  url('admin.woff') format('woff'),
+  url('admin.ttf') format('truetype'),
+  url('admin.svg#iconfont') format('svg'); 
+}
+.iconfont{
+  font-family:$baseIconsFont;
+  font-size:$baseFontSize;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+textarea {overflow: auto; vertical-align: top; resize: vertical;}
+iframe{border:0;}
+img{vertical-align: middle;}

@@ -1,0 +1,114 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	借款类型列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">借款类型列表</a></dt>
+    <dd style="width: 1516px;">
+        <form action="?action=search" method="get" class="m-search">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>借款类型筛选:</th>
+                    <td>
+                        <select id="type" name="type" data-olddisabled="false">
+	<option value="类型名称">类型名称</option>
+</select>
+                        <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr>                
+            </tbody></table>
+        </form>
+        <div class="m-content">
+            <div class="m-oper">
+                <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建类型" onclick="$.jPopupEdit('新建借款类型', 'borrowtypedetail.html');">
+                
+                    <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选">
+                    <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选">
+                    <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="借款类型设置" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value=" 删除选中">
+                
+                
+                    <input type="button" class="oper-clear btn-smaller c-obvious saveOrder iconfont" data-function="借款类型设置" data-operate="保存排序" data-freemes="本功能仅供正式版使用。" value=" 保存排序">
+                
+                <span class="iconfont"><i class="fs22 fcjade-1"></i>前台已开通<i class="fs22 fcred-3"></i>前台已停用</span>
+            </div>
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="3%">选取</th>
+                    <th width="3%" class="">排序</th>
+                    <th width="10%" class="">图例</th>
+                    <th width="20%" class="">类型名称</th>
+                    <th width="45%" class="g-fleft">说明描述</th>
+                    <th width="5%">开通状况</th>
+                    <th width="14%">操作</th>
+                </tr><tr id="tr2">
+                <td><input type="checkbox" class="del" data-id="2"></td>
+                <td class=""><input type="text" value="4" class="w17 order ui-int" data-id="2"></td>
+                <td class=""><img src="/Upload/201506/69fc98b9-84f4-4cb1-8787-0b43f2ee5662.png" alt=""></td>
+                <td class="">抵押标</td>
+                <td class="g-fleft">风控严格控制抵押物，随时随地，任意时间段发标。</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑借款类型', 'borrowtypedetail.html?ID=2');"> 编辑</a>
+                    <a class="iconfont del" href="borrowtypedetail.html?ID=2&amp;action=del">删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr1" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="1"></td>
+                <td class=""><input type="text" value="3" class="w17 order ui-int" data-id="1"></td>
+                <td class=""><img src="/Upload/201506/ac6d7658-8d40-477b-9f6e-6e2158da39b1.png" alt=""></td>
+                <td class="">信用标</td>
+                <td class="g-fleft">每天固定上午10点、下午3点对借款类型进行审核发布。</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑借款类型', 'borrowtypedetail.html?ID=1');"> 编辑</a>
+                    <a class="iconfont del" href="borrowtypedetail.html?ID=1&amp;action=del">删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr4">
+                <td><input type="checkbox" class="del" data-id="4"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="4"></td>
+                <td class=""><img src="/Upload/201506/b46360ff-4ca8-4c6b-91d9-c152a5b3e1ce.png" alt=""></td>
+                <td class="">娱乐标</td>
+                <td class="g-fleft">平台福利，奖励有效</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑借款类型', 'borrowtypedetail.html?ID=4');"> 编辑</a>
+                    <a class="iconfont del" href="borrowtypedetail.html?ID=4&amp;action=del">删除</a>
+                </td>
+            </tr>
+        
+            <tr id="tr3" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="3"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="3"></td>
+                <td class=""><img src="/Upload/201506/7f8e29d9-c11e-4fef-bb41-ecab97ede15a.png" alt=""></td>
+                <td class="">净值标</td>
+                <td class="g-fleft">在不转让债权的情况下，快速获得周转资金，每天9：00~20:..</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑借款类型', 'borrowtypedetail.html?ID=3');"> 编辑</a>
+                    <a class="iconfont del" href="borrowtypedetail.html?ID=3&amp;action=del">删除</a>
+                </td>
+            </tr>
+          
+    <tr class="pager">
+        <td colspan="7"><div class="pages"><span class="remind">共找到<strong>4</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/sys/borrowtypelist.html?action=search&amp;type=%E7%B1%BB%E5%9E%8B%E5%90%8D%E7%A7%B0&amp;key=&amp;_=1434950658899" class="g-hide"></a></td>
+    </tr>                
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

@@ -1,0 +1,28 @@
+﻿html, body {
+  height: 100%;
+  overflow: hidden;
+  min-width: 650px;
+  background: #eff3f3; }
+
+/* default */
+#right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  overflow: auto;
+  background: #eff3f3; }
+
+#right.on {
+  left: 200px; }
+
+#main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; }
+
+/*# sourceMappingURL=default.css.map */

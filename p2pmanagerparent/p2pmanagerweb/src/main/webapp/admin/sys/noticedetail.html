@@ -1,0 +1,72 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	系统公告 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <form action="" method="post" class="auto" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <div class="m-content">
+                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th><i class="iconfont fcred-3"> </i>公告标题 </th>
+                        <td><input type="text" placeholder="请输入公告标题" name="title" class="w250" data-vtype="must" maxlength="100" value="" data-vmsg="请输入公告标题"></td>
+                    </tr>
+                    <tr>
+                        <th><i class="iconfont fcred-3"> </i>排序值</th>
+                        <td>
+                            <input type="text" name="orderBy" class="w60 ui-int" value="0" data-vtype="must|number" data-vmsg="请输入排序|排序必须为数字"><em>数值越大越靠前</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><i class="iconfont fcred-3"> </i>公告内容</th>
+                        <td><textarea name="detail" data-vtype="must" data-vmsg="请输入公告内容"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>查看操作组<br>(不选为所有操作组)</th>
+                        <td>
+                            <ul class="info-limit">
+                                    <li class="w190"><div class="ui-checkbox"><label><input type="checkbox" name="targetGroupIds" value="1">运营组 </label></div></li>
+                                
+                                    <li class="w190"><div class="ui-checkbox"><label><input type="checkbox" name="targetGroupIds" value="2">技术组 </label></div></li>
+                                
+                                    <li class="w190"><div class="ui-checkbox"><label><input type="checkbox" name="targetGroupIds" value="3">风控组 </label></div></li>
+                                
+                                    <li class="w190"><div class="ui-checkbox"><label><input type="checkbox" name="targetGroupIds" value="4">客服组 </label></div></li>
+                                
+                                    <li class="w190"><div class="ui-checkbox"><label><input type="checkbox" name="targetGroupIds" value="5">财务组 </label></div></li>
+                                
+                                    <li class="w190"><div class="ui-checkbox"><label><input type="checkbox" name="targetGroupIds" value="6">业务组 </label></div></li>
+                                </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>开始时间</th>
+                        <td><input type="text" name="startAt" id="startAt" value="2017-09-22 13:25:48" class="ui-date w150 ui-datetime" data-maxdate="#endAt"></td>
+                    </tr>
+                    <tr>
+                        <th>结束时间</th>
+                        <td><input type="text" name="endAt" id="endAt" value="" class="ui-date w150 ui-datetime" data-mindate="#startAt"><em>不填写则长期有效</em></td>
+                    </tr>
+                    <tr>
+                        <th>添加时间</th>
+                        <td>2017-09-22 13:25:48</td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+<div class="ui-calendar" style="box-shadow: rgb(102, 102, 102) 1px 2px 5px; zoom: 1;"><div class="calendar-title"><a href="javascript:" class="calendar-nextmonth">&gt;&gt;</a><a href="javascript:" class="calendar-prevmonth">&lt;&lt;</a><a href="javascript:" class="ui-calendarYear"></a><a href="javascript:" class="ui-calendarMonth"></a></div><div class="calendar-body"><div class="calendar-week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div class="calendar-day"></div><div class="calendar-time">时间 <input type="text" maxlength="2" class="calendar-time-h">:<input type="text" maxlength="2" class="calendar-time-m">:<input type="text" maxlength="2" class="calendar-time-s"></div></div><div class="calendar-foot"><input type="button" class="ui-calendarClear c-important" value="清空"> <input type="button" class="ui-calendarToday c-obvious" value="今天"> <input type="button" class="ui-calendarConfirm c-priority" value="确定"></div></div><div class="ui-calendar" style="box-shadow: rgb(102, 102, 102) 1px 2px 5px; zoom: 1;"><div class="calendar-title"><a href="javascript:" class="calendar-nextmonth">&gt;&gt;</a><a href="javascript:" class="calendar-prevmonth">&lt;&lt;</a><a href="javascript:" class="ui-calendarYear"></a><a href="javascript:" class="ui-calendarMonth"></a></div><div class="calendar-body"><div class="calendar-week"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div><div class="calendar-day"></div><div class="calendar-time">时间 <input type="text" maxlength="2" class="calendar-time-h">:<input type="text" maxlength="2" class="calendar-time-m">:<input type="text" maxlength="2" class="calendar-time-s"></div></div><div class="calendar-foot"><input type="button" class="ui-calendarClear c-important" value="清空"> <input type="button" class="ui-calendarToday c-obvious" value="今天"> <input type="button" class="ui-calendarConfirm c-priority" value="确定"></div></div></body></html>

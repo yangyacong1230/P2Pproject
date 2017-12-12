@@ -1,0 +1,271 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+    <form action="" method="post" class="auto" beforesubmit="setFormJson();" onsuccess="parent.$.jPopupEdit.close();">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <div class="m-content">
+                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th>会员类型名称 </th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>备注说明</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="info-listhead" colspan="2">基本资料</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <dl class="edittabs" id="formEdit">
+                                <dt>
+                                    <label class="add" data-template="tmpModule"><span>新增模块</span></label>
+                                </dt>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <input type="hidden" name="formJson" id="formJson">
+            </div>
+        </div>
+    </form>
+    <script type="text/template" id="tmpModule">
+        <div class="pa10">
+            <input type="hidden" data-to="ModuleCallCode" />
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th class="g-fcenter">字段名称</th>
+                    <th class="g-fcenter">字段类型</th>
+                    <th class="g-fcenter">字段数据(来源数据全局设置)/说明</th>
+                    <th class="g-fcenter">是否必填</th>
+                    <th class="g-fcenter">操作</th>
+                </tr>                              
+                <tr>
+                    <td colspan="5">
+                        <span class="ui-checkbox"><label><input type="checkbox" data-to="Open" /> 允许对外公开</label></span>
+                        <span class="pl10">完成该模块审核获得：</span>
+                        <span class="pl10">现金奖励：<input type="text" class="w100 ui-float" data-to="Amount" value="0.00" data-vtype="must|money" data-vmsg="请输入现金奖励|金额值输入错误" /></span>
+                        <span class="pl10">信用评分：<input type="text" class="w60 ui-int" data-to="Credit" value="0" data-vtype="must|number" data-vmsg="请输入信用奖励|评分值输入错误"  /></span>
+                        <span class="pl10">会员积分：<input type="text" class="w60 ui-int" data-to="Score" value="0" data-vtype="must|number" data-vmsg="请输入积分奖励|积分值输入错误"  /></span>
+                        <span class="pl10"><input type="button" class="btn-base c-normal iconfont g-right js-addBtn" value="&#xe67a; 新增" /></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <script type="text/template" id="tmpField">
+        <tr>
+            <td class="g-fcenter"><input type="text" class="w200" data-to="Name" /><input type="hidden" data-to="CallCode" /></td>
+            <td class="g-fcenter"><select data-to="Type" id="fieldType" name="fieldType">
+	<option value="0">文本类型</option>
+	<option value="1">单图片上传</option>
+	<option value="2">多图片上传</option>
+	<option value="3">单文件上传</option>
+	<option value="4">多文件上传</option>
+	<option value="5">地区选择类型</option>
+	<option value="6">地区选择+详情地址</option>
+	<option value="7">数值类型</option>
+	<option value="8">金额类型</option>
+	<option value="9">日期类型</option>
+	<option value="10">百分比类型</option>
+	<option value="11">备注类型</option>
+	<option value="101">下拉选择类型</option>
+	<option value="102">单选类型</option>
+	<option value="103">多选类型</option>
+</select></td>
+            <td class="g-fleft">
+                <input type="text" class="w200" data-to="Description" />
+                <select data-to="BaseFormCallCode" style="display:none;" id="baseForm" name="baseForm">
+	<option value="">请选择..</option>
+	<option value="JieKuanYongTu">借款用途</option>
+	<option value="DanWeiXingZhi">单位性质</option>
+	<option value="DanWeiZhiWu">单位职务</option>
+	<option value="GongZuoNianXian">工作年限</option>
+	<option value="ShouRuShuiPing">收入水平</option>
+	<option value="DanXiangYouWu">单项有/无</option>
+	<option value="SheHuiGuanXi">社会关系</option>
+	<option value="HunYinZhuangKuang">N婚姻状况</option>
+	<option value="ZiNvQingKuang">子女情况</option>
+	<option value="XueLiShuiPing">学历水平</option>
+	<option value="ZhiYe">职业</option>
+	<option value="ZhiYeZhuangTai">职业状态</option>
+	<option value="ZhuFangTiaoJian">住房条件</option>
+	<option value="ChanYeQuanShu">产业权属</option>
+</select>
+            </td>
+            <td class="g-fcenter"><div class="ui-checkbox"><label><input type="checkbox" data-to="IsMust" /> 必填</label></div></td>
+            <td class="g-fcenter"><a href="javascript:void(0);" class="mr10 iconfont" data-ref="up">&#xe622;上移</a><a href="javascript:void(0);" class="mr10 iconfont" data-ref="down">&#xe661;下移</a><a href="javascript:void(0);" class="iconfont" data-ref="del">&#xe611;删除</a></td>
+        </tr> 
+    </script>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/core/Scripts/edittabs.js"></script>
+    <script>
+        var getCurrentIndex = function() {
+            var labels = $('#formEdit dt label');
+            return labels.index(labels.filter('.on'));
+        };
+
+        function typeChange() {
+            var val = parseInt($(this).val());
+            var td = $(this).closest('td').next();
+
+            if (val > 100) {
+                td.find('select').show();
+                td.find('input').hide();
+            } else {
+                td.find('input').show();
+                td.find('select').val('').hide();
+            }
+        };
+
+        //添加
+        $('#formEdit').on('click', '.js-addBtn', function () {
+            var html = document.getElementById('tmpField').innerHTML;
+            html = $(html);
+            if (getCurrentIndex() > 0) {
+                html.find('input[data-to=IsMust]').attr('disabled', 'disabled');
+            }
+            html.find('select[data-to=Type]').change(typeChange);
+            $(this).closest('tr').before(html);
+        });
+
+        //上移/下移/删除
+        $('#formEdit').on('click', 'a', function () {
+            var me = $(this);
+
+            if (me.is('[data-ref=up]')) {
+
+                var tr = me.closest('tr');
+                if (tr.prevAll(':not(.js-system)').length > 1)
+                    tr.prev().before(tr);
+                else
+                    tr.closest('table').find('tr:last').before(tr);
+
+            } else if (me.is('[data-ref=down]')) {
+
+                var tr = me.closest('tr');
+                if (tr.nextAll(':not(.js-system)').length > 1)
+                    tr.next().after(tr);
+                else
+                    tr.closest('table').find('tr:first').after(tr);
+
+            } else if (me.is('[data-ref=del]')) {
+                me.closest('tr').remove();
+            }
+        });
+
+        //保存时获取设置Json
+        function setFormJson()
+        {
+            var result = [];
+            var labels = $('#formEdit dt label span');
+
+            $('#formEdit dd').each(function (i, n) {
+                n = $(n);
+
+                var module = {
+                    Name: $(labels.eq(i)).text(),
+                    CallCode: n.find('input[data-to=ModuleCallCode]').val(),
+                    Open: n.find('input[data-to=Open]')[0].checked,
+                    Reward: {
+                        Amount: parseFloat(n.find('input[data-to=Amount]').val().replace(/,/g,'')),
+                        Credit: parseInt(n.find('input[data-to=Credit]').val()),
+                        Score: parseInt(n.find('input[data-to=Score]').val())
+                    },
+                    Fields: []
+                };
+
+                var trs = n.find('tr:not(.js-system)'), len = trs.length;
+                $.each(trs, function (j, m) {
+                    if (j == 0 || j + 1 >= len)
+                        return;
+
+                    m = $(m);
+                    var obj = {
+                        CallCode: m.find('input[data-to=CallCode]').val(),
+                        Name: m.find('input[data-to=Name]').val(),
+                        Type: m.find('select[data-to=Type]').val(),
+                        Description: m.find('input[data-to=Description]').val(),
+                        BaseFormCallCode: m.find('select[data-to=BaseFormCallCode]').val(),
+                        IsMust: m.find('input[data-to=IsMust]')[0].checked
+                    };
+
+                    if (obj.Name)
+                        module.Fields.push(obj);
+                });
+
+                if (module.Fields.length)
+                    result.push(module);
+
+            });
+
+            $('#formJson').val(utils.toJsonString(result));
+        }
+
+        //编辑时初始化数据
+        (function initForm() {
+            var data = null;
+
+            if (data) {
+                var formEdit = $('#formEdit'), addLabel = formEdit.find('dt .add');
+
+                $.each(data, function(i, n) {                    
+                    var dd = null;
+                    dd = $('<dd class="g-hide">' + document.getElementById('tmpModule').innerHTML + '</dd>');
+                    dd.find('input[data-to=ModuleCallCode]').val(n.CallCode);
+                    dd.find('input[data-to=Amount]').val(n.Reward.Amount);
+                    dd.find('input[data-to=Credit]').val(n.Reward.Credit);
+                    dd.find('input[data-to=Score]').val(n.Reward.Score);
+                    dd.find('input[data-to=Open]')[0].checked = n.Open;
+                    var tr = dd.find('tr:last');
+
+                    $.each(n.Fields, function(j, m) {
+                        var html = document.getElementById('tmpField').innerHTML;
+                        html = $(html);
+                        if (i > 0) html.find('input[data-to=IsMust]').attr('disabled', 'disabled');
+                        html.find('select[data-to=Type]').change(typeChange);
+                        html.find('input[data-to=CallCode]').val(m.CallCode);
+                        html.find('input[data-to=Name]').val(m.Name);
+                        html.find('select[data-to=Type]').val(m.Type);
+
+                        var desc = html.find('input[data-to=Description]');
+                        desc.val(m.Description);
+                        var formCode = html.find('select[data-to=BaseFormCallCode]');
+                        formCode.val(m.BaseFormCallCode);
+                        if (m.Type > 100) {
+                            formCode.show();
+                            desc.hide();
+                        }
+                        if (m.IsMust) html.find('input[data-to=IsMust]')[0].checked = true;
+
+                        tr.before(html);
+                    });
+
+                    addLabel.before('<label><a href="javascript:void(0)" class="iconfont edit">&#xe642;</a><a href="javascript:void(0)" class="iconfont moveleft">&#xe675;</a><span>' + n.Name + '</span><a href="javascript:void(0)" class="iconfont moveright">&#xe676;</a><a href="javascript:void(0)" class="iconfont remove">&#xe634;</a></label>');
+                    formEdit.append(dd);
+                });
+
+                if (data.length) {
+                    formEdit.find('dt label:first').trigger('click');
+                }
+            }
+        })();
+    </script>
+
+
+
+</body></html>

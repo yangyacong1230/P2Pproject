@@ -1,0 +1,63 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	会员基本资料设置 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">会员基本资料列表</a></dt>
+    <dd style="width: 1516px;">
+        <form action="?action=search" method="get" class="m-search">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>资料筛选:</th>
+                    <td>
+                        <select id="type" name="type" data-olddisabled="false">
+	<option value="会员类型">会员类型</option>
+</select>
+                        <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr>                
+            </tbody></table>            
+        </form>
+        <div class="m-content">            
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="20%" class="">类型名称</th>
+                    <th width="65%" class="g-fleft">备注信息</th>
+                    <th width="15%">操作</th>
+                </tr><tr id="tr2">
+                <td class="">我要借款</td>
+                <td class="g-fleft">借款用户所属会员类型</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:void(0);" onclick="$.jPopupEdit('编辑会员基本资料', 'usertypeinfoformdetail.html?ID=2');"> 编辑</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr1" class="list-alt">
+                <td class="">我要投资</td>
+                <td class="g-fleft">投资会员所属会员类型</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:void(0);" onclick="$.jPopupEdit('编辑会员基本资料', 'usertypeinfoformdetail.html?ID=1');"> 编辑</a>
+                </td>
+            </tr>   
+        
+    <tr class="pager">
+        <td colspan="3"><div class="pages"><span class="remind">共找到<strong>2</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/sys/usertypeinfoformlist.html?action=search&amp;type=%E4%BC%9A%E5%91%98%E7%B1%BB%E5%9E%8B&amp;key=&amp;_=1434950942303" class="g-hide"></a></td>
+    </tr>                
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

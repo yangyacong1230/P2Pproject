@@ -1,0 +1,9 @@
+﻿@import "base/setting";
+@import "base/function/all";
+
+html,body{height:100%; overflow:hidden; min-width:650px; background:nth($gery,1);}
+/* default */
+#right{position:absolute; top:0; bottom:0; right:0; left:0; height:100%; overflow:auto;}
+#right.on{left:200px;}
+#main{position:absolute; top:0; bottom:0; width:100%; height:100%;}
+#my{position:fixed; top:0; right:0; background:nth($navy,2); z-index:1;}

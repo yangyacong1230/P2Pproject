@@ -1,0 +1,100 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	额度调整申请 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form class="auto" method="post" action="/admin/member/userquotadetail.html" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>会员账号</th>
+                    <td class="g-fbold"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=0');"></a></td>
+                </tr>
+                <tr>
+                    <th>用户额度明细</th>
+                    <td>
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th class="info-listhead" width="60%">借款类型</th>
+                                <th class="info-listhead" width="20%">单次最大借款金额</th>
+                                <th class="info-listhead" width="20%">该用户拥有额度</th>
+                                <th class="info-listhead" width="20%">该用户可用额度</th>
+                            </tr>
+                            
+                                    <tr>
+                                        <td class="g-fcenter">抵押标</td>
+                                        <td class="g-fcenter">300,000.00 元</td>                                        
+                                        <td class="g-fcenter">0.00 元</td>
+                                        <td class="g-fcenter">0.00 元</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td class="g-fcenter">信用标</td>
+                                        <td class="g-fcenter">1,000,000.00 元</td>                                        
+                                        <td class="g-fcenter">0.00 元</td>
+                                        <td class="g-fcenter">0.00 元</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td class="g-fcenter">净值标</td>
+                                        <td class="g-fcenter">10,000.00 元</td>                                        
+                                        <td class="g-fcenter">0.00 元</td>
+                                        <td class="g-fcenter">0.00 元</td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td class="g-fcenter">娱乐标</td>
+                                        <td class="g-fcenter">100,000.00 元</td>                                        
+                                        <td class="g-fcenter">0.00 元</td>
+                                        <td class="g-fcenter">0.00 元</td>
+                                    </tr>
+                                
+                        </table>
+                        <em>如申请调整成功后额度仍为0，请检查该用户是否进行实名认证或所在会员组是否支持发布此类型借款。</em>  
+                    </td>
+                </tr>
+                <tr>
+                    <th>需变更额度的借款类型</th>
+                    <td>
+                        <select id="borrowTypeId" name="borrowTypeId">
+	<option value="1">信用标</option>
+	<option value="4">娱乐标</option>
+</select>  
+                        <em>尽支持额度参考值为【用户主动申请或用户组额度】的借款类型。</em>                      
+                    </td>
+                </tr>
+                <tr>
+                    <th>将额度调整为</th>
+                    <td>
+                        <input type="text" name="applyAmount" class="w120 ui-int" value="0" data-vtype="number" data-vmsg="额度必须为数字"> 元
+                        <em>请输入需申请变更的金额。</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>申请有效期限</th>
+                    <td><input type="text" name="expires" placeholder="长期" data-vtype="date" data-vmust="false" data-vmsg="请输入正确的日期" class="ui-date w150" /></td>
+                </tr>
+                <tr>
+                    <th>申请备注</th>
+                    <td><textarea name="applyRemark" data-vtype="must" data-vmsg="请填写申请备注"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+</body>
+</html>

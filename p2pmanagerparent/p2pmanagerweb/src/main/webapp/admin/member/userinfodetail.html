@@ -1,0 +1,362 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+
+</title>
+    <link href="/admin/res/core/styles/main.css?v=20151023175416" rel="stylesheet">
+
+</head>
+<body marginwidth="0" marginheight="0">
+<form class="auto" method="post" action="/admin/member/userinfodetail.aspx?id=3&amp;op=edit" onsuccess="parent.$.jPopupEdit.close(true);">
+    <div class="m-editbar">
+        <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+        <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+    </div>
+    <div class="m-content m-editcontent">
+        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+            <tbody><tr>
+                <th>会员账号</th>
+                <td class="g-fbold"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.aspx?id=3');">sdfsdf</a></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <dl class="edittabs" id="formTabs">
+                        <dt>
+
+                            <label class="on"><span>基本情况(未完善)</span></label>
+
+                            <label><span>联系方式(未完善)</span></label>
+
+                            <label><span>单位资料(未完善)</span></label>
+
+                            <label><span>产业经营(未完善)</span></label>
+
+                            <label><span>财务状况(未完善)</span></label>
+
+                            <label><span>社会关系(未完善)</span></label>
+
+                        </dt>
+
+                        <dd class="on">
+                            <div class="pa10">
+                                <input type="hidden" class="js-moduleCallCode" name="moduleCallCode" value="JiBenQingKuang">
+                                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tbody><tr><th>籍贯</th><td><span id="JiBenQingKuang_JiGuan"><select id="JiBenQingKuang_JiGuan_province" name="JiBenQingKuang_JiGuan_province"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><script type="text/template" class="js-script">$('#JiBenQingKuang_JiGuan').cascade({ data: areadata, names: ['JiBenQingKuang_JiGuan_province', 'JiBenQingKuang_JiGuan_city', 'JiBenQingKuang_JiGuan_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+
+                                    <tr><th>婚姻</th><td><select name="JiBenQingKuang_HunYin"><option value="">请选择</option><option value="未婚">未婚</option><option value="已婚">已婚</option><option value="离异">离异</option><option value="丧偶">丧偶</option></select></td></tr>
+
+                                    <tr><th>子女</th><td><select name="JiBenQingKuang_ZiNv"><option value="">请选择</option><option value="无">无</option><option value="1个">1个</option><option value="2个">2个</option><option value="3个以上">3个以上</option></select></td></tr>
+
+                                    <tr><th>最高学历</th><td><select name="JiBenQingKuang_ZuiGaoXueLi"><option value="">请选择</option><option value="小学">小学</option><option value="高中">高中</option><option value="中专">中专</option><option value="专科">专科</option><option value="本科">本科</option><option value="研究生">研究生</option><option value="博士">博士</option><option value="博士后">博士后</option><option value="其他">其他</option></select></td></tr>
+
+                                    <tr><th>职业</th><td><select name="JiBenQingKuang_ZhiYe"><option value="">请选择</option><option value="在线学生">在线学生</option><option value="固定工作者">固定工作者</option><option value="自由职业者">自由职业者</option><option value="待业/无业/失业">待业/无业/失业</option><option value="退休">退休</option><option value="其它">其它</option></select></td></tr>
+
+                                    <tr><th>职业状态</th><td><select name="JiBenQingKuang_ZhiYeZhuangTai"><option value="">请选择</option><option value="私营业主">私营业主</option><option value="网络商家">网络商家</option><option value="工薪阶层">工薪阶层</option></select></td></tr>
+
+                                    <tr><th>月收入</th><td><select name="JiBenQingKuang_YueShouRu"><option value="">请选择</option><option value="1000元以下">1000元以下</option><option value="1001-2000">1001-2000</option><option value="2001-3000">2001-3000</option><option value="3001-4000">3001-4000</option><option value="4001-5000">4001-5000</option><option value="5001-8000">5001-8000</option><option value="8001-10000">8001-10000</option><option value="10001-30000">10001-30000</option><option value="30001-50000">30001-50000</option><option value="50000以上">50000以上</option></select></td></tr>
+
+                                    <tr><th>社保</th><td><select name="JiBenQingKuang_SheBao"><option value="">请选择</option><option value="无">无</option><option value="有">有</option></select></td></tr>
+
+                                    <tr><th>住房条件</th><td><select name="JiBenQingKuang_ZhuFangTiaoJian"><option value="">请选择</option><option value="租房">租房</option><option value="自有住房">自有住房</option><option value="两套以上住房">两套以上住房</option><option value="其他">其他</option></select></td></tr>
+
+                                    <tr><th>是否购车</th><td><select name="JiBenQingKuang_ShiFouGouChe"><option value="">请选择</option><option value="无">无</option><option value="有">有</option></select></td></tr>
+
+                                    <tr><th>是否已有相关贷款</th><td><select name="JiBenQingKuang_ShiFouYiYouXiangGuanDaiKuan"><option value="">请选择</option><option value="无">无</option><option value="有">有</option></select></td></tr>
+
+                                    <tr><th>个人描述</th><td><textarea name="JiBenQingKuang_GeRenMiaoShu"></textarea></td></tr>
+
+
+                                    </tbody></table>
+                            </div>
+                        </dd>
+
+                        <dd>
+                            <div class="pa10">
+                                <input type="hidden" class="js-moduleCallCode" name="moduleCallCode" value="LianXiFangShi">
+                                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tbody><tr><th>其它手机号码</th><td><input type="text" name="LianXiFangShi_QiTaShouJiHaoMa" value=""></td></tr>
+
+                                    <tr><th>其它邮箱</th><td><input type="text" name="LianXiFangShi_QiTaYouXiang" value=""></td></tr>
+
+                                    <tr><th>QQ号码</th><td><input type="text" name="LianXiFangShi_QQHaoMa" value=""></td></tr>
+
+                                    <tr><th>MSN</th><td><input type="text" name="LianXiFangShi_MSN" value=""></td></tr>
+
+                                    <tr><th>淘宝旺旺</th><td><input type="text" name="LianXiFangShi_TaoBaoWangWang" value=""></td></tr>
+
+                                    <tr><th>住宅电话</th><td><input type="text" name="LianXiFangShi_ZhuZhaiDianHua" value=""></td></tr>
+
+                                    <tr><th>邮政编码</th><td><input type="text" name="LianXiFangShi_YouZhengBianMa" value=""></td></tr>
+
+                                    <tr><th>现居住地地址</th><td><span id="LianXiFangShi_XianJuZhuDiDiZhi" class="ui-areaform"><select id="LianXiFangShi_XianJuZhuDiDiZhi_province" name="LianXiFangShi_XianJuZhuDiDiZhi_province"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><input type="text" name="LianXiFangShi_XianJuZhuDiDiZhi_addr" class="w300" placeholder="请输入详细地址" value=""><script type="text/template" class="js-script">$('#LianXiFangShi_XianJuZhuDiDiZhi').cascade({ data: areadata, names: ['LianXiFangShi_XianJuZhuDiDiZhi_province', 'LianXiFangShi_XianJuZhuDiDiZhi_city', 'LianXiFangShi_XianJuZhuDiDiZhi_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+
+                                    <tr><th>常用收货地址</th><td><span id="LianXiFangShi_ChangYongShouHuoDiZhi" class="ui-areaform"><select id="LianXiFangShi_ChangYongShouHuoDiZhi_province" name="LianXiFangShi_ChangYongShouHuoDiZhi_province"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><input type="text" name="LianXiFangShi_ChangYongShouHuoDiZhi_addr" class="w300" placeholder="请输入详细地址" value=""><script type="text/template" class="js-script">$('#LianXiFangShi_ChangYongShouHuoDiZhi').cascade({ data: areadata, names: ['LianXiFangShi_ChangYongShouHuoDiZhi_province', 'LianXiFangShi_ChangYongShouHuoDiZhi_city', 'LianXiFangShi_ChangYongShouHuoDiZhi_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+
+
+                                    </tbody></table>
+                            </div>
+                        </dd>
+
+                        <dd>
+                            <div class="pa10">
+                                <input type="hidden" class="js-moduleCallCode" name="moduleCallCode" value="DanWeiZiLiao">
+                                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tbody><tr><th>公司名称</th><td><input type="text" name="DanWeiZiLiao_GongSiMingCheng" value=""></td></tr>
+
+                                    <tr><th>公司性质</th><td><select name="DanWeiZiLiao_GongSiXingZhi"><option value="">请选择</option><option value="政府机关">政府机关</option><option value="国有企业">国有企业</option><option value="台（港，奥）资企业">台（港，奥）资企业</option><option value="外资企业">外资企业</option><option value="合资企业">合资企业</option><option value="个体户">个体户</option><option value="事业性单位">事业性单位</option><option value="私营企业">私营企业</option></select></td></tr>
+
+                                    <tr><th>单位职务</th><td><select name="DanWeiZiLiao_DanWeiZhiWu"><option value="">请选择</option><option value="财务总监">财务总监</option><option value="财务主管">财务主管</option><option value="审计/税务">审计/税务</option><option value="总账/成本">总账/成本</option><option value="会计人员">会计人员</option><option value="人力资源总监">人力资源总监</option><option value="人力资源经理/主管">人力资源经理/主管</option><option value="招聘经理/主管">招聘经理/主管</option><option value="薪资福利经理/主管">薪资福利经理/主管</option><option value="财务经理">财务经理</option><option value="培训经理/主管">培训经理/主管</option><option value="人事专员/助理">人事专员/助理</option><option value="行长/副行长">行长/副行长</option><option value="信贷/信用管理">信贷/信用管理</option><option value="资产管理/评估">资产管理/评估</option><option value="投融资项目/基金">投融资项目/基金</option><option value="外汇管理/国际结算">外汇管理/国际结算</option><option value="风险管理">风险管理</option><option value="证券/期货">证券/期货</option><option value="客户经理/主管">客户经理/主管</option><option value="核保/理赔">核保/理赔</option><option value="保险代理人/内勤">保险代理人/内勤</option><option value="银行专员/柜台">银行专员/柜台</option><option value="精算师">精算师</option><option value="编辑/记者/文案">编辑/记者/文案</option><option value="版面设计">版面设计</option><option value="平面设计">平面设计</option><option value="装潢/陈列设计">装潢/陈列设计</option><option value="纺织/服装设计">纺织/服装设计</option><option value="工艺品/珠宝设计">工艺品/珠宝设计</option><option value="经理">经理</option><option value="主任">主任</option><option value="生物工程">生物工程</option><option value="药物注册">药物注册</option><option value="临床研究/协调">临床研究/协调</option><option value="药物研发/分析工程师">药物研发/分析工程师</option><option value="化学工程师">化学工程师</option><option value="环保工程师">环保工程师</option><option value="化工人员">化工人员</option><option value="结构/建筑工程师">结构/建筑工程师</option><option value="土建工程师/建造师">土建工程师/建造师</option><option value="机电/给排水/暖通工程师">机电/给排水/暖通工程师</option><option value="工程造价师/预决算">工程造价师/预决算</option><option value="监理/安全工程师">监理/安全工程师</option><option value="房地产开发/策划">房地产开发/策划</option><option value="园林景观/城市规划师">园林景观/城市规划师</option><option value="物业管理">物业管理</option><option value="房地产评估/中介/交易">房地产评估/中介/交易</option><option value="电子/电路工程师">电子/电路工程师</option><option value="电气工程师">电气工程师</option><option value="半导体工程师">半导体工程师</option><option value="测试工程师">测试工程师</option><option value="自动化工程师">自动化工程师</option><option value="光学工程师">光学工程师</option><option value="电力工程师">电力工程师</option><option value="水利/水电工程师">水利/水电工程师</option><option value="单片机/DLC/DSP/底层软件开发">单片机/DLC/DSP/底层软件开发</option><option value="其他工程师">其他工程师</option><option value="技术人员">技术人员</option><option value="助理">助理</option><option value="厂长/副厂长">厂长/副厂长</option><option value="生产经理/车间主任">生产经理/车间主任</option><option value="产品开发">产品开发</option><option value="工业/产品设计">工业/产品设计</option><option value="生产/计划/调度">生产/计划/调度</option><option value="质量管理">质量管理</option><option value="项目管理">项目管理</option><option value="工程设备管理">工程设备管理</option><option value="安全/健康/环境管理">安全/健康/环境管理</option><option value="生产工艺/技术">生产工艺/技术</option><option value="技工">技工</option><option value="机械工程师">机械工程师</option><option value="维修工程师">维修工程师</option><option value="机械设计/制图">机械设计/制图</option><option value="机电工程师">机电工程师</option><option value="模具工程师">模具工程师</option><option value="精密机械/仪器仪表">精密机械/仪器仪表</option><option value="船舶工程师">船舶工程师</option><option value="冲压/注塑/焊接">冲压/注塑/焊接</option><option value="餐饮/娱乐管理">餐饮/娱乐管理</option><option value="酒店/宾馆管理">酒店/宾馆管理</option><option value="服务人员/领班">服务人员/领班</option><option value="导游/旅行顾问/票务">导游/旅行顾问/票务</option><option value="营业员/收银员">营业员/收银员</option><option value="技术总监/首席技术执行官">技术总监/首席技术执行官</option><option value="技术经理">技术经理</option><option value="项目经理">项目经理</option><option value="系统分析工程师">系统分析工程师</option><option value="ERP应用顾问">ERP应用顾问</option><option value="数据库工程师/管理员">数据库工程师/管理员</option><option value="软件开发工程师">软件开发工程师</option><option value="硬件开发工程师">硬件开发工程师</option><option value="信息支持/安全维护">信息支持/安全维护</option><option value="网页设计/编辑">网页设计/编辑</option><option value="通讯工程师">通讯工程师</option><option value="多媒体/游戏开发">多媒体/游戏开发</option><option value="采购经理/主管">采购经理/主管</option><option value="采购专员/助理">采购专员/助理</option><option value="贸易经理/主管">贸易经理/主管</option><option value="市场咨询/调研">市场咨询/调研</option><option value="创意与策划">创意与策划</option><option value="客服经理/主管">客服经理/主管</option><option value="客服专员/助理">客服专员/助理</option><option value="客户关系管理">客户关系管理</option><option value="客户咨询/热线支持">客户咨询/热线支持</option><option value="销售总监">销售总监</option><option value="销售经理">销售经理</option><option value="业务拓展经理">业务拓展经理</option><option value="销售主管/主任">销售主管/主任</option><option value="售前/售后支持">售前/售后支持</option><option value="销售工程师">销售工程师</option><option value="销售代表">销售代表</option><option value="医药代表">医药代表</option><option value="销售助理">销售助理</option><option value="专业顾问">专业顾问</option><option value="咨询师">咨询师</option><option value="调研员">调研员</option><option value="英语翻译">英语翻译</option><option value="日语翻译">日语翻译</option><option value="德语翻译">德语翻译</option><option value="法语翻译">法语翻译</option><option value="俄语翻译">俄语翻译</option><option value="西班牙语翻译">西班牙语翻译</option><option value="其他翻译">其他翻译</option><option value="董事/总经理/总裁">董事/总经理/总裁</option><option value="首席执行官/运营官">首席执行官/运营官</option><option value="营运总监/经理">营运总监/经理</option><option value="合伙人">合伙人</option><option value="行政总监">行政总监</option><option value="行政经理">行政经理</option><option value="主管/主任">主管/主任</option><option value="助理/秘书">助理/秘书</option><option value="前台/文员">前台/文员</option><option value="物流经理/主管">物流经理/主管</option><option value="物流专员/助理">物流专员/助理</option><option value="物料/仓库管理">物料/仓库管理</option><option value="供应链">供应链</option><option value="单证/报关员">单证/报关员</option><option value="律师/法务">律师/法务</option><option value="能源/动力">能源/动力</option><option value="医疗/护理">医疗/护理</option><option value="科研人员">科研人员</option><option value="培训/教育">培训/教育</option><option value="储备干部/培训生">储备干部/培训生</option><option value="在校学生">在校学生</option><option value="其他职位">其他职位</option></select></td></tr>
+
+                                    <tr><th>工作年限</th><td><select name="DanWeiZiLiao_GongZuoNianXian"><option value="">请选择</option><option value="一年以内">一年以内</option><option value="一年以上">一年以上</option><option value="二年以上">二年以上</option><option value="三年以上">三年以上</option><option value="四年以上">四年以上</option><option value="五年以上">五年以上</option></select></td></tr>
+
+                                    <tr><th>公司地址</th><td><span id="DanWeiZiLiao_GongSiDiZhi" class="ui-areaform"><select id="DanWeiZiLiao_GongSiDiZhi_province" name="DanWeiZiLiao_GongSiDiZhi_province"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><input type="text" name="DanWeiZiLiao_GongSiDiZhi_addr" class="w300" placeholder="请输入详细地址" value=""><script type="text/template" class="js-script">$('#DanWeiZiLiao_GongSiDiZhi').cascade({ data: areadata, names: ['DanWeiZiLiao_GongSiDiZhi_province', 'DanWeiZiLiao_GongSiDiZhi_city', 'DanWeiZiLiao_GongSiDiZhi_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+
+                                    <tr><th>工资水平</th><td><select name="DanWeiZiLiao_GongZiShuiPing"><option value="">请选择</option><option value="1000元以下">1000元以下</option><option value="1001-2000">1001-2000</option><option value="2001-3000">2001-3000</option><option value="3001-4000">3001-4000</option><option value="4001-5000">4001-5000</option><option value="5001-8000">5001-8000</option><option value="8001-10000">8001-10000</option><option value="10001-30000">10001-30000</option><option value="30001-50000">30001-50000</option><option value="50000以上">50000以上</option></select></td></tr>
+
+                                    <tr><th>公司电话</th><td><input type="text" name="DanWeiZiLiao_GongSiDianHua" value=""></td></tr>
+
+                                    <tr><th>工作电话</th><td><input type="text" name="DanWeiZiLiao_GongZuoDianHua" value=""></td></tr>
+
+                                    <tr><th>劳动合同</th><td>
+                                        <div id="DanWeiZiLiao_LaoDongHeTongResult" class="mb10 ui-imageupload"></div>
+                                        <div class="pl136 js-noem" id="DanWeiZiLiao_LaoDongHeTongInput">
+                                            <input type="hidden" name="DanWeiZiLiao_LaoDongHeTong" id="DanWeiZiLiao_LaoDongHeTong" value="">
+                                        </div>
+                                        <div id="DanWeiZiLiao_LaoDongHeTongFile" class="uploadify" style="height: 32px; width: 120px;"><object id="SWFUpload_0" type="application/x-shockwave-flash" data="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151136" width="120" height="32" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151136"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2FAdmin%2FMember%2F..%2Fres%2Fuploadify%2FSwfUpload.aspx%3Ftype%3Dimage&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=admin%3D6BaAFtPHJ5BSRsU1wu7J-snim7hC-6JUIqsg7HcibQY%253D&amp;filePostName=Filedata&amp;fileTypes=*.png%3B*.jpg%3B*.jpeg%3B*.gif%3B*.bmp%3B&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=32&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="DanWeiZiLiao_LaoDongHeTongFile-button" class="uploadify-button iconfont" style="height: 32px; line-height: 32px; width: 120px;"><span class="uploadify-button-text"> 上传图片</span></div></div><div id="DanWeiZiLiao_LaoDongHeTongFile-queue" class="uploadify-queue"></div></td></tr>
+
+
+                                    </tbody></table>
+                            </div>
+                        </dd>
+
+                        <dd>
+                            <div class="pa10">
+                                <input type="hidden" class="js-moduleCallCode" name="moduleCallCode" value="ChanYeJingYing">
+                                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tbody><tr><th>产业名称</th><td><input type="text" name="ChanYeJingYing_ChanYeMingCheng" value=""></td></tr>
+
+                                    <tr><th>产业权属</th><td><input type="text" name="ChanYeJingYing_ChanYeQuanShu" value=""></td></tr>
+
+                                    <tr><th>经营地址</th><td><input type="text" name="ChanYeJingYing_JingYingDiZhi" value=""></td></tr>
+
+                                    <tr><th>网址</th><td><input type="text" name="ChanYeJingYing_WangZhi" value=""></td></tr>
+
+                                    <tr><th>成立日期</th><td><input type="text" name="ChanYeJingYing_ChengLiRiQi" value=""></td></tr>
+
+                                    <tr><th>租金</th><td><input type="text" name="ChanYeJingYing_ZuJin" value=""></td></tr>
+
+                                    <tr><th>租期</th><td><input type="text" name="ChanYeJingYing_ZuQi" value=""></td></tr>
+
+                                    <tr><th>税务证号</th><td><input type="text" name="ChanYeJingYing_ShuiWuZhengHao" value=""></td></tr>
+
+                                    <tr><th>税务登记证上传</th><td>
+                                        <div id="ChanYeJingYing_ShuiWuDengJiZhengShangChuanResult" class="mb10 ui-imageupload"></div>
+                                        <div class="pl136 js-noem" id="ChanYeJingYing_ShuiWuDengJiZhengShangChuanInput">
+                                            <input type="hidden" name="ChanYeJingYing_ShuiWuDengJiZhengShangChuan" id="ChanYeJingYing_ShuiWuDengJiZhengShangChuan" value="">
+                                        </div>
+                                        <div id="ChanYeJingYing_ShuiWuDengJiZhengShangChuanFile" class="uploadify" style="height: 32px; width: 120px;"><object id="SWFUpload_1" type="application/x-shockwave-flash" data="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151142" width="120" height="32" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151142"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_1&amp;uploadURL=%2FAdmin%2FMember%2F..%2Fres%2Fuploadify%2FSwfUpload.aspx%3Ftype%3Dimage&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=admin%3D6BaAFtPHJ5BSRsU1wu7J-snim7hC-6JUIqsg7HcibQY%253D&amp;filePostName=Filedata&amp;fileTypes=*.png%3B*.jpg%3B*.jpeg%3B*.gif%3B*.bmp%3B&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=32&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="ChanYeJingYing_ShuiWuDengJiZhengShangChuanFile-button" class="uploadify-button iconfont" style="height: 32px; line-height: 32px; width: 120px;"><span class="uploadify-button-text"> 上传图片</span></div></div><div id="ChanYeJingYing_ShuiWuDengJiZhengShangChuanFile-queue" class="uploadify-queue"></div></td></tr>
+
+                                    <tr><th>工商营业执照</th><td><input type="text" name="ChanYeJingYing_GongShangYingYeZhiZhao" value=""></td></tr>
+
+                                    <tr><th>工商营业执照上传</th><td>
+                                        <div id="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuanResult" class="mb10 ui-imageupload"></div>
+                                        <div class="pl136 js-noem" id="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuanInput">
+                                            <input type="hidden" name="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuan" id="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuan" value="">
+                                        </div>
+                                        <div id="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuanFile" class="uploadify" style="height: 32px; width: 120px;"><object id="SWFUpload_2" type="application/x-shockwave-flash" data="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151144" width="120" height="32" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151144"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_2&amp;uploadURL=%2FAdmin%2FMember%2F..%2Fres%2Fuploadify%2FSwfUpload.aspx%3Ftype%3Dimage&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=admin%3D6BaAFtPHJ5BSRsU1wu7J-snim7hC-6JUIqsg7HcibQY%253D&amp;filePostName=Filedata&amp;fileTypes=*.png%3B*.jpg%3B*.jpeg%3B*.gif%3B*.bmp%3B&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=32&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuanFile-button" class="uploadify-button iconfont" style="height: 32px; line-height: 32px; width: 120px;"><span class="uploadify-button-text"> 上传图片</span></div></div><div id="ChanYeJingYing_GongShangYingYeZhiZhaoShangChuanFile-queue" class="uploadify-queue"></div></td></tr>
+
+                                    <tr><th>组织机构代码</th><td><input type="text" name="ChanYeJingYing_ZuZhiJiGouDaiMa" value=""></td></tr>
+
+                                    <tr><th>组织机构代码上传</th><td>
+                                        <div id="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuanResult" class="mb10 ui-imageupload"></div>
+                                        <div class="pl136 js-noem" id="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuanInput">
+                                            <input type="hidden" name="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuan" id="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuan" value="">
+                                        </div>
+                                        <div id="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuanFile" class="uploadify" style="height: 32px; width: 120px;"><object id="SWFUpload_3" type="application/x-shockwave-flash" data="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151146" width="120" height="32" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="../res/uploadify/uploadify.swf?v=909646&amp;preventswfcaching=1432603151146"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_3&amp;uploadURL=%2FAdmin%2FMember%2F..%2Fres%2Fuploadify%2FSwfUpload.aspx%3Ftype%3Dimage&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=admin%3D6BaAFtPHJ5BSRsU1wu7J-snim7hC-6JUIqsg7HcibQY%253D&amp;filePostName=Filedata&amp;fileTypes=*.png%3B*.jpg%3B*.jpeg%3B*.gif%3B*.bmp%3B&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=32&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuanFile-button" class="uploadify-button iconfont" style="height: 32px; line-height: 32px; width: 120px;"><span class="uploadify-button-text"> 上传图片</span></div></div><div id="ChanYeJingYing_ZuZhiJiGouDaiMaShangChuanFile-queue" class="uploadify-queue"></div></td></tr>
+
+                                    <tr><th>全年盈利/亏损额度</th><td><input type="text" name="ChanYeJingYing_QuanNianYingLiKuiSunEDu" value=""></td></tr>
+
+
+                                    </tbody></table>
+                            </div>
+                        </dd>
+
+                        <dd>
+                            <div class="pa10">
+                                <input type="hidden" class="js-moduleCallCode" name="moduleCallCode" value="CaiWuZhuangKuang">
+                                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tbody><tr><th>月收入总额</th><td><input type="text" name="CaiWuZhuangKuang_YueShouRuZongE" class="ui-float w100" value="" data-vtype="money" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+                                    <tr><th>收入组成明细</th><td><textarea name="CaiWuZhuangKuang_ShouRuZuChengMingXi"></textarea></td></tr>
+
+                                    <tr><th>月支出总额</th><td><input type="text" name="CaiWuZhuangKuang_YueZhiChuZongE" class="ui-float w100" value="" data-vtype="money" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+                                    <tr><th>支出组成明细</th><td><textarea name="CaiWuZhuangKuang_ZhiChuZuChengMingXi"></textarea></td></tr>
+
+                                    <tr><th>信用/抵押借款情况</th><td><select name="CaiWuZhuangKuang_XinYongDiYaJieKuanQingKuang"><option value="">请选择</option><option value="无">无</option><option value="有">有</option></select></td></tr>
+
+                                    <tr><th>借款总金额</th><td><input type="text" name="CaiWuZhuangKuang_JieKuanZongJinE" class="ui-float w100" value="" data-vtype="money" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+                                    <tr><th>剩余未还款总金额</th><td><input type="text" name="CaiWuZhuangKuang_ShengYuWeiHuanKuanZongJinE" class="ui-float w100" value="" data-vtype="money" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+                                    <tr><th>是否有信用卡</th><td><div class="ui-radio"><label><input type="radio" name="CaiWuZhuangKuang_ShiFouYouXinYongKa" value="无">无</label> <label><input type="radio" name="CaiWuZhuangKuang_ShiFouYouXinYongKa" value="有">有</label> </div></td></tr>
+
+                                    <tr><th>信用卡最高额度</th><td><input type="text" name="CaiWuZhuangKuang_XinYongKaZuiGaoEDu" class="ui-float w100" value="" data-vtype="money" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+
+                                    </tbody></table>
+                            </div>
+                        </dd>
+
+                        <dd>
+                            <div class="pa10">
+                                <input type="hidden" class="js-moduleCallCode" name="moduleCallCode" value="SheHuiGuanXi">
+                                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tbody><tr><th>第一联系人</th><td><input type="text" name="SheHuiGuanXi_DiYiLianXiRen" value=""></td></tr>
+
+                                    <tr><th>与本人关系</th><td><select name="SheHuiGuanXi_YuBenRenGuanXi"><option value="">请选择</option><option value="配偶">配偶</option><option value="父亲">父亲</option><option value="母亲">母亲</option><option value="兄弟姐妹">兄弟姐妹</option><option value="子女">子女</option></select></td></tr>
+
+                                    <tr><th>手机号码</th><td><input type="text" name="SheHuiGuanXi_ShouJiHaoMa" class="ui-int w60" value="" data-vtype="number" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+                                    <tr><th>工作单位</th><td><input type="text" name="SheHuiGuanXi_GongZuoDanWei" value=""></td></tr>
+
+                                    <tr><th>单位地址</th><td><span id="SheHuiGuanXi_DanWeiDiZhi" class="ui-areaform"><select id="SheHuiGuanXi_DanWeiDiZhi_province" name="SheHuiGuanXi_DanWeiDiZhi_province"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><input type="text" name="SheHuiGuanXi_DanWeiDiZhi_addr" class="w300" placeholder="请输入详细地址" value=""><script type="text/template" class="js-script">$('#SheHuiGuanXi_DanWeiDiZhi').cascade({ data: areadata, names: ['SheHuiGuanXi_DanWeiDiZhi_province', 'SheHuiGuanXi_DanWeiDiZhi_city', 'SheHuiGuanXi_DanWeiDiZhi_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+
+                                    <tr><th>第二联系人</th><td><input type="text" name="SheHuiGuanXi_DiErLianXiRen" value=""></td></tr>
+
+                                    <tr><th>与本人关系</th><td><select name="SheHuiGuanXi_YuBenRenGuanXi1"><option value="">请选择</option><option value="配偶">配偶</option><option value="父亲">父亲</option><option value="母亲">母亲</option><option value="兄弟姐妹">兄弟姐妹</option><option value="子女">子女</option></select></td></tr>
+
+                                    <tr><th>手机号码</th><td><input type="text" name="SheHuiGuanXi_ShouJiHaoMa1" class="ui-int w60" value="" data-vtype="number" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+
+                                    <tr><th>工作单位</th><td><input type="text" name="SheHuiGuanXi_GongZuoDanWei1" value=""></td></tr>
+
+                                    <tr><th>单位地址</th><td><span id="SheHuiGuanXi_DanWeiDiZhi1" class="ui-areaform"><select id="SheHuiGuanXi_DanWeiDiZhi1_province" name="SheHuiGuanXi_DanWeiDiZhi1_province"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><input type="text" name="SheHuiGuanXi_DanWeiDiZhi1_addr" class="w300" placeholder="请输入详细地址" value=""><script type="text/template" class="js-script">$('#SheHuiGuanXi_DanWeiDiZhi1').cascade({ data: areadata, names: ['SheHuiGuanXi_DanWeiDiZhi1_province', 'SheHuiGuanXi_DanWeiDiZhi1_city', 'SheHuiGuanXi_DanWeiDiZhi1_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+
+
+                                    </tbody></table>
+                            </div>
+                        </dd>
+
+                    </dl>
+                </td>
+            </tr>
+            </tbody></table>
+    </div>
+</form>
+
+<script src="/admin/res/core/scripts/jquery.js?v=20150624215012"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js?v=20150624215010"></script>
+<script src="/admin/res/core/scripts/core.js?v=20150624215012"></script>
+<script src="/admin/res/core/scripts/main.js?v=20160120154951"></script>
+
+<script src="/admin/res/core/scripts/edittabs.js?v=20150624215012"></script>
+<script src="/res/core/scripts/areadata.js?v=20150624215102"></script>
+<script>
+    //配合后端的表单编辑的js
+    var formService = {
+        initJs: function() {
+            $('script.js-script').each(function (i, n) {
+                eval(n.innerHTML);
+            });
+        },
+        initUpload: function(id, multi, isfile) {
+            setTimeout(function () {
+                $('#' + id + 'File').uploadify({
+                    width: 120,
+                    height: 32,
+                    multi: multi ? true : false,
+                    removeTimeout: 0,
+                    swf: '../res/uploadify/uploadify.swf?v=909646',
+                    uploader: '../res/uploadify/SwfUpload.aspx?type=' + (isfile ? 'file' : 'image'),
+                    buttonClass:'iconfont',
+                    buttonText: '&#xe629; 上传' + (isfile ? '文件' : '图片'),
+                    fileTypeExts: isfile ? '*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.flv;*.swf;*.mkv;*.avi;*.rm;*.rmvb;*.mpeg;*.mpg;*.ogg;*.ogv;*.mov;*.wmv;*.mp4;*.webm;*.mp3;*.wav;*.mid;*.rar;*.zip;*.tar;*.gz;*.7z;*.bz2;*.cab;*.iso;*.doc;*.docx;*.xls;*.xlsx;*.ppt;*.pptx;*.pdf;*.txt;*.md;*.xmx;' : '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                    formData: {
+                        admin : '6BaAFtPHJ5BSRsU1wu7J-snim7hC-6JUIqsg7HcibQY='
+                    },
+                    onUploadSuccess: function(res, data) {
+                        eval('var d = ' + data);
+                        if (d.Success) {
+                            var showHtml = isfile ? '<a href="' + d.Message + '" target="_blank">点击下载查看</a>' : '<a href="' + d.Message + '" target="_blank"><img width="150" src="' + d.Message + '" alt="" /></a>';
+                            if (multi) {
+                                var vals = $('#' + id + 'Input');
+                                vals.append('<input type="hidden" name="' + id + '" value="' + d.Message + '" />');
+                                vals.find('.js-uploadMustInput').val(d.Message).trigger('blur');
+                                $('#' + id + 'Result').append(showHtml);
+                            } else {
+                                $('#' + id).val(d.Message).trigger('blur');
+                                $('#' + id + 'Result').html(showHtml);
+                            }
+                        } else {
+                            $.jError(d.Message);
+                        }
+                    }
+                });
+            }, 10);
+        },
+        init: function() {
+            formService.initJs();
+            $('input.js-imageUpload').each(function(i, n) {
+                n = $(n);
+                formService.initUpload(n.attr('data-id'), false, false);
+            });
+            $('input.js-imageMultiUpload').each(function(i, n) {
+                n = $(n);
+                formService.initUpload(n.attr('data-id'), true, false);
+            });
+            $('input.js-fileUpload').each(function(i, n) {
+                n = $(n);
+                formService.initUpload(n.attr('data-id'), false, true);
+            });
+            $('input.js-fileMultiUpload').each(function(i, n) {
+                n = $(n);
+                formService.initUpload(n.attr('data-id'), true, true);
+            });
+
+            //自定义表单多图片或文件上传处理
+            $('.ui-imageuploadmulti, .ui-fileuploadmulti').on('mouseenter', 'a', function () {
+                $(this).append($('<i class="iconfont fs22 listvalue-delete" title="删除">&#xe65a;</i>').click(function() {
+                    var a = $(this).closest('a'), src = a.attr('href');
+                    var inputs = a.closest('div').next();
+                    inputs.find('[value="' + src + '"]').not('.js-uploadMustInput').remove();
+                    if (inputs.find('input').length == 1) inputs.find('.js-uploadMustInput').val('');
+                    a.remove();
+                    return false;
+                }));
+            }).on('mouseleave', 'a', function () {
+                $(this).find('i').remove();
+            });
+        }
+    };
+
+    formService.init();
+
+    var imgObj=$('.ui-customuploads').before('<div class="customuploads-new"><div class="customuploads-col"></div><div class="customuploads-col"></div><div class="customuploads-col"></div></div>').find('img').each(function(){
+        var me=$(this),
+            myparent=me.parent(),
+            newImgList=myparent.prev(),
+            imgUrl=me.attr('src'),
+            indexNum=me.index()+1;
+        if(indexNum%3==0){
+            indexNum=2;
+        }else if(indexNum%3==1){
+            indexNum=0;
+        }else{
+            indexNum=1;
+        };
+
+        newImgList.find('.customuploads-col').eq(indexNum).append('<a target="_blank" href="'+ imgUrl +'"><img src="'+ imgUrl +'" width="'+newImgList.find('.customuploads-col').width()+'" /></a>');
+        if(myparent.find('img').length==newImgList.find('img').length){
+            myparent.remove();
+        }
+    });
+    $('.m-info').imageWidthReset({ 'pWidth': 210 });
+</script>
+
+
+
+</body></html>

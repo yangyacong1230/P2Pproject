@@ -1,0 +1,52 @@
+﻿@charset "UTF-8";
+
+.ui-tabs {
+    margin: 0 10px 0 10px;
+
+    dt {
+        height: 40px;
+        line-height: 39px;
+        padding-top: 5px;
+        @include float;
+        a {
+            font-size: 15px;
+            color: nth($ash,2);
+            background-color: nth($gery,2);
+            border-top: 1px solid nth($gery,3);
+            border-left: 1px solid nth($gery,3);
+            border-right: 1px solid nth($gery,3);
+            border-top-left-radius: $baseRadius;
+            -moz-border-radius-topleft: $baseRadius;
+            border-top-right-radius: $baseRadius;
+            -moz-border-radius-topright: $baseRadius;
+            padding: 0 30px;
+            margin-left: 10px;
+            display: block;
+            overflow: hidden;
+            white-space:nowrap;
+            &:hover {
+                color: nth($baseColor,1);
+                background-color: nth($jade,1);
+                border-color: nth($jade,3);
+            }
+        }
+
+        a.on {
+            color:nth($navy,2);
+            background-color: nth($baseColor,1);
+            border-bottom: 0;
+            bottom: -1px;
+            position: relative;
+            &:hover {
+                border-color: nth($ash,1);
+            }
+        }
+    }
+
+    dd {
+        background-color: nth($baseColor,1);
+        border: 1px solid nth($gery,3);
+        clear: both;
+        overflow: hidden;
+    }
+}

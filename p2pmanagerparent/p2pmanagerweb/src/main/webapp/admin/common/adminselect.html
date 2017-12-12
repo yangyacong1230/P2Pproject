@@ -1,0 +1,70 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	债权转让列表 -千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">债权转让列表</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>债权筛选:</th>
+                        <td>
+                            <select id="status" name="status">
+	<option value="">全部债权</option>
+	<option value="0">发布转让中</option>
+	<option value="200">转让成功</option>
+	<option value="-2">系统撤标</option>
+	<option value="-1">用户撤标</option>
+</select>
+                            <select id="type" name="type">
+	<option value="转让人">转让人</option>
+	<option value="债权名称">债权名称</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>                    
+                </table>                
+            </form>
+            <div class="m-content">
+                <div class="m-oper">                    
+                    
+                        <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value="&#xe612; 全选" />
+                        <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value="&#xe644; 反选" />
+                        <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="债权转让列表" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value="&#xe611; 删除选中" />
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="5%">选取</th>
+                        <th width="5%">编号</th>
+                        <th width="10%">转让人</th>
+                        <th width="20%" class="g-fleft">债权名称</th>
+                        <th width="10%">债权金额</th>
+                        <th width="5%">剩余期数</th>                        
+                        <th width="15%">已投金额/人数</th>
+                        <th width="10%">结束时间</th>
+                        <th width="10%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

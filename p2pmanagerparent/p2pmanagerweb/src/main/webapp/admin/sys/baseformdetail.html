@@ -1,0 +1,89 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+<form class="auto" method="post" action="" beforesubmit="getValues();" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th><i class="iconfont fcred-3"> </i>数据类别名称</th>
+                    <td><input type="text" name="name" class="w250" placeholder="请输入主分类名" maxlength="50" value="" data-vtype="must" data-vmsg="请输入数据类别名称"></td>
+                </tr>
+                <tr>
+                    <th>数值列表</th>
+                    <td>
+                        <ul class="ui-listvalue">
+                                                
+                        </ul>
+                        <input type="hidden" id="valuesJson" name="valuesJson">
+                        <input type="button" class="btn-base c-normal  iconfont" value=" 新增" onclick="$('.ui-listvalue').append(document.getElementById('tmpListValue').innerHTML);">
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </form>
+    <script type="text/template" id="tmpListValue">
+        <li style="height:52px;">
+             <a href="javascript:void(0)" class="iconfont fs22 listvalue-delete" title="删除">&#xe65a;</a>
+            <div>
+                <label>值：<input type="text" placeholder="请输入子类名" class="vname w180"/></label> 
+            </div>
+            <a href="javascript:void(0)" class="iconfont fs30 listvalue-up" title="上移" style="height:52px; line-height:52px;">&#xe622;</a>
+            <a href="javascript:void(0)" class="iconfont fs30 listvalue-down" title="下移" style="height:52px; line-height:52px;">&#xe661;</a>
+        </li>
+    </script>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        function getValues() {
+            var obj = [];
+
+            $('.ui-listvalue li').each(function (i, n) {
+                n = $(n), v = $.trim(n.find('.vname').val());
+                if (v) obj.push(v);
+            });
+
+            $('#valuesJson').val(utils.toJsonString(obj));
+        };
+
+        $('.ui-listvalue').on('click', 'a', function () {
+            var me = $(this);
+
+            if (me.is('.listvalue-delete')) {
+
+                me.closest('li').remove();
+
+            } else if (me.is('.listvalue-up')) {
+
+                var li = me.closest('li');
+                if (li.prev().length)
+                    li.prev().before(li);
+                else
+                    li.closest('ul').append(li);
+
+            } else if (me.is('.listvalue-down')) {
+
+                var li = me.closest('li');
+                if (li.next().length)
+                    li.next().after(li);
+                else
+                    li.closest('ul').prepend(li);
+
+            }
+        });
+    </script>
+
+
+
+</body></html>

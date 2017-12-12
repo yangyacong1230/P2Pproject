@@ -1,0 +1,70 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="exposedetail.html.cs" Inherits="WAP2P.Web.PC.Admin.Member.ExposeDetail" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form class="auto" method="post" action="" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <% =Request.QueryString["op"]  == "view" ? string.Empty : "<input type=\"submit\" class=\"btn-larger c-priority iconfont\" value=\"&#xe684; 保存\" />" %>
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>被举报用户名</th>
+                    <td class="g-fbold"><%= GetUserDisplay(Model.UserId, Model.UserName) %></td>
+                </tr>
+                <tr>
+                    <th>举报详情</th>
+                    <td><% =Model.Detail %></td>
+                </tr>
+                <tr>
+                    <th>举报人</th>
+                    <td><% =GetUserDisplay(WAP2P.Member.User.LoadByName(Model.Name).Id , Model.Name) %></td>
+                </tr>
+                <tr>
+                    <th>举报人电话</th>
+                    <td><% =CurrentAdmin.HavePermission("会员管理", "查看联系方式", "手机") ? Model.Phone : Model.Phone.HidePart() %></td>
+                </tr>
+                <tr>
+                    <th>举报人邮箱</th>
+                    <td><% =CurrentAdmin.HavePermission("会员管理", "查看联系方式", "邮箱") ? Model.Email : Model.Email.HidePart() %></td>
+                </tr>
+                <tr>
+                    <th>举报人所在区域</th>
+                    <td><% =string.IsNullOrEmpty(Model.IP) ? string.Empty : Area.GetLocationString(Model.IP) %></td>
+                </tr>
+                <tr>
+                    <th>举报时间</th>
+                    <td><% =Model.CreateAt.ToDateTimeString() %></td>
+                </tr>
+                <ruson:PermissionSpace runat="server" Module="会员管理" Function="举报信息管理" Operate="处理">
+                    <ruson:Space runat="server" ID="operation" Visible="false">
+                        <tr>
+                            <th>操作员处理</th>
+                            <td>
+                                <div class="ui-radio">
+                                    <ruson:EnumInput runat="server" ID="status" Type="Radio" TypeName="WAP2P.Member.Expose+HandleStatus,WAP2P.Member" />
+                                </div>
+                            </td>
+                        </tr>
+                    </ruson:Space>
+                </ruson:PermissionSpace>
+                    <ruson:Space runat="server" ID="see" Visible="false">
+                        <tr>
+                            <th>处理状态</th>
+                            <td>
+                                <% =Model.Status.GetDescription() %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>处理时间</th>
+                            <td><% =Model.AdminAt.ToDateTimeString() %></td>
+                        </tr>
+                        <tr>
+                            <th>处理操作员</th>
+                            <td><% =Model.AdminName %></td>
+                        </tr>
+                    </ruson:Space>
+            </table>
+        </div>
+    </form>
+</asp:Content>

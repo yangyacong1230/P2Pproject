@@ -1,0 +1,100 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	友情链接管理 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form class="auto" method="post" action="" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>链接名称</th>
+                    <td>
+                        <input type="text" name="linkName" id="linkName" class="w250" maxlength="50" data-vtype="must" data-vmsg="请输入链接名称" value="" />    
+                    </td>
+                </tr>
+                <tr>
+                    <th>链接地址</th>
+                    <td>
+                        <input type="text" name="linkUrl" id="linkUrl" class="w250" maxlength="200" data-vtype="url" data-vmsg="请输入正确的链接地址" data-vmust="false" value="" />
+                        <em>以http://开头 (如果外部链接有值时，点击链接图片将直接跳转到外部链接)</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>链接图片</th>
+                    <td>
+                        <div id="logoResult" class="mb10"></div>
+                        <div class="pl136"><input type="hidden" name="logo" id="logo" value="" /></div>
+                        <input type="file" id="logoFile" />
+                        <em>请上传尺寸为 <i class="fcred-3">167 X 53 像素</i> 的LOGO图片</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否在前台显示</th>
+                    <td><div class="ui-checkbox"><label for="isDisplay"><input type="checkbox" name="isDisplay" value="true" id="isDisplay" checked="checked" /> 启用</label></div></td>
+                </tr>
+                <tr>
+                    <th>排序值</th>
+                    <td>
+                        <input type="text" name="orderBy" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="排序必须为数字" /><em>数值越大越靠前</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>链接简介</th>
+                    <td>
+                        <textarea name="description"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>添加时间</th>
+                    <td>
+                        2017-09-22 13:04:55
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        setTimeout(function () {
+            $('#logoFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=303722',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=167&height=53',
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传链接图片',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : 'QaUn-Sv0XRVXGAwMICaPtyWQuG3OEWUlh8H0OhfR7Gc='
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#logo').val(d.Message).trigger('blur');
+                        $('#logoResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+    </script>   
+
+
+</body>
+</html>

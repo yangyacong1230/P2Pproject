@@ -1,0 +1,258 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	会员详情 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form class="auto" method="post" action="" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th width="15%" rowspan="3">会员头像</th>
+                    <td width="35%" rowspan="3">
+                        <div id="faceResult" class="mb10">
+                            
+                        </div>
+                        <div class="pl136">
+                            <input type="hidden" name="face" id="face" value="" />
+                        </div>
+                        <input type="file" id="faceFile" />
+                        <em>请上传尺寸为 <i class="fcred-3">120 X 120 像素</i> 的头像</em>
+                    </td>
+                    <th width="15%">会员账户</th>
+                    <td width="35%">
+                        <input type="text" tabindex="1" name="name" class="w150" maxlength="30" data-vtype="custom" placeholder="请输入账户名称" data-vmsg="会员账户必需以字母开头，且只能包含字母、数字和下划线。" data-vreg="^[a-zA-Z][-_a-zA-Z0-9_]*$" value=""  />
+                    </td>
+                </tr>
+                <tr>
+                    <th>登录密码</th>
+                    <td>
+                        <input type="password" name="password" tabindex="2" class="w150" placeholder="请输入用于登录的密码" maxlength="50" data-vtype="must" data-vmsg="请输入登录密码" />
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>推荐号</th>
+                    <td>
+                        保存后生成
+                    </td>
+                </tr>
+                <tr>
+                    <th>会员昵称</th>
+                    <td><input type="text" name="nickname"  tabindex="3" class="w150" placeholder="请输入会员的昵称" maxlength="50" value="" /></td>
+                    <th>所在区域</th>
+                    <td><span id="area"></span></td>
+                </tr>
+                <tr>
+                    <th>手机号码</th>
+                    <td>
+                        <input type="text" name="phone" class="w150" maxlength="20" placeholder="请输入手机号码" value="" data-vtype="phone" data-vmsg="请输入正确的手机号码"  />
+                        
+                        <input type="hidden" name="oldPhone" value="" />
+                    </td>
+                    <th>电子邮箱</th>
+                    <td>
+                        <input type="text" name="email" class="w150" maxlength="100" placeholder="请输入邮箱地址" value="" data-vtype="email" data-vmsg="请输入正确的邮箱"  /> 
+                        
+                        <input type="hidden" name="oldEmail" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>所属会员类型</th>
+                    <td><select data-vtype="must" data-vmsg="请选择会员类型" id="userTypeId" name="userTypeId">
+	<option value="">请选择</option>
+	<option value="1">我要投资</option>
+	<option value="2">我要借款</option>
+</select></td>
+                    <th>所属会员组</th>
+                    <td>
+                        <select id="upGroupId" name="UpGroupId"></select>
+                        <span class="pl30 g-hide">到期时间：
+                            <input type="text" name="upGroupExpires" class="ui-date ui-datetime" value="" /></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>是否锁定账户</th>
+                    <td><label for="isLock"><input type="checkbox" name="isLock" value="true" id="isLock" /> 锁定</label></td>
+                    <th>推荐人账号</th>
+                    <td>
+                        <input type="text" name="recommendBy" id="recommendBy" placeholder="选择或输入推荐人账号" class="w150 g-valign" maxlength="30" value="" />
+                        <input type="button" class="btn-base c-normal iconfont g-valign" value="&#xe60f;" onclick="$.jPopupEdit('选择推荐人账号', '../common/userselect.html?radio=true&fn=selectRecommend');" />
+                        <script>
+                            function selectRecommend(obj) {
+                                if (obj && obj.users && obj.users.length)
+                                    $('#recommendBy').val(obj.users[0].name);
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <th>所属业务员账号</th>
+                    <td>
+                        <input type="text" name="saleById" id="saleById" class="w150 g-valign" placeholder="选择或输入业务人员" maxlength="30" value="admin" />
+                        <input type="button" class="btn-base c-normal iconfont g-valign" value="&#xe60f;" onclick="$.jPopupEdit('选择业务员账号', '../common/adminselect.html?radio=true&fn=selectSale');" />
+                        <script>
+                            function selectSale(obj) {
+                                if (obj && obj.admins && obj.admins.length)
+                                    $('#saleById').val(obj.admins[0].name);
+                            }
+                        </script>
+                        <span class="pl30"></span>
+                    </td>
+                    <th>所属客服账号</th>
+                    <td>
+                        <input type="text" name="serviceById" id="serviceById" class="w150  g-valign" placeholder="选择或输入客服人员" maxlength="30" value="" />
+                        <input type="button" class="btn-base c-normal iconfont  g-valign" value="&#xe60f;" onclick="$.jPopupEdit('选择客服帐号', '../common/adminselect.html?radio=true&service=true&fn=selectService');" />
+                        <script>
+                            function selectService(obj) {
+                                if (obj && obj.admins && obj.admins.length)
+                                    $('#serviceById').val(obj.admins[0].name);
+                            }
+                        </script>
+                        <span class="pl30"></span>
+                    </td>
+                </tr>
+                    
+                <tr>
+                    <th>连续登录错误次数</th>
+                    <td>
+                        <input type="text" name="loginErrorCount" value="0" class="w60 ui-int" data-vtype="number" data-vmsg="请输入正确的数据值" />
+                        次
+                        <em style="">连续登录错误 5 次后，将在 15 分钟内禁止登录</em>
+                    </td>
+                    <th>连续支付错误次数</th>
+                    <td>
+                        <input type="text" name="payErrorCount" value="0" class="w60 ui-int" data-vtype="number" data-vmsg="请输入正确的数据值" />
+                        次
+                        <em style="">连续支付错误 3 次后，将在 30 分钟内禁止支付</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>注册情况</th>
+                    <td>
+                        2017-09-22 13:08:53<br />
+                        由管理员创建
+                    </td>
+                    <th>最后登陆情况</th>
+                    <td><br />
+                         
+                    </td>
+                </tr>
+                <tr>
+                    <th>积分</th>
+                    <td>0 分</td>
+                    <th>登陆次数</th>
+                    <td>0 次</td>
+                </tr>
+                <tr>
+                    <th>个性签名</th>
+                    <td colspan="3">
+                        <textarea name="signature"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/res/core/scripts/areadata.js"></script>
+    <script>
+        //会员类型，会员组。
+        var group = $('#upGroupId');
+        var defaultGroupId = 0;
+
+        var userGroupChange = function () {
+            var val = group.val();
+            if (val == '' || parseInt(val) == defaultGroupId) {
+                group.next().hide();
+            } else {
+                group.next().show();
+            }
+        };
+        group.change(userGroupChange);
+
+        var userTypeChange = function () {
+            $.ajax({
+                url: '?action=getUserGroup',
+                data: { userType: $('#userTypeId').val() },
+                dataType: 'json',
+                beforeSend: function () {
+                    group[0].length = 0;
+                    group.append('<option value="">加载中..</option>');
+                },
+                success: function (res) {
+                    group[0].length = 0;
+                    group.append('<option value="">默认组</option>');
+                    $.each(res, function (i, n) {
+                        group.append('<option value="' + n.Id + '"' + (n.Id == -1 ? ' selected="selected"' : '') + '>' + n.Name + '</option>');
+                        if (n.IsDefault) defaultGroupId = n.Id;
+                    });                    
+                    userGroupChange();
+                }
+            });
+        };
+            $('#userTypeId').change(userTypeChange);
+            userTypeChange();
+
+            $('#area').cascade({ data: areadata, names: ['provinceId', 'cityId', 'areaId'], emptyTip: '全部', values: [, , ] });
+
+        setTimeout(function() {
+            $('#faceFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=851517',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=120&height=120',
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传头像',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : 'QaUn-Sv0XRVXGAwMICaPt9V7xQRHViLFqgSa2Lg1-NI='
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#face').val(d.Message).trigger('blur');
+                        $('#faceResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });  
+        }, 10);
+
+        $('.js-quickValid').on('click',function(){
+            var me = $(this);
+            $.ajax({
+                url: '?action=quickValid',
+                data: { type: me.attr('data-type'), id:0},
+                dataType: 'json',
+                success: function (res) {
+                    if(res.Success){
+                        $.jSuccess('快速认证成功',function(){
+                            me.remove();
+                        });
+                    }
+                }
+            });
+        });
+
+    </script>
+
+
+</body>
+</html>

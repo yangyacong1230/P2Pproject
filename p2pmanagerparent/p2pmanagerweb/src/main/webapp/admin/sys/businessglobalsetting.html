@@ -1,0 +1,205 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	业务全局设置 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+    <style type="text/css">
+        .acc-order input {margin-left: 10px;}
+        .acc-order li{float: left; width: 150px; height: 36px; text-align: center; line-height: 36px; margin: 5px; border: 1px solid #ccc; box-shadow: 1px 1px 1px #ccc;}
+        .acc-order li a{margin: 0 5px; padding: 5px; font-size: 16px; visibility: hidden; color: #808080;}
+        .acc-order li:hover a {visibility: visible;}
+    </style>
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="?type=account" class="on">资金帐户设置</a></dt>
+        <dt><a href="?type=risk" class="">风控设置</a></dt>
+        <dt><a href="?type=agreement" class="">合同协议</a></dt>
+
+        
+            <dd>
+                <form action="/admin/sys/businessglobalsetting.html" method="post" class="auto" beforesubmit="setAccOrder();">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody><tr>
+                                <th>月结日</th>
+                                <td>
+                                    <input type="text" name="monthlyDay" class="w250 ui-int" data-vtype="number|range" data-vmsg="请输入正确的数字|月结日应在1-28之间" data-vmust="false" data-vmin="1" data-vmax="28" value="">
+                                    <em>表示月份中的N号，在有月结日情况下才输入此值。</em>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>每日最大充值金额</th>
+                                <td>
+                                    <input type="text" name="maxRechargeAmount" class="w250 ui-int" data-vtype="number" data-vmsg="请输入正确的充值金额" data-vmust="false" value=""> 元
+                                    <em>不填写则不限制，0为暂时停用充值。</em>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>单笔最小提现金额</th>
+                                <td>
+                                    <input type="text" name="minCashAmount" class="w250 ui-int" data-vtype="number" data-vmsg="请输入正确的金额" data-vmust="false" value=""> 元
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>每日最大提现金额</th>
+                                <td>
+                                    <input type="text" name="maxCashAmount" class="w250 ui-int" data-vtype="number" data-vmsg="请输入正确的金额" data-vmust="false" value=""> 元
+                                    <em>不填写则不限制，0为暂时停用提现。</em>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>每笔提现固定加收费用</th>
+                                <td>
+                                    <input type="text" name="cashAmountFixedFee" class="w250 ui-int" data-vtype="number" data-vmsg="请输入正确的金额" data-vmust="false" value=""> 元
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>提现代付接口标识</th>
+                                <td>
+                                    <input type="text" name="cashPayCallCode" class="w250" value="TL">
+                                    <em>对应支付设置中调用标识</em>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" class="info-listhead">会员资金帐户扣款顺序</th>
+                            </tr>
+                            
+                                    <tr>
+                                        <th>投标扣款顺序</th>
+                                        <td>
+                                            <ul class="acc-order js-accorder" data-ordertype="0">
+                                                
+                                                        <li data-id="0"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线上帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="1"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线下帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="2"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>回款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="3"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>借款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="4"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>奖励帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <th>还款扣款顺序</th>
+                                        <td>
+                                            <ul class="acc-order js-accorder" data-ordertype="1">
+                                                
+                                                        <li data-id="0"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线上帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="1"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线下帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="2"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>回款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="3"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>借款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="4"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>奖励帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <th>提现扣款顺序</th>
+                                        <td>
+                                            <ul class="acc-order js-accorder" data-ordertype="2">
+                                                
+                                                        <li data-id="3"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>借款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="0"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线上帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="1"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线下帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="2"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>回款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="4"><input class="mg5" type="checkbox" name="statu"><a href="javascript:void(0)" class="iconfont l"></a>奖励帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <th>会员组升级扣款顺序</th>
+                                        <td>
+                                            <ul class="acc-order js-accorder" data-ordertype="3">
+                                                
+                                                        <li data-id="0"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线上帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="1"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>线下帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="2"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>回款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="3"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>借款帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                                        <li data-id="4"><input class="mg5" type="checkbox" name="statu" checked="checked"><a href="javascript:void(0)" class="iconfont l"></a>奖励帐户<a href="javascript:void(0)" class="iconfont r"></a></li>
+                                                    
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                                            
+                        </tbody></table>
+                        <input type="hidden" id="valuesJson" name="valuesJson">
+                        <div class="g-fright pt10 pr5">
+                            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+                        </div>
+                    </div>
+                </form>
+            </dd>
+        
+
+        
+
+        
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/ueditor/ueditor.config.js"></script>
+    <script src="/admin/res/ueditor/ueditor.all.min.js"></script>
+    <script>        
+        function setAccOrder() {
+            var obj = [];
+            $('.js-accorder').each(function (i, n) {
+                var values = [];
+                $('li', n).each(function (j, m) {
+                    if ($(m).find('input[name=statu]').is(':checked')) 
+                        values.push($(m).attr('data-id'));
+                });
+                var order = {
+                    OrderType: $(this).attr('data-orderType'),
+                    Values: values
+                };
+                if (order)
+                    obj.push(order);
+            });
+            $('#valuesJson').val(utils.toJsonString(obj));
+        };
+
+        $('.js-accorder').on('click', 'a', function () {
+            var me = $(this), li = me.closest('li');
+            if (me.hasClass('r')) {
+                var next = li.next();
+                if (next.length)
+                    next.after(li);
+                else
+                    li.parent().prepend(li);
+            } else {
+                var pre = li.prev();
+                if (pre.length)
+                    pre.before(li);
+                else
+                    li.parent().append(li);
+            }
+        });
+    </script>
+
+
+
+</body></html>

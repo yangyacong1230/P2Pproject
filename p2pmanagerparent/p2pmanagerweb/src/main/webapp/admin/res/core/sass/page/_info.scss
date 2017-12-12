@@ -1,0 +1,114 @@
+﻿@charset 'utf-8';
+table.m-info{
+    border:1px solid nth($gery,3);
+    .line{border-bottom:3px solid nth($gery,3);}
+     th{
+         background:nth($gery,1);
+         height:45px;
+         border:1px solid nth($gery,3);
+         width:150px; 
+         padding:8px 10px;
+         text-align: right; 
+         padding-right:10px; 
+         font-weight:bold;
+         white-space:nowrap;
+     }
+     td{
+         border:1px solid nth($gery,3);
+         background:nth($baseColor,1);
+         text-align:left; 
+         padding:8px 10px;
+         white-space:nowrap;
+         em{
+             margin-top:4px;
+             color:nth($ash,1);
+             display:block;
+             font-size:12px;
+             font-family:$baseSongTi;
+         }
+     }
+     .info-listhead{
+         text-align:center;
+         font-size:16px;
+         font-weight:bold;
+         background:nth($gery,2);
+     }
+     ul.info-limit{
+         width:60%;
+         li{
+             @include float;
+         }
+     }
+     table.info-inlinetable {
+         border:0 none;
+         td{border:0 none; height:31px;}
+     }
+
+     .info-miniacc{
+         text-align:center;
+         color:nth($infoColor,1);
+         background:nth($infoColor,2);
+         border:1px solid nth($gery,3);
+         border-bottom:none;
+         height:25px;
+         padding:0;
+         font-size:16px;
+         font-weight:bold;
+         position:relative;
+         padding:7px 0; 
+         span{
+             position:absolute;
+             font-weight:normal;
+             font-size:18px;
+             right:2%;
+             cursor:pointer;
+         }
+     }
+
+     input[type="text"],input[type="password"],select,textarea{
+         &:focus{
+             border:1px solid nth($jade,2);
+         }
+     }
+     input[type="text"],input[type="password"]{
+         &:focus{
+             padding:5px 6px;
+         }
+     }
+}
+
+.m-trackinfo{
+    li{
+        margin-top:5px;
+        margin-bottom:5px;
+    }
+    span{
+        font-size:12px;
+        color:nth($ash,3);
+    }
+    .track-remark{
+        color:nth($navy,3);
+        display:block;
+        background:nth($gery,2);
+        padding:10px 3px;
+        white-space:normal;
+        margin-top:5px;
+    }
+}
+
+        .customuploads-new{
+            overflow:hidden;
+            .customuploads-col{
+                float:left;
+                margin:5px;
+                a{
+                   margin:10px 0;
+                   border:2px solid nth($gery,3);
+                   display:block;
+                   overflow:hidden;
+                   &:hover{
+                     border:2px solid nth($blue,1);
+                   }
+                }
+            }
+        }

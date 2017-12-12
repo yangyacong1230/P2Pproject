@@ -1,0 +1,214 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+    <form class="auto" method="post" action="" beforesubmit="setFormJson();" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th><i class="iconfont fcred-3"> </i>资料名称</th>
+                    <td><input type="text" name="name" placeholder="请输入合适的借款资料名称" class="w250" maxlength="50" value="" data-vtype="must" data-vmsg="请输入资料名称"></td>
+                </tr>
+                <tr>
+                    <th>启用状态</th>
+                    <td><div class="ui-checkbox"><label for="active"><input type="checkbox" name="active" value="true" id="active" checked="checked"> 启用资料</label></div></td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td><textarea name="remark"></textarea></td>
+                </tr>
+                <tr>
+                    <th class="info-listhead" colspan="2">借款资料设置选项</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%" id="tbFields">
+                            <tbody><tr>
+                                <th class="g-fcenter">字段名称</th>
+                                <th class="g-fcenter">字段类型</th>
+                                <th class="g-fcenter">字段数据(来源数据全局设置)/说明</th>
+                                <th class="g-fcenter">是否必填</th>
+                                <th class="g-fcenter">操作</th>
+                            </tr>                              
+                            <tr>
+                                <td colspan="5">
+                                    完成该模块审核获得：
+                                    <span class="pl50">现金奖励：<input type="text" name="rewardAmount" class="w100 ui-float" value="0.00" data-vtype="must|money" data-vmsg="请输入现金奖励|金额值输入错误"></span>
+                                    <span class="pl50">信用评分：<input type="text" name="rewardCredit" class="w60 ui-int" value="0" data-vtype="must|number" data-vmsg="请输入信用奖励|评分值输入错误"></span>
+                                    <span class="pl50">会员积分：<input type="text" name="rewardScore" class="w60 ui-int" value="0" data-vtype="must|number" data-vmsg="请输入积分奖励|积分值输入错误"></span>
+                                    <span class="pl50"><input type="button" class="btn-base c-normal  iconfont g-right" id="btnAdd" value=" 新增"></span>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <input type="hidden" id="formJson" name="formJson">
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </form>
+    <script type="text/template" id="tmpField">
+        <tr>
+            <td class="g-fcenter"><input type="text" class="w200" data-to="Name" /><input type="hidden" data-to="CallCode" /></td>
+            <td class="g-fcenter"><select data-to="Type" id="fieldType" name="fieldType">
+	<option value="0">文本类型</option>
+	<option value="1">单图片上传</option>
+	<option value="2">多图片上传</option>
+	<option value="3">单文件上传</option>
+	<option value="4">多文件上传</option>
+	<option value="5">地区选择类型</option>
+	<option value="6">地区选择+详情地址</option>
+	<option value="7">数值类型</option>
+	<option value="8">金额类型</option>
+	<option value="9">日期类型</option>
+	<option value="10">百分比类型</option>
+	<option value="11">备注类型</option>
+	<option value="101">下拉选择类型</option>
+	<option value="102">单选类型</option>
+	<option value="103">多选类型</option>
+</select></td>
+            <td class="g-fleft">
+                <input type="text" class="w200" data-to="Description" />
+                <select data-to="BaseFormCallCode" style="display:none;" id="baseForm" name="baseForm">
+	<option value="">请选择..</option>
+	<option value="JieKuanYongTu">借款用途</option>
+	<option value="DanWeiXingZhi">单位性质</option>
+	<option value="DanWeiZhiWu">单位职务</option>
+	<option value="GongZuoNianXian">工作年限</option>
+	<option value="ShouRuShuiPing">收入水平</option>
+	<option value="DanXiangYouWu">单项有/无</option>
+	<option value="SheHuiGuanXi">社会关系</option>
+	<option value="HunYinZhuangKuang">N婚姻状况</option>
+	<option value="ZiNvQingKuang">子女情况</option>
+	<option value="XueLiShuiPing">学历水平</option>
+	<option value="ZhiYe">职业</option>
+	<option value="ZhiYeZhuangTai">职业状态</option>
+	<option value="ZhuFangTiaoJian">住房条件</option>
+	<option value="ChanYeQuanShu">产业权属</option>
+</select>
+            </td>
+            <td class="g-fcenter"><div class="ui-checkbox"><label><input type="checkbox" data-to="IsMust" /> 必填</label></div></td>
+            <td class="g-fcenter"><a href="javascript:void(0);" class="mr10 iconfont" data-ref="up">&#xe622;上移</a><a href="javascript:void(0);" class="mr10 iconfont" data-ref="down">&#xe661;下移</a><a href="javascript:void(0);" class="iconfont" data-ref="del">&#xe611;删除</a></td>
+        </tr> 
+    </script>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        function typeChange() {
+            var val = parseInt($(this).val());
+            var td = $(this).closest('td').next();
+
+            if (val > 100) {
+                td.find('select').show();
+                td.find('input').hide();
+            } else {
+                td.find('input').show();
+                td.find('select').val('').hide();
+            }
+        };
+
+        //添加
+        $('#btnAdd').click(function () {
+            var html = document.getElementById('tmpField').innerHTML;
+            html = $(html);
+            html.find('select[data-to=Type]').change(typeChange);
+            $(this).closest('tr').before(html);
+        });
+
+        //上移/下移/删除
+        $('#tbFields').on('click', 'a', function () {
+            var me = $(this);
+
+            if (me.is('[data-ref=up]')) {
+
+                var tr = me.closest('tr');
+                if (tr.prevAll().length > 1)
+                    tr.prev().before(tr);
+                else
+                    tr.closest('table').find('tr:last').before(tr);
+
+            } else if (me.is('[data-ref=down]')) {
+
+                var tr = me.closest('tr');
+                if (tr.nextAll().length > 1)
+                    tr.next().after(tr);
+                else
+                    tr.closest('table').find('tr:first').after(tr);
+
+            } else if (me.is('[data-ref=del]')) {
+                me.closest('tr').remove();
+            }
+        });
+
+        //保存时获取设置Json
+        function setFormJson()
+        {
+            var result = [];
+            var trs = $('#tbFields tr'), len = trs.length;            
+
+            $.each(trs, function (i, n) {
+                if (i == 0 || i + 1 >= len)
+                    return;
+
+                n = $(n);
+                var obj = {
+                    CallCode: n.find('input[data-to=CallCode]').val(),
+                    Name: n.find('input[data-to=Name]').val(),
+                    Type: n.find('select[data-to=Type]').val(),
+                    Description: n.find('input[data-to=Description]').val(),
+                    BaseFormCallCode: n.find('select[data-to=BaseFormCallCode]').val(),
+                    IsMust: n.find('input[data-to=IsMust]')[0].checked
+                };
+
+                if (obj.Name)
+                    result.push(obj);
+            });
+
+            $('#formJson').val(utils.toJsonString(result));
+        }
+
+        //编辑时初始化数据
+        (function initForm() {
+            var data = null;
+
+            if (data) {
+                var tr = $('#tbFields tr:last');
+
+                $.each(data.Fields, function(i, n) {
+
+                    var html = document.getElementById('tmpField').innerHTML;
+                    html = $(html);
+                    html.find('select[data-to=Type]').change(typeChange);
+                    html.find('input[data-to=CallCode]').val(n.CallCode);
+                    html.find('input[data-to=Name]').val(n.Name);
+                    html.find('select[data-to=Type]').val(n.Type);
+
+                    var desc = html.find('input[data-to=Description]');
+                    desc.val(n.Description);
+                    var formCode = html.find('select[data-to=BaseFormCallCode]');
+                    formCode.val(n.BaseFormCallCode);
+                    if (n.Type > 100) {
+                        formCode.show();
+                        desc.hide();
+                    }
+                    if (n.IsMust) html.find('input[data-to=IsMust]')[0].checked = true;
+
+                    tr.before(html);
+                });
+            }
+        })();
+    </script>
+
+
+
+</body></html>

@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	管理首页 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="m-home">
+        <p><span>admin</span> 您上次于 <span>2017-09-25 10:06:39</span> 在 <span></span> 登录, IP：<span> 10.0.31.155 </span> , 如果对登录有疑问请尽快通知公司技术人员进行处理。</p>
+        <dl class="alt">
+            <dt><i class="iconfont g-f20">&#xe6a6;</i> 系统常规提醒</dt>
+            <dd>未处理的借款申请： <a href="borrowloan/offlineapplylist.html?from=home">11</a> 单</dd>
+            <dd>未处理的会员留言： <a href="info/guestbooklist.html?from=home">230</a> 条</dd>
+            <dd>本月注册会员： <a href="member/userlist.html?from=homeMonth">1983</a> 人</dd>
+            <dd>未指定客服会员： <a href="member/userlist.html?from=homeService">15</a> 人</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont g-f20">&#xe608;</i> 会员认证审核</dt>
+            <dd>等待实名认证：<a href="member/uservalidlist.html?status=实名认证待审核">19</a>人</dd>
+            <dd>基本资料待审核：<a href="member/userinfolist.html?from=home">16</a>人</dd>
+            <dd>借款资料待审核：<a href="member/borrowinfolist.html?status=0">16</a>份</dd>
+            <dd>借款资料待授额：<a href="member/borrowinfolist.html?status=1">16</a>份</dd>
+        </dl>
+        <dl class="alt">
+            <dt><i class="iconfont g-f20">&#xe688;</i> 账户异动提醒</dt>
+            <dd>等待审核的线下充值：<a href="account/rechargelist.html?rechargeType=1&from=home">67</a>单</dd>
+            <dd>等待审核的提现申请：<a href="account/cashapplylist.html?statusType=apply&from=home">41</a>单</dd>
+            <dd>等待放款的提现：<a href="account/cashapplylist.html?statusType=processing&from=home">31</a>单</dd>
+            <dd>等待审核的银行卡：<a href="account/bankcardlist.html?from=home">30</a>张</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont g-f20">&#xe692;</i> 借款发布提醒</dt>
+            <dd>等待审核的额度申请：<a href="member/userquotaloglist.html?from=home">1340</a>单</dd>
+            <dd>等待初审的借款：<a href="borrowloan/borrowlistfirst.html">768</a>单</dd>
+            <dd>等待满标审核的借款：<a href="borrowloan/borrowlistfull.html">345</a>单</dd>
+        </dl>
+        <dl class="alt">
+            <dt><i class="iconfont g-f20">&#xe66b;</i> 借款状态提醒</dt>
+            <dd>一天内未满的借款：<a href="borrowloan/borrowlistall.html?borrowStatus=40&bidStartAt=2017-09-21 12:58:52&bidEndAt=2017-09-22 12:58:52">8</a>单</dd>
+            <dd>三天内未满的借款：<a href="borrowloan/borrowlistall.html?borrowStatus=40&bidStartAt=2017-09-19 12:58:52&bidEndAt=2017-09-21 12:58:52">3</a>单</dd>
+            <dd>五天内未满的借款：<a href="borrowloan/borrowlistall.html?borrowStatus=40&bidStartAt=2017-09-17 12:58:52&bidEndAt=2017-09-19 12:58:52">3</a>单</dd>
+            <dd>超过五天未满的借款：<a href="borrowloan/borrowlistall.html?borrowStatus=40&bidStartAt=&bidEndAt=2017-09-17 12:58:52">1</a>单</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont g-f20">&#xe637;</i> 借款还款提醒</dt>
+            <dd>一天内到期的借款：<a href="borrowloan/borrowlistrepay.html?homeFilter=">534</a>单</dd>
+            <dd>三天内到期的借款：<a href="borrowloan/borrowlistrepay.html?homeFilter=">1280</a>单</dd>
+            <dd>五天内到期的借款：<a href="borrowloan/borrowlistrepay.html?homeFilter=">784</a>单</dd>
+            <dd>一月内到期的借款：<a href="borrowloan/borrowlistrepay.html?homeFilter=">1378</a>单</dd>
+        </dl>
+        <dl>
+            <dt><i class="iconfont g-f20">&#xe68c;</i> 借款逾期提醒</dt>
+            <dd>逾期的借款：<a href="borrowloan/borrowlistoverdue.html">321</a>单</dd>
+        </dl>
+        <dl class="alt">
+            <dt><i class="iconfont g-f20">&#xe61d;</i> 商城奖励提醒</dt>
+            <dd>免费版不支持</dd>
+        </dl>
+    </div>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        $('.m-home dl').each(function (i, n) {
+            n = $(n);
+            if (n.find('dd').length == 0) n.remove();
+        });
+
+        $('.m-home dl').find('a').each(function (i, n) {
+            n = $(n);
+            if (n.text() == '0') n.addClass('home-nonum');
+        })
+    </script>
+
+
+</body>
+</html>

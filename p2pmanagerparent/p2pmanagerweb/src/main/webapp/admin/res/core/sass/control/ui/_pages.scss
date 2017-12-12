@@ -1,0 +1,43 @@
+﻿@charset 'UTF-8';
+%pages{
+    border:1px solid nth($navy,3);
+    padding:5px 12px;
+    margin:2px;
+}
+div.pages{
+    margin:15px 10px; 
+    padding:5px; 
+    text-align:right;
+    span{
+        @extend %pages;
+    }
+    span.remind{
+        border:0 none;
+        margin:0 5px 0 5px;
+        strong{
+            margin:0 5px 0 5px;
+            color:nth($jade,2);
+        }
+    }
+    span.current{
+        color:nth($baseColor,1);
+        background:nth($navy,2);
+        border:1px solid nth($navy,3);
+    }
+    a{
+        @extend %pages;
+        text-decoration:none;
+        &:hover{
+            color:nth($baseColor,1);
+            background:nth($navy,3);
+            border:1px solid nth($navy,3);
+        }
+        &:active{ 
+            color:nth($baseColor,1);
+            background:nth($navy,1);
+            border:1px solid nth($navy,3);
+            text-decoration:none;
+        }
+    }
+}
+

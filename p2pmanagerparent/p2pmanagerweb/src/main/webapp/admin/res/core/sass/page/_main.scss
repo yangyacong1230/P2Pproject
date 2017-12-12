@@ -1,0 +1,22 @@
+﻿@charset 'utf-8';
+.m-content{margin:10px;}
+.m-zindexmin{z-index:0;}
+.m-zindexmax{z-index:100;}
+.m-editcontent{
+    padding-top:62px;
+    textarea{
+        width: 60%;
+        height: 116px;
+        resize:none;
+    }
+}
+.m-editbar{
+    border-bottom:2px solid #ddd; 
+    position:fixed;
+    top:0; 
+    left:0; 
+    right:0;
+    height:30px; 
+    background:nth($gery,1);
+    padding:15px 30px; 
+    z-index:1;}

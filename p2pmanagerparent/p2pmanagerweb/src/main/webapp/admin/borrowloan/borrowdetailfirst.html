@@ -1,0 +1,275 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowdetailfirst.html.cs" Inherits="WAP2P.Web.PC.Admin.BorrowLoan.BorrowDetailFirst" %>
+<%@ Register Src="Controls/BorrowInfo.ascx" TagPrefix="uc1" TagName="BorrowInfo" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form class="auto" method="post" action="<% =Request.RawUrl %>" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <dl class="ui-tabs">
+                <dt><a href="#valid" class="on">审核</a></dt>
+                <dt><a href="#detail">借款详情</a></dt>
+                <dd id="valid">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th>借款名称</th>
+                                <td><% =Model.Name %></td>
+                            </tr>
+                            <tr>
+                                <th>借款金额</th>
+                                <td><% =Model.LoanAmount.ToMoneyString() %> 元</td>
+                            </tr>                            
+                            <tr>
+                                <th>借款时间</th>
+                                <td><% =Model.LoanDate %> <% =Model.LoanDateUnit.GetDescription() %></td>
+                            </tr>
+                            <tr>
+                                <th>借款利率</th>
+                                <td>
+                                    <% =(WAP2P.Sys.FinanceHelper.DayRateTo(Model.LoanInterest.First().DayRate, BorrowType.LoanTimeUnit.Year, Model.InterestType, Model.CreateAt.Year) * 100).RoundX().ToInterestString() %> % （默认年化率）
+                                    <asp:Repeater runat="server" ID="rptAreaInterest" ItemType="WAP2P.BorrowLoan.Borrow.LoanInterestInfo">
+                                        <ItemTemplate>
+                                            <div class="pt5">投标金额 >= <%# Item.Amount.ToMoneyString() %> 元时，执行年化率 <%# (WAP2P.Sys.FinanceHelper.DayRateTo(Item.DayRate, BorrowType.LoanTimeUnit.Year, Model.InterestType, Model.CreateAt.Year) * 100).RoundX().ToInterestString() %>% </div>                    
+                                        </ItemTemplate>
+                                    </asp:Repeater>            
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>审核状态</th>
+                                <td>
+                                    <div class="ui-radio" id="js-status">
+                                        <label><input type="radio" name="status" value="1" <% =Model.Status == WAP2P.BorrowLoan.Borrow.BorrowStatus.发布审核未通过 ? string.Empty : " checked=\"checked\"" %> /> 审核通过</label>
+                                        <label><input type="radio" name="status" value="-1" <% =Model.Status == WAP2P.BorrowLoan.Borrow.BorrowStatus.发布审核未通过 ? " checked=\"checked\"" : string.Empty %> /> 审核失败</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="js-end">
+                                <th>审核备注</th>
+                                <td><textarea name="publishVerifyRemark"><% =Model.PublishVerifyRemark.HtmlEncode() %></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                </dd>
+                <dd id="detail" class="g-hide">
+                    <div class="m-content">
+                        <uc1:BorrowInfo runat="server" ID="borrowInfo" />
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </form>
+    <script type="text/template" id="tmpOkInfo">
+        <tr>
+            <th>封面图片</th>
+            <td>
+                <div id="coverResult" class="mb10"><% =string.Format("<img src=\"{0}\" alt=\"\">", Model.GetCover())  %></div>
+                <div class="pl136" ><input type="hidden" name="cover" id="cover" value="<% =Model.Cover.HtmlEncode() %>" /></div>
+                <input type="file" id="coverFile" />
+                <em>请上传尺寸为 <i class="fcred-3">330 X 220 像素</i> 的封面图片</em>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="ui-checkbox"><label><input type="checkbox" name="reserve" id="reserve" value="1" /> 开启预约投标</label></div>
+            </th>
+            <td>
+                <div class="mt5 mb5">
+                    对应预约项目Id <input type="text" name="reserveId" class="ui-number w150 js-need" data-vtype="must" data-vmsg="请选择预约的项目" value="<% =Model.ReserveId %>" /> 
+                    <ruson:Select runat="server" ID="selReserveId" onchange="var me = $(this); me.prev().val(me.val()); me.val('');" TipsText="选择预约项目"></ruson:Select>
+                </div>
+                <div class="mt5 mb5">
+                    预约结束时间&nbsp;&nbsp;&nbsp; <input type="text" name="reserveBidEndAt" value="<% =Model.ReserveBidEndAt.ToDateTimeString() %>" class="w150 ui-date ui-datetime js-need" data-vtype="date" data-vmsg="请输入结束时间" />
+                </div>
+                <em>当开启预约投标时，投标开始时间必须在预约结束时间之后。</em>
+            </td>
+        </tr>
+        <tr>
+            <th>业务编号</th>
+            <td><input type="text" name="busId" class="w150" value="<% =Model.BusId.HtmlEncode() %>" /></td>
+        </tr>
+        <tr>
+            <th>投标期限</th>
+            <td>
+                <div class="mt5 mb5">
+                    开始时间 <input type="text" name="bidAt" id="bidAt" data-maxdate="#bidEndAt" class="ui-date ui-dateh w150" data-vtype="must" data-vmsg="请输入投标开始时间" value="<% =(Model.BidAt ?? DateTime.Now).ToDateTimeString() %>" />
+                </div>
+                <div class="mt5 mb5">
+                    结束时间 <input type="text" name="bidEndAt" id="bidEndAt" data-mindate="#bidAt" value="<% =Model.BidEndAt.ToDateTimeString() %>" class="w150 ui-date ui-dateh" data-vtype="date" data-vmsg="请输入结束时间" />
+                </div>
+                <em>如不填写结束时间将长期有效。</em>
+            </td>
+        </tr>
+        <tr>
+            <th>投资限额</th>
+            <td>
+                <div class="mt5 mb5">
+                    单次至少投资 <input type="text" name="bidMinAmount" value="<% =Model.BidMinAmount.ToMoneyString() %>" class="w100 ui-float" /> 元 
+                </div>
+                <div class="mt5 mb5">
+                    最多可以投资 <input type="text" name="bidMaxAmount" value="<% =Model.BidMaxAmount.ToMoneyString() %>" class="w100 ui-float" /> 元
+                </div>
+                <% =Model.ByStep ? string.Format("<em>请输入 {0} 元的整数倍</em>", Model.StepAmount.ToMoneyString()) :string.Format("<em>最小投资金额必须大于或等于 {0} 元，最大投资金额不填不限制。</em>", Model.StepAmount.ToMoneyString()) %>
+            </td>
+        </tr>
+        <tr>
+            <th>智能投标</th>
+            <td>
+                <span class="ui-checkbox g-block mb5"><% =HtmlHelper.CheckBox("canAutoBid", "启动智能投标", Model.CanAutoBid) %></span>
+                <span>可自动投资金额：<input type="text" name="autoBidAmount" id="autoBidAmount" value="<% =Model.AutoBidAmount.ToMoneyString() %>" class="ui-float w100" data-vtype="money" data-vmust="false" data-vmsg="请输入正确的金额" /> 元</span>                
+            </td>
+        </tr>
+        <ruson:PermissionSpace runat="server" Module="借贷管理" Function="等待初审的借款" Operate="费用设置">
+        <tr>
+            <th>借款服务费比率</th>
+            <td>
+                <input type="text" name="loanFee" onchange="$('#js-loanFee').html(finance.toMoneyString(<% =Model.LoanAmount %> * this.value / 100));" value="<% =(Model.LoanFee * 100).ToInterestString() %>" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" /> %
+                <em>预计产生费用 <span class="fcred-2" id="js-loanFee"><% =(Model.LoanAmount * Model.LoanFee).RoundX().ToMoneyString() %></span> 元</em>
+            </td>
+        </tr>
+        <tr>
+            <th>综合服务费比率</th>
+            <td>
+                <input type="text" name="feeRate" value="<% =(Model.FeeRate * 100).ToInterestString() %>" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" /> %                
+            </td>
+        </tr>
+        <tr>
+            <th>利息管理费</th>
+            <td>
+                <% =HtmlHelper.CheckBox("needInterestFee", "收取投资人利息管理费", Model.NeedInterestFee) %>
+            </td>
+        </tr>
+        </ruson:PermissionSpace>
+        <tr>
+            <th>保证金比例</th>
+            <td>
+                <input type="text" name="marginRatio" onchange="$('#js-marginRatio').html(finance.toMoneyString(<% =Model.LoanAmount %> * this.value / 100));" value="<% =(Model.MarginRatio * 100).ToInterestString() %>" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" /> %
+                <em>预计冻结保证金 <span class="fcred-2" id="js-marginRatio"><% =(Model.LoanAmount * Model.MarginRatio).RoundX().ToMoneyString() %></span> 元</em>
+            </td>
+        </tr>
+        <tr>
+            <th>续投奖励</th>
+            <td><input type="text" name="refillCastRate" value="<% =(Model.RefillCastRate * 100).ToInterestString() %>" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" /> %
+            </td>
+
+        </tr>
+        <tr>
+            <th>保障方式</th>
+            <td><ruson:EnumSelect runat="server" ID="webSafeType" TypeName="WAP2P.BorrowLoan.Borrow+WebSafe, WAP2P.BorrowLoan"></ruson:EnumSelect></td>
+        </tr>
+        <tr>
+            <th>借款排序</th>
+            <td>
+                <input type="text" name="orderBy" class="ui-int w50" value="<% =Model.OrderBy %>" data-vtype="number" data-vmsg="请输入正确的数值" />
+            </td>
+        </tr>
+        <tr>
+            <th>推荐加色</th>
+            <td>
+                <span><% =HtmlHelper.CheckBox("homeDisplay", "首页推荐", Model.HomeDisplay) %></span>
+                <span class="ml50">标题加色
+                    <ruson:Select runat="server" ID="color">
+                    <option value="" style="background-color:#fff; color:black;">默认</option>
+                    <option value="red" style="background-color:red; color:#fff;">红色</option>
+                    <option value="blue" style="background-color:blue; color:#fff;">蓝色</option>
+                    <option value="green" style="background-color:green; color:#fff;">绿色</option>
+                    <option value="purple" style="background-color:purple; color:#fff;">紫色</option>
+                    </ruson:Select>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <th>红包使用</th>
+            <td>
+                <div class="ui-checkbox">
+                    <label><input type="checkbox" name="useRedPackage" value="true" checked="checked" /> 可以使用红包</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>担保机构</th>
+            <td><ruson:Select runat="server" ID="vouchCompanyId" TipsText="无担保"></ruson:Select></td>
+        </tr>       
+    </script>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+
+        var initTemplate = function () {
+            //智能投标
+            var autoBidChange = function () {
+                if ($('#canAutoBid')[0].checked)
+                    $('#autoBidAmount').removeAttr('disabled');
+                else
+                    $('#autoBidAmount').attr('disabled', 'disabled');
+            };
+            autoBidChange();
+            $('#canAutoBid').click(autoBidChange);
+
+            //预约
+            var reserveChange = function () {
+                var el = $('#reserve'), inputs = el.closest('tr').find('.js-need');
+                if (el.length) {
+                    if (el[0].checked) {
+                        inputs.removeAttr('disabled').attr('data-vmust', 'true');
+                        $('#selReserveId').removeAttr('disabled');
+                    }
+                    else {
+                        inputs.attr('disabled', 'disabled').val('').attr('data-vmust', 'false');
+                        $('#selReserveId').attr('disabled', 'disabled');
+                    }
+                }
+            };
+            reserveChange();
+            $('#reserve').change(reserveChange);
+
+            initUi.date();
+
+            //封面图片
+            setTimeout(function() {
+                $('#coverFile').uploadify({
+                    width: 120,
+                    height: 32,
+                    multi: false,
+                    removeTimeout: 0,
+                    swf: '../res/uploadify/uploadify.swf?v=<% =CryptoHelper.Random(100000,999999) %>',
+                    uploader: '../res/uploadify/SwfUpload.html?type=image&width=330&height=220',
+                    buttonClass:'iconfont',
+                    buttonText: '&#xe629; 上传封面图',
+                    fileTypeExts: '<% =WAP2P.Web.PC.Admin.Res.uploadify.SwfUpload.AllowImages %>',
+                    formData: {
+                        <% =WAP2P.Web.Admin.Membership.CookieName %> : '<% =Request.Cookies[WAP2P.Web.Admin.Membership.CookieName].Value %>'
+                    },
+                    onUploadSuccess: function(res, data) {
+                        eval('var d = ' + data);
+                        if (d.Success) {
+                            $('#cover').val(d.Message).trigger('blur');                    
+                            $('#coverResult').html('<img src="' + d.Message + '" />');
+                        } else {
+                            $.jError(d.Message);
+                        }
+                    }
+                });
+            }, 1);
+        };
+
+        //状态
+        var statusChange = function () {
+            var chk = $('#js-status :checked'), tr = chk.closest('tr');
+            if (chk.val() == '1') {
+                tr.after(document.getElementById('tmpOkInfo').innerHTML);
+                initTemplate();
+            } else {
+                tr.nextUntil('.js-end').remove();
+            }
+        };
+        statusChange();
+        $('#js-status').change(statusChange);
+    </script>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="list" runat="server">
+</asp:Content>

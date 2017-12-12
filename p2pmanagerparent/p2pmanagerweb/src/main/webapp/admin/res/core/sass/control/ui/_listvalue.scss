@@ -1,0 +1,80 @@
+﻿@charset "Utf-8";
+ul.ui-listvalue{
+    li{
+        border:1px solid nth($gery,3);
+        width:410px;
+        height:94px;
+        margin-bottom:5px;
+        position:relative;
+        a{
+            display:block;
+        }
+        div{
+            width:260px;
+            position:absolute;
+            top:0;
+            left:20px;
+            label{
+                display:block;
+                margin:10px;
+            }
+        }
+        .listvalue-imgbox{
+            width:300px;
+            height:120px;
+            overflow:hidden;
+        }
+       &:hover{
+        background:nth($gery,2);
+    }
+    }
+    .listvalue-delete{
+        width:16px;
+        height:16px;
+        margin: -6px 0 0 -2px;
+        color:nth($gery,3);
+        &:hover{
+            color:nth($jade,1);
+        }
+    }
+    %iconspostion{
+        position:absolute;
+        width:65px;
+        height:95px;
+        text-align:center; 
+        line-height:95px;
+        border-left:1px solid nth($gery,3);
+        &:hover{
+            background:nth($gery,2);
+        }
+    }
+    .listvalue-up{
+        @extend %iconspostion;
+        top:0;
+        right:66px; 
+    }
+    .listvalue-down{
+         @extend %iconspostion;
+        top:0;
+        right:0;
+    }
+}
+
+.t-listbox{
+    border:1px solid nth($gery,3);
+    margin:0 15px 15px 0;
+    img{
+        margin:5px;
+    }
+    span{
+        display:block;
+        background:nth($gery,1);
+        text-align:center;
+        padding:5px;
+        font-size:12px;
+        font-family:$baseSongTi;
+    }
+    &:hover{
+     border:1px solid nth($jade,2);
+    }
+}

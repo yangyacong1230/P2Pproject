@@ -1,0 +1,126 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	会员资金日志 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">会员资金日志</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>日志筛选：</th>
+                        <td>
+                            <select id="accountActionType" name="accountActionType">
+	<option value="">全部交易类型</option>
+	<option value="110">线下充值</option>
+	<option value="111">线上充值</option>
+	<option value="120">提现申请</option>
+	<option value="121">提现成功</option>
+	<option value="122">提现失败</option>
+	<option value="123">提现手续费</option>
+	<option value="210">交纳预约保证金</option>
+	<option value="211">预约用户投标</option>
+	<option value="212">预约撤消</option>
+	<option value="213">预约未投标</option>
+	<option value="214">扣除预约违约金</option>
+	<option value="220">投标</option>
+	<option value="230">投标审核</option>
+	<option value="231">借款到帐</option>
+	<option value="232">借款管理费</option>
+	<option value="233">利息管理费</option>
+	<option value="234">推荐人奖励</option>
+	<option value="235">投标奖励</option>
+	<option value="236">续投奖励</option>
+	<option value="237">发放投标奖励</option>
+	<option value="238">借款冻结保证金</option>
+	<option value="240">用户撤标</option>
+	<option value="241">系统撤标</option>
+	<option value="242">流标</option>
+	<option value="250">债权投标</option>
+	<option value="251">债权转让</option>
+	<option value="252">债权转让手续费</option>
+	<option value="310">本金还款</option>
+	<option value="311">支付借款利息</option>
+	<option value="312">支付逾期罚息</option>
+	<option value="313">收到还款本金</option>
+	<option value="314">收到还款利息</option>
+	<option value="315">收到逾期罚息</option>
+	<option value="316">还款完成解冻保证金</option>
+	<option value="317">支付提前还款违约金</option>
+	<option value="318">收到提前还款违约金</option>
+	<option value="319">支付综合费用</option>
+	<option value="410">完善基本资料奖励</option>
+	<option value="411">借款资料验证奖励</option>
+	<option value="412">活动奖励</option>
+	<option value="510">操作员调整</option>
+	<option value="511">会员升级支出</option>
+	<option value="610">认购理财方案</option>
+</select>
+                            <select id="type" name="type">
+	<option value="会员账号">会员账号</option>
+	<option value="交易方名称">交易方名称</option>
+</select>
+                            <input type="text" size="35" placeholder="输入搜索条件" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>操作时间筛选：</th>
+                        <td>
+                            <input type="text" name="startAt" id="startAt" value="" class="ui-date w150" data-maxdate="#endAt" /> 至 <input type="text" name="endAt" id="endAt" value="" class="ui-date w150" data-mindate="#startAt" />
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>影响金额筛选：</th>
+                        <td>
+                            <input type="text" name="startMoney" id="startMoney" value="" class="w150" /> 至 <input type="text" name="endMoney" id="endMoney" value="" class="w150" />
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th></th>
+                        <td><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索"  /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件"  /></td>
+                    </tr>
+                </table>  
+                <a href="javascript:void(0);" id="btnSwithMoreFilter" class="iconfont"><span>&#xe661; 显示更多筛选条件</span></a>              
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                                            
+                        <input type="button" class="oper-clear btn-smaller c-obvious excel iconfont" data-function="会员资金日志" data-operate="导出EXCEL" data-freemes="本功能仅供正式版使用。" value="&#xe61f; 导出EXCEL" />
+                       
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="3%">编号</th>
+                        <th width="7%">会员账号</th>
+                        <th width="7%">交易方名称</th>
+                        <th width="11%">交易类型</th>
+                        <th width="7%">影响金额</th>
+                        <th width="13%" class="g-fleft">详细说明</th>
+                        <th width="7%">可用余额</th>
+                        <th width="7%">冻结金额</th>
+                        <th width="7%">锁定金额</th>
+                        <th width="7%">待收金额</th>
+                        <th width="7%">待付金额</th>
+                        <th width="7%">资金总额</th>
+                        <th width="10%">操作时间</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

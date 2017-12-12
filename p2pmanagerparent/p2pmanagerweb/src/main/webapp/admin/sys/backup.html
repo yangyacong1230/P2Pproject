@@ -1,0 +1,92 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">系统备份操作</a></dt>    
+    <dd style="width: 962px;">
+        <div class="m-content">
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="15%" class="g-fleft">操作名</th>
+                    <th width="40%" class="g-fleft">说明</th>
+                    <th width="20%">自动备份</th>
+                    <th width="10%">最后备份时间</th>
+                    <th width="15%">操作</th>
+                </tr>
+               <tr>
+                   <td class="g-fleft">数据库备份</td>
+                   <td class="g-fleft">将站点数据库全量容灾备份，在发生严重数据灾难时可以恢复到备份时的状态。</td>
+                   <td>
+                       <div class="ui-checkbox">
+                           <label for="autoBackDB"><input type="checkbox" name="autoBackDB" value="true" id="autoBackDB" checked="checked"> 开启</label>
+                       </div>                       
+                   </td>
+                   <td>2017-09-22 09:28:56</td>
+                   <td><input type="button" value=" 立即备份" id="btnBackupDb" class="btn-base c-important iconfont"></td>
+               </tr>
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        function setSetting(type, value) {
+            $.ajax({
+                url: "?action=" + type,
+                dataType: "json",
+                data: { value: value },
+                success: function (res) {
+                    if (res.Success)
+                        $(document.body).tips('success', '设置成功');
+                    else
+                        $.jError(res.Message);
+                }
+            });
+        };
+
+        $('#autoBackDB').click(function () {
+            var that = this;
+            if (!that.checked) {
+                $.jConfirm('为确保系统安全，我们强烈建议您开启自动备份！取消后不再自动备份，一定要取消吗？', function () {
+                    setSetting('autoBackDB', 'false');
+                }, function () {
+                    that.checked = true;
+                });
+            } else
+                setSetting('autoBackDB', 'true');
+        });
+
+        $('#btnBackupDb').click(function () {
+            var me = $(this);
+            $.ajax({
+                url: "?action=backupdb",
+                beforeSend: function () {
+                    me.attr('disabled', 'disabled').val('备份中..');
+                },
+                dataType: "json",
+                success: function (res) {
+                    if (res.Success) {
+                        $.jSuccess('备份成功。');
+                        me.closest('td').prev().text(res.Message);
+                    }
+                    else
+                        $.jError(res.Message);
+                },
+                complete: function () {
+                    me.val('立即备份').removeAttr('disabled');
+                }
+            });
+        });
+    </script>
+
+
+
+</body></html>

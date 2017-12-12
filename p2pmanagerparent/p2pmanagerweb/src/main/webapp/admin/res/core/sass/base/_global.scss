@@ -1,0 +1,21 @@
+﻿@charset "utf-8";
+//清除样式
+.g-clear{clear:both; *zoom:1;}
+.g-noneborder{border:0 none !important;}
+//块定位
+.g-left{float:left!important;}
+.g-right{float:right!important;}
+.g-center{margin:auto;}
+.g-valign{vertical-align:middle;}
+//文字定位
+.g-fcenter{text-align:center!important;}
+.g-fleft{text-align:left!important;}
+.g-fright{text-align:right!important;}
+.g-fbold{font-weight:bold;}
+//显示隐藏
+.g-hide{display:none; }
+.g-vhide{visibility:hidden;}
+.g-ohide{overflow:hidden;}
+.g-block{display:block!important;}
+.g-inline{display:inline!important;}
+.g-bghide{background:none!important;}

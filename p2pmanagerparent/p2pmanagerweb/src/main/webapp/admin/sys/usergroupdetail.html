@@ -1,0 +1,1109 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+    <style type="text/css">
+        #tipSetting textarea {
+            width: 90%;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <form class="auto" method="post" action="" beforesubmit="setJsons();" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th class="info-listhead" colspan="4">会员组基本设置</th>
+                </tr>
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>会员组名称</th>
+                    <td><input type="text" name="name" placeholder="请输入合适的组名称" value="" class="w250" data-vtype="must" data-vmsg="请输入会员组名称"></td>
+                    <th>是否为默认会员组</th>
+                    <td><label for="isDefaultGroup"><input type="checkbox" name="isDefaultGroup" value="true" id="isDefaultGroup"> 为默认会员组</label></td>
+                </tr>
+                <tr>
+                    <th>所属会员类型</th>
+                    <td>
+                        <div class="ui-radio">
+                            <label><input name="userTypeId" type="radio" value="1" checked="checked">我要投资</label><label><input name="userTypeId" type="radio" value="2">我要借款</label>
+                        </div>
+                    </td>                    
+                    <th><i class="iconfont fcred-3"> </i>会员组级别</th>
+                    <td>
+                        <input type="text" name="groupLevel" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="会员组级别必须为一个数值">
+                        <em>数字越大，级别越高。注意：前台用户在同级组别间不可进行升级操作</em>
+                    </td>
+                </tr>                
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>会员组图标</th>
+                    <td colspan="3">
+                        <div id="iconResult" class="mb10"></div>
+                        <div class="pl136"><input type="hidden" name="icon" id="icon" value="" data-vtype="must" data-vmsg="请上传图标"></div>
+                        <div id="iconFile" class="uploadify" style="height: 32px; width: 120px;"><object id="SWFUpload_0" type="application/x-shockwave-flash" data="../res/uploadify/uploadify.swf?v=311946&amp;preventswfcaching=1434950873163" width="120" height="32" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="../res/uploadify/uploadify.swf?v=311946&amp;preventswfcaching=1434950873163"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2FAdmin%2FSys%2F..%2Fres%2Fuploadify%2FSwfUpload.html%3Ftype%3Dimage%26width%3D140%26height%3D140&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=admin%3DQaUn-Sv0XRVXGAwMICaPt!y1h33OinRgKl1amAegyLU%253D&amp;filePostName=Filedata&amp;fileTypes=*.png%3B*.jpg%3B*.jpeg%3B*.gif%3B*.bmp%3B&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=32&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="iconFile-button" class="uploadify-button iconfont" style="height: 32px; line-height: 32px; width: 120px;"><span class="uploadify-button-text"> 上传图标</span></div></div><div id="iconFile-queue" class="uploadify-queue"></div>
+                        <em>请上传尺寸为 <i class="fcred-3">140 X 140 像素</i> 的图片</em>
+                    </td>
+                </tr>
+                <tr>
+                    
+                </tr>
+                <tr>
+                    <th>详细描述</th>
+                    <td colspan="3"><textarea name="description"></textarea></td>
+                </tr>
+                <tr>
+                    <th class="info-listhead" colspan="4">会员组升级设置<span>（当以下选项均未勾选时，用户前台将不显示该会员组）</span></th>
+                </tr>
+                <tr>
+                    <th>升级设置</th>
+                    <td colspan="3"><label for="canUpGroup"><input type="checkbox" name="canUpGroup" value="true" id="canUpGroup"> 允许本组成员升级到其它组</label></td>
+                </tr>
+                <tr>
+                    <th>是否支持现金购买本组</th>
+                    <td>
+                        <span class="ui-checkbox autonext"><label for="canUpByAmount"><input type="checkbox" name="canUpByAmount" value="true" id="canUpByAmount"> 允许现金升级</label></span>
+                        <span class="pl50" style="display: none;">
+                            <ul class="ui-listvalue pt10" id="js-ulUpByAmount">
+                                
+                            </ul>
+                            <input type="button" class="btn-base c-normal iconfont" id="js-btnUpByAmount" value=" 新增" onclick="$('#js-ulUpByAmount').append(document.getElementById('tmpUpByAmount').innerHTML);" data-vmust="false">
+                            <input type="hidden" name="upByAmountJson" id="upByAmountJson" data-vmust="false">
+                        </span>
+                    </td>
+                    <th>是否支持积分兑换本组</th>
+                    <td>
+                        <span class="ui-checkbox autonext"><label for="canUpByScore"><input type="checkbox" name="canUpByScore" value="true" id="canUpByScore"> 允许积分升级</label></span>
+                        <span class="pl50" style="display: none;">
+                            <ul class="ui-listvalue pt10" id="js-ulUpByScore">
+                                
+                            </ul>
+                            <input type="button" class="btn-base c-normal iconfont" id="js-btnUpByScore" value=" 新增" onclick="$('#js-ulUpByScore').append(document.getElementById('tmpUpByScore').innerHTML);" data-vmust="false">
+                            <input type="hidden" name="upByScoreJson" id="upByScoreJson" data-vmust="false">
+                        </span>
+                    </td>
+                </tr>               
+                <tr>
+                    <th class="info-listhead" colspan="4">会员组借贷设置</th>
+                </tr>
+                <tr>
+                    <th>可借贷类型</th>
+                    <td colspan="3">
+                        <table id="borrowFilters" class="info-inlinetable">
+                            
+                                    <tbody><tr>
+                                        <td>
+                                            <span class="ui-checkbox autonext">
+                                                <label><input type="checkbox" value="1" data-to="BorrowTypeId">信用标</label>
+                                            </span>
+                                            
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>
+                                            <span class="ui-checkbox autonext">
+                                                <label><input type="checkbox" value="2" data-to="BorrowTypeId">抵押标</label>
+                                            </span>
+                                            
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>
+                                            <span class="ui-checkbox autonext">
+                                                <label><input type="checkbox" value="3" data-to="BorrowTypeId">净值标</label>
+                                            </span>
+                                            <span class="pl50" style="display: none;">影响待收比：<input type="text" placeholder="标类型比例+本值" data-to="Value" class="ui-float w150" data-vtype="money" data-vmsg="请输入正确值" value="" data-vmust="false"> %</span>
+                                            
+                                        </td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>
+                                            <span class="ui-checkbox autonext">
+                                                <label><input type="checkbox" value="4" data-to="BorrowTypeId">娱乐标</label>
+                                            </span>
+                                            
+                                        </td>
+                                    </tr>
+                                
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否允许设置智能投标</th>
+                    <td colspan="3">
+                        <span class="ui-checkbox autonext"><label for="autoBid"><input type="checkbox" name="autoBid" value="true" id="autoBid"> 允许智能投标</label></span>
+                        <span class="pl50" style="display: none;">自动优先级：<input type="text" name="autoBidPriority" value="0" class="ui-int w120" data-vtype="number" data-vmsg="请输入正确数值" placeholder="值越大优先级越高" data-vmust="false"></span>
+                        <span class="pl50" style="display: none;">智能投标方案：<input type="text" name="autoBidMaxRecored" value="0" class="ui-int w60" data-vtype="number" data-vmsg="请输入正确数值" data-vmust="false"> 套</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否允许预约</th>
+                    <td><label for="canReserve"><input type="checkbox" name="canReserve" value="true" id="canReserve"> 允许预约</label></td>
+                    <th>是否允许投标</th>
+                    <td><label for="canBid"><input type="checkbox" name="canBid" value="true" id="canBid"> 允许投标</label></td>
+                </tr>
+                <tr>
+                    <th class="info-listhead" colspan="4">会员组费率设置</th>
+                </tr>
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>借款服务费比率</th>
+                    <td>
+                        <input type="text" name="loadFee" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                        <span class="ui-autoculation js-autoculation">%</span>
+                    </td>
+                    <th><i class="iconfont fcred-3"> </i>利息服务费比率</th>
+                    <td>
+                        <input type="text" name="interestFee" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                        <span class="ui-autoculation js-autoculation">%</span>
+                    </td>
+                </tr>                
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>债权转让服务费比率</th>
+                    <td colspan="3">
+                        <input type="text" name="transferFee" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                        <span class="ui-autoculation js-autoculation">%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>提现到账时间</th>
+                    <td id="supportExtractionCash" colspan="3">
+                        <table class="info-inlinetable">
+                            
+                                    <tbody><tr>
+                                        <td>
+                                            <span class="ui-checkbox autonext">
+                                                <label>
+                                                    <input type="checkbox" data-to="ExtractionCashTime" value="0">T+0
+                                                </label>
+                                            </span>
+                                            <span class="pl50" style="display: none;">提现费用比率：<input type="text" class="w100 ui-interest" value="" data-to="Ratio" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" data-vmust="false">
+                                                    <span class="ui-autoculation js-autoculation">%</span></span></td>
+                                    </tr>
+                                
+                                    <tr>
+                                        <td>
+                                            <span class="ui-checkbox autonext">
+                                                <label>
+                                                    <input type="checkbox" data-to="ExtractionCashTime" value="1">T+1
+                                                </label>
+                                            </span>
+                                            <span class="pl50" style="display: none;">提现费用比率：<input type="text" class="w100 ui-interest" value="" data-to="Ratio" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" data-vmust="false">
+                                                    <span class="ui-autoculation js-autoculation">%</span></span></td>
+                                    </tr>
+                                
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>线上账户提现费率</th>
+                    <td>
+                        <span>
+                            <input type="text" name="onlineAccountExtracFeeRatio" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                            <span class="ui-autoculation js-autoculation">%</span>
+                            </span>
+                    </td>
+                    <th><i class="iconfont fcred-3"> </i>线下账户提现费率</th>
+                    <td>
+                        <span>
+                            <input type="text" name="offlineAccountExtracFeeRatio" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                            <span class="ui-autoculation js-autoculation">%</span>
+                        </span>
+                    </td>
+                </tr>                
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>借款账户提现费率</th>
+                    <td>
+                        <span><input type="text" name="loanAccountExtracFeeRatio" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                            <span class="ui-autoculation js-autoculation">%</span>
+                        </span>
+                    </td>
+                    <th><i class="iconfont fcred-3"> </i>回款账户提现费率</th>
+                    <td>
+                        <span><input type="text" name="receiveAccountExtracFeeRatio" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                            <span class="ui-autoculation js-autoculation">%</span>
+                        </span>
+                    </td>
+                </tr>                
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>奖励账户提现费率</th>
+                    <td colspan="3">
+                        <span><input type="text" name="rewardAccountExtracFeeRatio" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间">
+                            <span class="ui-autoculation js-autoculation">%</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="info-listhead" colspan="4">会员组奖励设置</th>
+                </tr>
+                <tr>
+                    <th>是否允许推荐人员</th>
+                    <td colspan="4">
+                        <span class="ui-checkbox autonext"><label for="canRecommend"><input type="checkbox" name="canRecommend" value="true" id="canRecommend"> 允许推荐人</label></span>
+                        <span class="pl50" style="display: none;">推荐奖励比率：<input type="text" name="recommendRatio" value="0" class="ui-interest w100" data-vtype="money|range" data-vmax="100" data-vmsg="请输入正确的比率|比率需在0%-100%之间" data-vmust="false">
+                            <span class="ui-autoculation js-autoculation">%</span>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="info-listhead" colspan="4">会员组提醒设置</th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <dl class="edittabs" id="tipSetting">
+                            <dt>
+                                
+                                        <label class="on" href="#会员信息设置"><span>会员信息设置</span>
+                                        </label>
+                                    
+                                        <label href="#帐户安全设置"><span>帐户安全设置</span>
+                                        </label>
+                                    
+                                        <label href="#资金消息设置"><span>资金消息设置</span>
+                                        </label>
+                                    
+                                        <label href="#投资者消息设置"><span>投资者消息设置</span>
+                                        </label>
+                                    
+                                        <label href="#借款者消息设置"><span>借款者消息设置</span>
+                                        </label>
+                                    
+                            </dt>
+                            
+                                    <dd class="pa10 on" id="会员信息设置">
+                                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+                                                <th class="g-fleft" width="20%">提醒说明</th>
+                                                <th class="g-fcenter" width="20%">启用通道</th>
+                                                <th class="g-fcenter" width="15%">用户变更</th>
+                                                <th class="g-fcenter" width="45%">发送模板</th>
+                                            </tr>
+                                            
+                                                    <tr class="data">
+                                                        <td class="g-fleft">基本资料审核</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="User_UserInfoValid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的{%=ValidStatus%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">借款资料审核</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="User_BorrowInfoValid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您提交的【{%=BorrwoInfoName%}】的借款资料{%=ValidStatus%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">额度申请处理</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="User_QuotaApplyValid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您提交的{%= Amount%}元的额度申请审核状态为{%=Status%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">商品订单处理</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="User_GoodsOrdersHandle">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您兑换的商品【{%=ProductName%}】处理状态为{%=Status%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                        </tbody></table>
+                                    </dd>
+                                
+                                    <dd class="pa10" id="帐户安全设置">
+                                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+                                                <th class="g-fleft" width="20%">提醒说明</th>
+                                                <th class="g-fcenter" width="20%">启用通道</th>
+                                                <th class="g-fcenter" width="15%">用户变更</th>
+                                                <th class="g-fcenter" width="45%">发送模板</th>
+                                            </tr>
+                                            
+                                                    <tr class="data">
+                                                        <td class="g-fleft">变更登录密码</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="Safe_PasswordChanged">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您于{%=Time%}修改了登录密码，如非本人操作请及时联系客服。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">支付密码变更</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="Safe_PayPasswordChanged">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您于{%=Time%}修改了支付密码，如非本人操作请及时联系客服。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">邮箱变更</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="Safe_EmailChanged">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您于{%=Time%}修改了帐号邮箱，如非本人操作请及时联系客服。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">手机变更</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="Safe_PhoneChanged">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您于{%=Time%}修改了帐号手机，如非本人操作请及时联系客服。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                        </tbody></table>
+                                    </dd>
+                                
+                                    <dd class="pa10" id="资金消息设置">
+                                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+                                                <th class="g-fleft" width="20%">提醒说明</th>
+                                                <th class="g-fcenter" width="20%">启用通道</th>
+                                                <th class="g-fcenter" width="15%">用户变更</th>
+                                                <th class="g-fcenter" width="45%">发送模板</th>
+                                            </tr>
+                                            
+                                                    <tr class="data">
+                                                        <td class="g-fleft">线下充值成功</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="Accout_OfflineRechargeSuccess">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您线下充值的{%=Amount%}元已到账请注意查收，充值手续费{%=Fee%}元。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                        </tbody></table>
+                                    </dd>
+                                
+                                    <dd class="pa10" id="投资者消息设置">
+                                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+                                                <th class="g-fleft" width="20%">提醒说明</th>
+                                                <th class="g-fcenter" width="20%">启用通道</th>
+                                                <th class="g-fcenter" width="15%">用户变更</th>
+                                                <th class="g-fcenter" width="45%">发送模板</th>
+                                            </tr>
+                                            
+                                                    <tr class="data">
+                                                        <td class="g-fleft">智能投标成功</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_AutoBidSuccess">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！【{%=AutoBidName%}】方案成功投中名为【{%=BorrowName%}】的借款，投中金额为{%=Amount%}元，借款周期{%=LoanTime%}，预计年化收益{%=YearRate%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">还款到帐</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_ReceiveRepay">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您投资借款为【{%=BorrowName%}】的第{%=Period%}期的还款已到帐，金额{%=Amount%}元，平台收取利息管理费{%=InterestFee%}元。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">预约投标</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_ReservationBid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您预约为【{%=ReservationName%}】的借款【{%=BorrowName%}】已经开放预约用户投标，请您在{%=Time%}前完成投标。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">投标审核提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_LoanFullValid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您投资【{%=BorrowName%}】的借款{%=Status%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">撤标提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_LoanBorrowCancel">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您投资【{%=BorrowName%}】的借款已撤标，已解冻您的投资资金。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">流标提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_LoanBorrowLose">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您投资【{%=BorrowName%}】的借款已流标，已解冻您的投资资金。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">预约未投标解冻</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_ReservationNoBidUnlock">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您预约【{%=ReservationName%}】未标投，已解冻您的预约保证金{%=BailAmount%}元，扣除违约金{%=BailFee%}元。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                        </tbody></table>
+                                    </dd>
+                                
+                                    <dd class="pa10" id="借款者消息设置">
+                                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody><tr>
+                                                <th class="g-fleft" width="20%">提醒说明</th>
+                                                <th class="g-fcenter" width="20%">启用通道</th>
+                                                <th class="g-fcenter" width="15%">用户变更</th>
+                                                <th class="g-fcenter" width="45%">发送模板</th>
+                                            </tr>
+                                            
+                                                    <tr class="data">
+                                                        <td class="g-fleft">借款审核提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_BorrowValid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您发布名为【{%=BorrowName%}】的借款{%=Status%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">满标审核提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_BorrowFullValid">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您发布名为【{%=BorrowName%}】的借款满标审核{%=Status%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">三天内到期还款提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_ThreeDayRepay">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款名为【{%=BorrowName%}】的第{%=Period%}期借款3天内到期，请您记得还款，您本次应还本金{%=Amount%}元,利息{%=Interest%}元，费用{%=Fee%}元，合计{%=Total%}元。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">一天内到期还款提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_DayRepay">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款名为【{%=BorrowName%}】的第{%=Period%}期借款1天内到期，请您及时还款，您本次应还本金{%=Amount%}元,利息{%=Interest%}元，费用{%=Fee%}元，合计{%=Total%}元。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">逾期还款提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_OverdueRepay">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款名为【{%=BorrowName%}】的第{%=Period%}期借款已逾期{%=Day%}天，请您及时还款，您本次应还本金{%=Amount%}元,利息{%=Interest%}元，费用{%=Fee%}元，逾期利息{%=Overdue%}元，合计{%=Total%}元。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">自动还款提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_AutoRepay">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款名为【{%=BorrowName%}】第{%=Period%}期自动还款{%=Status%}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">系统撤标提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_BorrowSysCancel">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款【{%=BorrowName%}】已由系统撤标，详情请咨询客服人员。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">系统流标提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_BorrowSysLose">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款【{%=BorrowName%}】已流标。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                                    <tr class="data">
+                                                        <td class="g-fleft">债权变更提醒</td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="Email" value="1">
+                                                                    邮件</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="PhoneMessage" value="2">
+                                                                    手机</label></span>
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="SiteMessage" value="4">
+                                                                    站内信</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <span class="ui-checkbox">
+                                                                <label><input type="checkbox" data-to="UserEdit" value="true" checked="checked">
+                                                                   可编辑</label></span>
+                                                        </td>
+                                                        <td class="g-fcenter">
+                                                            <input type="hidden" data-to="TipKey" value="BorrowLoan_BorrowTransfer">
+                                                            <textarea data-to="TipTemplate">{%=Name%}您好！您的借款【{%=BorrowName%}】债权人{%=FromUser}转让了{%=Money}给{%=ToUser}。</textarea>
+                                                        </td>
+                                                    </tr>
+                                                
+                                        </tbody></table>
+                                    </dd>
+                                
+                        </dl>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <input type="hidden" name="borrowFilterJson" id="borrowFilterJson">
+        <input type="hidden" name="supportExtractionCashJson" id="supportExtractionCashJson">
+        <input type="hidden" name="remindJson" id="remindJson">
+    </form>
+    <script type="text/template" id="tmpUpByAmount">
+        <li style="height:52px; width:350px;">
+            <a href="javascript:void(0)" class="iconfont fs22 listvalue-delete js-upOper" title="删除">&#xe65a;</a>
+            <div class="pt10">
+                <input type="text" class="w50 ui-int js-month" data-vtype="number" data-vmsg="请输入正确的月份" /> 月，所需金额 <input type="text" class="w100 ui-float js-value" data-vtype="money" data-vmsg="请输入正确的金额" /> 元
+            </div>
+        </li>
+    </script>
+    <script type="text/template" id="tmpUpByScore">
+        <li style="height:52px; width:350px;">
+            <a href="javascript:void(0)" class="iconfont fs22 listvalue-delete js-upOper" title="删除">&#xe65a;</a>
+            <div class="pt10">
+                <input type="text" class="w50 ui-int js-month" data-vtype="number" data-vmsg="请输入正确的月份" /> 月，所需积分 <input type="text" class="w100 ui-int js-value" data-vtype="number" data-vmsg="请输入正确的积分" /> 分
+            </div>
+        </li>
+    </script>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        //提交前设置Json对象。
+        function setJsons() {
+            //可借贷类型
+            var borrowFilters = [];
+            $('#borrowFilters tr').each(function(i, n) {
+                n = $(n);
+                var check = n.find('input[data-to=BorrowTypeId]');
+                if (check[0].checked) {
+                    var val = n.find('input[data-to=Value]').val();
+                    val = val ? parseFloat(val.replace(/,/g, '')) : null;
+
+                    borrowFilters.push({
+                        BorrowTypeId: parseInt(check.val()),
+                        Value: val
+                    });
+                }
+            });
+            //提现到账时间
+            var extractionCashs = [];
+            $('#supportExtractionCash tr').each(function(i, n) {
+                n = $(n);
+                var check = n.find('input[data-to=ExtractionCashTime]');
+                if (check[0].checked) {                    
+                    extractionCashs.push({
+                        Type: parseInt(check.val()),
+                        Ratio: parseFloat(n.find('input[data-to=Ratio]').val().replace(/,/g ,''))
+                    });
+                }
+            });
+
+            //提醒设置
+            var reminds = [];
+            $('#tipSetting tr.data').each(function(i, n) {
+                n = $(n);
+                var tipTypes = 0;
+                $.each(n.find(':checked'), function(j, m) {
+                    tipTypes = tipTypes | parseInt($(m).val());
+                });
+
+                reminds.push({
+                    TipKey: n.find('input[data-to=TipKey]').val(),
+                    TipTypes: tipTypes,
+                    UserEdit: n.find('input[data-to=UserEdit]')[0].checked,
+                    TipTemplate: n.find('textarea[data-to=TipTemplate]').val()
+                });
+            });
+
+            $('#borrowFilterJson').val(utils.toJsonString(borrowFilters));
+            $('#supportExtractionCashJson').val(utils.toJsonString(extractionCashs));
+            $('#remindJson').val(utils.toJsonString(reminds));
+
+            initUpGroupData();
+        };
+
+        //升级方案
+        $('#js-ulUpByAmount,#js-ulUpByScore').on('click', '.js-upOper', function() {
+            var parent = $(this).parent();
+            if (parent.is('li'))
+                parent.remove();            
+        });
+
+        function initUpGroupData() {
+            var obj = [];
+            var months = $('#js-ulUpByAmount .js-month'), amounts = $('#js-ulUpByAmount .js-value');            
+            months.each(function(i, n) {                
+                obj.push({
+                    Key: $(n).val(),
+                    Value:  parseFloat($(amounts.eq(i)).val().replace(/,/g, ''))
+                });
+            });
+            $('#upByAmountJson').val(utils.toJsonString(obj));
+            
+            obj = [];
+            var months = $('#js-ulUpByScore .js-month'), amounts = $('#js-ulUpByScore .js-value');            
+            months.each(function(i, n) {                
+                obj.push({
+                    Key: $(n).val(),
+                    Value:  parseInt($(amounts.eq(i)).val())
+                });
+            });
+            $('#upByScoreJson').val(utils.toJsonString(obj));
+        }
+
+        //开关切换
+        function toggleNext(dom, show) {
+            var els = $(dom).nextAll();
+
+            if (show) {              
+                els.show();
+                els.find(':input').attr('data-vmust', 'true');
+            }
+            else {
+                els.hide();
+                els.find(':input').attr('data-vmust', 'false');
+            }
+        };
+
+        $('.autonext').each(function (i, n) {
+            toggleNext(n, $(n).find(':checkbox').first()[0].checked);
+        }).click(function () {
+            toggleNext(this, $(this).find(':checkbox').first()[0].checked);
+        });
+
+        //提醒
+        $('#tipSetting').tabs({
+            tabSelector: '>dt label'
+        });
+
+        //图标
+        setTimeout(function () {
+            $('#iconFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=311946',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=140&height=140',
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传图标',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : 'QaUn-Sv0XRVXGAwMICaPt!y1h33OinRgKl1amAegyLU='
+                },
+                onUploadSuccess: function(res, data) {                    
+                    eval('var d = ' + data);                    
+                    if (d.Success) {
+                        $('#icon').val(d.Message).trigger('blur');
+                        $('#iconResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);      
+    </script>
+
+
+
+</body></html>

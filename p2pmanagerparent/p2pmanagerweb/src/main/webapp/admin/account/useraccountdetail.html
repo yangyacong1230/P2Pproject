@@ -1,0 +1,342 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form class="auto" method="post" action="/admin/account/useraccountdetail.html" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            
+                <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th width="20%">会员账号</th>
+                    <td colspan="2" width="40%"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=0');"></a></td>
+                    <th width="20%">用户总资产</th>
+                    <td class="fcred-2 g-fcenter" width="20%"><span id="js-allSumText">0.00</span> 元</td>
+                </tr>
+                <tr>
+                    <th class="info-listhead">可用余额</th>
+                    <th class="info-listhead">冻结总额</th>
+                    <th class="info-listhead">锁定总额</th>
+                    <th class="info-listhead">待收总额</th>
+                    <th class="info-listhead">待付总额</th>
+                </tr>
+                <tr>
+                    <td class="g-fcenter"><span id="js-allAccountText" title="0">0.00</span> 元</td>
+                    <td class="g-fcenter">0.00 元</td>
+                    <td class="g-fcenter"><span id="js-allLockText" title="0">0.00</span> 元</td>
+                    <td class="g-fcenter">0.00 元</td>
+                    <td class="g-fcenter">0.00 元</td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <dl class="edittabs">
+                            <dt>
+                                <label class="on"><span>子账户明细</span></label>
+                            </dt>
+                            <dd class="on">
+                                <div class="pa10">
+                                    <div class="info-miniacc mt10 js-openTab">可用资金明细<span class="iconfont">&#xe65d;</span></div>
+                                    <table cellpadding="0" cellspacing="0" width="100%" id="AccountTable" class="">
+                                        <tr>
+                                            <th class="g-fcenter">线上账户</th>
+                                            <th class="g-fcenter">线下账户</th>
+                                            <th class="g-fcenter">借款账户</th>
+                                            <th class="g-fcenter">回款账户</th>
+                                            <th class="g-fcenter">奖励账户</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="g-fcenter"><span class="js-accountText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-accountText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-accountText" title="0">0.00</span> 元 </td>
+                                            <td class="g-fcenter"><span class="js-accountText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-accountText" title="0">0.00</span> 元</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="g-fcenter">
+                                                <input type="hidden" class="js-changeNum" value="0" name="avaliableOnline" />
+                                                <input type="text" class="js-avaliableChange ui-float w110" /> 元
+                                                <div class="mt5">
+                                                    <input type="button" class="btn-smaller c-priority iconfont js-btnChangeUp" value="&#xe622; 增加" onclick="avaliableChange(this, true);" />
+                                                    <input type="button" class="btn-smaller c-normal iconfont js-btnChangeDown" value="&#xe661; 减少" onclick="avaliableChange(this, false);" />
+                                                </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                <input type="hidden" class="js-changeNum" value="0" name="avaliableOffline" />
+                                                <input type="text" class="js-avaliableChange ui-float w110" /> 元
+                                                <div class="mt5">
+                                                    <input type="button" class="btn-smaller c-priority iconfont js-btnChangeUp" value="&#xe622; 增加" onclick="avaliableChange(this, true);" />
+                                                    <input type="button" class="btn-smaller c-normal iconfont js-btnChangeDown" value="&#xe661; 减少" onclick="avaliableChange(this, false);" />
+                                                </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                <input type="hidden" class="js-changeNum" value="0" name="avaliableLoan" />
+                                                <input type="text" class="js-avaliableChange ui-float w110" /> 元
+                                                <div class="mt5">
+                                                    <input type="button" class="btn-smaller c-priority iconfont js-btnChangeUp" value="&#xe622; 增加" onclick="avaliableChange(this, true);" />
+                                                    <input type="button" class="btn-smaller c-normal iconfont js-btnChangeDown" value="&#xe661; 减少" onclick="avaliableChange(this, false);" />
+                                                </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                <input type="hidden" class="js-changeNum" value="0" name="avaliableReceive" />
+                                                <input type="text" class="js-avaliableChange ui-float w110" /> 元
+                                                <div class="mt5">
+                                                    <input type="button" class="btn-smaller c-priority iconfont js-btnChangeUp" value="&#xe622; 增加" onclick="avaliableChange(this, true);" />
+                                                    <input type="button" class="btn-smaller c-normal iconfont js-btnChangeDown" value="&#xe661; 减少" onclick="avaliableChange(this, false);" />
+                                                </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                <input type="hidden" class="js-changeNum" value="0" name="avaliableReward" />
+                                                <input type="text" class="js-avaliableChange ui-float w110" /> 元
+                                                <div class="mt5">
+                                                    <input type="button" class="btn-smaller c-priority iconfont js-btnChangeUp" value="&#xe622; 增加" onclick="avaliableChange(this, true);" />
+                                                    <input type="button" class="btn-smaller c-normal iconfont js-btnChangeDown" value="&#xe661; 减少" onclick="avaliableChange(this, false);" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </table>
+
+                                    <div class="info-miniacc mt10 js-openTab">锁定资金明细<span class="iconfont">&#xe65d;</span></div>
+                                    <table cellpadding="0" cellspacing="0" width="100%" id="lockTable" class="mb10">
+                                        <tr>
+                                            <th class="g-fcenter">线上账户</th>
+                                            <th class="g-fcenter">线下账户</th>
+                                            <th class="g-fcenter">借款账户</th>
+                                            <th class="g-fcenter">回款账户</th>
+                                            <th class="g-fcenter">奖励账户</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="g-fcenter"><span class="js-lockText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-lockText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-lockText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-lockText" title="0">0.00</span> 元</td>
+                                            <td class="g-fcenter"><span class="js-lockText" title="0">0.00</span> 元</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td class="g-fcenter">
+                                                    <input type="hidden" class="js-max" value="0" />
+                                                    <input type="hidden" class="js-lock" value="0" name="lockOnline" />
+                                                    <input type="text" class="js-amount ui-float w110" /> 元
+                                                    <div class="mt5">
+                                                        <input type="button" class="btn-smaller c-priority iconfont js-btnLock" value="&#xe601; 锁定" onclick="lockChange(this, true);" />
+                                                        <input type="button" class="btn-smaller c-normal iconfont js-btnUnlock" value="&#xe618; 解锁" onclick="lockChange(this, false);" />
+                                                    </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                    <input type="hidden" class="js-max" value="0" />
+                                                    <input type="hidden" class="js-lock" value="0" name="lockOffline" />
+                                                    <input type="text" class="js-amount ui-float w110" /> 元
+                                                    <div class="mt5">
+                                                        <input type="button" class="btn-smaller c-priority iconfont js-btnLock" value="&#xe601; 锁定" onclick="lockChange(this, true);" />
+                                                        <input type="button" class="btn-smaller c-normal iconfont js-btnUnlock" value="&#xe618; 解锁" onclick="lockChange(this, false);" />
+                                                    </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                    <input type="hidden" class="js-max" value="0" />
+                                                    <input type="hidden" class="js-lock" value="0" name="lockLoan" />
+                                                    <input type="text" class="js-amount ui-float w110" /> 元
+                                                    <div class="mt5">
+                                                        <input type="button" class="btn-smaller c-priority iconfont js-btnLock" value="&#xe601; 锁定" onclick="lockChange(this, true);" />
+                                                        <input type="button" class="btn-smaller c-normal iconfont js-btnUnlock" value="&#xe618; 解锁" onclick="lockChange(this, false);" />
+                                                    </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                    <input type="hidden" class="js-max" value="0" />
+                                                    <input type="hidden" class="js-lock" value="0" name="lockReceive" />
+                                                    <input type="text" class="js-amount ui-float w110" /> 元
+                                                    <div class="mt5">
+                                                        <input type="button" class="btn-smaller c-priority iconfont js-btnLock" value="&#xe601; 锁定" onclick="lockChange(this, true);" />
+                                                        <input type="button" class="btn-smaller c-normal iconfont js-btnUnlock" value="&#xe618; 解锁" onclick="lockChange(this, false);" />
+                                                    </div>
+                                            </td>
+                                            <td class="g-fcenter">
+                                                    <input type="hidden" class="js-max" value="0" />
+                                                    <input type="hidden" class="js-lock" value="0" name="lockReward" />
+                                                    <input type="text" class="js-amount ui-float w110" /> 元
+                                                    <div class="mt5">
+                                                        <input type="button" class="btn-smaller c-priority iconfont js-btnLock" value="&#xe601; 锁定" onclick="lockChange(this, true);" />
+                                                        <input type="button" class="btn-smaller c-normal iconfont js-btnUnlock" value="&#xe618; 解锁" onclick="lockChange(this, false);" />
+                                                    </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="5" class="fcred-2">（点击将快速锁定或解锁全部账户的资金，请谨慎操作）
+                                                    <input type="button" class="ml30 btn-larger c-priority iconfont" value="&#xe601; 全部锁定" onclick="lockChange(null, true)" />
+                                                    <input type="button" class="btn-larger c-normal iconfont" value="&#xe618; 全部解锁" onclick="lockChange(null, false)" />
+                                            </th>
+                                        </tr>
+                                        
+                                    </table>
+
+                                    <div class="info-miniacc mt10 js-openTab">冻结资金明细<span class="iconfont">&#xe65d;</span></div>
+                                    <table cellpadding="0" cellspacing="0" width="100%" class="mb10" style="display: none;">
+                                        <tr>
+                                            <th class="g-fcenter">线上账户</th>
+                                            <th class="g-fcenter">线下账户</th>
+                                            <th class="g-fcenter">借款账户</th>
+                                            <th class="g-fcenter">回款账户</th>
+                                            <th class="g-fcenter">奖励账户</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="g-fcenter">0.00 元</td>
+                                            <td class="g-fcenter">0.00 元</td>
+                                            <td class="g-fcenter">0.00 元</td>
+                                            <td class="g-fcenter">0.00 元</td>
+                                            <td class="g-fcenter">0.00 元</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </dd>
+                        </dl>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="../res/core/Scripts/edittabs.js"></script>
+    <script>
+        $('.js-openTab span').on('click',function(){
+            me=$(this).parent();
+            nextTab=me.next();
+            if(nextTab.is(':hidden')){
+                nextTab.show();
+            }else{
+                nextTab.hide();
+            }
+        });
+
+        function lockChange(dom, add){
+            if (dom == null) {
+                $('#lockTable td').each(function (i, n) {
+                    n = $(n);
+                    if (add) {
+                        n.find('.js-amount').val(parseFloat(n.find('.js-max').val()) - parseFloat(n.find('.js-lock').val()));
+                        n.find('.js-btnLock').trigger('click');
+                    } else {
+                        n.find('.js-amount').val(parseFloat(n.find('.js-lock').val()));
+                        n.find('.js-btnUnlock').trigger('click');
+                    }
+                });
+            } else {
+                var td = $(dom).closest('td'),
+                    amount = parseFloat(td.find('.js-amount').val().replace(/,/g, '')), 
+                    max = parseFloat(td.find('.js-max').val()), 
+                    locked = parseFloat(td.find('.js-lock').val()),
+                    tdIndex=td.index(),
+                    changeMe=$('#AccountTable').find('td').eq(tdIndex + 5),
+                    changeLog=parseFloat(changeMe.find('.js-changeNum').val());
+
+                if (amount > 0) {
+                    if(changeLog!=0){
+                        $(document.body).tips('error', '无法锁定正在发生异动资金，请保存后再操作。');
+                        return;
+                    }
+                    if (add) {
+                        if (locked + amount > max + changeLog) {
+                            $(document.body).tips('error', '锁定资金超出帐户总额。');
+                            return;
+                        }
+                    } else {
+                        if (locked < amount) {
+                            $(document.body).tips('error', '解锁资金超出锁定总额。');
+                            return;
+                        }
+                        amount = -amount;
+                    }
+
+                    //当前账户锁定显示值
+                    var lockText = $('#lockTable').find('.js-lockText').eq(tdIndex),
+                        accountText = $('#AccountTable').find('.js-accountText').eq(tdIndex);
+                    changeNumColor(lockText.text(finance.toMoneyString(locked + amount)));
+                    changeNumColor(accountText.text(finance.toMoneyString(max - locked - amount)));
+                    changeNumColor($('#js-allAccountText').text(finance.toMoneyString(parseFloat($('#js-allAccountText').html().replace(/,/g, '')) - amount)));
+                    changeNumColor($('#js-allLockText').text(finance.toMoneyString(parseFloat($('#js-allLockText').html().replace(/,/g, '')) + amount)));
+
+                    td.find('.js-lock').val(locked + amount);
+                }
+                td.find('.js-amount').val('');
+            }
+        }
+
+        function avaliableChange(dom, add){
+            var td = $(dom).closest('td'),
+                change = parseFloat(td.find('.js-avaliableChange').val().replace(/,/g, '')),
+                changeLog = parseFloat(td.find('.js-changeNum').val()),
+                tdIndex = td.index(),
+                LockInput = $('#lockTable').find('td').eq(tdIndex + 5),
+                max = parseFloat(LockInput.find('.js-max').val()), 
+                locked = parseFloat(LockInput.find('.js-lock').val());
+
+            if(change > 0){
+                if (add) {
+                    if (locked > 0) {
+                        $.jConfirm('<span class="fcred-2 g-f20 g-fbold">注意：</span><br/>【该账户下仍有资金未执行解锁处理,是否仍要为其增加资金？】<br/>(确定后将解锁该账户下相应的锁定金额)',function(){
+                            if(change > locked){
+                                LockInput.find('.js-amount').val(locked);
+                                LockInput.find('.js-btnUnlock').trigger('click');
+                                td.find('.js-avaliableChange').val(change - locked);
+                                td.find('.js-btnChangeUp').trigger('click');
+                            }else{
+                                LockInput.find('.js-amount').val(change);
+                                LockInput.find('.js-btnUnlock').trigger('click');                            
+                            }
+                        },function(){
+                            $(document.body).tips('error', '该账户尚有锁定资金未解锁，请解锁后再试。');
+                        },"修改确认");
+
+                        return;
+                    }
+                } else {
+                    if (change > max - locked + changeLog) {
+                        $(document.body).tips('error', '该账户资金不足扣除。');
+                        return;
+                    }
+                    change = -change;
+                }
+
+                td.find('.js-changeNum').val(changeLog + change);
+                var accountText=$('#AccountTable').find('.js-accountText').eq(tdIndex);
+                changeNumColor(accountText.text(finance.toMoneyString(max - locked + changeLog + change)));
+                changeNumColor($('#js-allAccountText').text(finance.toMoneyString(parseFloat($('#js-allAccountText').html().replace(/,/g, ''))  + change)));
+            }
+
+            td.find('.js-avaliableChange').val('');
+        }
+
+        function changeNumColor(dom){
+            var changeNum=parseFloat(dom.html().replace(/,/g, '')),
+                valNum=parseFloat(dom.attr('title'));
+            dom.removeClass('fcgreen-2').removeClass('fcred-2').removeClass('g-ftrans');
+            if(changeNum > valNum){
+                dom.addClass('fcred-2');
+            }
+            if(changeNum < valNum){
+                dom.addClass('fcgreen-2');
+            }
+            if(changeNum == valNum){
+                dom.addClass('g-ftrans');
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

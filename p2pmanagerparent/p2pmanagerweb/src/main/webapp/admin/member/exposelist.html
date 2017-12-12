@@ -1,0 +1,64 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	举报信息列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">举报信息列表</a></dt>
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>信息筛选:</th>
+                        <td>
+                            <select id="status" name="status">
+	<option value="">审核状态筛选</option>
+	<option value="0">等待处理</option>
+	<option value="1">已处理</option>
+</select>
+                            <select id="type" name="type">
+	<option value="举报人姓名">举报人名称</option>
+	<option value="被举报人名称">被举报人名称</option>
+</select>
+                            <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" />
+                            <span class="ml20 js-inlinesubmit">
+                                <input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    
+                        <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value="&#xe612; 全选" />
+                        <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value="&#xe644; 反选" />
+                        <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="举报信息管理" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value="&#xe611; 删除选中" />
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="3%">选取</th>
+                        <th width="10%">举报人名称</th>
+                        <th width="15%">被举报人名称</th>
+                        <th width="51%" class="g-fleft">举报详情</th>
+                        <th width="6%">状态</th>
+                        <th width="15%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿@charset 'UTF-8';
+.ui-calendar{
+    background-color:nth($baseColor,1);
+    border:1px solid nth($gery,3); 
+    position:absolute; 
+    width:210px; 
+    height:250px; 
+    display:none; 
+    overflow:hidden;
+
+}
+.calendar-title{
+    background-color:nth($navy,2); 
+    border-bottom:3px solid nth($jade,2);
+    height:40px; 
+    line-height:40px; 
+    overflow:hidden; 
+    text-align:center;
+    padding-top:3px;
+    a{
+        color:nth($jade,2); 
+        margin:0 5px; 
+        padding:0 5px;
+        text-decoration:none; 
+        font-weight:bold; 
+        &:hover{
+            color:nth($jade,3);
+        }
+    }
+    a.calendar-nextmonth{float:right; margin-right:10px;}
+    a.calendar-prevmonth{float:left; margin-left:10px;}
+    input{
+        border:1px solid nth($navy,1); 
+        background-color:nth($baseColor,1); 
+        text-align:center; 
+        height:20px; 
+        padding:0; 
+        vertical-align:middle;
+    }
+}
+
+.calendar-body{line-height:20px; height:171px; font-size:12px;}
+.calendar-week{
+    text-align:center; 
+    color:nth($jade,3); 
+    border-bottom:1px solid nth($gery,3); 
+    overflow:hidden;
+    span{
+        float:left; 
+        width:30px;
+    }
+}
+.calendar-day{
+    height: 122px;
+    text-align:center;
+    span{
+        color:#ccc;
+    }
+    a{ color:nth($jade,3);
+       text-decoration:none;
+       &:hover{
+               color:nth($baseColor,1);
+               background:nth($jade,2);
+               border:1 solid nth($jade,3);
+           }
+    }
+    a.current{
+        color:nth($baseColor,1);
+        background:nth($navy,2);
+        border:1 solid nth($navy,3);
+    }
+}
+.calendar-day span,.calendar-day a{float:left; width:30px; height:20px;}
+.calendar-foot{
+    background-color:nth($gery,1); 
+    height:32px; 
+    clear:both; 
+    text-align:center; 
+    overflow:hidden; 
+    padding-top:7px;
+    input{
+        padding:1px 5px;
+        border:0 none;
+    }
+}
+.calendar-time{
+    clear:both; text-align:center;
+    input{
+        width:18px; text-align:center; border:1px solid #ddd; margin:0; padding:2px 4px; margin:0 2px;
+    }
+}

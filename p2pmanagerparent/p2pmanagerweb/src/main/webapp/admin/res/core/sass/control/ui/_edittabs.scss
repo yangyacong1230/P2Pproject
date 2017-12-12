@@ -1,0 +1,54 @@
+﻿@charset "UTF-8";
+
+.edittabs{
+    dt{
+        height:33px;
+        line-height:32px;
+        white-space:nowrap;
+        label{
+            float: left;
+            margin-right: 10px;
+            padding: 0 32px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            position:relative;
+            a{
+                line-height: 19px;
+                visibility:hidden;
+                position:absolute;
+                top: 0;
+            }
+            &:hover{
+                a{visibility:visible;}
+            }
+            .add{
+                left: 6px;
+            }
+            .edit{
+                left: 6px;
+            }
+            .remove{
+                right:6px;
+            }
+            .moveleft{
+                top : 16px;
+                left: 6px;
+            }
+            .moveright{
+                top : 16px;
+                right: 6px;
+            }
+        }
+        .on{
+            background: #fff;
+            border-bottom-color: #fff;
+        }
+    }
+    dd{
+        border: 1px solid #ccc;
+        display: none;
+    }
+    .on{
+        display: block;
+    }
+}

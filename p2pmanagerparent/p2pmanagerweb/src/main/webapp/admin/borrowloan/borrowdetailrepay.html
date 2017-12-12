@@ -1,0 +1,155 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowdetailrepay.html.cs" Inherits="WAP2P.Web.PC.Admin.BorrowLoan.BorrowDetailRepay" %>
+<%@ Register Src="Controls/BorrowInfo.ascx" TagPrefix="uc1" TagName="BorrowInfo" %>
+<%@ Register Src="Controls/HoldLog.ascx" TagPrefix="uc1" TagName="HoldLog" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <div class="m-editbar">
+        <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close(true);" />
+    </div>
+    <div class="m-content m-editcontent">
+        <dl class="ui-tabs">
+            <dt><a href="#repay" class="on">还款详情</a></dt>
+            <dt><a href="#record">投标记录</a></dt>
+            <dt><a href="#borrowHold">债权持有</a></dt>
+            <dt><a href="#detail">借款详情</a></dt>
+            <dd id="repay">
+                <div class="m-content">
+                    <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <th width="5%">期数</th>
+                            <th width="10%">应还款时间</th>
+                            <th width="10%">实际还款时间</th>
+                            <th width="10%">应还本金</th>                            
+                            <th width="10%">应还利息</th>
+                            <th width="10%">应还费用</th>
+                            <th width="10%">应还罚息</th>
+                            <th width="15%">还款人</th>
+                            <th width="10%">状态</th>
+                            <th width="8%">操作</th>
+                        </tr>
+                        <ruson:Repater runat="server" ID="rptRepayList" ItemType="WAP2P.BorrowLoan.Repay">
+                            <ItemTemplate>
+                                <tr>
+                                    <td><%# Item.Period %></td>
+                                    <td><%# Item.ShouldRepayAt.ToDateTimeString() %></td>
+                                    <td><%# Item.ActualRepayAt.ToDateTimeString() %></td>
+                                    <td><%# Item.ShouldRepayPrincipal.ToMoneyString() %> 元</td>
+                                    <td><%# Item.ShouldRepayInterest.ToMoneyString() %> 元</td>
+                                    <td><%# Item.ShouldRepayFee.ToMoneyString() %> 元</td>
+                                    <td><%# Item.ShouldRepayOverdue.ToMoneyString() %> 元</td>
+                                    <td><%# Item.ActuaRepayUserName %></td>
+                                    <td><%# Item.Status.GetDescription() %></td>
+                                    <td><%# Item.Status == WAP2P.BorrowLoan.Repay.RepayStatus.WaitRepayment ? string.Format("<input type=\"button\" data-url=\"{0}\" data-id=\"{1}\" class=\"btn-base c-priority js-repay\" value=\"还款\" />", Request.RawUrl.SetUrlParam("action", "repay").SetUrlParam("repayId", Item.Id.ToString()), Item.Id) : string.Empty %></td>
+                                </tr>
+                            </ItemTemplate>
+                            <EmptyTemplate>
+                                <tr>
+                                    <td colspan="10" class="g-fleft">暂无数据。</td>
+                                </tr>
+                            </EmptyTemplate>
+                        </ruson:Repater>
+                    </table>
+                </div>
+            </dd>
+            <dd id="record" class="g-hide">
+                <div class="m-content">
+                    <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <th width="10%">投标用户</th>
+                            <th width="10%">投标类型</th>
+                            <th width="15%">投标金额</th>
+                            <th width="10%">应还利息</th>                            
+                            <th width="10%">已还本金</th>                            
+                            <th width="10%">已还利息</th>                            
+                            <th width="20%">期数</th>
+                            <th width="10%">状态</th>
+                        </tr>
+                        <ruson:Repater runat="server" ID="rptBidList" ItemType="WAP2P.BorrowLoan.Bid">
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="g-fbold"><%# GetUserDisplay(Item.UserId, Item.UserName) %></td> 
+                                    <td><%# Item.AutoBidId.HasValue ? string.Format("自动({0})", Item.AutoBidIndex) : "手动" %></td>
+                                    <td><%# Item.Amount.ToMoneyString() %> 元</td>
+                                    <td><%# receives.Where(o => o.UserId == Item.UserId && o.BidId == Item.Id).Sum(o => o.ShouldRepayInterest).ToMoneyString() %> 元</td>
+                                    <td><%# receives.Where(o => o.UserId == Item.UserId && o.BidId == Item.Id).Sum(o => o.ActuaRepayPrincipal).ToMoneyString() %> 元</td>
+                                    <td><%# receives.Where(o => o.UserId == Item.UserId && o.BidId == Item.Id).Sum(o => o.ActuaRepayInterest).ToMoneyString() %> 元</td>                                    
+                                    <td>共<span class="fcred-2"><%# receives.Where(o => o.UserId == Item.UserId && o.BidId == Item.Id).Count() %></span>期，已还<span class="fcred-2"><%# receives.Where(o => o.UserId == Item.UserId && o.Settle && o.BidId == Item.Id).Count() %></span>期。</td>
+                                    <td><%# receives.Where(o => o.UserId == Item.UserId).Count() == receives.Where(o => o.UserId == Item.UserId && o.Settle).Count() ? "<span class=\"fcgreen-2\">已结清</span>" : "<span class=\"fcred-2\">还款中</span>" %></td>
+                                </tr>
+                            </ItemTemplate>
+                            <EmptyTemplate>
+                                <tr>
+                                    <td colspan="8" class="g-fleft">暂无数据。</td>
+                                </tr>
+                            </EmptyTemplate>
+                        </ruson:Repater>
+                        <tr>
+                            <td class="g-fright" colspan="8">
+                                <input type="button" class="btn-smaller c-obvious excel iconfont" onclick="location.href = '?id=<% =borrow.Id %>&action=bidExcel';" value="&#xe61f; 导出EXCEL" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </dd>
+            <div id="borrowHold" class="g-hide">
+                <uc1:HoldLog runat="server" ID="holdLog" />
+            </div>
+            <dd id="detail" class="g-hide">
+                <div class="m-content">
+                    <uc1:BorrowInfo runat="server" ID="borrowInfo" />
+                </div>
+            </dd>
+        </dl>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+        $('.js-repay').click(function () {
+            var me = $(this);
+            var doRepay = function () {
+                $.ajax({
+                    url: me.attr('data-url'),
+                    type: 'post',
+                    cache: false,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        me.attr('disabled', 'disabled');
+                    },
+                    success: function (res) {
+                        if (res.Success) {
+                            location.reload();
+                        } else {
+                            $.jError(res.Message);
+                            me.removeAttr('disabled');
+                        }
+                    }
+                });
+            };
+
+            $.ajax({
+                type: 'get',
+                url: location.href,
+                cache: false,
+                data: { action: 'advanceRepayCheck', repayId: me.attr('data-id') },
+                dataType: 'json',
+                beforeSend: function () {
+                    me.attr('disabled', 'disabled');
+                },
+                success: function (res) {
+                    me.removeAttr('disabled');
+
+                    if (res.Success) {
+                        $.jConfirm(res.Message || '确认还款操作?', function () {
+                            doRepay();
+                        });
+                    } else
+                        $.jError(res.Message);
+                }
+            });
+        });
+    </script>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="list" runat="server">
+</asp:Content>

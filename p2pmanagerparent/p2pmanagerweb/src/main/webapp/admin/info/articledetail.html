@@ -1,0 +1,148 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form class="auto" method="post" action="" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>所属栏目</th>
+                    <td>
+                        <select id="categoryId" name="categoryId" class="iconfont" data-vtype="must" data-vmsg="请选择所属栏目">
+                            <option value="">请选择所属栏目</option>
+                            
+                                    <option value="5" >站点公告</option>
+                                
+                                    <option value="6" >公司公告</option>
+                                
+                                    <option value="7" >发标预告</option>
+                                
+                                    <option value="8" >行业信息</option>
+                                
+                                    <option value="9" >公司动态</option>
+                                
+                                    <option value="10" >业绩报告</option>
+                                
+                                    <option value="11" >招贤纳士</option>
+                                
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>文章名称</th>
+                    <td>
+                        <input type="text" name="title" id="title" class="w250" maxlength="100" data-vtype="must" data-vmsg="请输入文章名称" value="" />    
+                    </td>
+                </tr>
+                <tr>
+                    <th>作者</th>
+                    <td><input type="text" name="author" id="author" class="w250" maxlength="50" value="" /></td>
+                </tr>
+                <tr>
+                    <th>排序值</th>
+                    <td>
+                        <input type="text" name="orderBy" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="排序必须为数字" />
+                        <em>数值越大越靠前</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>封面图片</th>
+                    <td>
+                        <div id="coverResult" class="mb10"></div>
+                        <div class="pl136"><input type="hidden" name="cover" id="cover" value="" /></div>
+                        <input type="file" id="coverFile" />
+                        <em>请上传尺寸为 <i class="fcred-3">640 X 480 像素</i> 以内的封面图片</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否启用</th>
+                    <td><div class="ui-checkbox"><label for="active"><input type="checkbox" name="active" value="true" id="active" checked="checked" /> 启用</label></div></td>
+                </tr>
+                <tr>
+                    <th>文章发布平台</th>
+                    <td>
+                        <div class="ui-checkbox"><label for="pcShow"><input type="checkbox" name="pcShow" value="true" id="pcShow" checked="checked" /> 网站</label> <label for="mobileShow"><input type="checkbox" name="mobileShow" value="true" id="mobileShow" /> 移动端</label></div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>外部链接</th>
+                    <td>
+                        <input type="text" name="url" id="url" class="w250" maxlength="500" data-vtype="url" data--vmsg="请输入正确的链接地址" data-vmust="false" value="" />
+                        <em>以http://开头 (如果外部链接有值时，点击文章将直接跳转到外部链接)</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>文章简介</th>
+                    <td><textarea name="description"></textarea></td>
+                </tr>
+                <tr>
+                    <th>文章内容</th>
+                    <td><script id="detail" name="detail" class="ui-editor" type="text/plain"></script></td>
+                </tr>
+                <tr>
+                    <th>点击次数</th>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>最后修改人</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>最后修改时间</th>
+                    <td>2017-09-22 13:00:31</td>
+                </tr>
+                <tr>
+                    <th>创建时间</th>
+                    <td>2017-09-22 13:00:31</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/ueditor/ueditor.config.js"></script>
+    <script src="/admin/res/ueditor/ueditor.all.min.js"></script>
+    <script>
+        setTimeout(function () {
+            $('#coverFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=680355',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=640&height=480',
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传封面图片',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : 'QaUn-Sv0XRVXGAwMICaPt42CxeZI4vk3vigX9oOfv4c='
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#cover').val(d.Message).trigger('blur');
+                        $('#coverResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+    </script>
+
+
+</body>
+</html>

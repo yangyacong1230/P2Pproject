@@ -1,0 +1,117 @@
+﻿@charset "UTF-8";
+
+//function: 
+//getWidth(设置的栅格数，是否减去间隙（默认减去间隙），微调数值)固定宽度布局获取数值
+//getPercent（设置的栅格数，相对栅格数，是否减去间隙（默认不减少），微调数值）,百分比宽度布局获取数值
+//mixin
+//@include column(设置的栅格数, 微调数值)定义宽度获取宏
+//@include wrapper(设置的栅格数, 是否居中, 微调数值) 定义宽度并居中对其宏
+//@include alpha 定义左边距为0
+//@include omega 定义右边距为0
+//@include prepend(设置的栅格数, 微调数值) 定义左边距为栅格距离
+//@include append(设置的栅格数, 微调数值) 定义右边距为栅格距离
+
+$gridColumns:                     12 !default;      // 栅格分栏数
+$gridColumnWidth:                 65px !default;   // 单栅格宽度
+$gridGutter:                      20px !default;     // 栅格间隙宽度
+$gridSystemWidth:                 $gridColumns * ($gridColumnWidth + $gridGutter); //获得栅格实际宽度
+
+// 百分比布局的变量设置
+$gridPercentSwitch:               true !default; // 默认为固定宽度布局，设置为true为百分比
+$gridRealWidth:                   $gridSystemWidth !default; //获得栅格实际宽度
+$gridGutterPercent:               percentage($gridGutter / $gridSystemWidth) !default;// 获得栅格间隙百分比
+@if $gridPercentSwitch{
+  $gridRealWidth:                 100%;       // 开启百分比布局后默认栅格宽度
+}
+
+//IE6-IE7控制
+$gridMinWidth:                    1000 !default; //设置最小值
+$gridCorrection:                  0.5 / $gridMinWidth * 100 * 1%;//获得间隙值
+
+$gridMarginValue:                 if($gridPercentSwitch, $gridGutterPercent, $gridGutter) !default; //获得间隔宽度比例
+
+$gridSpanSwitch:                  false !default; //是否输出布局使用的栅格宽度。
+
+//固定宽度布局获取数值，getWidth(设置的栅格数，是否减去间隙（默认减去间隙），微调数值)
+@function getWidth($i:$gridColumns, $onlyInnerWidth:true, $subtract:0){
+  $return: (($gridColumnWidth + $gridGutter) * $i / $gridSystemWidth) * $gridRealWidth - $subtract !default;
+  @if $onlyInnerWidth == true {
+    $return: ((($gridColumnWidth + $gridGutter) * $i - $gridGutter) / $gridSystemWidth) * $gridRealWidth - $subtract;
+  }
+  @return $return;
+}
+
+//百分比宽度布局获取数值，getPercent（设置的栅格数，相对栅格数，是否减去间隙（默认不减少），微调数值）
+@function getPercent($i, $container-columns:$gridColumns, $onlyInnerWidth:false, $subtract:0) {
+  $percentage: percentage($i / $container-columns);
+  @if $onlyInnerWidth == true {
+    $width: $i * $gridColumnWidth + ($i - 1) * $gridGutter;
+    $container-width: $container-columns * $gridColumnWidth + ($container-columns - 1) * $gridGutter;
+    $percentage: percentage($width / $container-width);
+  }
+  @return $percentage - $subtract;
+}
+
+//默认右侧边距
+%margin-gutter{
+  margin-right: $gridMarginValue;
+  @if $gridPercentSwitch and $lte7{
+    *margin-right: $gridMarginValue - $gridCorrection;
+  }
+}
+
+//定义宽度获取宏
+@mixin column($i: $gridColumns, $subtract:0){
+  @extend %float;
+  @extend %margin-gutter;
+  $getWidth: getWidth($i, true, $subtract); 
+  width: $getWidth;
+  @if $gridPercentSwitch and $lte7{
+    *width:$getWidth - $gridCorrection;
+  } 
+}
+
+//定义宽度并居中对其宏
+@mixin wrapper($i: $gridColumns, $center:true, $subtract:0){
+  @extend %clearfix;
+  $getWrapperWidth: getWidth($i, false);
+  $wrapperWidth: $getWrapperWidth - $subtract;
+  width:$wrapperWidth;
+  @if $center == true {
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+//定义左边距为0
+@mixin alpha{
+  margin-left:0;
+}
+//定义右边距为0
+@mixin omega{
+  margin-right:0;
+}
+
+//定义左边距为栅格距离
+@mixin prepend($i:1, $subtract:0){ 
+  margin-left: getWidth($i,false,$subtract);
+} 
+//定义右边距为栅格距离
+@mixin append($i:1, $subtract:0){ 
+  margin-right: getWidth($i,false,$subtract);
+}
+
+//快速输出各种宽度比例
+@if $gridSpanSwitch {
+  @for $i from 1 through $gridColumns {
+    .w#{$i} { 
+      @extend %margin-gutter;
+      
+      width:getWidth($i);
+      
+      @if $gridPercentSwitch and $lte7{
+        *width:getWidth($i) - $gridCorrection;
+      } 
+    }
+  } 
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+       	<property name="dataSource" ref="dataSource"></property>
+       </bean>
+       
+       
+       <tx:advice id="txAdvice" transaction-manager="transactionManager">
+       		
+       		<tx:attributes>
+       				<tx:method name="add*" propagation="REQUIRED" />
+       				<tx:method name="save*" propagation="REQUIRED" />
+       				<tx:method name="insert*" propagation="REQUIRED" />
+       				<tx:method name="update*" propagation="REQUIRED" />
+       				<tx:method name="del*" propagation="REQUIRED" />
+       				<tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+       				<tx:method name="select*" propagation="SUPPORTS" read-only="true"/>
+       				<tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+       		</tx:attributes>
+       
+       </tx:advice>
+       
+       <!--切入点表达式
+      		1 方法修饰符,可以忽略,也可以指定
+      		2 返回值类型,不能忽略,可以写具体类型也可以用*代表所有类型
+      		3 包名 不能忽略, 包名可以出现* 或者..  *代表一层子目录 a.*.b 带a包下面的任意子包中的b包, a..b,不管层级,比如a.b 或者a.c.b等等都可以
+      		4 类名 不能忽略  可以写具体类名,可以使用*代表任意类,也可以使用*impl  abc*来表示以什么结尾或者以什么开头
+      		5 方法名 可以写具体的 和类名的书写规则一致
+      		6 方法的参数,有无参,一个参数的,多个参数的,干脆..代表任意参数的
+         -->
+       <aop:config>
+    
+       	<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.qianfeng.p2p.*.serviceimpl.*Impl.*(..))"/>
+       
+       </aop:config>
+</beans>

@@ -1,0 +1,84 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	借款额度申请列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">借款额度申请列表</a></dt>
+        <dt><a href="userquotalist.html">会员额度列表</a></dt>
+        <dd style="width: 1516px;">
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th>申请筛选:</th>
+                        <td>
+                            <input type="hidden" name="from" value="" data-olddisabled="false">
+                            <select id="status" name="status" data-olddisabled="false">
+	<option value="">审核状态筛选</option>
+	<option value="0">待审核</option>
+	<option value="200">通过</option>
+	<option value="201">部分通过</option>
+	<option value="-1">拒绝</option>
+</select>
+                            <select id="type" name="type" data-olddisabled="false">
+	<option value="会员账号">会员账号</option>
+	<option value="借款类型">借款类型</option>
+</select>
+                            <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                            <span class="ml20 js-inlinesubmit">
+                                <input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    
+                        <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选">
+                        <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选">
+                        <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" value=" 删除选中">
+                    
+                    
+                        <span class="js-autoload">
+	                        <span class="ui-checkbox"><label><input type="checkbox" class="js-refresh"> 自动刷新</label></span>
+                            <span class="ui-checkbox g-hide mr10"><label><input type="checkbox" data-autoload-char="xe642; 处理" data-autoload-alert="有待处理项"> 有待处理项时弹通知</label></span>
+                        </span> 
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th width="3%" class="">选取</th>
+                        <th width="10%" class="g-fleft">会员账号</th>
+                        <th width="10%">借款类型</th>
+                        <th width="10%">现有额度</th>
+                        <th width="10%">申请变更额度</th>
+                        <th width="10%">变更后额度</th>
+                        <th width="20%" class="g-fleft">申请备注</th>
+                        <th width="10%">到期时间</th>
+                        <th width="6%">状态</th>
+                        <th width="11%">操作</th>
+                    </tr><tr>
+                <td colspan="10" class="g-fleft">暂无数据。</td>
+            </tr>
+        
+    <tr class="pager">
+        <td colspan="10">
+            
+            <a href="/admin/member/userquotaloglist.html?action=search&amp;from=&amp;status=&amp;type=%E4%BC%9A%E5%91%98%E8%B4%A6%E5%8F%B7&amp;key=&amp;_=1434950003539" class="g-hide"></a>
+        </td>
+    </tr>
+                </tbody></table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

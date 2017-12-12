@@ -1,0 +1,298 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	操作员详情 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <form class="auto" method="post" action="" beforesubmit="var val = ''; $('#loginAreaul li').each(function(i,n) { val += $(n).attr('data-id') + '|' });$('#loginAreaFilter').val(val);" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th rowspan="3" width="15%">操作员头像</th>
+                    <td rowspan="3" id="f" width="35%">
+                        <div id="faceResult" class="mb10">
+                            
+                        </div>
+                        <div class="pl136"> 
+                            <input type="hidden" name="face" id="face" value="">
+                        </div>
+                        <div id="faceFile" class="uploadify" style="height: 32px; width: 120px;"><object id="SWFUpload_0" type="application/x-shockwave-flash" data="../res/uploadify/uploadify.swf?v=383364&amp;preventswfcaching=1434950205166" width="120" height="32" class="swfupload" style="position: absolute; z-index: 1;"><param name="wmode" value="transparent"><param name="movie" value="../res/uploadify/uploadify.swf?v=383364&amp;preventswfcaching=1434950205166"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2FAdmin%2FSys%2F..%2Fres%2Fuploadify%2FSwfUpload.html%3Ftype%3Dimage%26width%3D120%26height%3D120&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=admin%3DQaUn-Sv0XRVXGAwMICaPty8D-OJ8YSaGkEqOB60hW!M%253D&amp;filePostName=Filedata&amp;fileTypes=*.png%3B*.jpg%3B*.jpeg%3B*.gif%3B*.bmp%3B&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=0&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=32&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2"></object><div id="faceFile-button" class="uploadify-button iconfont" style="height: 32px; line-height: 32px; width: 120px;"><span class="uploadify-button-text"> 上传头像</span></div></div><div id="faceFile-queue" class="uploadify-queue"></div>
+                        <em>请上传尺寸为 <i class="fcred-3">120 X 120 像素</i> 的头像</em>
+                    </td> 
+                    <th width="15%"><i class="iconfont fcred-3"> </i>操作员账号</th>
+                    <td width="35%">
+                        <input type="text" name="name" id="name" class="w150" maxlength="50" placeholder="请输入登录账号" data-vtype="must" data-vmsg="请输入操作员账户" value="">
+                        
+                    </td>
+
+                </tr>
+                <tr>
+                   <th><i class="iconfont fcred-3"> </i>操作员密码</th>
+                   <td>
+                       <input type="password" name="password" placeholder="请输入登录密码" class="w150" maxlength="50" data-vtype="must" data-vmsg="请输入操作员密码">
+                        
+                    </td>   
+                </tr>
+                <tr>
+                    <th><i class="iconfont fcred-3"> </i>所属操作组</th>
+                    <td>
+                        <select data-vtype="must" data-vmsg="请选择所属操作组" id="groupId" name="groupId">
+	<option value="">请选择所属操作组</option>
+	<option value="1">运营组</option>
+	<option value="2">技术组</option>
+	<option value="3">风控组</option>
+	<option value="4">客服组</option>
+	<option value="5">财务组</option>
+	<option value="6">业务组</option>
+</select>
+                        
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>管理员昵称</th>
+                    <td><input type="text" name="nickName" placeholder="请输入前台显示昵称" class="w150" maxlength="50" value=""></td>        
+                    <th>手机号码</th>
+                    <td><input type="text" name="phone" placeholder="请输入手机号码" class="w150" maxlength="20" data-vtype="phone" data-vmust="false" data-vmsg="手机号码格式错误" value=""></td>                              
+                </tr>
+                <tr>
+                    <th>电子邮箱</th>
+                    <td><input type="text" name="email" placeholder="请输入电子邮箱" class="w150" maxlength="100" data-vtype="email" data-vmust="false" data-vmsg="电子邮箱格式错误" value=""></td>
+                     <th>QQ号码</th>
+                    <td><input type="text" name="qq" placeholder="请输入工作QQ" class="w150" maxlength="20" data-vmust="false" data-vtype="qq" data-vmsg="QQ号码不正确" value=""></td>         
+                </tr>
+                                
+                <tr>
+                    <th>是否锁定账号</th>
+                    <td><label for="isLock"><input type="checkbox" name="isLock" value="true" id="isLock"> 锁定</label></td>
+                    <th>是否加入客服列表</th>
+                    <td><label for="isService"><input type="checkbox" name="isService" value="true" id="isService"> 加入</label></td>                 
+                </tr>
+
+                <tr>
+                    <th>仅允许查看自己帐号信息</th>
+                    <td><label for="viewOnlySlef"><input type="checkbox" name="viewOnlySlef" value="true" id="viewOnlySlef"> 是</label></td>  
+                    <th>仅允许查看名下会员</th>
+                    <td><label for="viewUserOnlySelf"><input type="checkbox" name="viewUserOnlySelf" value="true" id="viewUserOnlySelf"> 是</label></td>  
+
+                </tr>
+                <tr>
+                    <th>额外允许登录的区域<br>(除所属操作组以外)</th>
+                    <td>
+                        选择地区 <span id="area"><select id="province" name="province"><option value="">全部</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span>
+                        <input type="button" class="btn-base c-priority iconfont" value=" 添加" id="btnAddArea">
+                        <ul id="loginAreaul" class="ui-termselect">
+                            
+                        </ul>
+                        <input type="hidden" name="loginAreaFilter" id="loginAreaFilter" value="">
+                    </td>
+                    <th><i class="iconfont fcred-3"> </i>连续登录错误次数</th>
+                    <td>
+                        <input type="text" name="loginErrorCount" value="0" class="w60 ui-int" data-vtype="number" data-vmsg="请输入正确的数据值">  次
+                        <em style="">连续登录错误 5 次后，将在 15 分钟内禁止登录</em>
+                    </td> 
+                </tr> 
+                  
+                <tr>
+                     <th>最后登录情况</th>
+                    <td><br>
+                        </td>                     
+                    <th>登录次数</th>
+                    <td>0 次</td>   
+                </tr>          
+                <tr>
+                    <th>备注</th>
+                    <td colspan="3"><textarea name="remark"></textarea></td>
+                </tr>
+            </tbody></table>
+            
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th class="info-listhead" colspan="2">                        
+                        整站权限设置
+                    </th>
+                </tr>
+                <tr>
+                    <td class="g-fcenter">
+                            替换为同组管理员权限：
+                        <select class="ml10" id="copyAdmin" name="copyAdmin">
+	<option value="">从现有操作员复制</option>
+</select>
+                        <span class="ml10">
+                            同步当前权限至：
+                            <input type="text" name="permissionCopyTo" id="permissionCopyTo" value="" class="w138 ml10">
+                            <input type="button" class="btn-base c-normal iconfont g-valign" value="" id="permissionCopy">
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0" width="100%" class="m-permission" id="js-permission">
+                            
+                                
+                            
+                        </table>                        
+                    </td>
+                </tr>
+            </tbody></table>
+            
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/core/scripts/permission.js"></script>
+    <script src="/res/core/scripts/areadata.js"></script>
+    <script>
+        //限制登录地区编辑
+        $('#area').cascade({ data: areadata, names: ['province', 'city', 'area'], emptyTip: '全部' });
+        var loginAreaUl = $('#loginAreaul'), loginAreaFilter = $('#loginAreaFilter');
+        $('#btnAddArea').click(function () {
+            var val = '', txt = '', ok = true;
+            $('#area select').each(function (i, n) {
+                var v = $(n).val();
+                if (v) {
+                    val = v;
+                    txt += $(':selected', n).text() + ' ';
+                    if (loginAreaUl.find('li[data-id="' + val + '"]').length > 0) {
+                        ok = false;
+                        $.jError('所选地区已存在');
+                        return false;
+                    }
+                }
+            });
+            if (ok && val) loginAreaUl.append('<li class="btn-smaller c-important" data-id="' + val + '">' + txt + '<i onclick="$(this).closest(\'li\').remove();" class="iconfont fcyellow-1">&#xe65a;</i></li>');
+        });
+
+        setTimeout(function () {
+            $('#faceFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=383364',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=120&height=120',
+                buttonClass: 'iconfont',
+                buttonText: '&#xe629; 上传头像',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    'admin': 'QaUn-Sv0XRVXGAwMICaPty8D-OJ8YSaGkEqOB60hW!M='
+                },
+                onUploadSuccess: function (res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#face').val(d.Message).trigger('blur');
+                        $('#faceResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+
+        //权限相关
+        function ajaxGroupPermisstions(str) {
+            $.ajax({
+                url: '?action=groupPermission&id=0&gid=' + str,                                
+                success: function (res) {
+                    $('#js-permission').html(res);
+                    initPermissionParentStatus();
+                }
+            });
+
+            $.ajax({
+                url: '?action=getAdmins&id=0&gid=' + str,
+                dataType: 'json',
+                success: function (res) {
+                    var adminSelect = $('#copyAdmin');
+                    adminSelect[0].length = 0;
+                    adminSelect.append('<option value="">从现有操作员复制</option>')
+
+                    if (res && res.length) {
+                        $.each(res, function (i, n) {
+                            adminSelect.append('<option value="' + n.Id + '">' + n.Name + (n.Nickname == "" ? n.Nickname : '(' + n.Nickname + ')') + '</option>')
+                        });
+                    }                    
+                }
+            });
+        };
+
+        var groupVal = $('#groupId').val();
+        if (groupVal) {
+            ajaxGroupPermisstions(groupVal);
+        }
+
+        $('#groupId').change(function () {
+            ajaxGroupPermisstions($(this).val());
+        });
+
+        $('#copyAdmin').change(function () {
+            var me = $(this), val = me.val();
+            if (val) {
+                $.jConfirm('选择的管理员权限将替换当前权限，您确定吗？', function () {
+                    ajaxAdminPermisstions(val);
+                });
+
+                me.val('');
+            }
+        });
+        function ajaxAdminPermisstions(aid) {
+            $.ajax({
+                url: "?action=adminPermission&id=0&aid=" + aid,
+                dataType: "json",
+                success: function (res) {
+                    res = res.Value;
+                    var checked = [];
+                    for (var module in res) {
+                        for (var fun in res[module]) {
+                            checked.push(module + '|' + fun + '|');
+                            for (var i = 0; i <= res[module][fun].length; i++) {
+                                checked.push(module + '|' + fun + '|' + res[module][fun][i]);
+                            }
+                        }
+                    }
+
+                    $('table.m-permission :checkbox[name=permissions]').each(function (i, n) {
+                        var n = $(n);
+                        if (checked.indexOf(n.val()) != -1)
+                            n[0].checked = true;
+                        else
+                            n[0].checked = false;
+                    });
+
+                    initPermissionParentStatus();
+                }
+            });
+        };
+
+        $('#permissionCopy').click(function () {
+            var groupId = $('#groupId').val();
+            $.jPopupEdit('将权限设置同步到', '../common/adminselect.html?fn=selectAdmin&groupId=' + groupId);
+        });
+
+        function selectAdmin(obj) {
+            var to = $('#permissionCopyTo'),
+                val = ',' + to.val() + ',';
+            if (obj && obj.admins && obj.admins.length)
+            {
+                $.each(obj.admins, function (i, n) {
+                    
+                    if (n.name != '' && val.indexOf(',' + n.name + ',') == -1)
+                        val += n.name + ',';
+                });
+            }
+            to.val(val.replace(/^,+|,+$/g, ''));
+        }
+    </script>
+
+
+
+</body></html>

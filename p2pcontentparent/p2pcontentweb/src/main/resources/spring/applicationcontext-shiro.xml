@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:component-scan base-package="com.qianfeng.p2p.commons.shiro"></context:component-scan>
+    <!-- 会话管理器,用于持久化和反序列化session,主要用于不同模块之间的session共享 -->
+    <bean id="sessionManager"
+          class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionValidationSchedulerEnabled" value="false"/>
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="sessionValidationInterval" value="1800000"/>  <!-- 相隔多久检查一次session的有效性 -->
+        <property name="globalSessionTimeout" value="1800000"/>  <!-- session 有效时间为半小时 （毫秒单位）-->
+        <property name="sessionIdCookie.name" value="jsid"/>
+        <property name="sessionIdCookie.path" value="/"/>
+    </bean>
+    <!--  <bean id="sessionDAO" class="com.qianfeng.p2p.shiro.cache.RedisSessionDao"></bean>-->
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="sessionManager" ref="sessionManager"/>
+        <!-- <property name="cacheManager" ref="shiroCacheManager" /> -->
+        <!--<property name="realm" ref="myRealm" />-->
+        <property name="authenticator" ref="authenticator"></property>
+       
+    </bean>
+    <!--配置验证方式-->
+    <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"/>
+        </property>
+
+    </bean>
+<!--配置我们的shiro的过滤器  -->
+    <bean id="shiroFilter" class="com.qianfeng.p2p.content.shiro.MyShiroFilterFactoryBean" init-method="initPerms">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="http://localhost:9001/login.html"/>
+        <!-- <property name="successUrl" value="/system/main"/> -->
+        <property name="unauthorizedUrl" value="/admin/backlogin.html"/>
+        <!--<property name="filterChainDefinitions">
+            <value>
+                /js/*=anon
+                /css/*=anon
+                /index.html=anon
+                /login.html=anon
+            </value>
+
+        </property>-->
+    </bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+  
+   
+
+</beans>

@@ -1,0 +1,78 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	线上支付平台列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">线上支付平台列表</a></dt>
+        <dt><a href="offlinepaymentlist.html">线下支付银行列表</a></dt>
+        <dd style="width: 1516px;">
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th>平台筛选：</th>
+                        <td>
+                            <select id="type" name="type" data-olddisabled="false">
+	<option value="调用标识">调用标识</option>
+	<option value="平台名称">支付平台名称</option>
+</select>
+                            <input type="text" size="35" placeholder="输入搜索条件" name="key" value="" data-olddisabled="false">
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                        </td>
+                    </tr>
+                </tbody></table>             
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    
+                        <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建支付平台" onclick="$.jPopupEdit('新建支付平台', 'onlinepaymentdetail.html');">
+                    
+                    <strong>本系统与"通联支付"网关/托管无缝集成，如有需要请 <a href="http://www.qfedu.com" target="_blank" style="color:red;">联系客服开通</a>。</strong>
+                    <span class="iconfont"><i class="fs22 fcjade-1"></i>已开通<i class="fs22 fcred-3"></i>已停用</span>
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th width="3%">选取</th>
+                        <th width="3%">排序</th>
+                        <th width="10%">调用标识</th>
+                        <th width="10%">平台名称</th>
+                        <th width="10%">平台Logo</th>
+                        <th width="28%" class="g-fleft">详细说明</th>
+                        <th width="15%">添加时间</th>
+                        <th width="6%&quot;">是否开启直连</th>
+                        <th width="5%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr><tr id="tr1">
+                <td><input type="checkbox" class="del" data-id="1"></td>
+                <td>0</td>
+                <td>TL</td>
+                <td>通联支付</td>
+                <td><img alt="" src="/Upload/201506/9749e921-e791-46d0-9207-c6d270db8032.jpg" height="40"></td>
+                <td class="g-fleft">通联支付网络服务股份有限公司（简称“通联支付”）是在国家有关..</td>
+                <td>2017-04-21 11:23:26</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑支付平台', 'onlinepaymentdetail.html?ID=1');"> 编辑</a>
+                    <a class="iconfont del" href="onlinepaymentdetail.html?ID=1&amp;action=del"> 删除</a>
+                </td>
+            </tr>
+        
+    <tr class="pager">
+        <td colspan="10"><div class="pages"><span class="remind">共找到<strong>1</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/sys/onlinepaymentlist.html?action=search&amp;type=%E8%B0%83%E7%94%A8%E6%A0%87%E8%AF%86&amp;key=&amp;_=1434950831563" class="g-hide"></a></td>
+    </tr>
+                </tbody></table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

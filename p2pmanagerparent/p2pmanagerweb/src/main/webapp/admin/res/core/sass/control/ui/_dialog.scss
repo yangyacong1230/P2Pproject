@@ -1,0 +1,52 @@
+﻿@charset 'UTF-8';
+
+.ui-dialog{
+    position:fixed; 
+    _position:absolute; 
+    border:1px solid nth($ash,1); 
+    background-color:nth($baseColor,1); 
+    overflow:hidden;
+    .dialog-title{
+        border-bottom:3px solid nth($jade,1); 
+        height:45px; 
+        line-height:45px; 
+        padding:0 6px 0 12px; 
+        white-space:nowrap;
+        -moz-user-select:none; 
+        color:nth($gery,1);
+        background-color:nth($navy,2);
+        h1{
+            font-size:18px;
+            line-height:45px;
+        }
+        .dialog-close{
+            @include float(right);
+            padding:0 10px;
+            text-decoration:none;
+            color:nth($jade,2);
+            &:hover{
+              color:nth($jade,1);
+              }
+}
+    }
+}
+.dialog-body{}
+.dialog-body iframe{
+    border-bottom:1px solid nth($gery,2); 
+}
+.dialog-icon{background:url(../images/tips.png) no-repeat; display:block; width:30px; height:30px;}
+.dialog-body .info{background-position:0 0;}
+.dialog-body .error{background-position:-67px 0;}
+.dialog-body .success{background-position:-36px 0;}
+.dialog-btns{
+    position:absolute; 
+    bottom:0; 
+    left:0; 
+    right:0; 
+    width:100%; 
+    text-align:right; 
+    height:55px; 
+    border-top:1px solid #ccc; 
+    background-color:#fff;
+}
+.dialog-btns input{margin:8px 20px 0 0;}

@@ -1,0 +1,71 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	等待满标审核的借款 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">等待满标审核的借款</a></dt>        
+        <dd>
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>借款筛选:</th>
+                        <td>
+                            <select id="status" name="status">
+	<option value="">满标待审核</option>
+	<option value="未满标审核">未满标审核</option>
+	<option value="满标审核未通过">满标审核未通过</option>
+</select>
+                            <select id="type" name="type">
+	<option value="业务编号">业务编号</option>
+	<option value="借款名称">借款名称</option>
+	<option value="借款人">借款人</option>
+</select>
+                            <input type="text" size="35" name="key" value="" />
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>                    
+                </table>                
+            </form>
+            <div class="m-content">
+                <div class="m-oper">                    
+                    
+                        <span class="js-autoload">
+	                        <span class="ui-checkbox"><label><input type="checkbox" class="js-refresh" data-function="等待满标审核的借款" data-operate="自动刷新" data-freemes="本功能仅供正式版使用。" /> 自动刷新</label></span>
+                            <span class="ui-checkbox g-hide mr10"><label><input type="checkbox" data-autoload-char="xe642; 审核" data-autoload-alert="有新的待审核项" /> 有新待审核项弹通知</label></span>                        
+                        </span>
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="3%">编号</th>
+                        <th width="5%">业务编号</th>
+                        <th width="10%">借款人</th>
+                        <th width="7%">借款种类</th>
+                        <th width="15%" class="g-fleft">借款名称</th>
+                        <th width="10%">借款金额</th>
+                        <th width="5%">年利率</th>
+                        <th width="5%">借款周期</th>
+                        <th width="10%">添加时间</th>
+                        <th width="10%">已投金额/人</th>
+                        <th width="5%">状态</th>
+                        <th width="5%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

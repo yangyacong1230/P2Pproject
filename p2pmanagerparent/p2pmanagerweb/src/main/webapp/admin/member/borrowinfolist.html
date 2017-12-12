@@ -1,0 +1,102 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	会员借款资料列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">会员借款资料列表</a></dt>
+        <dd style="width: 1516px;">
+            <form action="?action=search" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th>资料筛选:</th>
+                        <td>                            
+                            <select id="borrowInfoType" name="borrowInfoType" data-olddisabled="false">
+	<option value="">全部资料类型</option>
+	<option value="1">房产资料</option>
+	<option value="2">车辆材料</option>
+</select>
+                            <select id="type" name="type" data-olddisabled="false">
+	<option value="资料名称">资料名称</option>
+	<option value="会员账号">会员账号</option>
+</select>
+                            <input type="text" size="35" name="key" value="" data-olddisabled="false">
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>状态筛选:</th>
+                        <td>
+                            <div class="ui-radio" id="js-status">
+                                <label><input type="radio" name="status" value="" checked="checked" data-olddisabled="false">全部</label><label><input type="radio" name="status" value="99" data-olddisabled="false">待授额</label><label><input name="status" type="radio" value="0" data-olddisabled="false">待审核</label><label><input name="status" type="radio" value="1" data-olddisabled="false">待授额</label><label><input name="status" type="radio" value="200" data-olddisabled="false">审核成功</label><label><input name="status" type="radio" value="-1" data-olddisabled="false">审核失败</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th></th>
+                        <td>
+                            <input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false">
+                        </td>
+                    </tr>
+                </tbody></table>
+                <a href="javascript:void(0);" id="btnSwithMoreFilter" class="iconfont"><span> 显示更多筛选条件</span></a>
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    
+                        <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建借款资料" onclick="$.jPopupEdit('新建借款资料', 'borrowinfodetail.html');">
+                    <span class="iconfont"><i class="fs22 fcyellow-1"></i>待审核/待授额<i class="fs22 fcred-3"></i>审核失败<i class="fs22 fcjade-1"></i>审核成功</span>
+                    
+                        <span class="js-autoload">
+	                        <span class="ui-checkbox"><label><input type="checkbox" class="js-refresh" data-function="会员借款资料管理" data-operate="自动刷新" data-freemes="本功能仅供正式版使用。"> 自动刷新</label></span>
+                            <span class="ui-checkbox g-hide mr10"><label><input type="checkbox" data-autoload-char="xe60e; 审核" data-autoload-alert="有待审核项"> 有待审核项时弹通知</label></span>
+                            <span class="ui-checkbox g-hide mr10"><label><input type="checkbox" data-autoload-char="xe60e; 授额" data-autoload-alert="有待授额项"> 有待授额项时弹通知</label></span>
+                        </span>
+                    
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody><tr>
+                        <th width="15%" class="g-fleft">会员账号</th>
+                        <th width="15%" class="">资料所属分类</th>
+                        <th width="35%" class="g-fleft">资料名称</th>
+                        <th width="10%">有效期</th>
+                        <th width="10%">状态</th>
+                        <th width="15%">操作</th>
+                    </tr><tr id="tr1">
+                <td class="g-fbold g-fleft"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=1');">tingting</a></td>
+                <td class="">房产资料</td>
+                <td class="g-fleft">tingting</td>
+                <td>长期</td>
+                <td class="iconfont"><i class="fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper" href="javascript:void(0);" onclick="$.jPopupEdit('会员借款资料查看', 'borrowinfodetail.html?ID=1&amp;action=view');"> 查看资料</a>
+                    <a class="iconfont oper" href="borrowinfodetail.html?ID=1&amp;action=pdf"> 导出PDF</a>
+                    
+                    
+                </td>
+            </tr>
+        
+    <tr class="pager">
+        <td colspan="6">
+            <div class="pages"><span class="remind">共找到<strong>1</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div>
+            <a href="/admin/member/borrowinfolist.html?action=search&amp;borrowInfoType=&amp;type=%E8%B5%84%E6%96%99%E5%90%8D%E7%A7%B0&amp;key=&amp;status=&amp;_=1434949616701" class="g-hide"></a>
+        </td>
+    </tr>
+                </tbody></table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>$('#js-status [value=""]').trigger('click');</script>
+
+
+
+</body></html>

@@ -1,0 +1,390 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	广告内容管理 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form action="" class="auto" method="post" beforeSubmit="getValues();" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>所属广告位</th>   
+                    <td>     
+                        <select data-vtype="must" data-vmsg="请选择所属广告位" id="positionId" name="positionId">
+                            <option value=""  data-pxWidth="0" data-pxHeight="0">请选择所属广告位</option>
+                                                       	
+	                                <option data-pxWidth="390" data-pxHeight="200"  value="1">论坛首页</option>
+                                                                	
+	                                <option data-pxWidth="1536" data-pxHeight="380"  value="2">首页幻灯片</option>
+                                                                	
+	                                <option data-pxWidth="440" data-pxHeight="608"  value="3">贷款申请</option>
+                                                                	
+	                                <option data-pxWidth="720" data-pxHeight="318"  value="4">会员登录</option>
+                                                                	
+	                                <option data-pxWidth="100" data-pxHeight="34"  value="5">会员登录文字</option>
+                                                                	
+	                                <option data-pxWidth="260" data-pxHeight="217"  value="6">首页视频</option>
+                                
+                        </select>                   
+                    </td>
+                </tr>
+                <tr>
+                    <th>排序值</th>
+                    <td><input type="text" name="priority" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="排序必须为数字"/><em>数值越大越靠前</em></td>
+                </tr>
+                <tr>
+                    <th>广告类型</th>
+                    <td>
+                        <div class="ui-radio"><label><input name="codeType" type="radio" value="0" checked="checked" />文字</label><label><input name="codeType" type="radio" value="1" />图片</label><label><input name="codeType" type="radio" value="4" />内置Js特效</label><label><input name="codeType" type="radio" value="5" />自定义代码</label></div>
+                    </td>
+                </tr>
+                <tr id="text">
+                    <th>文字内容</th>
+                    <td><textarea class="w300" rows="3" id="ctext" style="height:4em;"></textarea></td>
+                </tr>
+                <tr id="img" class="g-hide">
+                    <th>图片</th>
+                    <td>
+                        <div Id="codeJsonResult" class="mb10"></div>
+                        <input type="hidden" class="w250" maxlength="500" Id="codeJson" value="" />
+                        <input type="file" Id="imgFile" />
+                        <em>请上传尺寸为 <i class="fcred-3  js-size">任意 X 任意 像素</i> 的广告图片</em>
+                    </td>
+                </tr>
+                <tr id="url">
+                    <th>链接地址</th>
+                    <td>
+                        <input type="text" class="w250 curl" maxlength="500" id="curl" data-vtype="url" data-vmsg="请输入正确的链接地址" data-vmust="false" value="" />
+                        <em>以http://开头 (如果外部链接有值时，点击将直接跳转到外部链接)</em>
+                    </td>
+                </tr>
+                <tr id="js">
+                    <th>内置广告</th>
+                    <td>
+                        <ul class="ui-listvalue"> 
+                                
+                        </ul>
+                        <input type="hidden" id="valuesJson" name="valuesJson" />
+                        <input type="file" id="codeJsonFile"/>
+                        <em>请上传尺寸为 <i class="fcred-3 js-size">任意 X 任意 像素</i>  的广告图片</em>
+                    </td>
+                </tr>
+                <tr id="textarea" class="g-hide">
+                    <th>自定义HTML代码</th>
+                    <td><textarea name="codeJson" id="custom"></textarea></td>
+                </tr>
+                <tr>
+                    <th>是否启用</th>
+                    <td><div class="ui-checkbox"><label for="active"><input type="checkbox" name="active" value="true" id="active" checked="checked" /> 启用</label></div></td>
+                </tr>
+                <tr>
+                    <th>开始时间</th>
+                    <td><input type="text" name="startAt" id="startAt" value="2017-09-22 12:59:05" class="ui-date w150 ui-datetime" data-maxdate="#endAt" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <th>结束时间</th>
+                    <td><input type="text" name="endAt" id="endAt" value="" class="ui-date w150 ui-datetime" data-mindate="#startAt" readonly="readonly" /><em>不填写则长期有效</em></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <script type="text/template" id="tmpListValue">
+        <li style="width:100%;height:150px;">
+            <a href="javascript:void(0)" class="iconfont fs22 listvalue-delete" title="删除">&#xe65a;</a>
+            <div class="m-content">
+                <div class="listvalue-imgbox"></div>
+            </div>
+            <div style="position:relative;left:370px;top:-13px">
+                <label>背景颜色：<input type="text" class="color w250" /></label>
+                <label>图片地址：<input type="text" class="ctext w250"/></label> 
+                <label>链接地址：<input type="text" class="curl w250"  /></label>
+            </div>
+            <a href="javascript:void(0)" class="iconfont fs30 listvalue-up" style="height:150px;line-height:150px;" title="上移">&#xe622;</a>
+            <a href="javascript:void(0)" class="iconfont fs30 listvalue-down" style="height:150px;line-height:150px;" title="下移">&#xe661;</a>
+        </li> 
+    </script>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>    
+        var uploadUrl='../uploadify/SwfUpload.html?type=image';
+        //改变框体
+        var changeSize=function(obj){
+            var pxWidth=$(obj).find('option:selected').attr('data-pxWidth'),
+                pxHeight=$(obj).find('option:selected').attr('data-pxHeight');
+            if(pxWidth!=0||pxHeight!=0){
+                pxWidth= pxWidth == 0 ? 1 : pxWidth;
+                pxHeight= pxHeight == 0 ? 1 : pxHeight;
+                uploadUrl='../uploadify/SwfUpload.html?type=image&width='+ pxWidth +'&height='+ pxHeight;
+                $('i.js-size').text(pxWidth + ' X '+ pxHeight+' 像素');
+            }
+            else{
+                
+                $('i.js-size').text('任意像素');
+            }
+        };
+        
+        var tableToggle=function(obj){
+            if(!$(obj).val()){
+                $('table.m-info tr').not(':first').addClass('g-vhide');
+            }else{
+                $('table.m-info tr').not(':first').removeClass('g-vhide');
+            }       
+        };
+        tableToggle('#positionId');
+        changeSize('#positionId');
+        $('#positionId').change(function(){
+            tableToggle(this);
+            changeSize(this);
+        }); 
+
+
+        function getValues() {
+            var obj = [];
+            
+            $(".m-content .m-info .ui-radio input[type=radio]").each(function(i,n){
+                var n = $(n);
+                var checked = $(n).is(":checked");
+                if((n.val() == 0)&& checked){
+                    var kv = {
+                        Text: $('#ctext').val(),
+                        Url: $('#curl').val()
+                    };
+
+                    if (kv.Text)
+                        obj.push(kv);
+                    return false;
+                }
+                if((n.val() == 1)&& checked){
+                    var kv = {
+                        Text: $('#codeJson').val(),
+                        Url: $('#curl').val()
+                    };
+
+                    if (kv.Text)
+                        obj.push(kv);
+                    return false;
+                }
+                if((n.val() == 4)&& checked){
+                    $('.ui-listvalue li').each(function (i, n) {
+                        n = $(n);
+
+                        var kv = {
+                            Text: n.find('.ctext').val(),
+                            Color: n.find('.color').val(),
+                            Url: n.find('.curl').val()
+                        };
+
+                        if (kv.Text)
+                            obj.push(kv);
+                    });
+                }
+            });
+            $('#valuesJson').val(utils.toJsonString(obj));
+        };
+
+        $("#codeJson").change(function(){
+            $('#codeJsonResult').html('<img src="' +$(this).val() + '" />');
+        });
+
+        function selectText(){
+            $("#img").hide();
+            $("#text").show();
+            $("#textarea").hide();
+            $("#url").show();
+            $("#js").hide();
+            $("#codeJson").removeAttr("data-vtype");
+            $("#codeJson").removeAttr("data-vmsg");
+            $("#custom").removeAttr("data-vtype");
+            $("#custom").removeAttr("data-vmsg");
+            $("#valuesJson").removeAttr("data-vtype");
+            $("#valuesJson").removeAttr("data-vmsg");
+            $("#ctext").attr("data-vtype","must");
+            $("#ctext").attr("data-vmsg","请输入文字内容");
+        };
+
+        function selectImage(){
+            $("#img").show();
+            $("#text").hide();
+            $("#textarea").hide();
+            $("#url").show();
+            $("#js").hide();
+            $("#ctext").removeAttr("data-vtype");
+            $("#ctext").removeAttr("data-vmsg");
+            $("#custom").removeAttr("data-vtype");
+            $("#custom").removeAttr("data-vmsg");
+            $("#valuesJson").removeAttr("data-vtype");
+            $("#valuesJson").removeAttr("data-vmsg");
+            $("#codeJson").attr("data-vtype","must");
+            $("#codeJson").attr("data-vmsg","请上传广告图片");
+        };
+
+        function selectSystemJs(){
+            $("#img").hide();
+            $("#text").hide();
+            $("#textarea").hide();
+            $("#url").hide();
+            $("#js").show();
+            $("#ctext").removeAttr("data-vtype");
+            $("#ctext").removeAttr("data-vmsg");
+            $("#codeJson").removeAttr("data-vtype");
+            $("#codeJson").removeAttr("data-vmsg");
+            $("#custom").removeAttr("data-vtype");
+            $("#custom").removeAttr("data-vmsg");
+            //$("b").css("margin-left","140px");
+            //$("#valuesJson").attr("data-vtype","must");
+            //$("#valuesJson").attr("data-vmsg","请上传至少上传一张内置广告图片图片");
+        };
+
+        function selectCustomCode(){
+            $("#img").hide();
+            $("#text").hide();
+            $("#textarea").show();
+            $("#url").hide();
+            $("#js").hide();
+            $("#ctext").removeAttr("data-vtype");
+            $("#ctext").removeAttr("data-vmsg");
+            $("#codeJson").removeAttr("data-vtype");
+            $("#codeJson").removeAttr("data-vmsg");
+            $("#valuesJson").removeAttr("data-vtype");
+            $("#valuesJson").removeAttr("data-vmsg");
+            $("#custom").attr("data-vtype","must");
+            $("#custom").attr("data-vmsg","请输入自定义HTML代码");
+
+        };
+
+        $(".m-content .m-info .ui-radio input[type=radio]").each(function(i,n){
+            if($(n).is(":checked")){
+                if(i == 0){
+                   selectText();
+                }else if(i == 1){
+                    selectImage();
+                }else if(i == 2){
+                    selectSystemJs();
+                }else if(i == 3){
+                    selectCustomCode();
+                }
+            }
+
+            $(n).click(function(){
+                if(i == 0){
+                    selectText();
+                }else if(i == 1){
+                    selectImage();
+                }else if(i == 2){
+                    selectSystemJs();
+                }else if(i == 3){
+                    selectCustomCode();
+                }
+            });
+        });
+
+        setTimeout(function() {
+            $("#codeJsonFile").uploadify({
+                width: 120,
+                height: 32,
+                multi: true,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=351893',
+                uploader:'../res' + uploadUrl ,
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传图片',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : '7e89LC4ujiqOn6UcryX!9vRxx0jTsT12E64Y4RkQf1I='
+                },
+                onUploadStart:function(obj){
+                    this.setUploadURL(uploadUrl);
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('.ui-listvalue').append(document.getElementById('tmpListValue').innerHTML);
+                        $('.ui-listvalue li .ctext').each(function(i,n){
+                            if($(n).val() == ''){
+                                $(n).val(d.Message).trigger('blur');
+                                return false;
+                            }
+                        })
+                        $('.ui-listvalue li .listvalue-imgbox').each(function(i,n){
+                            if($(n).html() == ""){
+                                $(n).html('<a href="' + d.Message + '" target="_blank"><img src="' + d.Message + '" width=\"300\" /></a>');
+                                return false;
+                            }
+                        })
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+
+        setTimeout(function() {
+            $('#imgFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=260520',
+                uploader:'../res' +  uploadUrl,
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传图片',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : '7e89LC4ujiqOn6UcryX!9vRxx0jTsT12E64Y4RkQf1I='
+                },
+                onUploadStart:function(obj){
+                    this.setUploadURL(uploadUrl);
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#codeJson').val(d.Message).trigger('blur');
+                        $('#codeJsonResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+
+        $('.ui-listvalue').on('click', 'a', function () {
+            var me = $(this);
+
+            if (me.is('.listvalue-delete')) {
+
+                me.closest('li').remove();
+
+            } else if (me.is('.listvalue-up')) {
+
+                var li = me.closest('li');
+                if (li.prev().length)
+                    li.prev().before(li);
+                else
+                    li.closest('ul').append(li);
+
+            } else if (me.is('.listvalue-down')) {
+
+                var li = me.closest('li');
+                if (li.next().length)
+                    li.next().after(li);
+                else
+                    li.closest('ul').prepend(li);
+
+            }
+        });
+    </script>  
+
+
+</body>
+</html>

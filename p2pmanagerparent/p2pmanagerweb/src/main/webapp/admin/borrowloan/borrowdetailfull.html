@@ -1,0 +1,92 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="borrowdetailfull.html.cs" Inherits="WAP2P.Web.PC.Admin.BorrowLoan.BorrowDetailFull" %>
+<%@ Register Src="Controls/BorrowInfo.ascx" TagPrefix="uc1" TagName="BorrowInfo" %>
+<%@ Register Src="Controls/BidLog.ascx" TagPrefix="uc1" TagName="BidLog" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server"></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <form class="auto" method="post" action="<% =Request.RawUrl %>" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <dl class="ui-tabs">
+                <dt><a href="#valid" class="on">审核</a></dt>
+                <dt><a href="#bid">投标记录</a></dt>
+                <dt><a href="#detail">借款详情</a></dt>
+                <dd id="valid">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th>借款名称</th>
+                                <td><% =Model.Name %></td>
+                            </tr>
+                            <tr>
+                                <th>借款金额</th>
+                                <td><% =Model.LoanAmount.ToMoneyString() %> 元</td>
+                            </tr>
+                            <tr>
+                                <th>已投总额</th>
+                                <td class="<% =Model.BidAmountCount != Model.LoanAmount ? "fcred-3":"" %>"><% =Model.BidAmountCount.ToMoneyString() %> 元</td>
+                            </tr>
+                            <tr>
+                                <th>审核状态</th>
+                                <td>
+                                    <div class="ui-radio" id="js-status">
+                                        <label><input type="radio" name="status" value="1"<% =Model.Status == WAP2P.BorrowLoan.Borrow.BorrowStatus.满标审核未通过 ? string.Empty : " checked=\"checked\"" %> /> 审核通过</label>
+                                        <label><input type="radio" name="status" value="-1"<% =Model.Status == WAP2P.BorrowLoan.Borrow.BorrowStatus.满标审核未通过 ? " checked=\"checked\"" : string.Empty %> /> 审核失败</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="js-end">
+                                <th>审核备注</th>
+                                <td><textarea name="fullVerifyRemark"><% =Model.FullVerifyRemark.HtmlEncode() %></textarea></td>
+                            </tr>
+                        </table>
+                    </div>
+                </dd>
+                <dd id="bid" class="g-hide">
+                    <div class="m-content">
+                        <uc1:BidLog runat="server" ID="bidLog" />
+                    </div>
+                </dd>
+                <dd id="detail" class="g-hide">
+                    <div class="m-content">
+                        <uc1:BorrowInfo runat="server" ID="borrowInfo" />
+                    </div>
+                </dd>
+            </dl>            
+        </div>
+    </form>
+    <script type="text/template" id="tmpOkInfo">
+        <tr>
+            <th>冻结保存金</th>
+            <td><% =(Model.MarginRatio * Model.LoanAmount).RoundX().ToMoneyString() %> 元</td>
+        </tr>
+        <tr>
+            <th>还款方式</th>
+            <td><% =borrowInfo.RepaymentString %></td>
+        </tr>
+    </script>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+
+        var initTemplate = function () {
+            initUi.date();
+        };
+
+        //状态
+        var statusChange = function () {
+            var chk = $('#js-status :checked'), tr = chk.closest('tr');
+            if (chk.val() == '1') {
+                tr.after(document.getElementById('tmpOkInfo').innerHTML);
+                initTemplate();
+            } else {
+                tr.nextUntil('.js-end').remove();
+            }
+        };
+        statusChange();
+        $('#js-status').change(statusChange);
+    </script>
+</asp:Content>

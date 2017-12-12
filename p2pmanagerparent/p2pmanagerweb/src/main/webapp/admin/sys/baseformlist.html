@@ -1,0 +1,439 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	数据全局设置列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">数据全局设置列表</a></dt>
+    <dd style="width: 1498px;">
+        <form action="?action=search" method="get" class="m-search">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>数据类别筛选:</th>
+                    <td>
+                        <select id="type" name="type" data-olddisabled="false">
+	<option value="类别名称">类别名称</option>
+</select>
+                        <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr>                
+            </tbody></table>            
+        </form>
+        <div class="m-content">
+            <div class="m-oper">
+                <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建数据" onclick="$.jPopupEdit('新建数据', 'baseformdetail.html');">
+                
+                    <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选">
+                    <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选">
+                    <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="数据全局设置" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value=" 删除选中">
+                
+            </div>
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="5%">选取</th>
+                    <th width="20%" class="g-fleft">数据类别名称</th>
+                    <th width="40%" class="g-fleft">相关数值</th>
+                    <th width="20%">添加时间</th>
+                    <th width="15%">操作</th>
+                </tr><tr id="tr14">
+                <td><input type="checkbox" class="del" data-id="14"></td>
+                <td class="g-fleft">产业权属</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="债权">债权</option>
+	<option value="入股">入股</option>
+	<option value="独资">独资</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=14');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=14&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr13" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="13"></td>
+                <td class="g-fleft">住房条件</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="租房">租房</option>
+	<option value="自有住房">自有住房</option>
+	<option value="两套以上住房">两套以上住房</option>
+	<option value="其他">其他</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=13');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=13&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr12">
+                <td><input type="checkbox" class="del" data-id="12"></td>
+                <td class="g-fleft">职业状态</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="私营业主">私营业主</option>
+	<option value="网络商家">网络商家</option>
+	<option value="工薪阶层">工薪阶层</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=12');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=12&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr11" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="11"></td>
+                <td class="g-fleft">职业</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="在线学生">在线学生</option>
+	<option value="固定工作者">固定工作者</option>
+	<option value="自由职业者">自由职业者</option>
+	<option value="待业/无业/失业">待业/无业/失业</option>
+	<option value="退休">退休</option>
+	<option value="其它">其它</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=11');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=11&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr10">
+                <td><input type="checkbox" class="del" data-id="10"></td>
+                <td class="g-fleft">学历水平</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="小学">小学</option>
+	<option value="高中">高中</option>
+	<option value="中专">中专</option>
+	<option value="专科">专科</option>
+	<option value="本科">本科</option>
+	<option value="研究生">研究生</option>
+	<option value="博士">博士</option>
+	<option value="博士后">博士后</option>
+	<option value="其他">其他</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=10');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=10&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr9" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="9"></td>
+                <td class="g-fleft">子女情况</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="无">无</option>
+	<option value="1个">1个</option>
+	<option value="2个">2个</option>
+	<option value="3个以上">3个以上</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=9');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=9&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr8">
+                <td><input type="checkbox" class="del" data-id="8"></td>
+                <td class="g-fleft">N婚姻状况</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="未婚">未婚</option>
+	<option value="已婚">已婚</option>
+	<option value="离异">离异</option>
+	<option value="丧偶">丧偶</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=8');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=8&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr7" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="7"></td>
+                <td class="g-fleft">社会关系</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="配偶">配偶</option>
+	<option value="父亲">父亲</option>
+	<option value="母亲">母亲</option>
+	<option value="兄弟姐妹">兄弟姐妹</option>
+	<option value="子女">子女</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=7');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=7&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr6">
+                <td><input type="checkbox" class="del" data-id="6"></td>
+                <td class="g-fleft">单项有/无</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="无">无</option>
+	<option value="有">有</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=6');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=6&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr5" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="5"></td>
+                <td class="g-fleft">收入水平</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="1000元以下">1000元以下</option>
+	<option value="1001-2000">1001-2000</option>
+	<option value="2001-3000">2001-3000</option>
+	<option value="3001-4000">3001-4000</option>
+	<option value="4001-5000">4001-5000</option>
+	<option value="5001-8000">5001-8000</option>
+	<option value="8001-10000">8001-10000</option>
+	<option value="10001-30000">10001-30000</option>
+	<option value="30001-50000">30001-50000</option>
+	<option value="50000以上">50000以上</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=5');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=5&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr4">
+                <td><input type="checkbox" class="del" data-id="4"></td>
+                <td class="g-fleft">工作年限</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="一年以内">一年以内</option>
+	<option value="一年以上">一年以上</option>
+	<option value="二年以上">二年以上</option>
+	<option value="三年以上">三年以上</option>
+	<option value="四年以上">四年以上</option>
+	<option value="五年以上">五年以上</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=4');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=4&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr3" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="3"></td>
+                <td class="g-fleft">单位职务</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="财务总监">财务总监</option>
+	<option value="财务主管">财务主管</option>
+	<option value="审计/税务">审计/税务</option>
+	<option value="总账/成本">总账/成本</option>
+	<option value="会计人员">会计人员</option>
+	<option value="人力资源总监">人力资源总监</option>
+	<option value="人力资源经理/主管">人力资源经理/主管</option>
+	<option value="招聘经理/主管">招聘经理/主管</option>
+	<option value="薪资福利经理/主管">薪资福利经理/主管</option>
+	<option value="财务经理">财务经理</option>
+	<option value="培训经理/主管">培训经理/主管</option>
+	<option value="人事专员/助理">人事专员/助理</option>
+	<option value="行长/副行长">行长/副行长</option>
+	<option value="信贷/信用管理">信贷/信用管理</option>
+	<option value="资产管理/评估">资产管理/评估</option>
+	<option value="投融资项目/基金">投融资项目/基金</option>
+	<option value="外汇管理/国际结算">外汇管理/国际结算</option>
+	<option value="风险管理">风险管理</option>
+	<option value="证券/期货">证券/期货</option>
+	<option value="客户经理/主管">客户经理/主管</option>
+	<option value="核保/理赔">核保/理赔</option>
+	<option value="保险代理人/内勤">保险代理人/内勤</option>
+	<option value="银行专员/柜台">银行专员/柜台</option>
+	<option value="精算师">精算师</option>
+	<option value="编辑/记者/文案">编辑/记者/文案</option>
+	<option value="版面设计">版面设计</option>
+	<option value="平面设计">平面设计</option>
+	<option value="装潢/陈列设计">装潢/陈列设计</option>
+	<option value="纺织/服装设计">纺织/服装设计</option>
+	<option value="工艺品/珠宝设计">工艺品/珠宝设计</option>
+	<option value="经理">经理</option>
+	<option value="主任">主任</option>
+	<option value="生物工程">生物工程</option>
+	<option value="药物注册">药物注册</option>
+	<option value="临床研究/协调">临床研究/协调</option>
+	<option value="药物研发/分析工程师">药物研发/分析工程师</option>
+	<option value="化学工程师">化学工程师</option>
+	<option value="环保工程师">环保工程师</option>
+	<option value="化工人员">化工人员</option>
+	<option value="结构/建筑工程师">结构/建筑工程师</option>
+	<option value="土建工程师/建造师">土建工程师/建造师</option>
+	<option value="机电/给排水/暖通工程师">机电/给排水/暖通工程师</option>
+	<option value="工程造价师/预决算">工程造价师/预决算</option>
+	<option value="监理/安全工程师">监理/安全工程师</option>
+	<option value="房地产开发/策划">房地产开发/策划</option>
+	<option value="园林景观/城市规划师">园林景观/城市规划师</option>
+	<option value="物业管理">物业管理</option>
+	<option value="房地产评估/中介/交易">房地产评估/中介/交易</option>
+	<option value="电子/电路工程师">电子/电路工程师</option>
+	<option value="电气工程师">电气工程师</option>
+	<option value="半导体工程师">半导体工程师</option>
+	<option value="测试工程师">测试工程师</option>
+	<option value="自动化工程师">自动化工程师</option>
+	<option value="光学工程师">光学工程师</option>
+	<option value="电力工程师">电力工程师</option>
+	<option value="水利/水电工程师">水利/水电工程师</option>
+	<option value="单片机/DLC/DSP/底层软件开发">单片机/DLC/DSP/底层软件开发</option>
+	<option value="其他工程师">其他工程师</option>
+	<option value="技术人员">技术人员</option>
+	<option value="助理">助理</option>
+	<option value="厂长/副厂长">厂长/副厂长</option>
+	<option value="生产经理/车间主任">生产经理/车间主任</option>
+	<option value="产品开发">产品开发</option>
+	<option value="工业/产品设计">工业/产品设计</option>
+	<option value="生产/计划/调度">生产/计划/调度</option>
+	<option value="质量管理">质量管理</option>
+	<option value="项目管理">项目管理</option>
+	<option value="工程设备管理">工程设备管理</option>
+	<option value="安全/健康/环境管理">安全/健康/环境管理</option>
+	<option value="生产工艺/技术">生产工艺/技术</option>
+	<option value="技工">技工</option>
+	<option value="机械工程师">机械工程师</option>
+	<option value="维修工程师">维修工程师</option>
+	<option value="机械设计/制图">机械设计/制图</option>
+	<option value="机电工程师">机电工程师</option>
+	<option value="模具工程师">模具工程师</option>
+	<option value="精密机械/仪器仪表">精密机械/仪器仪表</option>
+	<option value="船舶工程师">船舶工程师</option>
+	<option value="冲压/注塑/焊接">冲压/注塑/焊接</option>
+	<option value="餐饮/娱乐管理">餐饮/娱乐管理</option>
+	<option value="酒店/宾馆管理">酒店/宾馆管理</option>
+	<option value="服务人员/领班">服务人员/领班</option>
+	<option value="导游/旅行顾问/票务">导游/旅行顾问/票务</option>
+	<option value="营业员/收银员">营业员/收银员</option>
+	<option value="技术总监/首席技术执行官">技术总监/首席技术执行官</option>
+	<option value="技术经理">技术经理</option>
+	<option value="项目经理">项目经理</option>
+	<option value="系统分析工程师">系统分析工程师</option>
+	<option value="ERP应用顾问">ERP应用顾问</option>
+	<option value="数据库工程师/管理员">数据库工程师/管理员</option>
+	<option value="软件开发工程师">软件开发工程师</option>
+	<option value="硬件开发工程师">硬件开发工程师</option>
+	<option value="信息支持/安全维护">信息支持/安全维护</option>
+	<option value="网页设计/编辑">网页设计/编辑</option>
+	<option value="通讯工程师">通讯工程师</option>
+	<option value="多媒体/游戏开发">多媒体/游戏开发</option>
+	<option value="采购经理/主管">采购经理/主管</option>
+	<option value="采购专员/助理">采购专员/助理</option>
+	<option value="贸易经理/主管">贸易经理/主管</option>
+	<option value="市场咨询/调研">市场咨询/调研</option>
+	<option value="创意与策划">创意与策划</option>
+	<option value="客服经理/主管">客服经理/主管</option>
+	<option value="客服专员/助理">客服专员/助理</option>
+	<option value="客户关系管理">客户关系管理</option>
+	<option value="客户咨询/热线支持">客户咨询/热线支持</option>
+	<option value="销售总监">销售总监</option>
+	<option value="销售经理">销售经理</option>
+	<option value="业务拓展经理">业务拓展经理</option>
+	<option value="销售主管/主任">销售主管/主任</option>
+	<option value="售前/售后支持">售前/售后支持</option>
+	<option value="销售工程师">销售工程师</option>
+	<option value="销售代表">销售代表</option>
+	<option value="医药代表">医药代表</option>
+	<option value="销售助理">销售助理</option>
+	<option value="专业顾问">专业顾问</option>
+	<option value="咨询师">咨询师</option>
+	<option value="调研员">调研员</option>
+	<option value="英语翻译">英语翻译</option>
+	<option value="日语翻译">日语翻译</option>
+	<option value="德语翻译">德语翻译</option>
+	<option value="法语翻译">法语翻译</option>
+	<option value="俄语翻译">俄语翻译</option>
+	<option value="西班牙语翻译">西班牙语翻译</option>
+	<option value="其他翻译">其他翻译</option>
+	<option value="董事/总经理/总裁">董事/总经理/总裁</option>
+	<option value="首席执行官/运营官">首席执行官/运营官</option>
+	<option value="营运总监/经理">营运总监/经理</option>
+	<option value="合伙人">合伙人</option>
+	<option value="行政总监">行政总监</option>
+	<option value="行政经理">行政经理</option>
+	<option value="主管/主任">主管/主任</option>
+	<option value="助理/秘书">助理/秘书</option>
+	<option value="前台/文员">前台/文员</option>
+	<option value="物流经理/主管">物流经理/主管</option>
+	<option value="物流专员/助理">物流专员/助理</option>
+	<option value="物料/仓库管理">物料/仓库管理</option>
+	<option value="供应链">供应链</option>
+	<option value="单证/报关员">单证/报关员</option>
+	<option value="律师/法务">律师/法务</option>
+	<option value="能源/动力">能源/动力</option>
+	<option value="医疗/护理">医疗/护理</option>
+	<option value="科研人员">科研人员</option>
+	<option value="培训/教育">培训/教育</option>
+	<option value="储备干部/培训生">储备干部/培训生</option>
+	<option value="在校学生">在校学生</option>
+	<option value="其他职位">其他职位</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=3');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=3&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr2">
+                <td><input type="checkbox" class="del" data-id="2"></td>
+                <td class="g-fleft">单位性质</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="政府机关">政府机关</option>
+	<option value="国有企业">国有企业</option>
+	<option value="台（港，奥）资企业">台（港，奥）资企业</option>
+	<option value="外资企业">外资企业</option>
+	<option value="合资企业">合资企业</option>
+	<option value="个体户">个体户</option>
+	<option value="事业性单位">事业性单位</option>
+	<option value="私营企业">私营企业</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=2');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=2&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+        
+            <tr id="tr1" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="1"></td>
+                <td class="g-fleft">借款用途</td>
+                <td class="g-fleft"><select id="formValues" name="formValues">
+	<option value="生意周转">生意周转</option>
+	<option value="日常开支">日常开支</option>
+	<option value="购房购车">购房购车</option>
+	<option value="家庭装修">家庭装修</option>
+</select></td>
+                <td>2017-09-22 09:28:27</td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑数据', 'baseformdetail.html?ID=1');"> 编辑</a>
+                    <a class="iconfont del" href="baseformdetail.html?ID=1&amp;action=del"> 删除</a>
+                </td>
+            </tr>  
+            
+    <tr class="pager">
+        <td colspan="5"><div class="pages"><span class="remind">共找到<strong>14</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/sys/baseformlist.html?action=search&amp;type=%E7%B1%BB%E5%88%AB%E5%90%8D%E7%A7%B0&amp;key=&amp;_=1434950584592" class="g-hide"></a></td>
+    </tr>                
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

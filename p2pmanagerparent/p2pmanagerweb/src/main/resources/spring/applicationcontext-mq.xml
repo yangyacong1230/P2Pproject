@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!--配置真正的工厂  -->
+	<bean id="activeMQConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+			<property name="brokerURL" value="tcp://10.0.135.131:61616"></property>
+	</bean>
+	<!-- 配置spring的代理工厂 -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="activeMQConnectionFactory"></property>
+	
+	</bean>
+	<!--创建jms模板,因为代码基本上都是一致的,只有几行不一样,所以可以设定模板  -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory"></property>
+	<!--配置搬运工的模式,也就是点对点  -->
+	</bean>
+		<bean id="activeMQQueue" class="org.apache.activemq.command.ActiveMQQueue">
+			<constructor-arg>
+				<value>springqueue</value>
+			</constructor-arg>
+		</bean>
+		
+		<!--配置接收方  -->
+		<!-- <bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+			<constructor-arg>
+				<value>springqueue</value>
+			</constructor-arg>
+		</bean>
+		<bean id="messageListener" class="com.qianfeng.p2p.test.MyMessageListener"></bean>
+		
+		<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+				<property name="connectionFactory" ref="connectionFactory"></property>
+				<property name="destination" ref="queueDestination"></property>
+				<property name="messageListener" ref="messageListener"></property>
+		</bean> -->
+</beans>

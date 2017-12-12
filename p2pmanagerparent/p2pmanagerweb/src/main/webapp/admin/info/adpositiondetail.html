@@ -1,0 +1,54 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form action="" class="auto" method="post" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>位置名称</th>
+                    <td>
+                        <input type="text" name="name" class="w250" maxlength="100" value="" data-vtype="must" data-vmsg="请输入位置名称" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>调用代码</th>
+                    <td>
+                        <input type="text" name="callCode" class="w250" maxlength="50" value="" data-vtype="must|custom" data-vreg="^ad_[a-z,A-Z,0-9]+$" data-vmsg="请输入调用代码|请输入正确的调用代码" />
+                        <em>调用名以ad_开头，修改时请确认页面中没有调用</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>位置宽度</th>
+                    <td><input type="text" name="width" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="宽度必须为数字" /> px</td>
+                </tr>
+                <tr>
+                    <th>位置高度</th>
+                    <td><input type="text" name="height" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="高度必须为数字" /> px</td>
+                </tr>
+                <tr>
+                    <th>是否启用</th>
+                    <td><div class="ui-checkbox"><label for="active"><input type="checkbox" name="active" value="true" id="active" checked="checked" /> 启用</label></div></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	信用等级调整申请 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form class="auto" method="post" action="/admin/member/usercreditdetail.html" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>会员账号</th>
+                    <td class="g-fbold"><a href="javascript:void(0);" onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=0');"></a></td>
+                </tr>
+                <tr>
+                    <th>会员信用评级</th>
+                    <td><select id="credit" name="credit">
+	<option value="7">A+</option>
+	<option value="6">A</option>
+	<option value="5">B</option>
+	<option value="4">C</option>
+	<option value="3">D</option>
+	<option value="2">E</option>
+	<option selected="selected" value="1">F</option>
+</select></td>
+                </tr>
+                <tr>
+                    <th>风险类型</th>
+                    <td>
+                        <select id="gradeLevel" name="gradeLevel">
+	<option selected="selected" value="0">正常客户</option>
+	<option value="-1">关注客户</option>
+	<option value="-2">次级客户</option>
+	<option value="-3">可疑客户</option>
+	<option value="-4">损失客户</option>
+</select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>基本认证情况</th>
+                    <td>实名认证：<span class="fcash-1">等待提交；</span> | 手机认证：<span class="fcash-1">等待提交；</span> | 邮箱认证：<span class="fcash-1">等待提交；</span> | 现场认证：<span class="fcash-1">等待认证；</span></td>
+                </tr>
+                <tr>
+                    <th>基本资料认证情况</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>借款资料认证情况</th>
+                    <td>无借款资料</td>
+                </tr>
+                <tr>
+                    <th class="info-listhead" colspan="2">历史变更记录</th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th widht="80%" class="g-fcenter">来源</th>
+                                <th widht="20%" class="g-fcenter">异动分值</th>
+                                <th widht="20%" class="g-fcenter">异动时间</th>
+                            </tr>
+                            
+                                    <tr>
+                                        <td colspan="3">暂无数据。</td>
+                                    </tr>
+                                                            
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+</body>
+</html>

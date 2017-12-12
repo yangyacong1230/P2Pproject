@@ -1,0 +1,179 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	站点全局设置 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+    </head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="?type=site" class="on">站点设置</a></dt>
+        <dt><a href="?type=security" class="">安全设置</a></dt>        
+        <dt><a href="/admin/freetips.html?type=0&amp;msg=%e7%9f%ad%e4%bf%a1%2f%e9%82%ae%e7%ae%b1%e5%8f%91%e9%80%81%e9%9c%80%e5%bc%80%e9%80%9a%e7%ac%ac%e4%b8%89%e6%96%b9%e6%8e%a5%e5%8f%a3%e8%b4%a6%e5%8f%b7%e5%b9%b6%e5%9c%a8Web.config%e4%b8%ad%e9%85%8d%e7%bd%ae%ef%bc%8c%e5%8f%af%e4%bb%a5%e8%81%94%e7%b3%bb%e6%88%91%e5%85%ac%e5%8f%b8%e5%8d%8f%e5%8a%a9%e5%bc%80%e9%80%9a%e3%80%82&amp;toText=&amp;toUrl=">短信/邮箱发送设置</a></dt>
+        <dt><a href="/admin/freetips.html?type=0&amp;msg=%e5%a6%82%e9%9c%80%e9%9b%86%e6%88%90QQ%e7%ad%89%e7%ac%ac%e4%b8%89%e6%96%b9%e7%99%bb%e5%bd%95%ef%bc%8c%e8%af%b7%e8%81%94%e7%b3%bb%e6%88%91%e5%85%ac%e5%8f%b8%e5%ae%a2%e6%9c%8d%e3%80%82&amp;toText=&amp;toUrl=">第三方集成登录</a></dt>
+        
+            <dd>
+                <form action="" method="post" class="auto">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody><tr>
+                                <th>站点名称 </th>
+                                <td><input type="text" name="siteName" class="w250" value="千峰p2p"></td>
+                            </tr>
+                            <tr>
+                                <th>网站网址</th>
+                                <td>
+                                    <input type="text" name="siteUrl" class="w250" data-vtype="url" data-vmsg="请输入正确的网站网址" data-vmust="false" value=""><em>例：http://www.qfedu.com/，需包含最后的/</em>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>首页Title</th>
+                                <td><input type="text" name="homeTitle" class="w500" value="千峰p2p"></td>
+                            </tr>
+                            <tr>
+                                <th>首页Description</th>
+                                <td>
+                                    <textarea name="homeDescription" class="w500 h100">千峰p2p</textarea>
+                            </td></tr>
+                            <tr>
+                                <th>关闭站点信息</th>
+                                <td>
+                                    <textarea name="closeSiteMessage" class="w500 h100"></textarea>                                   
+                                    <em>当此有值时，当前站点将关闭，仅超级管理员可以活动</em></td>
+                            </tr>                            
+                            <tr>
+                                <th>过滤用户名</th>
+                                <td><input type="text" name="userNameFilter" class="w250" value="admin|管理员"><em>用户注册关键字过滤，多个以|号分隔</em></td>
+                            </tr>                            
+                            <tr>
+                                <th>顶部Html</th>
+                                <td><textarea name="topHtml" class="w500 h100">&lt;div class="m-container"&gt;
+  &lt;div class="g-left wg7 mt5"&gt;
+    &lt;span class="fcblueAsh-2"&gt;
+      欢迎致电： &lt;span class="fs18 mr10"&gt;400 6058 823&lt;/span&gt; 服务时间：9:00 - 18:00
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class="g-right wgm5"&gt;
+    &lt;ul class="top-topnav g-right js-topnav"&gt;
+      &lt;li&gt;
+        &lt;a href="/Tool/Calculator.htm"&gt;工具箱&lt;/a&gt;
+        &lt;dl&gt;
+          &lt;dd&gt;
+            &lt;a href="/Tool/Calculator.htm"&gt;利息计算器&lt;/a&gt;
+          &lt;/dd&gt;
+          &lt;dd&gt;
+            &lt;a href="/Tool/Risk.htm"&gt;抗风险能力测试&lt;/a&gt;
+          &lt;/dd&gt;
+        &lt;/dl&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href="/Help/"&gt;帮助中心&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href="/News/" class="g-noneborder"&gt;关于我们&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</textarea></td>
+                            </tr>
+                            <tr>
+                                <th>底部Html</th>
+                                <td><textarea name="footHtml" class="w500 h100">&lt;div class="m-container footer-bline"&gt;
+  &lt;div class="footer-left"&gt;
+    &lt;div class="footer-logo"&gt;&lt;/div&gt;
+    &lt;div class="footer-workinfo"&gt;
+      &lt;p&gt;
+        服务热线：&lt;span&gt;工作时间（09:00-18:00）&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;strong&gt;400 6058 823&lt;/strong&gt;
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="footer-right"&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;
+        &lt;a href="/Help/"&gt;使用帮助&lt;/a&gt;
+      &lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href="/User/Register.htm" class="ml10"&gt;立即注册&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/List.htm?cid=1" class="ml10"&gt;如何投资&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/List.htm?cid=3" class="ml10"&gt;如何借款&lt;/a&gt;
+      &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;
+        &lt;a href="/News/"&gt;关于我们&lt;/a&gt;
+      &lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href="/News/?id=4" class="ml10"&gt;公司简介&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/News/?id=5" class="ml10"&gt;法律顾问&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/News/?id=1" class="ml10"&gt;联系我们&lt;/a&gt;
+      &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;
+        &lt;a href="/Help/List.htm?cid=4"&gt;安全保障&lt;/a&gt;
+      &lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/List.htm?cid=24" class="ml10"&gt;本息保障&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/List.htm?cid=25" class="ml10"&gt;政策法规&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/List.htm?cid=27" class="ml10"&gt;隐私保护&lt;/a&gt;
+      &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;
+        &lt;a href="/Help/"&gt;了解更多&lt;/a&gt;
+      &lt;/dt&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/" class="ml10"&gt;常见问题&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/ServiceList.htm" class="ml10"&gt;联系客服&lt;/a&gt;
+      &lt;/dd&gt;
+      &lt;dd&gt;
+        &lt;a href="/Help/List.htm?cid=7" class="ml10"&gt;资费说明&lt;/a&gt;
+      &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;div class="footer-code"&gt;
+      &lt;img src="/res/core/images/default/Twocode.png" /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="m-container footer-copyinfo pa10"&gt;
+  © 版权所有 All Rights Reserved | &lt;a rel="nofollow" target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action"&gt;这里是备案号&lt;/a&gt;
+&lt;/div&gt;</textarea></td>
+                            </tr>
+                        </tbody></table>
+                        <div class="g-fright pt10 pr5">
+                            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+                        </div>
+                    </div>
+                </form>
+            </dd>
+        
+
+        
+
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+    
+
+
+
+</body></html>

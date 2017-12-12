@@ -1,0 +1,44 @@
+﻿@charset 'UTF-8';
+form.m-search{
+    margin-top:10px;
+    border-top:2px solid nth($infoColor,2);
+    background:lighten(nth($infoColor,2), 6%); 
+    #btnSwithMoreFilter{
+        display:block;
+        color:nth($ash,1);
+        background:nth($gery,2);
+        border-top:3px solid nth($gery,3);
+        text-align:center;
+        width:100%;
+        @include center-block;
+        &:hover{
+            color:nth($baseColor,1);
+            background:nth($jade,1);
+            border-top:3px solid nth($jade,2);
+        }
+    }
+}
+
+
+table.m-criteria{
+    margin-top:10px;
+    border:0;
+    th{
+        width:290px;
+        height:40px;
+        line-height:40px;
+        padding:10px 20px 10px 10px;
+        text-align:right;
+        font-weight:normal;
+         white-space:nowrap;
+    }
+    td{
+        padding:10px 0 10px 0;
+        white-space:nowrap;
+    }
+}
+
+
+
+form div.oper{margin:20px 0 20px 170px;}
+form .m-search input{margin-right:20px;}

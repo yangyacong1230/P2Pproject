@@ -1,0 +1,167 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>
+        会员账号列表 - 千峰p2p
+    </title>
+    <link href="/admin/res/core/styles/main.css?v=20151023175416" rel="stylesheet">
+    <script type="text/javascript" src="/admin/res/core/scripts/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="/admin/res/core/scripts/common.js"></script>
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">会员账号列表</a></dt>
+    <dd style="width: 1516px;">
+        <form action="/member/getAllMember.action" method="get" class="m-search" id="userlistformid">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                <tr>
+                    <th>会员筛选:</th>
+                    <td>
+                        <input type="hidden" name="from" value="" data-olddisabled="false">
+                        <select id="groupId" name="groupId" data-olddisabled="false">
+                            <option value="">全部会员类型</option>
+
+                            <option value="t1">我要投资</option>
+
+                            <option value="g3">&nbsp;&nbsp;&nbsp;&nbsp;|--投资黑名单</option>
+
+                            <option value="g1">&nbsp;&nbsp;&nbsp;&nbsp;|--普通投资人</option>
+
+                            <option value="g5">&nbsp;&nbsp;&nbsp;&nbsp;|--高级投资人</option>
+
+                            <option value="g6">&nbsp;&nbsp;&nbsp;&nbsp;|--顶级投资人</option>
+
+                            <option value="t2">我要借款</option>
+
+                            <option value="g4">&nbsp;&nbsp;&nbsp;&nbsp;|--借款黑名单</option>
+
+                            <option value="g2">&nbsp;&nbsp;&nbsp;&nbsp;|--普通借款人</option>
+
+                            <option value="g7">&nbsp;&nbsp;&nbsp;&nbsp;|--高级借款人</option>
+
+                        </select>
+                        <select id="type" name="type" data-olddisabled="false">
+                            <option value="会员账号">会员账号</option>
+                            <option value="会员昵称">会员昵称</option>
+                            <option value="注册手机">注册手机</option>
+                            <option value="注册邮箱">注册邮箱</option>
+                            <option value="真实姓名">真实姓名</option>
+                        </select>
+                        <input type="text" size="35" name="key" value="" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont"
+                                                                  value=" 搜索" data-olddisabled="false"><input
+                                type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr>
+                <tr class="g-hide">
+                    <th>更多过滤:</th>
+                    <td>
+                        <select id="gradeLevel" name="gradeLevel" data-olddisabled="false">
+                            <option value="">全部风险等级</option>
+                            <option value="0">正常客户</option>
+                            <option value="-1">关注客户</option>
+                            <option value="-2">次级客户</option>
+                            <option value="-3">可疑客户</option>
+                            <option value="-4">损失客户</option>
+                        </select>
+                        <select id="belongType" name="belongType" data-olddisabled="false">
+                            <option value="业务员">所属业务员</option>
+                            <option value="客服">所属客服</option>
+                            <option value="推荐人">所属推荐人</option>
+                        </select>
+                        <input type="text" size="35" name="belongKey" value="" data-olddisabled="false">
+                    </td>
+                </tr>
+                <tr class="g-hide">
+                    <th></th>
+                    <td>
+                        <input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input
+                            type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="javascript:void(0);" id="btnSwithMoreFilter" class="iconfont"><span> 显示更多筛选条件</span></a>
+        </form>
+        <div class="m-content">
+            <div class="m-oper">
+                <span class="iconfont"><i class="fs22 fcred-3"></i>账户锁定<i class="fs22 fcjade-1"></i>账户开启</span>
+
+                <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建会员"
+                       onclick="$.jPopupEdit('新建会员', 'userdetail.html');">
+
+
+                <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选">
+                <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选">
+
+
+                <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="会员账号管理"
+                       data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value=" 删除选中">
+
+
+                <input type="button" class="oper-clear btn-smaller c-obvious iconfont" data-action="change"
+                       data-function="会员账号管理" data-operate="批量修改" data-freemes="本功能仅供正式版使用。" value=" 批量开通/关闭">
+
+
+            </div>
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%" id="userlisttable">
+                <tbody>
+                <tr id="userlisttableth">
+                    <th width="3%">选取</th>
+                    <th width="4%">编号</th>
+                    <th width="10%" class="g-fleft">会员账号</th>
+                    <th width="10%" class="">会员类型</th>
+                    <th width="10%">风险类型</th>
+                    <th width="10%">会员组</th>
+                    <th width="10%">注册手机</th>
+                    <th width="20%">注册邮箱</th>
+                    <th width="10%">昵称</th>
+                    <th width="3%">状态</th>
+                    <th width="10%">操作</th>
+                </tr>
+                <!--<tr id="tr1">
+                    <td><input type="checkbox" class="del" data-id="1"></td>
+                    <td>1</td>
+                    <td class="g-fbold g-fleft"><a href="javascript:void(0);"
+                                                   onclick="$.jPopupEdit('查看会员资料', '../common/userinfo.html?Id=1');">tingting</a>
+                    </td>
+                    <td class="">我要投资</td>
+                    <td>正常客户</td>
+                    <td>普通投资人</td>
+                    <td>15854403746</td>
+                    <td class="g-fleft">111@111.com</td>
+                    <td class="g-fleft"></td>
+                    <td><i class="iconfont fs22 fcjade-1"></i></td>
+                    <td>
+                        <a class="iconfont oper edit" href="javascript:void(0);"
+                           onclick="$.jPopupEdit('编辑会员账号', 'userdetail.html?ID=1');">编辑</a>
+                        <a class="iconfont del" href="userdetail.html?ID=1&amp;action=del">删除</a>
+                    </td>
+                </tr>-->
+
+                <tr class="pager">
+                    <td colspan="11">
+                        <div class="pages"><span class="remind">共找到<strong>1</strong>条记录</span><span class="disabled">&lt; 上一页</span><span
+                                class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option
+                                value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option
+                                value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div>
+                        <a href="/admin/member/userlist.html?action=search&amp;from=&amp;groupId=&amp;type=%E4%BC%9A%E5%91%98%E8%B4%A6%E5%8F%B7&amp;key=&amp;gradeLevel=&amp;belongType=%E4%B8%9A%E5%8A%A1%E5%91%98&amp;belongKey=&amp;_=1434949911524"
+                           class="g-hide"></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js?v=20150624215012"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js?v=20150624215010"></script>
+<script src="/admin/res/core/scripts/core.js?v=20150624215012"></script>
+<script src="/admin/res/core/scripts/main.js?v=20160120154951"></script>
+
+
+</body>
+</html>

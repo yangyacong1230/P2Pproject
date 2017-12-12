@@ -1,0 +1,103 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	线上充值列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <dl class="ui-tabs">
+        <dt><a href="javascript:" class="on">线上充值列表</a></dt>        
+        <dd>
+             <form action="?action=search&rechargeType=" method="get" class="m-search">
+                <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th>充值记录筛选：</th>
+                        <td>
+                            <select id="status" name="status">
+	<option value="">全部状态</option>
+	<option value="0">审核中</option>
+	<option value="200">充值成功</option>
+	<option value="-1">充值失败</option>
+</select>
+                            <input type="hidden" name="from" value="" />
+                            <select id="type" name="type">
+	<option value="会员账号">会员账号</option>
+	<option value="流水号">流水号</option>
+</select>
+                            <input type="text" size="35" placeholder="输入搜索条件" name="key" value="" />                            
+                            <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件" /></span>
+                        </td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>操作时间筛选：</th>
+                        <td><input type="text" name="startAt" id="startAt" value="" class="ui-date w150" data-maxdate="#endAt" /> 至 <input type="text" name="endAt" id="endAt" value="" class="ui-date w150" data-mindate="#startAt" /></td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th>充值金额筛选：</th>
+                        <td><input type="text" name="startMoney" id="startMoney" value="" class="w150" /> 至 <input type="text" name="endMoney" id="endMoney" value="" class="w150" /></td>
+                    </tr>
+                    <tr class="g-hide">
+                        <th></th>
+                        <td><input type="submit" class="btn-base c-priority iconfont" value="&#xe60f; 搜索" /><input type="reset" class="btn-base c-normal iconfont" value="&#xe670; 清空条件"  /></td>
+                    </tr>
+                </table>  
+                <a href="javascript:void(0);" id="btnSwithMoreFilter" class="iconfont"><span>&#xe661; 显示更多筛选条件</span></a>              
+            </form>
+            <div class="m-content">
+                <div class="m-oper">
+                    
+                        
+                </div>
+                <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <th width="15%">会员账号</th>
+                        <th width="10%">支付机构</th>
+                        <th width="20%">交易流水号</th>
+                        <th width="12%">充值金额</th>
+                        <th width="10%">手续费</th>                        
+                        <th width="10%">状态</th>
+                        <th width="10%">时间</th>
+                        <th width="12%">操作</th>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        $('.m-list').on('click', '.js-mending', function () {
+            var me = $(this);
+            $.ajax({
+                url: '/OnlinePayment/Default.htm?action=userPayQuery' + me.attr('data-parameter'),
+                dataType: "json",
+                data: { payName: me.attr('data-payName'), orderMoney: me.attr('data-amount') },
+                success: function (res) {
+                    if (res.Success)
+                        $.jSuccess("补单成功", function () {
+                            //刷新列表
+                            var pages = $('table.m-list .pages');
+                            if (pages.length) {
+                                var a = pages.next();
+                                pages.append(a);    //将a放入pages内，以响应点击事件
+                                a.trigger('click');
+                            } else {
+                                $('form.m-search').trigger('submit');
+                            }
+                        });
+                    else
+                        $.jError("没有找到对应的订单", '', '');
+                }
+            });
+        })
+    </script>
+
+
+</body>
+</html>

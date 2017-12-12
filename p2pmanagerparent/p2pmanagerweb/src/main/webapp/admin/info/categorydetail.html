@@ -1,0 +1,123 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form action="" class="auto" method="post"  onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <th>所属父类</th>
+                    <td>
+                        <select id="parentId" name="parentId" class="iconfont">
+                            <option value="0">顶级</option>
+                            
+                                    <option value="5">站点公告</option>
+                                
+                                    <option value="6">公司公告</option>
+                                
+                                    <option value="7">发标预告</option>
+                                
+                                    <option value="8">行业信息</option>
+                                
+                                    <option value="9">公司动态</option>
+                                
+                                    <option value="10">业绩报告</option>
+                                
+                                    <option value="11">招贤纳士</option>
+                                
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>栏目名称</th>
+                    <td>
+                        <input type="text" name="name" class="w250" maxlength="50" value="" data-vtype="must" data-vmsg="请输入栏目名称" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>是否启用栏目</th>
+                    <td><div class="ui-checkbox"><label for="active"><input type="checkbox" name="active" value="true" id="active" checked="checked" /> 启用</label></div></td>
+                </tr>
+                <tr>
+                    <th>排序值</th>
+                    <td><input type="text" name="orderBy" class="w60 ui-int" value="0" data-vtype="number" data-vmsg="排序必须为数字"/><em>数值越大越靠前</em></td>
+                </tr>                
+                <tr>
+                    <th>栏目是否为单页</th>
+                    <td><div class="ui-checkbox"><label for="isArticle"><input type="checkbox" name="isArticle" value="true" id="isArticle" /> 启用</label></div></td>
+                </tr>
+                <tr id="url" class="g-hide">
+                    <th>外部链接</th>
+                    <td>
+                        <input type="text" name="url" class="w250" maxlength="500" value="" data-vtype="url" data-vmsg="请输入正确的链接地址" data-vmust="false" />
+                        <em>以http://开头 (如果外部链接有值时，点击栏目将直接跳转到外部链接)</em>
+                    </td>
+                </tr>
+                <tr id="single" class="g-hide">
+                    <th>单页内容面</th>
+                    <td><script name="detail" class="ui-editor" type="text/plain"></script></td>
+                </tr>
+                <tr id="detail">
+                    <th>栏目简介</th>
+                    <td><textarea name="detail"></textarea></td>
+                </tr>
+                <tr>
+                    <th>最后修改人</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>最后修改时间</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>创建时间</th>
+                    <td>2017-09-22 13:02:24</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/ueditor/ueditor.config.js"></script>
+    <script src="/admin/res/ueditor/ueditor.all.min.js"></script>
+    <script>
+        if ($('#isArticle').is(':checked'))
+        {
+            $('#url').show();
+            $('#single').show();
+            $('#detail').hide();
+        }
+
+        $('#isArticle').click(function () {
+            if ($(this).is(':checked')) {
+
+                $('#url').show();
+                $('#single').show();
+                $('#detail').hide();
+
+            } else {
+
+                $('#url').hide();
+                $('#single').hide();
+                $('#detail').show();
+
+            }
+        })
+    </script>
+
+
+</body>
+</html>

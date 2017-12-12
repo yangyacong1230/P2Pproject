@@ -1,0 +1,32 @@
+﻿@charset 'UTF-8';
+
+.ui-termselect{
+    clear:both;
+    li{
+        float:left; 
+        margin:5px;
+        padding-right:15px;
+        position:relative;
+        i{
+            position:absolute;
+            right:-2px;
+            top:-2px;
+            width:16px;
+            height:16px;
+            overflow:hidden;
+            line-height:16px;
+            cursor:pointer;
+        }
+    }
+}
+
+#area select{
+    margin-right:5px;
+}
+.ui-areaform{
+    display:block;
+    margin-bottom:5px;
+    select{
+        margin-right:5px;
+    }
+}

@@ -1,0 +1,80 @@
+﻿.ui-imageupload{
+    
+}
+
+.ui-fileupload {
+
+}
+
+.ui-imageuploadmulti {
+    a{
+        float:left;
+        border:1px solid #ddd;
+        padding:2px;
+        margin-right:10px;
+        position:relative;
+        &:hover{
+            border-color:#ccc;
+        }
+
+        i {
+            cursor:pointer;
+            position:absolute;
+            right:0;
+            top:0; 
+            display:block;
+            width:16px;
+            height:16px;
+            color:#dadada;
+            z-index:1;
+            margin:-6px 4px 0 0;
+            &:hover{
+                color:nth($gery,3);
+            }
+        }
+    }
+
+    clear:both;
+    overflow:hidden;
+    zoom:1;
+}
+
+.ui-fileuploadmulti {
+    a{
+        float:left;
+        border:1px solid #ddd;
+        padding:6px 20px;
+        margin-right:10px;
+        margin-bottom: 5px;
+        position:relative;
+        &:hover{
+            border-color:#ccc;
+        }
+
+        i {
+            cursor:pointer;
+            position:absolute;
+            right:0;
+            top:0; 
+            display:block;
+            width:16px;
+            height:16px;
+            color:#dadada;
+            z-index:1;
+            margin:-6px 4px 0 0;
+            &:hover{
+                color:nth($gery,3);
+            }
+        }
+    }   
+
+    clear:both;
+    overflow:hidden;
+    zoom:1;
+}
+
+.ui-customuploads {
+    a, img{
+        margin-right:10px;
+    }
+}

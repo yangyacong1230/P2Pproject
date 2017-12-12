@@ -1,0 +1,206 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form class="auto" method="post" action="/usermanager/addUserInfo.action"  onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">                        
+            
+                <table class="m-info" cellpadding="0" cellspacing="0" width="100%">                
+                    <tr>
+                        <th>会员账号</th>
+                        <td>
+                            <input type="text" id="userName" name="username" placeholder="请选择资料所有者账号" class="w150 g-valign" maxlength="30" value="" data-vtype="must" data-vmsg="请输入会员账户" />
+                            <input type="button" class="btn-base c-normal iconfont g-valign" value="&#xe60f;" onclick="$.jPopupEdit('选择会员账号', '../common/userselect.html?radio=true&fn=selectUser');" />
+                            <script>
+                                function selectUser(obj) {
+                                    if (obj && obj.users && obj.users.length)
+                                        $('#userName').val(obj.users[0].name);
+                                }
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>资料名称</th>
+                        <td><input type="text" name="ticketname" class="w300" maxlength="100" placeholder="请输入资料名称" value="" data-vtype="must" data-vmsg="资料名称不能为空" /></td>
+                    </tr>              
+                    <tr>
+                        <th>借款资料类型</th>
+                        <td><select id="borrowInfoTypeId" name="type">
+	<option value="1">房产资料</option>
+	<option value="2">车辆材料</option>
+</select></td>
+                    </tr>  
+                    
+                     <tr><th>座落</th><td><span id="field_ZuoLuo" class="ui-areaform"><select id="field_ZuoLuo_province" name="areaid"><option value="">请选择</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span><input type="text" name="address" class="w300" placeholder="请输入详细地址" value=""><script type="text/template" class="js-script">$('#field_ZuoLuo').cascade({ data: areadata, names: ['field_ZuoLuo_province', 'field_ZuoLuo_city', 'field_ZuoLuo_area'], values: [], emptyTip: '请选择', ismust:false });</script></td></tr>
+        
+            <tr><th>房屋所有权证号 </th><td><input type="text" name="fangwusuoyouquanzhenghao" value=""></td></tr>
+        
+            <tr><th>房屋结构</th><td><input type="text" name="fangwujiegou" value=""></td></tr>
+        
+            <tr><th>建筑面积</th><td><input type="text" name="jianzhumianji" class="ui-int w60" value="" data-vtype="number" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+        
+            <tr><th>土地使用权证号</th><td><input type="text" name="tudishiyongquanzhenghao" value=""></td></tr>
+        
+            <tr><th>土地性质</th><td><input type="text" name="tudixingzhi" value=""></td></tr>
+        
+            <tr><th>地号</th><td><input type="text" name="dihao" class="ui-int w60" value="" data-vtype="number" data-vmsg="请输入正确的数值" data-vmust="false"></td></tr>
+        
+            <tr><th>使用权类型</th><td><input type="text" name="shiyongquanleixing" value=""></td></tr>
+        
+            <tr><th>房产证</th><td>
+                            <div id="field_FangChanZhengResult" class="mb10 ui-imageupload"></div>
+                            <div class="pl136 js-noem" id="field_FangChanZhengInput"> 
+                                <input type="hidden" name="fangchanzhengpic" id="field_FangChanZheng" value="">
+                            </div>
+                            <input type="file" id="field_FangChanZhengFile" class="js-imageUpload" data-id="field_FangChanZheng"></td></tr>
+        
+            <tr><th>其他证件材料</th><td>
+                            <div id="field_QiTaZhengJianCaiLiaoResult" class="mb10 ui-imageuploadmulti"></div>
+                            <div class="pl136 js-noem" id="field_QiTaZhengJianCaiLiaoInput">                                 
+                                
+                            </div>
+                            <input type="file" name="other" id="field_QiTaZhengJianCaiLiaoFile" class="js-imageMultiUpload" data-id="field_QiTaZhengJianCaiLiao">
+                            <input type="hidden" name="commitdate" value="2017-01-01">
+                            </td></tr>        
+               
+                </table>
+            
+            
+            
+
+            
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/res/core/scripts/areadata.js"></script>
+    <script type="text/javascript">
+        var borrowTypeChange = function() {
+            var sel = $('#borrowInfoTypeId'); tr = sel.closest('tr');
+            $.get('?action=template&Id=&borrowInfoTypeId=' + sel.val(), function(res) {
+                //tr.nextAll('tr').remove();    //ie下有error
+                tr.nextAll('tr').each(function(i, n) {
+                    n.parentNode.removeChild(n);
+                })
+                tr.after(res);
+                formService.init();
+            });
+        };
+        $('#borrowInfoTypeId').change(borrowTypeChange);
+       // borrowTypeChange();
+
+        //配合后端的表单编辑的js
+       /*  var formService = {
+            initJs: function() {
+                $('script.js-script').each(function (i, n) {
+                    eval(n.innerHTML);
+                });
+            },
+            initUpload: function(id, multi, isfile) {
+                setTimeout(function () {
+                    $('#' + id + 'File').uploadify({
+                        width: 120,
+                        height: 32,
+                        multi: multi ? true : false,
+                        removeTimeout: 0,
+                        swf: '../res/uploadify/uploadify.swf?v=114218',
+                        uploader: '../res/uploadify/SwfUpload.html?type=' + (isfile ? 'file' : 'image'),
+                        buttonClass:'iconfont',
+                        buttonText: '&#xe629; 上传' + (isfile ? '文件' : '图片'),
+                        fileTypeExts: isfile ? '*.png;*.jpg;*.jpeg;*.gif;*.bmp;*.flv;*.swf;*.mkv;*.avi;*.rm;*.rmvb;*.mpeg;*.mpg;*.ogg;*.ogv;*.mov;*.wmv;*.mp4;*.webm;*.mp3;*.wav;*.mid;*.rar;*.zip;*.tar;*.gz;*.7z;*.bz2;*.cab;*.iso;*.doc;*.docx;*.xls;*.xlsx;*.ppt;*.pptx;*.pdf;*.txt;*.md;*.xmx;' : '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                        formData: {
+                            admin : 'QaUn-Sv0XRVXGAwMICaPt5-HuS60WjP-WKmxYI3SjMU='
+                        },
+                        onUploadSuccess: function(res, data) {
+                            eval('var d = ' + data);
+                            if (d.Success) {
+                                var showHtml = isfile ? '<a href="' + d.Message + '" target="_blank">点击下载查看</a>' : '<a href="' + d.Message + '" target="_blank"><img width="150" src="' + d.Message + '" alt="" /></a>';
+                                if (multi) {
+                                    var vals = $('#' + id + 'Input');
+                                    vals.append('<input type="hidden" name="' + id + '" value="' + d.Message + '" />');
+                                    vals.find('.js-uploadMustInput').val(d.Message).trigger('blur');
+                                    $('#' + id + 'Result').append(showHtml);
+                                } else {
+                                    $('#' + id).val(d.Message).trigger('blur');
+                                    $('#' + id + 'Result').html(showHtml);
+                                }
+                            } else {
+                                $.jError(d.Message);
+                            }
+                        }
+                    });
+                }, 10);
+            },
+            init: function() {
+                formService.initJs();
+                $('input.js-imageUpload').each(function(i, n) {
+                    n = $(n);
+                    formService.initUpload(n.attr('data-id'), false, false);
+                });
+                $('input.js-imageMultiUpload').each(function(i, n) {
+                    n = $(n);
+                    formService.initUpload(n.attr('data-id'), true, false);
+                });
+                $('input.js-fileUpload').each(function(i, n) {
+                    n = $(n);
+                    formService.initUpload(n.attr('data-id'), false, true);
+                });
+                $('input.js-fileMultiUpload').each(function(i, n) {
+                    n = $(n);
+                    formService.initUpload(n.attr('data-id'), true, true);
+                });
+
+                //自定义表单多图片或文件上传处理
+                $('.ui-imageuploadmulti, .ui-fileuploadmulti').on('mouseenter', 'a', function () {                    
+                    $(this).append($('<i class="iconfont fs22 listvalue-delete" title="删除">&#xe65a;</i>').click(function() {
+                        var a = $(this).closest('a'), src = a.attr('href');
+                        var inputs = a.closest('div').next();
+                        inputs.find('[value="' + src + '"]').not('.js-uploadMustInput').remove();
+                        if (inputs.find('input').length == 1) inputs.find('.js-uploadMustInput').val('');
+                        a.remove();
+                        return false;
+                    }));
+                }).on('mouseleave', 'a', function () {
+                    $(this).find('i').remove();
+                });
+            }
+        };
+        var imgObj=$('.ui-customuploads').before('<div class="customuploads-new"><div class="customuploads-col"></div><div class="customuploads-col"></div><div class="customuploads-col"></div></div>').find('img').each(function(){
+            var me=$(this),
+                myparent=me.parent(),
+                newImgList=myparent.prev(),
+                imgUrl=me.attr('src'),
+                indexNum=me.index()+1; 
+            if(indexNum%3==0){
+                indexNum=2;
+            }else if(indexNum%3==1){
+                indexNum=0;
+            }else{
+                indexNum=1;
+            };
+
+            newImgList.find('.customuploads-col').eq(indexNum).append('<a target="_blank" href="'+ imgUrl +'"><img src="'+ imgUrl +'" width="'+newImgList.find('.customuploads-col').width()+'" /></a>');
+            if(myparent.find('img').length==newImgList.find('img').length){
+                myparent.remove();
+            }
+        });
+        $('.m-info').imageWidthReset({ 'pWidth': 210 }); */
+    </script>
+
+
+</body>
+</html>

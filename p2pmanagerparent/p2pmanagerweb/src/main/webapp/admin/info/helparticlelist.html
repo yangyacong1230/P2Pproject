@@ -1,0 +1,214 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	帮助中心管理 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <dl class="ui-tabs">
+    <dt><a href="javascript:" class="on">帮助中心列表</a></dt>
+    <dd style="width: 1516px;">
+        <form action="?action=search" method="get" class="m-search">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>帮助信息筛选:</th>
+                    <td>
+                        <select id="parentId" name="parentId" class="iconfont" data-olddisabled="false">
+                            <option>请选择所属栏目</option>
+                            
+                                    <option value="1">我要理财</option>
+                                
+                                    <option value="5">&nbsp; &nbsp; &nbsp; &nbsp;|--新手必读</option>
+                                
+                                    <option value="6">&nbsp; &nbsp; &nbsp; &nbsp;|--产品介绍</option>
+                                
+                                    <option value="7">&nbsp; &nbsp; &nbsp; &nbsp;|--收益与费用</option>
+                                
+                                    <option value="8">&nbsp; &nbsp; &nbsp; &nbsp;|--散标投资</option>
+                                
+                                    <option value="9">&nbsp; &nbsp; &nbsp; &nbsp;|--债权转让</option>
+                                
+                                    <option value="2">账户管理</option>
+                                
+                                    <option value="18">&nbsp; &nbsp; &nbsp; &nbsp;|--登录注册</option>
+                                
+                                    <option value="19">&nbsp; &nbsp; &nbsp; &nbsp;|--账户密码</option>
+                                
+                                    <option value="20">&nbsp; &nbsp; &nbsp; &nbsp;|--充值</option>
+                                
+                                    <option value="21">&nbsp; &nbsp; &nbsp; &nbsp;|--提现</option>
+                                
+                                    <option value="22">&nbsp; &nbsp; &nbsp; &nbsp;|--安全认证</option>
+                                
+                                    <option value="23">&nbsp; &nbsp; &nbsp; &nbsp;|--消息中心</option>
+                                
+                                    <option value="3">我要借款</option>
+                                
+                                    <option value="10">&nbsp; &nbsp; &nbsp; &nbsp;|--产品介绍</option>
+                                
+                                    <option value="11">&nbsp; &nbsp; &nbsp; &nbsp;|--借款费用</option>
+                                
+                                    <option value="12">&nbsp; &nbsp; &nbsp; &nbsp;|--如何申请</option>
+                                
+                                    <option value="13">&nbsp; &nbsp; &nbsp; &nbsp;|--认证资料</option>
+                                
+                                    <option value="14">&nbsp; &nbsp; &nbsp; &nbsp;|--信用审核</option>
+                                
+                                    <option value="15">&nbsp; &nbsp; &nbsp; &nbsp;|--信用与额度</option>
+                                
+                                    <option value="16">&nbsp; &nbsp; &nbsp; &nbsp;|--筹款与提现</option>
+                                
+                                    <option value="17">&nbsp; &nbsp; &nbsp; &nbsp;|--如何还款</option>
+                                
+                                    <option value="4">安全保障</option>
+                                
+                                    <option value="24">&nbsp; &nbsp; &nbsp; &nbsp;|--本金保障</option>
+                                
+                                    <option value="25">&nbsp; &nbsp; &nbsp; &nbsp;|--法律保障</option>
+                                
+                                    <option value="26">&nbsp; &nbsp; &nbsp; &nbsp;|--借款风控</option>
+                                
+                                    <option value="27">&nbsp; &nbsp; &nbsp; &nbsp;|--隐私安全</option>
+                                
+                                    <option value="28">&nbsp; &nbsp; &nbsp; &nbsp;|--自我保护</option>
+                                
+                                    <option value="29">&nbsp; &nbsp; &nbsp; &nbsp;|--相关协议</option>
+                                
+                        </select>
+                        <select id="type" name="type" data-olddisabled="false">
+	<option value="帮助名称">帮助名称</option>
+</select>
+                        <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr>                
+            </tbody></table>          
+        </form>
+        <div class="m-content">
+            <div class="m-oper">
+                <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建帮助" onclick="$.jPopupEdit('新建帮助信息', 'helparticledetail.html');">
+                
+                    <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选">
+                    <input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选">
+                    <input type="button" class="oper-clear btn-smaller c-important delsel iconfont" data-function="帮助中心管理" data-operate="批量删除" data-freemes="本功能仅供正式版使用。" value=" 删除选中">
+                
+                
+                    <input type="button" class="oper-clear btn-smaller c-obvious iconfont saveOrder" data-function="帮助中心管理" data-operate="保存排序" data-freemes="本功能仅供正式版使用。" value=" 保存排序">
+                
+                <span class="iconfont"><i class="fs22 fcjade-1"></i>帮助已开通<i class="fs22 fcred-3"></i>帮助已停用</span>
+            </div>
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="5%" class="">选取</th>
+                    <th width="5%" class="">排序</th>
+                    <th width="20%" class="g-fleft">所属栏目</th>
+                    <th width="45%" class="g-fleft">帮助名称</th>
+                    <th width="5%">状态</th>
+                    <th width="20%">操作</th>
+                </tr><tr id="tr7">
+                <td class=""><input type="checkbox" class="del" data-id="7"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="7"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">什么是等额本息？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="utils.copy('http://10.0.31.155/Help/List.htm?aid=7');"> 复制网址</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=7');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=7&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr6" class="list-alt">
+                <td class=""><input type="checkbox" class="del" data-id="6"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="6"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">理财是否有额外费用？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=6');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=6&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr5">
+                <td class=""><input type="checkbox" class="del" data-id="5"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="5"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">投资后是否可以提前退出？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=5');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=5&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr4" class="list-alt">
+                <td class=""><input type="checkbox" class="del" data-id="4"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="4"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">理财期限有多久？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=4');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=4&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr3">
+                <td class=""><input type="checkbox" class="del" data-id="3"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="3"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">理财收益有多少？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=3');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=3&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr2" class="list-alt">
+                <td class=""><input type="checkbox" class="del" data-id="2"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="2"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">怎样进行投资？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=2');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=2&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr1">
+                <td class=""><input type="checkbox" class="del" data-id="1"></td>
+                <td class=""><input type="text" value="0" class="w17 order ui-int" data-id="1"></td>
+                <td class="g-fleft">新手必读</td>
+                <td class="g-fleft">我可以理财吗？</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助信息', 'helparticledetail.html?ID=1');"> 编辑</a>
+                    <a class="iconfont del" href="helparticledetail.html?ID=1&amp;action=del">  删除</a>
+                </td>
+            </tr>   
+        
+    <tr class="pager">
+        <td colspan="6"><div class="pages"><span class="remind">共找到<strong>7</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/info/helparticlelist.html?action=search&amp;parentId=%E8%AF%B7%E9%80%89%E6%8B%A9%E6%89%80%E5%B1%9E%E6%A0%8F%E7%9B%AE&amp;type=%E5%B8%AE%E5%8A%A9%E5%90%8D%E7%A7%B0&amp;key=&amp;_=1434949435935" class="g-hide"></a></td>
+    </tr>                
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

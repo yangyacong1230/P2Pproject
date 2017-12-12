@@ -1,0 +1,97 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><meta name="renderer" content="webkit" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><title>
+	债权转让详情 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form class="auto" method="post" action="/admin/borrowloan/transferdetail.html" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value="&#xe684; 保存" />
+            <input type="button" class="btn-larger c-normal iconfont" value="&#xe634; 关闭" onclick="parent.$.jPopupEdit.close();" />
+        </div>
+        <div class="m-content m-editcontent">
+            <dl class="ui-tabs">
+                <dt><a href="#detail" class="on">债权转让详情</a></dt>
+                <dt><a href="#record">债权投标记录</a></dt>            
+                <dd id="detail">
+                    <div class="m-content">
+                        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th>债权名称</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>剩余期数</th>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>转让人</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>转让金额</th>
+                                <td>0.00 元</td>
+                            </tr>
+                            <tr>
+                                <th>原借款名</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th>转让费用率</th>
+                                <td>0%</td>
+                            </tr>
+                            <tr>
+                                <th>结束时间</th>
+                                <td>0001-01-01 00:00:00</td>
+                            </tr>
+                            <tr>
+                                <th>状态</th>
+                                <td>发布转让中</td>
+                            </tr>
+                            <tr>
+                                <th>发布时间</th>
+                                <td>2017-09-22 12:23:33</td>
+                            </tr>
+                            <tr>
+                                <th>排序值</th>
+                                <td><input type="text" name="orderBy" class="ui-int w50" value="0" data-vtype="number" data-vmsg="请输入正确的数值" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </dd>
+                <dd id="record" class="g-hide">
+                    <div class="m-content">
+                        <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <th width="40%" class="g-fleft">投标用户</th>                            
+                                <th width="20%">投标金额</th>
+                                <th width="20%">投标时间</th>
+                            </tr>
+                            
+                                    <tr>
+                                        <td colspan="3" class="g-fleft">暂无数据。</td>
+                                    </tr>
+                                
+                        </table>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script>
+        $('.ui-tabs').tabs({ tabSelector: 'dt a' });
+    </script>
+
+
+</body>
+</html>

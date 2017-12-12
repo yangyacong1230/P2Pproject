@@ -1,0 +1,61 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+
+<style type="text/css">
+    table.m-permission dl{clear:both;}
+    table.m-permission dd{float:left; width:20%; white-space:nowrap;}
+</style>
+</head>
+<body>
+    <form class="auto" method="post" action="" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">               
+                <tbody><tr>
+                    <th width="15%"><i class="iconfont fcred-3"> </i>会员类型名称</th>
+                    <td width="35%">
+                        <input type="text" name="name" placeholder="请输入会员类型名称" class="w250" value="" maxlength="50" data-vtype="must" data-vmsg="请输入会员类型名称">
+                    </td>
+                    <th width="15%">基础类型</th>
+                    <td width="35%">
+                        <div class="ui-radio"><label><input name="type" type="radio" value="0" checked="checked">个人</label><label><input name="type" type="radio" value="1">企业</label></div>
+                    </td>
+                </tr>             
+                <tr>
+                    <th>启用前端注册</th>
+                    <td>
+                        <div class="ui-checkbox">
+                            <label for="canReg"><input type="checkbox" name="canReg" value="true" id="canReg"> 允许通过前台注册</label>                            
+                        </div>
+                    </td>
+
+                    <th><i class="iconfont fcred-3"> </i>排序值</th>
+                    <td>
+                        <input type="text" name="orderBy" class="w60 ui-int" value="0" data-vtype="must|number" data-vmsg="请输入排序|排序必须为数字"><em>数值越大越靠前</em>
+                    </td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td colspan="3">
+                        <textarea name="remark"></textarea>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/core/scripts/permission.js"></script>
+
+
+
+</body></html>

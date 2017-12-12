@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/p2pcontentparent.iml" filepath="$PROJECT_DIR$/p2pcontentparent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2pcontentweb/p2pcontentweb.iml" filepath="$PROJECT_DIR$/p2pcontentweb/p2pcontentweb.iml" />
+    </modules>
+  </component>
+</project>

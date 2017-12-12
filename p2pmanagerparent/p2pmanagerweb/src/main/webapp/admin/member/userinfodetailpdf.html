@@ -1,0 +1,28 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../BaseMaster.Master" CodeBehind="userinfodetailpdf.html.cs" Inherits="WAP2P.Web.PC.Admin.Member.UserInfoDetailPdf" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="header" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <div class="ui-pdf">
+        <h1>已审核基本资料(<% =Model.Name %>)</h1>
+        <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <th>会员账号</th>
+                <td><% =Model.Name %></td>
+            </tr>
+            <asp:Repeater runat="server" ID="rptPdfFormModule" ItemType="WAP2P.Sys.FormModule">
+                <ItemTemplate>
+                    <tr><th class="info-listhead" colspan="2"><%# Item.Name %></th></tr>
+                    <asp:Repeater runat="server" ID="rptFormFields" ItemType="WAP2P.Sys.FormField">
+                        <ItemTemplate>
+                            <%# Item.BuildHtml("<tr><th>{%=Name%}</th><td>{%=Value%}</td></tr>", false) %>
+                        </ItemTemplate>
+                    </asp:Repeater>                    
+                </ItemTemplate>
+            </asp:Repeater>            
+        </table>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="list" runat="server">
+</asp:Content>

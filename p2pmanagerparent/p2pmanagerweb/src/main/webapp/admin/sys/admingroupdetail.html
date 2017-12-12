@@ -1,0 +1,827 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	操作组 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <form class="auto" method="post" action="" beforesubmit="var val = ''; $('#loginAreaul li').each(function(i,n) { val += $(n).attr('data-id') + '|' });$('#loginAreaFilter').val(val);" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存"> 
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">        
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th><i class="iconfont fcred-3"> </i>操作组名称</th>
+                    <td><input type="text" name="name" class="w250" data-vtype="must" placeholder="请输入适合的操作组名称" value="" maxlength="50" data-vmsg="请输入操作组名称"></td>
+                </tr>
+                
+                <tr>
+                    <th>仅允许查看组内资料</th>
+                    <td><label for="viewOnlyGroup"><input type="checkbox" name="viewOnlyGroup" value="true" id="viewOnlyGroup"> 是</label></td>  
+                </tr>
+                
+                <tr>
+                    <th>限制登录地区</th>
+                    <td>
+                        选择地区 <span id="area"><select id="province" name="province"><option value="">全部</option><option value="110000">北京市</option><option value="120000">天津市</option><option value="130000">河北省</option><option value="140000">山西省</option><option value="150000">内蒙古自治区</option><option value="210000">辽宁省</option><option value="220000">吉林省</option><option value="230000">黑龙江省</option><option value="310000">上海市</option><option value="320000">江苏省</option><option value="330000">浙江省</option><option value="340000">安徽省</option><option value="350000">福建省</option><option value="360000">江西省</option><option value="370000">山东省</option><option value="410000">河南省</option><option value="420000">湖北省</option><option value="430000">湖南省</option><option value="440000">广东省</option><option value="450000">广西壮族自治区</option><option value="460000">海南省</option><option value="500000">重庆市</option><option value="510000">四川省</option><option value="520000">贵州省</option><option value="530000">云南省</option><option value="540000">西藏自治区</option><option value="610000">陕西省</option><option value="620000">甘肃省</option><option value="630000">青海省</option><option value="640000">宁夏回族自治区</option><option value="650000">新疆维吾尔自治区</option><option value="710000">台湾省</option><option value="810000">香港特别行政区</option><option value="820000">澳门特别行政区</option></select></span> <input type="button" class="btn-base c-priority iconfont" value=" 添加" id="btnAddArea">
+                        <ul id="loginAreaul" class="ui-termselect">
+                            
+                        </ul>
+                        <input type="hidden" name="loginAreaFilter" id="loginAreaFilter" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <th>操作组备注</th>
+                    <td>
+                        <textarea name="description"></textarea>
+                    </td>
+                </tr>
+            </tbody></table>
+            
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th class="info-listhead" colspan="2">
+                        整站权限设置 
+                    </th>
+                </tr>
+                <tr>
+                    <td class="g-fcenter">
+                            替换组权限：
+                        <select class="ml10" id="copyGroup" name="copyGroup">
+	<option value="">从现有操作组复制</option>
+	<option value="1">运营组</option>
+	<option value="2">技术组</option>
+	<option value="3">风控组</option>
+	<option value="4">客服组</option>
+	<option value="5">财务组</option>
+	<option value="6">业务组</option>
+</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table cellpadding="0" cellspacing="0" width="100%" class="m-permission">
+                            
+                                    <tbody><tr><td colspan="4"><div class="ui-checkbox"><label><input type="checkbox" class="module"> 会员管理</label></div></td></tr>
+                                    <tr>
+                                        
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|会员账号管理|"> 会员账号管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员账号管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员账号管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员账号管理|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员账号管理|设置"> 设置</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员账号管理|查看汇总页"> 查看汇总页</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|查看联系方式|"> 查看联系方式</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|查看联系方式|手机"> 手机</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|查看联系方式|邮箱"> 邮箱</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|查看联系方式|身份证"> 身份证</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|会员认证管理|"> 会员认证管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员认证管理|审核"> 审核</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员认证管理|资料代传"> 资料代传</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员认证管理|查看资料"> 查看资料</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员认证管理|重置实名认证"> 重置实名认证</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|会员基本资料管理|"> 会员基本资料管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员基本资料管理|资料代传"> 资料代传</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员基本资料管理|查看资料"> 查看资料</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员基本资料管理|审核"> 审核</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员基本资料管理|导出PDF"> 导出PDF</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|会员借款资料管理|"> 会员借款资料管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员借款资料管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员借款资料管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员借款资料管理|查看资料"> 查看资料</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员借款资料管理|审核"> 审核</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员借款资料管理|授额"> 授额</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员借款资料管理|导出PDF"> 导出PDF</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|会员信用管理|"> 会员信用管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员信用管理|调整"> 调整</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|会员额度管理|"> 会员额度管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员额度管理|申请额度调整"> 申请额度调整</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员额度管理|处理调额申请"> 处理调额申请</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|会员额度管理|删除调额申请"> 删除调额申请</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="会员管理|举报信息管理|"> 举报信息管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|举报信息管理|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|举报信息管理|查看资料"> 查看资料</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="会员管理|举报信息管理|处理"> 处理</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                    </tr>
+                                    <tr class="split"><td colspan="4"></td></tr>
+                                
+                                    <tr><td colspan="4"><div class="ui-checkbox"><label><input type="checkbox" class="module"> 借贷管理</label></div></td></tr>
+                                    <tr>
+                                        
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|借款申请处理|"> 借款申请处理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款申请处理|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款申请处理|分配"> 分配</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款申请处理|跟单"> 跟单</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|资金登记情况|"> 资金登记情况</label></div></dt>
+                                                        
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|借款管理|"> 借款管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款管理|发布新借款"> 发布新借款</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款管理|编辑"> 编辑</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款管理|撤标"> 撤标</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款管理|推荐"> 推荐</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|等待初审的借款|"> 等待初审的借款</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|等待初审的借款|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|等待初审的借款|费用设置"> 费用设置</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|等待初审的借款|审核"> 审核</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|等待满标审核的借款|"> 等待满标审核的借款</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|等待满标审核的借款|审核"> 审核</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|还款中的借款|"> 还款中的借款</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|还款中的借款|详情"> 详情</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|还款中的借款|还款"> 还款</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|逾期的借款|"> 逾期的借款</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|逾期的借款|处理"> 处理</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|借款明细|"> 借款明细</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款明细|详情"> 详情</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|借款明细|导出EXCEL"> 导出EXCEL</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|预约中的借款|"> 预约中的借款</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|预约中的借款|修改"> 修改</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|投标中的借款|"> 投标中的借款</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|投标中的借款|修改"> 修改</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="借贷管理|债权转让列表|"> 债权转让列表</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|债权转让列表|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="借贷管理|债权转让列表|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                    </tr>
+                                    <tr class="split"><td colspan="4"></td></tr>
+                                
+                                    <tr><td colspan="4"><div class="ui-checkbox"><label><input type="checkbox" class="module"> 资金管理</label></div></td></tr>
+                                    <tr>
+                                        
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|会员账户管理|"> 会员账户管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员账户管理|锁定/解锁"> 锁定/解锁</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员账户管理|批量资金操作"> 批量资金操作</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员账户管理|导出EXCEL"> 导出EXCEL</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|会员资金日志|"> 会员资金日志</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员资金日志|导出EXCEL"> 导出EXCEL</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|会员银行列表|"> 会员银行列表</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员银行列表|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员银行列表|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员银行列表|审核"> 审核</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员银行列表|查看详情"> 查看详情</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|会员线上充值管理|"> 会员线上充值管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员线上充值管理|查看详情"> 查看详情</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员线上充值管理|补单"> 补单</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|会员线下充值管理|"> 会员线下充值管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员线下充值管理|查看详情"> 查看详情</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|会员线下充值管理|审核"> 审核</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|提现申请处理|"> 提现申请处理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|提现申请处理|查看详情"> 查看详情</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|提现申请处理|审核"> 审核</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|提现放款处理|"> 提现放款处理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|提现放款处理|查看详情"> 查看详情</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|提现放款处理|放款"> 放款</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资金管理|担保机构列表|"> 担保机构列表</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|担保机构列表|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|担保机构列表|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资金管理|担保机构列表|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                    </tr>
+                                    <tr class="split"><td colspan="4"></td></tr>
+                                
+                                    <tr><td colspan="4"><div class="ui-checkbox"><label><input type="checkbox" class="module"> 资讯推广</label></div></td></tr>
+                                    <tr>
+                                        
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|栏目管理|"> 栏目管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|栏目管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|栏目管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|栏目管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|内容管理|"> 内容管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|内容管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|内容管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|内容管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|帮助中心管理|"> 帮助中心管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|帮助中心管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|帮助中心管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|帮助中心管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|广告位生成|"> 广告位生成</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|广告位生成|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|广告位生成|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|广告位生成|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|广告内容管理|"> 广告内容管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|广告内容管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|广告内容管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|广告内容管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|友情链接管理|"> 友情链接管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|友情链接管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|友情链接管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|友情链接管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="资讯推广|客户留言管理|"> 客户留言管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="资讯推广|客户留言管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                    </tr>
+                                    <tr class="split"><td colspan="4"></td></tr>
+                                
+                                    <tr><td colspan="4"><div class="ui-checkbox"><label><input type="checkbox" class="module"> 系统设置</label></div></td></tr>
+                                    <tr>
+                                        
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|系统公告管理|"> 系统公告管理</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|系统公告管理|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|系统公告管理|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|系统公告管理|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|站点全局设置|"> 站点全局设置</label></div></dt>
+                                                        
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|业务全局设置|"> 业务全局设置</label></div></dt>
+                                                        
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|数据全局设置|"> 数据全局设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|数据全局设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|数据全局设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|数据全局设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|线上支付设置|"> 线上支付设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|线上支付设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|线上支付设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|线上支付设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|线下支付设置|"> 线下支付设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|线下支付设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|线下支付设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|线下支付设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|信用等级设置|"> 信用等级设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|信用等级设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|信用等级设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|信用等级设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|借款资料设置|"> 借款资料设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|借款资料设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|借款资料设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|借款资料设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|借款类型设置|"> 借款类型设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|借款类型设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|借款类型设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|借款类型设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|会员类型设置|"> 会员类型设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员类型设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员类型设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员类型设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|会员基本资料设置|"> 会员基本资料设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员基本资料设置|修改"> 修改</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|会员组设置|"> 会员组设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员组设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员组设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|会员组设置|删除"> 删除</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|操作组设置|"> 操作组设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作组设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作组设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作组设置|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作组设置|设置权限"> 设置权限</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|操作员账号设置|"> 操作员账号设置</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作员账号设置|新建"> 新建</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作员账号设置|修改"> 修改</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作员账号设置|删除"> 删除</label></div></dd>
+                                                            
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|操作员账号设置|设置权限"> 设置权限</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|系统运行信息|"> 系统运行信息</label></div></dt>
+                                                        
+                                                                <dd><div class="ui-checkbox"><label><input type="checkbox" name="permissions" value="系统设置|系统运行信息|重启系统"> 重启系统</label></div></dd>
+                                                            
+                                                    </dl>
+                                                </td>
+                                                
+                                            
+                                                <td>
+                                                    <dl>
+                                                        <dt><div class="ui-checkbox"><label><input type="checkbox" class="fun" name="permissions" value="系统设置|系统备份操作|"> 系统备份操作</label></div></dt>
+                                                        
+                                                    </dl>
+                                                </td>
+                                                </tr><tr>
+                                            
+                                    </tr>
+                                    <tr class="split"><td colspan="4"></td></tr>
+                                
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table> 
+                                  
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/admin/res/core/scripts/permission.js"></script>
+    <script src="/res/core/scripts/areadata.js"></script>
+    <script>
+        initPermissionParentStatus();
+
+        //限制登录地区编辑
+        $('#area').cascade({ data: areadata, names: ['province', 'city', 'area'], emptyTip: '全部' });
+
+        var loginAreaUl = $('#loginAreaul'), loginAreaFilter = $('#loginAreaFilter');
+        $('#btnAddArea').click(function () {
+            var val = '', txt = '', ok = true;
+            $('#area select').each(function (i, n) {
+                var v = $(n).val();
+                if (v) {
+                    val = v;
+                    txt += $(':selected', n).text() + ' ';
+
+                    if (loginAreaUl.find('li[data-id="' + val + '"]').length > 0) {
+                        ok = false;
+                        $.jError('所选地区已存在');                        
+                        return false;
+                    }
+                }
+            });
+            if (ok && val) loginAreaUl.append('<li class="btn-smaller c-important" data-id="' + val + '">' + txt + '<i onclick="$(this).closest(\'li\').remove();" class="iconfont fcyellow-1">&#xe65a;</i></li>');
+        });
+
+        $('#copyGroup').change(function () {
+            var me = $(this), val = me.val();
+            if (val) {
+                $.jConfirm('选择的管理组权限将替换当前权限，您确定吗？', function () {
+                    ajaxGroupPermisstions(val);
+                });
+
+                me.val('');
+            }
+        });
+
+        function ajaxGroupPermisstions(gid) {
+            $.ajax({
+                url: "?action=groupPermission&gid=" + gid,
+                dataType: "json",
+                success: function (res) {
+                    res = res.Value;
+                    var checked = [];
+                    for (var module in res) {
+                        for (var fun in res[module]) {
+                            checked.push(module + '|' + fun + '|');
+                            for (var i = 0; i <= res[module][fun].length; i++) {
+                                checked.push(module + '|' + fun + '|' + res[module][fun][i]);
+                            }
+                        }
+                    }
+
+                    $('table.m-permission :checkbox[name=permissions]').each(function (i, n) {
+                        var n = $(n);
+                        if (checked.indexOf(n.val()) != -1)
+                            n[0].checked = true;                            
+                        else
+                            n[0].checked = false;
+                    });
+
+                    initPermissionParentStatus();
+                }
+            });
+        };
+    </script>
+
+
+
+</body></html>

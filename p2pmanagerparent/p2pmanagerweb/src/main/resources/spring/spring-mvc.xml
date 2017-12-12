@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <context:component-scan base-package="com.qianfeng.p2p.*.controller"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- <property name="prefix" value="/"></property> -->
+        <property name="suffix" value=".html"></property>
+    </bean>
+
+    <mvc:annotation-driven conversion-service="conversionServiceFactoryBean"></mvc:annotation-driven>
+    <!-- 配置resource标签,此标签内部的地址不会被拦截 -->
+    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+    <mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+<!-- 它需要依赖于commom-->
+   <!--  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"></property>
+        <property name="maxUploadSize" value="5120000"></property>
+    </bean> -->
+    
+    
+    <bean id="conversionServiceFactoryBean" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    
+    	<property name="converters">
+    		<set>
+    			<bean class="com.qianfeng.p2p.commons.utils.MyDateConvert"></bean>
+    		</set>
+    	</property>
+    </bean>
+    
+    <!-- <bean id="" class="com.qianfeng.p2p.commons.utils.MyDateConvert"></bean> -->
+    
+    <!--引用服务  -->
+    <dubbo:application name="managerweb"/>
+    
+    <!--找到注册中心  -->
+     	<dubbo:registry address="47.95.244.39" port="2181" protocol="zookeeper"></dubbo:registry>
+ 	<!-- <dubbo:registry address="10.0.135.131" port="2181" protocol="zookeeper"></dubbo:registry> -->
+    <!-- 找个什么服务 -->
+    <dubbo:reference interface="com.qianfeng.p2p.sso.service.AccountServcie" id="accountService"></dubbo:reference>
+    <dubbo:reference interface="com.qianfeng.p2p.content.service.BorrowMoneyService" id="borrowMoneyService"></dubbo:reference>
+    <dubbo:reference interface="com.qianfeng.p2p.manager.service.BorrowInfoService" id="borrowInfoService"></dubbo:reference>
+</beans>

@@ -1,0 +1,403 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	帮助栏目列表 - 千峰p2p
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+<dl class="ui-tabs">
+    <dt><a href="categorylist.html">文章栏目列表</a></dt>
+    <dt><a href="javascript:" class="on">帮助栏目列表</a></dt>
+    <dd style="width: 1498px;">
+        <form action="?action=search" method="get" class="m-search">
+            <table class="m-criteria" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th>帮助栏目筛选:</th>
+                    <td>
+                        <select id="type" name="type" data-olddisabled="false">
+	<option value="栏目名称">栏目名称</option>
+</select>
+                        <input type="text" name="key" placeholder="输入搜索条件" value="" class="w250" data-olddisabled="false">
+                        <span class="ml20 js-inlinesubmit"><input type="submit" class="btn-base c-priority iconfont" value=" 搜索" data-olddisabled="false"><input type="reset" class="btn-base c-normal iconfont" value=" 清空条件" data-olddisabled="false"></span>
+                    </td>
+                </tr>                
+            </tbody></table>            
+        </form>
+        <div class="m-content">
+            <div class="m-oper">
+                <input type="button" class="oper-clear btn-larger c-priority iconfont" value=" 新建栏目" onclick="$.jPopupEdit('新建帮助栏目', 'helpcategorydetail.html');">
+                <input type="button" class="oper-clear btn-smaller c-normal selall iconfont" value=" 全选"><input type="button" class="oper-clear btn-smaller c-normal selreverse iconfont" value=" 反选"><input type="button" class="oper-clear btn-smaller c-important delsel iconfont" value=" 删除选中">
+                <input type="button" class="oper-clear btn-smaller c-obvious iconfont saveOrder" value=" 保存排序">
+                <span class="iconfont"><i class="fs22 fcjade-1"></i>栏目已开通<i class="fs22 fcred-3"></i>栏目已停用</span>
+            </div>
+            <table class="m-list" cellpadding="0" cellspacing="0" width="100%">
+                <tbody><tr>
+                    <th width="3%">选取</th>
+                    <th width="3%">排序</th>
+                    <th width="66%" class="g-fleft">栏目名称</th>
+                    <th width="3%">状态</th>
+                    <th width="20%">操作</th>
+                </tr><tr id="tr1">
+                <td><input type="checkbox" class="del" data-id="1"></td>
+                <td><input type="text" value="4" class="w17 order ui-int" data-id="1"></td>
+                <td class="g-fleft iconfont">我要理财</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=1');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=1');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=1&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr5" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="5"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="5"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--新手必读</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=5');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=5');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=5&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr6">
+                <td><input type="checkbox" class="del" data-id="6"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="6"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--产品介绍</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=6');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=6');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=6&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr7" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="7"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="7"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--收益与费用</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=7');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=7');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=7&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr8">
+                <td><input type="checkbox" class="del" data-id="8"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="8"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--散标投资</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=8');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=8');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=8&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr9" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="9"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="9"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--债权转让</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=9');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=9');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=9&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr2">
+                <td><input type="checkbox" class="del" data-id="2"></td>
+                <td><input type="text" value="3" class="w17 order ui-int" data-id="2"></td>
+                <td class="g-fleft iconfont">账户管理</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=2');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=2');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=2&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr18" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="18"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="18"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--登录注册</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=18');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=18');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=18&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr19">
+                <td><input type="checkbox" class="del" data-id="19"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="19"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--账户密码</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=19');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=19');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=19&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr20" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="20"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="20"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--充值</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=20');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=20');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=20&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr21">
+                <td><input type="checkbox" class="del" data-id="21"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="21"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--提现</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=21');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=21');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=21&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr22" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="22"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="22"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--安全认证</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=22');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=22');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=22&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr23">
+                <td><input type="checkbox" class="del" data-id="23"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="23"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--消息中心</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=23');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=23');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=23&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr3" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="3"></td>
+                <td><input type="text" value="2" class="w17 order ui-int" data-id="3"></td>
+                <td class="g-fleft iconfont">我要借款</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=3');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=3');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=3&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr10">
+                <td><input type="checkbox" class="del" data-id="10"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="10"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--产品介绍</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=10');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=10');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=10&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr11" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="11"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="11"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--借款费用</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=11');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=11');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=11&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr12">
+                <td><input type="checkbox" class="del" data-id="12"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="12"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--如何申请</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=12');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=12');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=12&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr13" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="13"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="13"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--认证资料</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=13');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=13');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=13&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr14">
+                <td><input type="checkbox" class="del" data-id="14"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="14"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--信用审核</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=14');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=14');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=14&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr15" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="15"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="15"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--信用与额度</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=15');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=15');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=15&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr16">
+                <td><input type="checkbox" class="del" data-id="16"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="16"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--筹款与提现</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=16');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=16');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=16&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr17" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="17"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="17"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--如何还款</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=17');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=17');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=17&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr4">
+                <td><input type="checkbox" class="del" data-id="4"></td>
+                <td><input type="text" value="1" class="w17 order ui-int" data-id="4"></td>
+                <td class="g-fleft iconfont">安全保障</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=4');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=4');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=4&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr24" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="24"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="24"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--本金保障</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=24');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=24');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=24&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr25">
+                <td><input type="checkbox" class="del" data-id="25"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="25"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--法律保障</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=25');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=25');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=25&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr26" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="26"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="26"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--借款风控</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=26');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=26');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=26&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr27">
+                <td><input type="checkbox" class="del" data-id="27"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="27"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--隐私安全</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=27');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=27');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=27&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr28" class="list-alt">
+                <td><input type="checkbox" class="del" data-id="28"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="28"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--自我保护</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=28');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=28');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=28&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+            <tr id="tr29">
+                <td><input type="checkbox" class="del" data-id="29"></td>
+                <td><input type="text" value="0" class="w17 order ui-int" data-id="29"></td>
+                <td class="g-fleft iconfont">&nbsp; &nbsp; &nbsp; &nbsp;|--相关协议</td>
+                <td><i class="iconfont fs22 fcjade-1"></i></td>
+                <td>
+                    <a class="iconfont addSubclass" href="javascript:;" onclick="$.jPopupEdit('添加子类栏目', 'helpcategorydetail.html?ParentID=29');"> 添加子类</a>
+                    <a class="iconfont oper edit" href="javascript:;" onclick="$.jPopupEdit('编辑帮助栏目', 'helpcategorydetail.html?ID=29');"> 编辑</a>
+                    <a class="iconfont del" href="helpcategorydetail.html?ID=29&amp;action=del"> 删除</a>
+                </td>
+            </tr>   
+        
+    <tr class="pager">
+        <td colspan="5"><div class="pages"><span class="remind">共找到<strong>29</strong>条记录</span><span class="disabled">&lt; 上一页</span><span class="current">1</span><span class="disabled">下一页 &gt;</span><span class="remind">单页显示 <select><option value="10"> 10 </option><option value="30" selected="selected"> 30 </option><option value="50"> 50 </option><option value="100"> 100 </option></select> 条</span></div><a href="/admin/info/helpcategorylist.html?action=search&amp;type=%E6%A0%8F%E7%9B%AE%E5%90%8D%E7%A7%B0&amp;key=&amp;_=1434949471234" class="g-hide"></a></td>
+    </tr>                
+            </tbody></table>
+        </div>
+    </dd>
+</dl>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+
+
+
+</body></html>

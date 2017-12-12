@@ -1,0 +1,74 @@
+﻿<html><head><meta charset="utf-8"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>
+	
+</title>
+<link href="/admin/res/core/styles/main.css" rel="stylesheet">
+</head>
+<body>
+    <form action="" method="post" class="auto" onsuccess="parent.$.jPopupEdit.close(true);">
+        <div class="m-editbar">
+            <input type="submit" class="btn-larger c-priority iconfont" value=" 保存">
+            <input type="button" class="btn-larger c-normal iconfont" value=" 关闭" onclick="parent.$.jPopupEdit.close();">
+        </div>
+        <div class="m-content m-editcontent">
+            <table class="m-info" cellpadding="0" cellspacing="0" width="100%">
+                
+                
+                <tbody><tr>
+                    <th>是否启用银行</th>
+                    <td><div class="ui-checkbox"><label for="active"><input type="checkbox" name="active" value="true" id="active" checked="checked"> 启用</label></div></td>
+                </tr>
+            </tbody></table>
+        </div>
+    </form>
+
+<script src="/admin/res/core/scripts/jquery.js"></script>
+<script src="/admin/res/uploadify/jquery.uploadify.min.js"></script>
+<script src="/admin/res/core/scripts/core.js"></script>
+<script src="/admin/res/core/scripts/main.js"></script>
+
+    <script src="/res/core/scripts/areadata.js"></script>
+    <script>
+        //开户地区编辑
+        $('#area').cascade({ data: areadata, names: ['provinceId', 'cityId', 'areaId'], emptyTip: '全部'});
+
+        $('#area').on('change',function(){
+            $('#areaName').val($(this).find('option:selected').text().replace('全部',''));
+        });
+
+        $("#cardNo").keypress(function(){
+            var text = $(this).val();
+            if($(this).val().length >= 4){
+                $(this).val(text.replace(/(\d{4})(?=\d)/g,"$1 "));
+            }
+        });
+
+        setTimeout(function () {
+            $('#bankLogoFile').uploadify({
+                width: 120,
+                height: 32,
+                multi: false,
+                removeTimeout: 0,
+                swf: '../res/uploadify/uploadify.swf?v=807276',
+                uploader: '../res/uploadify/SwfUpload.html?type=image&width=19&height=19',
+                buttonClass:'iconfont',
+                buttonText: '&#xe629; 上传银行Logo',
+                fileTypeExts: '*.png;*.jpg;*.jpeg;*.gif;*.bmp;',
+                formData: {
+                    admin : 'QaUn-Sv0XRVXGAwMICaPt5F0UMIAmXvuCTkOgh56X8g='
+                },
+                onUploadSuccess: function(res, data) {
+                    eval('var d = ' + data);
+                    if (d.Success) {
+                        $('#bankLogo').val(d.Message).trigger('blur');
+                        $('#bankLogoResult').html('<img src="' + d.Message + '" />');
+                    } else {
+                        $.jError(d.Message);
+                    }
+                }
+            });
+        }, 10);
+    </script>
+
+
+
+</body></html>
